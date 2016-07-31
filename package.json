@@ -1,0 +1,32 @@
+{
+  "name": "wfp-quotation",
+  "version": "1.0.0",
+  "description": "onsite quotation tool",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "build": "browserify -t hbsfy ./public/index.js -o ./public/bundle.js -dv",
+    "watch": "watchify -t hbsfy ./public/index.js -o ./public/bundle.js -dv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wishmouse/WFP-Quotation.git"
+  },
+  "author": "Heidi Goosen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wishmouse/WFP-Quotation/issues"
+  },
+  "homepage": "https://github.com/wishmouse/WFP-Quotation#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-hbs": "^1.0.2",
+    "handlebars": "^4.0.5",
+    "hbs": "^4.0.0",
+    "hbsfy": "^2.7.0",
+    "jquery": "^3.1.0",
+    "nodemon": "^1.10.0",
+    "superagent": "^2.1.0",
+    "watchify": "^3.7.0"
+  }
+}
