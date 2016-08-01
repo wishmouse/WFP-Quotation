@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!-- Basic Page Needs
+  ?????????????????????????????????????????????????? -->
+  <meta charset="utf-8">
+  <title>Wellington Fireplace</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  ?????????????????????????????????????????????????? -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  ?????????????????????????????????????????????????? 
+  <link href="styles/main.css" rel="stylesheet" type="text/css">
+-->
+</head>
+<body onload="onload()"> 
+<form id="customer-form" method="post" action="/">
+   Date: 
+   <input type="date" id="theDate"><br>
+   Name :
+   <input type="text" id="customer-name" value="" name="customer-name" class="customer" placeholder="Name and surname"/><br>
+   Email:
+   <input type="text" id="customer-email" value="" name="customer-email" class="customer" placeholder="A.N.Other@none.com"/><br>
+   Phone number:
+   <input type="number" name="customer-phone" id="customer-phone class="customer="customer" placeholder="027 000 000"> <br>
+  
+
+    <div id="locationField">
+      <input id="autocomplete" placeholder="Enter your address"
+             onFocus="geolocate()" type="text"></input>
+    </div>
+
+    <table id="address">
+      <tr>
+        <td class="label">Street address</td>
+        <td class="slimField"><input class="field" id="street_number"
+              disabled="true"></input></td>
+        <td class="wideField" colspan="2"><input class="field" id="route"
+              disabled="true"></input></td>
+      </tr>
+	  <tr>
+        <td class="label">Suburb</td>
+        <td class="wideField" colspan="3"><input class="field"
+              id="sublocality_level_1" disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">City</td>
+        <td class="wideField" colspan="3"><input class="field" id="locality"
+              disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">Post code</td>
+        <td class="wideField"><input class="field" id="postal_code"
+              disabled="true"></input></td>
+      </tr>
+    </table>
+	<h3>Users </h3>
+	<form id="user-form" method="post" action="/">
+	  <input type="radio" name="salesman" value="Jason">Awesome Guy 1</input>
+	  <input type="radio" name="salesman" value="Warren">Awesome Guy 2</input>
+	  <input type="radio" name="salesman" value="Other">Awesome Guy 3</input>
+	  <input type="radio" name="salesman" value="Other">Awesome Guy 4</input>
+	</form>
+	<h3>Fireplace types </h3>
+	<form id="user-form" method="post" action="/">
+	  <input type="radio" name="type" value="in-build-wood">Inbuilt Wood</input>
+	  <input type="radio" name="type" value="free-stading-wood">Free Standing Wood</input>
+	  <input type="radio" name="salesman" value="open-wood">Open Wood</input>
+	  <input type="radio" name="salesman" value="multi-fuel">Multi-Fuel</input>
+	</form>
+</form>
+<!--  setting the date for today -->
+<script type="text/javascript">
+function onload(){
+var date = new Date();
+
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+
+var today = year + "-" + month + "-" + day;
+
+
+document.getElementById('theDate').value = today;
+}
+</script>
+</script>
+<!--  setting the address -->
+    <script>
+    
+
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+		sublocality_level_1 : 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+          }
+        }
+      }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa_og4BGPFke8eLA6IROOGEzNyT4tQmCg
+&libraries=places&callback=initAutocomplete"
+        async defer></script>
+  </body>
+</html>
