@@ -73,7 +73,69 @@
 	  <input type="radio" name="type" value="electric">Electric</input>
 	  <input type="radio" name="type" value="gas">Gas</input>
 	  <input type="radio" name="type" value="biofuel">Biofuel</input>
+	<h3>Additional charge for rural fireplace</h3>
 	</form>
+		<form id="user-form" method="post" action="/">
+		<input type="radio" name="air" id="rural" value="rural">This is Rural</input>
+		<input type="radio" name="air" id="urban" value="urban" checked="checked">This is Urban</input>
+	</form>
+	
+	<br>
+	Freestanding Wood fireplace :
+	<br>
+	<p>Make:</p>
+	<select name="make-select" id="make-select">
+	  <option value="None">none</option>
+	  <option value="Jayline">Jayline</option>
+	  <option value="Bosca">Bosca</option>
+	  <option value="Fisher">Fisher</option>
+	</select>
+	<p>Model :</p>
+	<select name="model-select" id="model-select">
+	  <!--Below shows when 'Jayline' is selected is hidden otherwise-->
+	  <option value="Jayline_1">none</option>
+	  <option value="Jayline_2">SS200L</option>
+	  <option value="Jayline_3">SS280P</option>
+
+	  <!--Below shows when Bosca is selected is hidden otherwise-->
+	  <option value="Bosca_1">none</option>
+	  <option value="Bosca_2">Firepoint 360</option>
+	  <option value="Bosca_3">Limit 380 </option>
+
+	  <!--Below shows when 'Fisher' is selected is hidden otherwise-->
+	  <option value="Fisher_1">none</option>
+	  <option value="Fisher_2">Blenheim MkII</option>
+	  <option value="Fisher_3">Denniston</option>
+	  <option value="Fisher_4">Highwic MkII</option>
+	</select>
+	<p>Price  :</p>
+	<select name="price-select" id="price-select" placeholder="$$">
+		<!--Below shows when 'Jayline' is selected is hidden otherwise-->
+		<option value="Jayline_2_p_c">$1,499</option>
+		<option value="Jayline_3_p_c">$1,699</option>
+	   
+		<!--Below shows when Bosca is selected is hidden otherwise-->
+		<option value="Bosca_2_p_c">$2,295</option> 
+		<option value="Bosca_3_p_c">$1,649</option>
+		
+		<!--Below shows when 'Fisher' is selected is hidden otherwise-->
+		<option value="Fisher_2_p_c">$2,499</option>
+		<option value="Fisher_3_p_c">$2,599</option>
+		<option value="Fisher_4_p_c">$2,399</option>
+	</select>
+	<div id = "rural-select">
+		<p>Price (additional rural) :</p>
+		<select name="rural-select" id="rural">
+			<!--Below shows when 'Jayline' is selected is hidden otherwise-->
+			<option value="Jayline_2_p_r">$150</option>
+			<option value="Jayline_3_p_r">$150</option>
+			
+			<!--Below shows when 'Fisher' is selected is hidden otherwise-->
+			<option value="Fisher_2_p_r">$150</option>
+			<option value="Fisher_3_p_r">$150</option>
+			<option value="Fisher_4_p_r">$150</option>
+		</select>
+	</div>
 </form>
 <!--  setting the date for today -->
 <script type="text/javascript">
@@ -92,7 +154,6 @@ var today = year + "-" + month + "-" + day;
 
 document.getElementById('theDate').value = today;
 }
-</script>
 </script>
 <!--  setting the address -->
     <script>
@@ -167,6 +228,48 @@ document.getElementById('theDate').value = today;
 			}            
 		});
 	});
+	</script>
+	<!-- drop down selector -->
+	<script>
+	 $(document).ready(function() {
+	  $("#make-select").change(function() {
+		$("#model-select")
+		  .find("option")
+		  .show()
+		  .not("option[value*='" + this.value + "']").hide();
+
+		$("#model-select").val(
+		  $("#model-select").find("option:visible:first").val());
+	  }).change();
+	  
+	  $("#model-select").change(function() {
+		$("#price-select")
+		  .find("option")
+		  .show()
+		  .not("option[value*='" + this.value + "']").hide();
+
+		$("#price-select").val(
+		  $("#price-select").find("option:visible:first").val());
+		  
+	  }).change();
+	  
+	});
+
+	$('input[type="radio"]').change(function(){
+		if (this.checked){
+			$('#rural-select').toggle(this.value === 'rural');
+		}
+	}).change();
+
+	</script>
+	<!-- hide and show field for rural select -->
+	<script>
+	$('input[type="radio"]').change(function(){
+		if (this.checked){
+			$('#rural-select').toggle(this.value === 'rural');
+		}
+	}).change();
+	
 	</script>
 	
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa_og4BGPFke8eLA6IROOGEzNyT4tQmCg
