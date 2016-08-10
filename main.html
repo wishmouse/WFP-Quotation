@@ -57,40 +57,62 @@
               disabled="true"></input></td>
       </tr>
     </table>
-	<h3>Users </h3>
+	<strong>Users </strong>
+  <br>
 	<form id="user-form" method="post" action="/">
 	  <input type="radio" name="salesman" value="Jason">Awesome Guy 1</input>
 	  <input type="radio" name="salesman" value="Warren">Awesome Guy 2</input>
 	  <input type="radio" name="salesman" value="Other">Awesome Guy 3</input>
 	  <input type="radio" name="salesman" value="Other">Awesome Guy 4</input>
 	</form>
-	<h3>Fireplace types </h3>
-	<form id="user-form" method="post" action="/">
-	  <input type="radio" name="type" value="in-build-wood">Inbuilt Wood</input>
-	  <input type="radio" name="type" value="free-stading-wood">Free Standing Wood</input>
-	  <input type="radio" name="type" value="open-wood">Open Wood</input>
-	  <input type="radio" name="type" value="multi-fuel">Multi-Fuel</input>
-	  <input type="radio" name="type" value="electric">Electric</input>
-	  <input type="radio" name="type" value="gas">Gas</input>
-	  <input type="radio" name="type" value="biofuel">Biofuel</input>
-	<h3>Additional charge for rural fireplace</h3>
-	</form>
-		<form id="user-form" method="post" action="/">
-		<input type="radio" name="air" id="rural" value="rural">This is Rural</input>
-		<input type="radio" name="air" id="urban" value="urban" checked="checked">This is Urban</input>
-	</form>
+	<strong>Additional charge for rural fireplace</strong>
+  <br>
+  </form>
+    <form id="user-form" method="post" action="/">
+    <input type="radio" name="air" id="urban" value="urban" checked="checked">This is Urban</input>
+    <input type="radio" name="air" id="rural" value="rural">This is Rural</input>
+  </form>
+  
+<br>
+<br>
+    <strong>Fireplace types </strong>
+  <form id="user-form" method="post" action="/">
+    <input type="radio" name="type" value="gas">Gas</input>
+    <input type="radio" name="type" value="wood" id='wood'>Wood</input>
+    <input type="radio" name="type" value="electric">Electric</input>
+    <input type="radio" name="type" value="multi-fuel">Multi-Fuel</input>
+    <input type="radio" name="type" value="biofuel">Biofuel</input>
+    <input type="radio" name="type" value="cookers">Cookers</input>
+  </form>
+  <br>
+  <div id="wood-fireplace-types">
+  <strong>Wood Fire place types </strong>
+    <br>
+    <form id="wood-fireplaces" method="post" action="/">
+      <input type="radio" name="wood-type" value='free-standing' id="free-standing-type">Free Standing</input>
+      <input type="radio" name="wood-type" value="Warren">In built</input>
+      <input type="radio" name="wood-type" value="Other">Open</input>
+      <input type="radio" name="wood-type" value="Other">Double Sided</input>
+    </form>
+    <br>
+
+  </div>
+
+  <div id="free-standing-fire-place">
 	
 	<br>
 	Freestanding Wood fireplace :
 	<br>
-	<p>Make:</p>
+	Make:
 	<select name="make-select" id="make-select">
 	  <option value="None">none</option>
-	  <option value="Jayline">Jayline</option>
+	  <option id='Jayline' value="Jayline">Jayline</option>
 	  <option value="Bosca">Bosca</option>
 	  <option value="Fisher">Fisher</option>
 	</select>
-	<p>Model :</p>
+      <br>
+      <br>
+  Model :
 	<select name="model-select" id="model-select">
 	  <!--Below shows when 'Jayline' is selected is hidden otherwise-->
 	  <option value="Jayline_1">none</option>
@@ -108,7 +130,9 @@
 	  <option value="Fisher_3">Denniston</option>
 	  <option value="Fisher_4">Highwic MkII</option>
 	</select>
-	<p>Price  :</p>
+      <br>
+      <br>
+	<div id="urban-select"> Price  :
 	<select name="price-select" id="price-select" placeholder="$$">
 		<!--Below shows when 'Jayline' is selected is hidden otherwise-->
 		<option value="Jayline_2_p_c">$1,499</option>
@@ -123,20 +147,46 @@
 		<option value="Fisher_3_p_c">$2,599</option>
 		<option value="Fisher_4_p_c">$2,399</option>
 	</select>
+  </div>
+      <br>
 	<div id = "rural-select">
-		<p>Price (additional rural) :</p>
+		Price (other rural) :
 		<select name="rural-select" id="rural">
 			<!--Below shows when 'Jayline' is selected is hidden otherwise-->
-			<option value="Jayline_2_p_r">$150</option>
-			<option value="Jayline_3_p_r">$150</option>
+			<option value="Jayline_2_p_r">Other $$</option>
+			<option value="Jayline_3_p_r">Other $$</option>
 			
 			<!--Below shows when 'Fisher' is selected is hidden otherwise-->
-			<option value="Fisher_2_p_r">$150</option>
-			<option value="Fisher_3_p_r">$150</option>
-			<option value="Fisher_4_p_r">$150</option>
+			<option value="Fisher_2_p_r">Other $$</option>
+			<option value="Fisher_3_p_r">Other $$</option>
+			<option value="Fisher_4_p_r">Other $$</option>
 		</select>
 	</div>
+      <br>
+
+  <div id = "colour-select">
+   Jayline colours :
+    <form name="colour-select" id="colour">
+      <input type='radio' name='colour' checked="checked">Black</input>
+      <input type='radio' name='colour' >Orange</input>
+      <input type='radio' name='colour' >Yellow</input>
+      <input type='radio' name='colour' >Red</input>
+      <input type='radio' name='colour' >Green</input>
+    </form>
+    <br>
+  </div>
+
+
+  <div id='colour-price'>
+  Jayline colour price:
+    <input type="text" name="colour-fee"  value="$100"><br>
+  </div>
+  </div>
+</div>
+
+
 </form>
+
 <!--  setting the date for today -->
 <script type="text/javascript">
 function onload(){
@@ -157,8 +207,6 @@ document.getElementById('theDate').value = today;
 </script>
 <!--  setting the address -->
     <script>
-    
-
       var placeSearch, autocomplete;
       var componentForm = {
         street_number: 'short_name',
@@ -271,6 +319,52 @@ document.getElementById('theDate').value = today;
 	}).change();
 	
 	</script>
+
+<!-- hide and show field for urban select -->
+<script>
+  $('input[type="radio"]').change(function(){
+    if (this.checked){
+      $('#urban-select').toggle(this.value === 'urban');
+    }
+  }).change();
+  
+  </script>
+<script>
+   $('#wood-fireplace-types').hide()
+    $('#wood').change(function(){
+         $('#wood-fireplace-types').show()
+    })
+</script>
+  <!--hide and show Free standing Wood Fires based on selection -->
+  <script>
+   $('#free-standing-fire-place').hide()
+    $('#free-standing-type').change(function(){
+         $('#free-standing-fire-place').show()
+    })
+</script>
+
+
+<!--show colours for Jayline -->
+<script>
+$('#colour-select').hide()
+var dropdown = document.getElementById("make-select");
+dropdown.onchange = function(event){
+    if(dropdown.value=="Jayline"){
+       $('#colour-select').show()
+    }
+  }
+
+</script>
+<!--show colours for Jayline -->
+
+<script>
+    $('#colour-price').hide()
+   $('#colour-select').change(function(){
+    $('#colour-price').show()
+   })
+   
+</script>
+
 	
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa_og4BGPFke8eLA6IROOGEzNyT4tQmCg
 &libraries=places&callback=initAutocomplete"
