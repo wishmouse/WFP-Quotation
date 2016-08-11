@@ -65,15 +65,15 @@
 	  <input type="radio" name="salesman" value="Other">Awesome Guy 3</input>
 	  <input type="radio" name="salesman" value="Other">Awesome Guy 4</input>
 	</form>
+  <br>
 	<strong>Additional charge for rural fireplace</strong>
   <br>
   </form>
     <form id="user-form" method="post" action="/">
-    <input type="radio" name="air" id="urban" value="urban" checked="checked">This is Urban</input>
+    <input type="radio" name="air" id="urban" value="urban">This is Urban</input>
     <input type="radio" name="air" id="rural" value="rural">This is Rural</input>
   </form>
-  
-<br>
+
 <br>
     <strong>Fireplace types </strong>
   <form id="user-form" method="post" action="/">
@@ -98,11 +98,10 @@
 
   </div>
 
-  <div id="free-standing-fire-place">
+  <div id="free-standing-fire-place" style="border-color: #FBE7BA; background: #C5AD7E;">
 	
 	<br>
-	Freestanding Wood fireplace :
-	<br>
+	<strong>Freestanding Wood fireplace :</strong><br>
 	Make:
 	<select name="make-select" id="make-select">
 	  <option value="None">none</option>
@@ -148,7 +147,7 @@
 		<option value="Fisher_4_p_c">$2,399</option>
 	</select>
   </div>
-      <br>
+
 	<div id = "rural-select">
 		Price (other rural) :
 		<select name="rural-select" id="rural">
@@ -167,11 +166,11 @@
   <div id = "colour-select">
    Jayline colours :
     <form name="colour-select" id="colour">
-      <input type='radio' name='colour' checked="checked">Black</input>
-      <input type='radio' name='colour' >Orange</input>
-      <input type='radio' name='colour' >Yellow</input>
-      <input type='radio' name='colour' >Red</input>
-      <input type='radio' name='colour' >Green</input>
+      <input type='radio' name='colour' checked="checked"><span style="background: Black; color:white;">Black</span></input>
+      <input type='radio' name='colour' ><span style="background: Orange;">Orange</span></input>
+      <input type='radio' name='colour'><span style="background: Yellow;">Yellow</span></input>
+      <input type='radio' name='colour'><span style="background: red;">Red</span></input>
+      <input type='radio' name='colour'><span style="background: Green;">Green</span></input>
     </form>
     <br>
   </div>
