@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <title>Wellington Fireplace</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="/bundle.js"></script>
+  <link rel='stylesheet' type='text/css' href='../styles/styles.css'></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  <link href="styles/main.css" rel="stylesheet" type="text/css">
+-->
+</head>
+<body>
+<div  id="quotation">
+<form id="customer-form">
+   Date:
+   <input type="date" id="date"><br>
+   Name :
+   <input type="text" id="customer-name" value="" name="customer-name" class="customer" placeholder="Name and surname"/><br>
+   Email:
+   <input type="text" id="customer-email" value="" name="customer-email" class="customer" placeholder="A.N.Other@none.com"/><br>
+   Phone number:
+   <input type="number" name="customer-phone" id="customer-phone class="customer="customer" placeholder="027 000 000"> <br>
+
+   <input type="submit" value="Submit" id="quotation-submit">
+
+    <div id="locationField">
+      <input id="autocomplete" placeholder="Enter your address"
+             onFocus="geolocate()" type="text"></input>
+    </div>
+
+    <table id="address">
+      <tr>
+        <td class="label">Street address</td>
+        <td class="slimField"><input class="field" id="street_number"
+              disabled="true"></input></td>
+        <td class="wideField" colspan="2"><input class="field" id="route"
+              disabled="true"></input></td>
+      </tr>
+	  <tr>
+        <td class="label">Suburb</td>
+        <td class="wideField" colspan="3"><input class="field"
+              id="sublocality_level_1" disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">City</td>
+        <td class="wideField" colspan="3"><input class="field" id="locality"
+              disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">Post code</td>
+        <td class="wideField"><input class="field" id="postal_code"
+              disabled="true"></input></td>
+      </tr>
+    </table>
+	<strong>Users </strong>
+  <br>
+	  <div id="salesman-1" class="border" >Awesome Chick 1</div>
+  	<div id="salesman-2" class="border">Awesome Guy 2</div>
+	  <div id="salesman-3" class="border">Awesome Guy 3</div>
+
+  <br>
+	<strong>Additional charge for rural fireplace</strong>
+  <br>
+  <div id="clean-air" value="clean-air">This is Clean Air</div>
+  <div id="rural" value="rural">This is Rural</div>
+</form>
+  <button id="data-entry-button">Enter Data</button>
+</div>
+
+
+
+<br>
+    <strong>Fireplace types </strong>
+<br>
+<div id="fireplace">
+    <div id="gas" class="border" value="gas">Gas</div>
+    <div id="wood" class="border" value="wood" >Wood</div>
+    <div id="electric" class="border" value="electric">Electric</div>
+    <div id="multi-fuel" class="border" value="multi-fuel">Multi-Fuel</div>
+    <div id="biofuel" class="border" value="biofuel">Biofuel</div>
+    <div id="cookers"  class="border" value="cookers">Cookers</div>
+</div>
+<div id="da-type"></div>
+<br>
+
+<div id="data-entry">
+
+  <button id="quotation-button">Back to quote</button>
+<form>
+  <select id="input-make">Make:
+    <option id="blank" label=" "></option>
+    <option id="jayline" value="jayline">Jayline</option>
+    <option id="fisher" value="fisher">Fisher</option>
+    <option id="gazco" value="gaszco">Gazco</option>
+    <option id="jetmaster" value="jetmaster">Jetmaster</option>
+    <option id="escea" value="escea">Escea</option>
+    <option id="living-flame" value="living-flame">Living Flame</option>
+    <option id="bosca" value="bosca">Bosca</option>
+    <option id="pyroclassic" value="pyroclassic">Pyroclassic</option>
+    <option id="metro" value="metro">Metrofires</option>
+    <option id="firenzo" value="firenzo">Firenzo</option>
+    <option id="woodsman" value="woodsman">Woodsman</option>
+    <option id="quadra-fire" value="quadra-fire">Quadra-Fire</option>
+    <option id="esse" value="esse">Esse</option>
+    <option id="yunca" value="yunca">Yunca</option>
+    <option id="ethos" value="ethos">Ethos</option>
+    <option id="warmington" value="warmington">Warmington</option>
+    <option id="quadrafire" value="quadrafire">Quadrafire</option>
+    <option id="kent" value="kent">Kent</option>
+    <option id="stovax" value="stovax">Stovax</option>
+    <option id="mitsubishi" value="mitsubishi">Mitsubishi-electric</option>
+    <option id="beef-eater" value="beef-eater">Beef Eater</option>
+    <option id="ortal" value="ortal">Ortal</option>
+    <option id="heat-glo" value="heat-glo">Heat & Glo</option>
+    <option id="trendz" value="trendz">Trendz</option>
+    <option id="bromic" value="bromic">Bromic Heating</option>
+    <option id="realfires" value="realfires">Realfires</option>
+    <option id="the-bio-flame" value="the-bio-flame">The Bio Flame</option>
+    <option id="fogata" value="fogata">Fogata</option>
+    <option id="cast-iron-chiminea" value="cast-iron-chiminea">Cast iron chiminea</option>
+    <option id="the-fireplace" value="the-fireplace">The Fireplace</option>
+
+  </select>
+
+  <input type="text" id="input-model" placeholder="Model">
+  <input type="number" id="input-kw" placeholder="kw">
+  <input type="number" id="input-clean-air" placeholder="$ Clean-air">
+  <input type="number" id="input-clean-air-wb" placeholder="$ Clean air Wetback"><br>
+  <input type="number" id="input-rural" placeholder="$ Rural">
+  <input type="number" id="input-rural-wb" placeholder="$ Rural Wetback">
+  hearth:
+  <select id = "input-hearth">Make:
+    <option value="ash">Ash</option>
+    <option value="insulated">Insulated</option>
+  </select>
+  <input type="text" id="input-wall-hearth" placeholder="Wall hearth">
+  <input type="text" id="input-corner-hearth" placeholder="Corner hearth">
+  colour:
+  <select id="input-colour-available">
+    <option value="input-no-colour">no</option>
+    <option value="input-yes-colour">yes</option>
+  </select>
+  <input type="number" id="input-colour-price" placeholder="$ Colour">
+</div>
+</form>
+<input type="submit" value="Submit Data" id="data-submit">
+
+
+<!--  setting the address -->
+    <script>
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+		sublocality_level_1 : 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+          }
+        }
+      }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+    </script>
+	<!-- Hide address after hitting enter-->
+	<script>
+	$(function() {
+
+		$("#autocomplete").keyup(function (e) {
+			if(e.which === 13) {
+				$("#autocomplete").hide();
+			}
+		});
+	});
+	</script>
+	<!-- drop down selector -->
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa_og4BGPFke8eLA6IROOGEzNyT4tQmCg
+&libraries=places&callback=initAutocomplete"
+        async defer></script>
+  </body>
+</html>
