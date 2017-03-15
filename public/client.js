@@ -1,7 +1,11 @@
 
 var $ = require('jquery')
 var request = require('superagent')
+//quotation submit
+var salesman
+var airType
 
+// data entry
 var fireplaceType
 var make
 var model
@@ -16,6 +20,7 @@ var cornerHearth
 var colour
 var colourPrice
 
+
  $(document).ready(function(){
      $("#data-entry").hide()
 
@@ -25,28 +30,33 @@ var colourPrice
           $("#salesman-1").addClass("selected");
           $("#salesman-2").removeClass("selected");
           $("#salesman-3").removeClass("selected");
+          salesman = "Salesman - 1"
       });
 
     $("#salesman-2").click(function(){
            $("#salesman-2").addClass("selected");
            $("#salesman-1").removeClass("selected");
            $("#salesman-3").removeClass("selected");
+           salesman = "Salesman - 2"
        });
 
    $("#salesman-3").click(function(){
           $("#salesman-3").addClass("selected");
           $("#salesman-2").removeClass("selected");
           $("#salesman-1").removeClass("selected");
+          salesman = "Salesman - 3"
       });
 
     $("#clean-air").click(function(){
            $("#clean-air").addClass("selected");
            $("#rural").removeClass("selected");
+           airType = 'Clean Air'
        });
 
    $("#rural").click(function(){
           $("#rural").addClass("selected");
           $("#clean-air").removeClass("selected");
+          airType = 'Rural'
       });
 
 function hideShow(){
@@ -231,6 +241,7 @@ $("#cookers").click(function(){
 
    $('#data-submit').click(function(e){
      e.preventDefault()
+     type =$("#input-type").val()
      make = $("#input-make").val()
      model = $("#input-model").val()
      kw = $("#input-kw").val()
@@ -247,7 +258,8 @@ $("#cookers").click(function(){
           method: "POST",
           url: "/database",
           data: {
-                  type:fireplaceType,
+                  type:type,
+                  fuel:fireplaceType,
                   make: make,
                   model: model,
                   kw: kw,
@@ -264,8 +276,28 @@ $("#cookers").click(function(){
                  }
                })
 
+     clearDataSubmit()
+
    })
 
+   function clearDataSubmit (){
+
+     type =$("#input-type").val('')
+     make = $("#input-make").val('')//hmmmmm
+     model = $("#input-model").val('')
+     kw = $("#input-kw").val('')
+     cleanAir = $("#input-clean-air").val('')
+     cleanAirWB = $("#input-clean-air-wb").val('')
+     rural = $("#input-rural").val('')
+     ruralWB = $("#input-rural-wb").val('')
+     hearth = $("#input-hearth").val()//hnnnn
+     colour = $("#input-colour-available").val()//hmmmmm
+     wallHearth = $("#input-wall-hearth").val('')
+     cornerHearth = $("#input-corner-hearth").val('')
+     colourPrice = $("#input-colour-price").val('')
+
+
+   }
 
    $('#quotation-submit').click(function(e){
      e.preventDefault()
@@ -273,9 +305,14 @@ $("#cookers").click(function(){
      quoteDate = $("date").val()
      email = $("#customer-email").val()
      phone = $("#customer-phone").val()
-     console.log("customerName", customerName)
+     streetNumber = $("#street_number").val()
+     streetName = $("#route").val()
+     address1= $("#street_number").val() +' '+ $("#route").val()
+     suburb = $("#sublocality_level_1").val()
+     city = $("#locality").val()
+     postCode = $("#postal_code").val()
 
-        $.ajax({
+      /*  $.ajax({
           method: "POST",
           url: "/quotation",
           data: { customerName: customerName,
@@ -284,6 +321,18 @@ $("#cookers").click(function(){
                   phone:phone
                  }
                })
-
+               */
+     clearQuotationSubmit()
   })
+
+
+/*
+ function clearQuotationSubmit(){
+   $("#salesman-1").removeClass("selected");
+   $("#salesman-2").removeClass("selected");
+   $("#salesman-3").removeClass("selected");
+   salesman = ""
+
+ }
+ */
 })

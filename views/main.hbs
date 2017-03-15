@@ -88,13 +88,25 @@
     <div id="biofuel" class="border" value="biofuel">Biofuel</div>
     <div id="cookers"  class="border" value="cookers">Cookers</div>
 </div>
-<div id="da-type"></div>
-<br>
+  <select id="quote-make">Make:
+    <option id="make-blank" label=" "></option>
+  </select>
+
+<div id="quote-model" placeholder="Model">Model</div>
+<div id="quote-kw" placeholder="kw">Kw</div>
+<div id="quote-clean-air" placeholder="$ Clean-air">Clean-air</div>
+<div id="quote-clean-air-wb" placeholder="$ Clean air Wetback">$ Cleanr-air Wetback</div>
+<div id="quote-rural" placeholder="$ Rural">$ Rural</div>
+<div id="quote-rural-wb" placeholder="$ Rural Wetback">$ Rural Wetbank</div>
 
 <div id="data-entry">
 
   <button id="quotation-button">Back to quote</button>
 <form>
+  <select id="input-type">
+    <option type="radio" id="input-clean-air" value="clean-air"> Clean Air</option>
+    <option type="radio" id="input-rural" value="rural">Rural</option>
+  </select>
   <select id="input-make">Make:
     <option id="blank" label=" "></option>
     <option id="jayline" value="jayline">Jayline</option>
@@ -138,15 +150,15 @@
   <input type="number" id="input-rural-wb" placeholder="$ Rural Wetback">
   hearth:
   <select id = "input-hearth">Make:
-    <option value="ash">Ash</option>
-    <option value="insulated">Insulated</option>
+    <option type="radio" value="ash">Ash</option>
+    <option type="radio" value="insulated">Insulated</option>
   </select>
   <input type="text" id="input-wall-hearth" placeholder="Wall hearth">
   <input type="text" id="input-corner-hearth" placeholder="Corner hearth">
   colour:
   <select id="input-colour-available">
-    <option value="input-no-colour">no</option>
-    <option value="input-yes-colour">yes</option>
+    <option type="radio" value="input-no-colour">no</option>
+    <option type="radio" value="input-yes-colour">yes</option>
   </select>
   <input type="number" id="input-colour-price" placeholder="$ Colour">
 </div>
