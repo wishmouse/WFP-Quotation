@@ -228,6 +228,7 @@ $("#cookers").click(function(){
      $("#data-entry").show()
      $("#free-standing-make").hide()
      $("#inbuilt-entry").hide()
+     $("#quote-input").hide()
 
    });
 
