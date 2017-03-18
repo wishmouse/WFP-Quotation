@@ -111,7 +111,7 @@ function hideShow(){
            $("#blank").hide()
 
            fireplaceType = $("#gas").text()
-           console.log('fireplaceType', fireplaceType)
+
        });
 
    $("#wood").click(function(){
@@ -148,7 +148,6 @@ function hideShow(){
           $("#blank").hide()
 
           fireplaceType = $("#wood").text();
-          console.log('fireplaceType', fireplaceType)
       });
 
   $("#electric").click(function(){
@@ -167,7 +166,6 @@ function hideShow(){
         $("#blank").hide()
 
         fireplaceType = $("#electric").text();
-        console.log('fireplaceType', fireplaceType)
      });
 
  $("#multi-fuel").click(function(){
@@ -187,7 +185,6 @@ function hideShow(){
         $("#blank").hide()
 
         fireplaceType = $("#multi-fuel").text();
-        console.log('fireplaceType', fireplaceType)
 
     });
 
@@ -223,6 +220,20 @@ $("#cookers").click(function(){
 
 
 
+
+// ====
+$.ajax({
+  url: "/fireplaceData",
+  success: function(result){
+    fireplaceData = JSON.parse(result)
+    console.log("this is fireplaceData===", fireplaceData)
+    }
+
+})
+
+//====
+//==== Database entry
+//====
    $("#data-entry-button").click(function() {
      $("#quotation").hide()
      $("#data-entry").show()
@@ -282,8 +293,7 @@ $("#cookers").click(function(){
    })
 
    function clearDataSubmit (){
-
-     type =$("#input-type").val('')
+     type =$("#input-type").removeClass("selected")
      make = $("#input-make").val('')//hmmmmm
      model = $("#input-model").val('')
      kw = $("#input-kw").val('')
@@ -299,6 +309,10 @@ $("#cookers").click(function(){
 
 
    }
+
+   //====
+   //==== quotation- entry
+   //====
 
    $('#quotation-submit').click(function(e){
      e.preventDefault()
@@ -327,13 +341,12 @@ $("#cookers").click(function(){
   })
 
 
-/*
  function clearQuotationSubmit(){
    $("#salesman-1").removeClass("selected");
    $("#salesman-2").removeClass("selected");
    $("#salesman-3").removeClass("selected");
    salesman = ""
-
  }
- */
+
+
 })

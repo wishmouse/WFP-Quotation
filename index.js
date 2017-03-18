@@ -26,14 +26,14 @@ app.post('/database', function(req, res){
 
   MongoClient.connect(url, function(err, db){
     if (err){
-      console.log("ooops there's an error: ", err)
+      console.log("ooops there is an error in database entry: ", err)
     } else {
       var collection = db.collection("database")
       var newData = inputData
         collection.insert([newData], function(err, result){
-        console.log("date off the first object", result)
+        console.log("database input ", result)
         if (err){
-          conosole.log("there is an error: ", err)
+          conosole.log("ooops there is an error in database entry: ", err)
         } else {
           res.redirect('/')
         }
@@ -62,6 +62,34 @@ app.post('/quotation', function(req, res){
           conosole.log("there is an error: ", err)
         } else {
           res.redirect('/')
+        }
+        db.close()
+      })
+    }
+  })
+})
+
+
+app.get('/fireplaceData',  function(req, res){
+  var MongoClient = mongodb.MongoClient
+  var url = "mongodb://localhost:27017/database"
+
+  MongoClient.connect(url, function(err, db){
+    if (err){
+      console.log("ooops there's an error retreiving data from Database: ", err)
+    } else {
+      var collection = db.collection("database")
+      collection.find({}).toArray(function(err, result){
+        if (err){
+          conosole.log("there is an error retreiving data from database: ", err)
+          res.send(err)
+        } else if (result.length){
+          console.log("this is res:::::", res)
+          res.send(JSON.stringify(result))
+        }
+        else{
+          console.log("no document found")
+          res.send("No documents found")
         }
         db.close()
       })
