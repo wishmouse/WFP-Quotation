@@ -220,7 +220,7 @@ $("#cookers").click(function(){
 
 
 
-
+//==
 // ====
 $.ajax({
   url: "/fireplaceData",
