@@ -20,6 +20,10 @@ var cornerHearth
 var colour
 var colourPrice
 
+//data edit
+var editList
+
+
 
  $(document).ready(function(){
      $("#data-entry").hide()
@@ -226,7 +230,6 @@ $.ajax({
   url: "/fireplaceData",
   success: function(result){
     fireplaceData = JSON.parse(result)
-    console.log("this is fireplaceData===", fireplaceData)
     }
 
 })
@@ -309,6 +312,27 @@ $.ajax({
 
 
    }
+
+   //====
+   //==== data edit
+   //====
+   $('#edit-data').click(function(e){
+     e.preventDefault()
+       $.ajax({
+         url: "/fireplaceData",
+         success: function(result){
+           editData = JSON.parse(result)
+           for (i = 0; i < editData.length; i++) {
+                editList = editData[i]
+                $("#edit-list-id").text(editList._id)
+                $("#edit-list-type").text(editList.type)
+                $("#edit-list-make").text(editList.make)
+                }
+              }
+         })
+   })
+
+
 
    //====
    //==== quotation- entry

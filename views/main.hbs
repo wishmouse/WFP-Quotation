@@ -69,16 +69,17 @@
 </form>
 <button id="data-entry-button">Enter Data</button>
 </div>
-
-<div id="clean-air" value="clean-air">This is Clean Air</div>
-<div id="rural" value="rural">This is Rural</div>
+<div id="air">
+  <div id="clean-air" class="border" value="clean-air">Clean Air</div>
+  <div id="rural" class="border" value="rural">Rural</div>
+</div>
 
 
 <br>
     <strong>Fireplace types </strong>
 <br>
 <div id="fireplace">
-    <div id="gas" class="border" value="gas">Gas</div>
+    <div id="gas" class="border" value="gas">Gasxx</div>
     <div id="wood" class="border" value="wood" >Wood</div>
     <div id="electric" class="border" value="electric">Electric</div>
     <div id="multi-fuel" class="border" value="multi-fuel">Multi-Fuel</div>
@@ -97,14 +98,10 @@
   <div id="quote-rural-wb" placeholder="$ Rural Wetback">$ Rural Wetbank</div>
 </div>
 <div id="data-entry">
+  <form>
 
-  <button id="quotation-button">Back to quote</button>
-<form>
-  <select id="input-type">
-    <option type="radio" id="input-clean-air-select" value="clean-air"> Clean Air</option>
-    <option type="radio" id="input-rural-select" value="rural">Rural</option>
-  </select>
-  <select id="input-make">Make:
+  Make:
+  <select id="input-make">
     <option id="blank" label=" "></option>
     <option id="jayline" value="jayline">Jayline</option>
     <option id="fisher" value="fisher">Fisher</option>
@@ -158,7 +155,13 @@
     <option type="radio" value="Yes">yes</option>
   </select>
   <input type="number" id="input-colour-price" placeholder="$ Colour">
-  <input type="submit" value="Submit Data" id="data-submit">
+  <button  id="data-submit">Submit Data </button>
+  <button id="quotation-button">Back to quote</button>
+  <button id="edit-data">Edit Data</button>
+  <div id='edit-list-id'></div>
+  <div id='edit-list-type'></div>
+  <div id='edit-list-make'></div>
+
 </div>
 
 </form>
