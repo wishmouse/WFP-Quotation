@@ -20,7 +20,6 @@ app.get('/', function(req, res){
 
 app.post('/database', function(req, res){
   inputData =  req.body //returns object
-  console.log("this is inputData", inputData)
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/database"
 
@@ -31,7 +30,6 @@ app.post('/database', function(req, res){
       var collection = db.collection("database")
       var newData = inputData
         collection.insert([newData], function(err, result){
-        console.log("database input ", result)
         if (err){
           conosole.log("ooops there is an error in database entry: ", err)
         } else {
@@ -46,7 +44,6 @@ app.post('/database', function(req, res){
 
 app.post('/quotation', function(req, res){
   inputData =  req.body //returns object
-  console.log("this is inputData", inputData)
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/quotation"
 

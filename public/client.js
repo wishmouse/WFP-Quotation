@@ -316,7 +316,7 @@ $.ajax({
    //====
    //==== data edit
    //====
-   $('#edit-data').click(function(e){
+   $('#edit-data-button').click(function(e){
      e.preventDefault()
        $.ajax({
          url: "/fireplaceData",
@@ -324,13 +324,50 @@ $.ajax({
            editData = JSON.parse(result)
            for (i = 0; i < editData.length; i++) {
                 editList = editData[i]
-                $("#edit-list-id").text(editList._id)
-                $("#edit-list-type").text(editList.type)
-                $("#edit-list-make").text(editList.make)
-                }
+                //$("#edit-list-id").text(editList._id)
+                //$("#edit-list-type").text(editList.type)
+                //$("#edit-list-make").text(editList.make)
+                //$('#edit-data').append('<div id="item">Trigger No. ' + editList._id + '</div>')
+/*
+                $('#edit-data')
+                .append('<a style="border: 1px solid orange" href="item_'+editList._id+'" class="edit-data-each">')
+                .append(      '<div class="x">'+ editList.fuel + '</div>')
+                .append(      '<div class="x">'+editList.type+'</div>')
+                .append(      '<div class="x">'+editList.make+'</div>')
+                .append(      '<div class="x">'+editList.model+'</div>')
+                .append(      '<div class="x">'+editList.kw+'</div>')
+                .append(      '<div class="x">'+editList.clearAir+'</div>')
+                .append(      '<div class="x">'+editList.cleanAirWB+'</div>')
+                .append(      '<div class="x">'+editList.rural+'</div>')
+                .append(      '<div class="x">'+editList.ruralWB+'</div>')
+                .append(      '<div class="x">'+editList.hearth+'</div>')
+                .append(      '<div class="x">'+editList.wallHearth+'</div>')
+                .append(      '<div class="x">'+editList.cornerHearth+'</div>')
+                .append(      '<div class="x">'+editList.colour+'</div>')
+                .append(      '<div class="x">'+editList.colourPrice+'</div>')
+                .append('</a>')
+*/
+
+
+                var tbody = $('<tbody href="item_'+editList._id+'" />').appendTo($("<table class='table'/>", {
+                    "cellspacing" : "0",
+                    "cellpadding" : "0",
+                    "border" : "0",
+                    "width" : "100%"
+
+                }).appendTo("body"))
+
+                $.each(editList, function(key, val) {
+                  return tbody
+                  .append($("<tr/>"))
+                  .append($("<td/>").html(val))
+                })
+
+
               }
-         })
-   })
+            }
+          })
+        })
 
 
 
