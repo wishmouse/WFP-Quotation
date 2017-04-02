@@ -54,7 +54,6 @@ app.post('/quotation', function(req, res){
       var collection = db.collection("quotation")
       var newData = inputData
         collection.insert([newData], function(err, result){
-        console.log("date off the first object", result)
         if (err){
           conosole.log("there is an error: ", err)
         } else {
@@ -70,7 +69,6 @@ app.post('/quotation', function(req, res){
 app.get('/fireplaceData',  function(req, res){
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/database"
-
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there's an error retreiving data from Database: ", err)
@@ -81,7 +79,6 @@ app.get('/fireplaceData',  function(req, res){
           conosole.log("there is an error retreiving data from database: ", err)
           res.send(err)
         } else if (result.length){
-          console.log("this is res:::::", res)
           res.send(JSON.stringify(result))
         }
         else{
@@ -94,21 +91,23 @@ app.get('/fireplaceData',  function(req, res){
   })
 })
 
-app.get('/editFireplaceData',  function(req, res){
+app.get('/edit-data-query/:id',  function(req, res){
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/database"
-
+  var editId = req.params.id
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there's an error retreiving data from Database: ", err)
     } else {
       var collection = db.collection("database")
-      collection.find({_id}).toArray(function(err, result){
+      var ObjectId = require('mongodb').ObjectId;
+      var editId = req.params.id;
+      var o_id = new ObjectId(editId);
+      collection.find({_id:o_id}).toArray(function(err, result){
         if (err){
           conosole.log("there is an error retreiving data from database: ", err)
           res.send(err)
         } else if (result.length){
-          console.log("this is res:::::", res)
           res.send(JSON.stringify(result))
         }
         else{

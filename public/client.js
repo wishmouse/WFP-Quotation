@@ -333,7 +333,6 @@ $.ajax({
                 //$("#edit-list-make").text(editList.make)
                 //$('#edit-data').append('<div id="item">Trigger No. ' + editList._id + '</div>')
                 var tbody = $('<a href=/edit-data-query/'+editList._id+'/>').appendTo($("<table class='table'/>", {
-                //var tbody = $('<div id="item_'+editList._id+'" />').appendTo($("<table class='table'/>", {
                     "cellspacing" : "0",
                     "cellpadding" : "0",
                     "border" : "0",
@@ -350,6 +349,7 @@ $.ajax({
             }
           })
         })
+
 
    //====
    //==== quotation- entry
