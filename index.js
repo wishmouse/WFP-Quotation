@@ -94,7 +94,7 @@ app.get('/fireplaceData',  function(req, res){
 app.get('/edit-data-query/:id',  function(req, res){
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/database"
-  var editId = req.params.id
+  //var editId = req.params.id
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there's an error retreiving data from Database: ", err)
@@ -109,6 +109,7 @@ app.get('/edit-data-query/:id',  function(req, res){
           res.send(err)
         } else if (result.length){
           res.send(JSON.stringify(result))
+          //console.log("this is result", result)
         }
         else{
           console.log("no document found")
@@ -119,6 +120,7 @@ app.get('/edit-data-query/:id',  function(req, res){
     }
   })
 })
+
 
 app.listen(3000, function(){
   console.log("quoting up a storm on  .... 3000")

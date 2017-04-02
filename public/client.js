@@ -226,13 +226,6 @@ $("#cookers").click(function(){
 
 //==
 // ====
-$.ajax({
-  url: "/fireplaceData",
-  success: function(result){
-    fireplaceData = JSON.parse(result)
-    }
-
-})
 
 //====
 //==== Database entry
@@ -328,10 +321,6 @@ $.ajax({
            editData = JSON.parse(result)
            for (i = 0; i < editData.length; i++) {
                 editList = editData[i]
-                //$("#edit-list-id").text(editList._id)
-                //$("#edit-list-type").text(editList.type)
-                //$("#edit-list-make").text(editList.make)
-                //$('#edit-data').append('<div id="item">Trigger No. ' + editList._id + '</div>')
                 var tbody = $('<a href=/edit-data-query/'+editList._id+'/>').appendTo($("<table class='table'/>", {
                     "cellspacing" : "0",
                     "cellpadding" : "0",
