@@ -315,13 +315,64 @@ $("#cookers").click(function(){
      $("#fireplace").hide()
      $("#air").hide()
 
+
+    editLine = $('#edit-data')
+
+  function displayEdit(edit){
+    var editTemplate = ""+
+      "<li>" +
+      "<button class='click-to-edit' data-id ="+editList._id+">Edit Entry</button>" +
+      "<p>Make: "+editList.make+"</p>" +
+      "<p>Model: "+editList.model+"</p>" +
+      "</li>"
+    editLine.append(editTemplate, edit)
+  }
+
+  $.ajax({
+    url: "/fireplaceData",
+    success: function(result){
+          editData = JSON.parse(result)
+          for (i = 0; i < editData.length; i++) {
+            editList = editData[i]
+            displayEdit(editList)
+          }
+        }
+      })
+})
+
+ $('#edit-data').delegate('.click-to-edit', 'click', function(){
+      var clickToEditId = $('.click-to-edit').attr('data-id')
+
+   $.ajax({
+     url: "/edit/"+clickToEditId,
+     success: function(result){
+       editItem = JSON.parse(result)
+       for (i = 0; i < editItem.length; i++) {
+            editItemNow = editItem[i]
+          }
+        }
+     })
+ })
+
+/*
+        $.ajax({
+          url: "/edit/" +$(this).attr(),
+          success: function(result){
+            editItem = JSON.parse(result)
+            for (i = 0; i < editItem.length; i++) {
+                 editItemNow = editItem[i]
+               }
+             }
+*/
+
+/*
        $.ajax({
          url: "/fireplaceData",
          success: function(result){
            editData = JSON.parse(result)
            for (i = 0; i < editData.length; i++) {
                 editList = editData[i]
-                var tbody = $('<a href=/edit-data-query/'+editList._id+'/>').appendTo($("<table class='table'/>", {
+                var tbody = $('<a href=/edit/'+editList._id+'/>').appendTo($("<table class='table'/>", {
                     "cellspacing" : "0",
                     "cellpadding" : "0",
                     "border" : "0",
@@ -338,7 +389,7 @@ $("#cookers").click(function(){
             }
           })
         })
-
+*/
 
    //====
    //==== quotation- entry

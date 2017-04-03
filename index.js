@@ -91,7 +91,7 @@ app.get('/fireplaceData',  function(req, res){
   })
 })
 
-app.get('/edit-data-query/:id',  function(req, res){
+app.get('/edit/:id',  function(req, res){
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/database"
   //var editId = req.params.id
