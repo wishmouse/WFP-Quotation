@@ -63,112 +63,108 @@ var editList
           airType = 'Rural'
       });
 
-function hideShow(){
-      $("#jayline").hide()
-      $("#fisher" ).hide()
-      $("#gazco" ).hide()
-      $("#jetmaster" ).hide()
-      $("#escea" ).hide()
-      $("#living-flame" ).hide()
-      $("#bosca" ).hide()
-      $("#pyroclassic" ).hide()
-      $("#metro" ).hide()
-      $("#firenzo" ).hide()
-      $("#woodsman" ).hide()
-      $("#quadra-fire" ).hide()
-      $("#esse" ).hide()
-      $("#yunca" ).hide()
-      $("#ethos" ).hide()
-      $("#warmington" ).hide()
-      $("#quadrafire" ).hide()
-      $("#kent" ).hide()
-      $("#stovax" ).hide()
-      $("#mitsubishi" ).hide()
-      $("#beef-eater" ).hide()
-      $("#ortal" ).hide()
-      $("#heat-glo" ).hide()
-      $("#trendz" ).hide()
-      $("#bromic" ).hide()
-      $("#realfires" ).hide()
-      $("#the-fireplace" ).hide()
-      $("#cast-iron-chiminea").hide()
-      $("#the-bio-flame").hide()
-      $("#fogata").hide()
-    }
+      function hideShow(){
+            $("#jayline").hide()
+            $("#fisher" ).hide()
+            $("#gazco" ).hide()
+            $("#jetmaster" ).hide()
+            $("#escea" ).hide()
+            $("#living-flame" ).hide()
+            $("#bosca" ).hide()
+            $("#pyroclassic" ).hide()
+            $("#metro" ).hide()
+            $("#firenzo" ).hide()
+            $("#woodsman" ).hide()
+            $("#quadra-fire" ).hide()
+            $("#esse" ).hide()
+            $("#yunca" ).hide()
+            $("#ethos" ).hide()
+            $("#warmington" ).hide()
+            $("#quadrafire" ).hide()
+            $("#kent" ).hide()
+            $("#stovax" ).hide()
+            $("#mitsubishi" ).hide()
+            $("#beef-eater" ).hide()
+            $("#ortal" ).hide()
+            $("#heat-glo" ).hide()
+            $("#trendz" ).hide()
+            $("#bromic" ).hide()
+            $("#realfires" ).hide()
+            $("#the-fireplace" ).hide()
+            $("#cast-iron-chiminea").hide()
+            $("#the-bio-flame").hide()
+            $("#fogata").hide()
+          }
 
     $("#gas").click(function(){
+         fireplaceType = ""
           hideShow()
-          fireplaceType = ""
-           $("#gas").addClass("selected");
-           $("#wood").removeClass("selected");
-           $("#electric").removeClass("selected");
-           $("#multi-fuel").removeClass("selected");
-           $("#biofuel").removeClass("selected");
-           $("#cookers").removeClass("selected");
-           $("#heat-glo" ).show()
-           $("#gazco" ).show()
-           $("#escea" ).show()
-           $("#living-flame" ).show()
-           $("#warmington" ).show()
-           $("#realfires" ).show()
-           $("#ortal" ).show()
-           $("#blank").hide()
-
-           fireplaceType = $("#gas").text()
-
-       });
-
-   $("#wood").click(function(){
-   fireplaceType = ""
-         hideShow()
-          $("#wood").addClass("selected");
-          $("#gas").removeClass("selected");
+          $("#gas").addClass("selected");
+          $("#wood").removeClass("selected");
           $("#electric").removeClass("selected");
           $("#multi-fuel").removeClass("selected");
           $("#biofuel").removeClass("selected");
           $("#cookers").removeClass("selected");
-
-
-          $("#jayline").show()
-          $("#gazco").show()
-          $("#jetmaster").show()
-          $("#escea").show()
-          $("#bosca").show()
-          $("#pyroclassic").show()
-          $("#metro").show()
-          $("#firenzo").show()
-          $("#woodsman").show()
-          $("#esse").show()
-          $("#yunca").show()
-          $("#ethos").show()
-          $("#warmington").show()
-          $("#quadrafire").show()
-          $("#kent").show()
-          $("#stovax").show()
-          $("#mitsubishi").show()
-          $("#trendz").show()
-          $("#cast-iron-chiminea").show()
-          $("#fogata").show()
+          $("#heat-glo" ).show()
+          $("#gazco" ).show()
+          $("#escea" ).show()
+          $("#living-flame" ).show()
+          $("#warmington" ).show()
+          $("#realfires" ).show()
+          $("#ortal" ).show()
           $("#blank").hide()
 
-          fireplaceType = $("#wood").text();
+          fireplaceType = $("#gas").text()
+
+       });
+
+   $("#wood").click(function(){
+        fireplaceType = ""
+         hideShow()
+         $("#wood").addClass("selected");
+         $("#gas").removeClass("selected");
+         $("#electric").removeClass("selected");
+         $("#multi-fuel").removeClass("selected");
+         $("#biofuel").removeClass("selected");
+         $("#cookers").removeClass("selected");
+         $("#jayline").show()
+         $("#gazco").show()
+         $("#jetmaster").show()
+         $("#escea").show()
+         $("#bosca").show()
+         $("#pyroclassic").show()
+         $("#metro").show()
+         $("#firenzo").show()
+         $("#woodsman").show()
+         $("#esse").show()
+         $("#yunca").show()
+         $("#ethos").show()
+         $("#warmington").show()
+         $("#quadrafire").show()
+         $("#kent").show()
+         $("#stovax").show()
+         $("#mitsubishi").show()
+         $("#trendz").show()
+         $("#cast-iron-chiminea").show()
+         $("#fogata").show()
+         $("#blank").hide()
+         fireplaceType = $("#wood").text();
       });
 
   $("#electric").click(function(){
     fireplaceType = ""
         hideShow()
-         $("#electric").addClass("selected");
-         $("#gas").removeClass("selected");
-         $("#wood").removeClass("selected");
-         $("#multi-fuel").removeClass("selected");
-         $("#biofuel").removeClass("selected");
-         $("#cookers").removeClass("selected");
+        $("#electric").addClass("selected");
+        $("#gas").removeClass("selected");
+        $("#wood").removeClass("selected");
+        $("#multi-fuel").removeClass("selected");
+        $("#biofuel").removeClass("selected");
+        $("#cookers").removeClass("selected");
 
-        $("#gazco").show()
-        $("#esse").show()
-        $("#bromic").show()
-        $("#blank").hide()
-
+       $("#gazco").show()
+       $("#esse").show()
+       $("#bromic").show()
+       $("#blank").hide()
         fireplaceType = $("#electric").text();
      });
 
@@ -236,6 +232,7 @@ $("#cookers").click(function(){
      $("#free-standing-make").hide()
      $("#inbuilt-entry").hide()
      $("#quote-input").hide()
+     $("#updated-data-submit").hide()
 
    });
 
@@ -322,6 +319,7 @@ $("#cookers").click(function(){
     var editTemplate = ""+
       "<li>" +
       "<button class='click-to-edit' data-id ="+editList._id+">Edit Entry</button>" +
+      "<button class='click-to-delete' data-id ="+editList._id+">Delete Entry</button>" +
       "<p>Make: "+editList.make+"</p>" +
       "<p>Model: "+editList.model+"</p>" +
       "</li>"
@@ -335,13 +333,14 @@ $("#cookers").click(function(){
           for (i = 0; i < editData.length; i++) {
             editList = editData[i]
             displayEdit(editList)
+
           }
         }
       })
 })
 
  $('#edit-data').delegate('.click-to-edit', 'click', function(){
-      var clickToEditId = $('.click-to-edit').attr('data-id')
+     clickToEditId = $(this).attr('data-id')
 
    $.ajax({
      url: "/edit/"+clickToEditId,
@@ -349,7 +348,32 @@ $("#cookers").click(function(){
        editItem = JSON.parse(result)
        for (i = 0; i < editItem.length; i++) {
             editItemNow = editItem[i]
+            console.log("editItemNow", editItemNow)
+
+            $('#edit-data').hide()
+            $("#data-entry").show()
+            $("#updated-data-submit").show()
+            $("#fireplace").show()
+            $("#air").show()
+            $("#data-submit").hide()
+            $("#quotation-button").hide()
+            $("#edit-data-button").hide()
           }
+        }
+     })
+ })
+
+
+ $('#edit-data').delegate('.click-to-delete', 'click', function(){
+     clickToDeleteId = $(this).attr('data-id')
+     var removeLi = $(this).closest('li')
+
+   $.ajax({
+     url: "/delete/"+clickToDeleteId,
+     success: function(result){
+       console.log("clickToDelteID", clickToDeleteId)
+       removeLi.remove()
+
         }
      })
  })

@@ -91,6 +91,8 @@ app.get('/fireplaceData',  function(req, res){
   })
 })
 
+
+
 app.get('/edit/:id',  function(req, res){
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/database"
@@ -121,8 +123,25 @@ app.get('/edit/:id',  function(req, res){
   })
 })
 
+app.get('/delete/:id',  function(req, res){
+  var MongoClient = mongodb.MongoClient
+  var url = "mongodb://localhost:27017/database"
+  //var editId = req.params.id
+  MongoClient.connect(url, function(err, db){
+    if (err){
+      console.log("ooops there's an error retreiving data from Database: ", err)
+    } else {
+      var collection = db.collection("database")
+      var ObjectId = require('mongodb').ObjectId;
+      var editId = req.params.id;
+      var o_id = new ObjectId(editId);
+      collection.remove({_id:o_id})
+        db.close()
+    }
+  })
+})
 
-app.listen(3000, function(){
+app.listen(3001, function(){
   console.log("quoting up a storm on  .... 3000")
 })
 

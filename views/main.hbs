@@ -101,13 +101,13 @@
   Make:
   <select id="input-make">
     <option id="blank" label=" "></option>
-    <option id="jayline" value="jayline">Jayline</option>
-    <option id="fisher" value="fisher">Fisher</option>
-    <option id="gazco" value="gaszco">Gazco</option>
-    <option id="jetmaster" value="jetmaster">Jetmaster</option>
-    <option id="escea" value="escea">Escea</option>
+    <option id="jayline" value="Jayline">Jayline</option>
+    <option id="fisher" value="Fisher">Fisher</option>
+    <option id="gazco" value="Gazco">Gazco</option>
+    <option id="jetmaster" value="Jetmaster">Jetmaster</option>
+    <option id="escea" value="Escea">Escea</option>
     <option id="living-flame" value="living-flame">Living Flame</option>
-    <option id="bosca" value="bosca">Bosca</option>
+    <option id="bosca" value="Bosca">Bosca</option>
     <option id="pyroclassic" value="pyroclassic">Pyroclassic</option>
     <option id="metro" value="metro">Metrofires</option>
     <option id="firenzo" value="firenzo">Firenzo</option>
@@ -131,7 +131,7 @@
     <option id="fogata" value="fogata">Fogata</option>
     <option id="cast-iron-chiminea" value="cast-iron-chiminea">Cast iron chiminea</option>
     <option id="the-fireplace" value="the-fireplace">The Fireplace</option>
-
+<div></div>
   </select>
 
   <input type="text" id="input-model" placeholder="Model">
@@ -142,8 +142,8 @@
   <input type="number" id="input-rural-wb" placeholder="$ Rural Wetback">
   hearth:
   <select id = "input-hearth">Make:
-    <option type="radio" value="ash">Ash</option>
-    <option type="radio" value="insulated">Insulated</option>
+    <option type="radio" value="Ash">Ash</option>
+    <option type="radio" value="Insulated">Insulated</option>
   </select>
   <input type="text" id="input-wall-hearth" placeholder="Wall hearth">
   <input type="text" id="input-corner-hearth" placeholder="Corner hearth">
@@ -153,12 +153,10 @@
     <option type="radio" value="Yes">yes</option>
   </select>
   <input type="number" id="input-colour-price" placeholder="$ Colour">
-  <button  id="data-submit">Submit Data </button>
+  <button id="data-submit">Submit Data </button>
+  <button id="updated-data-submit">Update Data </button>
   <button id="quotation-button">Back to quote</button>
   <button id="edit-data-button">Edit Data</button>
-  <div id='edit-list-id'></div>
-  <div id='edit-list-type'></div>
-  <div id='edit-list-make'></div>
 </div>
 <div id="edit-data"></div>
 </form>
@@ -170,7 +168,7 @@
         street_number: 'short_name',
         route: 'long_name',
         locality: 'long_name',
-		sublocality_level_1 : 'long_name',
+		    sublocality_level_1 : 'long_name',
         postal_code: 'short_name'
       };
 
