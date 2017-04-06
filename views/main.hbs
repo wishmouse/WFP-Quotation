@@ -62,32 +62,65 @@
     </table>
 	<strong>Users </strong>
   <br>
-	  <div id="salesman-1" class="border" >Awesome Chick 1</div>
-  	<div id="salesman-2" class="border">Awesome Guy 2</div>
-	  <div id="salesman-3" class="border">Awesome Guy 3</div>
+  <div id="salesman">
+	  <div id="salesman-1" class="border-salesman" >Awesome Chick 1</div>
+  	<div id="salesman-2" class="border-salesman">Awesome Guy 2</div>
+	  <div id="salesman-3" class="border-salesman">Awesome Guy 3</div>
+   </div>
   <br>
 </form>
 <button id="data-entry-button">Enter Data</button>
 </div>
-<div id="air">
-  <div id="clean-air" class="border" value="clean-air">Clean Air</div>
-  <div id="rural" class="border" value="rural">Rural</div>
-</div>
 
+<div id="air">
+  <div id="clean-air" class="border-air" value="clean-air">Clean Air</div>
+  <div id="rural" class="border-air" value="rural">Rural</div>
+</div>
 
 <div id="fireplace">
     <strong>Fireplace types </strong>
-    <div id="gas" class="border" value="gas">Gas</div>
-    <div id="wood" class="border" value="wood" >Wood</div>
-    <div id="electric" class="border" value="electric">Electric</div>
-    <div id="multi-fuel" class="border" value="multi-fuel">Multi-Fuel</div>
-    <div id="biofuel" class="border" value="biofuel">Biofuel</div>
-    <div id="cookers"  class="border" value="cookers">Cookers</div>
+    <div id="gas" class="border-fireplace" value="gas">Gas</div>
+    <div id="wood" class="border-fireplace" value="wood" >Wood</div>
+    <div id="electric" class="border-fireplace" value="electric">Electric</div>
+    <div id="multi-fuel" class="border-fireplace" value="multi-fuel">Multi-Fuel</div>
+    <div id="biofuel" class="border-fireplace" value="biofuel">Biofuel</div>
+    <div id="cookers"  class="border-fireplace" value="cookers">Cookers</div>
 </div>
+Make:
+<select id="make">
+  <option id="blank" label=" "></option>
+  <option id="jayline" value="Jayline">Jayline</option>
+  <option id="fisher" value="Fisher">Fisher</option>
+  <option id="gazco" value="Gazco">Gazco</option>
+  <option id="jetmaster" value="Jetmaster">Jetmaster</option>
+  <option id="escea" value="Escea">Escea</option>
+  <option id="living-flame" value="living-flame">Living Flame</option>
+  <option id="bosca" value="Bosca">Bosca</option>
+  <option id="pyroclassic" value="pyroclassic">Pyroclassic</option>
+  <option id="metro" value="metro">Metrofires</option>
+  <option id="firenzo" value="firenzo">Firenzo</option>
+  <option id="woodsman" value="woodsman">Woodsman</option>
+  <option id="quadra-fire" value="quadra-fire">Quadra-Fire</option>
+  <option id="esse" value="esse">Esse</option>
+  <option id="yunca" value="yunca">Yunca</option>
+  <option id="ethos" value="ethos">Ethos</option>
+  <option id="warmington" value="warmington">Warmington</option>
+  <option id="quadrafire" value="quadrafire">Quadrafire</option>
+  <option id="kent" value="kent">Kent</option>
+  <option id="stovax" value="stovax">Stovax</option>
+  <option id="mitsubishi" value="mitsubishi">Mitsubishi-electric</option>
+  <option id="beef-eater" value="beef-eater">Beef Eater</option>
+  <option id="ortal" value="ortal">Ortal</option>
+  <option id="heat-glo" value="heat-glo">Heat & Glo</option>
+  <option id="trendz" value="trendz">Trendz</option>
+  <option id="bromic" value="bromic">Bromic Heating</option>
+  <option id="realfires" value="realfires">Realfires</option>
+  <option id="the-bio-flame" value="the-bio-flame">The Bio Flame</option>
+  <option id="fogata" value="fogata">Fogata</option>
+  <option id="cast-iron-chiminea" value="cast-iron-chiminea">Cast iron chiminea</option>
+  <option id="the-fireplace" value="the-fireplace">The Fireplace</option>
+
 <div id="quote-input">
-  <select id="quote-make">Make:
-    <option id="make-blank" label=" "></option>
-  </select>
   <div id="quote-model" placeholder="Model">Model</div>
   <div id="quote-kw" placeholder="kw">Kw</div>
   <div id="quote-clean-air" placeholder="$ Clean-air">Clean-air</div>
@@ -95,44 +128,11 @@
   <div id="quote-rural" placeholder="$ Rural">$ Rural</div>
   <div id="quote-rural-wb" placeholder="$ Rural Wetback">$ Rural Wetbank</div>
 </div>
+
+
+</select>
 <div id="data-entry">
   <form>
-
-  Make:
-  <select id="input-make">
-    <option id="blank" label=" "></option>
-    <option id="jayline" value="Jayline">Jayline</option>
-    <option id="fisher" value="Fisher">Fisher</option>
-    <option id="gazco" value="Gazco">Gazco</option>
-    <option id="jetmaster" value="Jetmaster">Jetmaster</option>
-    <option id="escea" value="Escea">Escea</option>
-    <option id="living-flame" value="living-flame">Living Flame</option>
-    <option id="bosca" value="Bosca">Bosca</option>
-    <option id="pyroclassic" value="pyroclassic">Pyroclassic</option>
-    <option id="metro" value="metro">Metrofires</option>
-    <option id="firenzo" value="firenzo">Firenzo</option>
-    <option id="woodsman" value="woodsman">Woodsman</option>
-    <option id="quadra-fire" value="quadra-fire">Quadra-Fire</option>
-    <option id="esse" value="esse">Esse</option>
-    <option id="yunca" value="yunca">Yunca</option>
-    <option id="ethos" value="ethos">Ethos</option>
-    <option id="warmington" value="warmington">Warmington</option>
-    <option id="quadrafire" value="quadrafire">Quadrafire</option>
-    <option id="kent" value="kent">Kent</option>
-    <option id="stovax" value="stovax">Stovax</option>
-    <option id="mitsubishi" value="mitsubishi">Mitsubishi-electric</option>
-    <option id="beef-eater" value="beef-eater">Beef Eater</option>
-    <option id="ortal" value="ortal">Ortal</option>
-    <option id="heat-glo" value="heat-glo">Heat & Glo</option>
-    <option id="trendz" value="trendz">Trendz</option>
-    <option id="bromic" value="bromic">Bromic Heating</option>
-    <option id="realfires" value="realfires">Realfires</option>
-    <option id="the-bio-flame" value="the-bio-flame">The Bio Flame</option>
-    <option id="fogata" value="fogata">Fogata</option>
-    <option id="cast-iron-chiminea" value="cast-iron-chiminea">Cast iron chiminea</option>
-    <option id="the-fireplace" value="the-fireplace">The Fireplace</option>
-<div></div>
-  </select>
 
   <input type="text" id="input-model" placeholder="Model">
   <input type="number" id="input-kw" placeholder="kw">

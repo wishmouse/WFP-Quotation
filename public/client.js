@@ -7,6 +7,7 @@ var airType
 
 // data entry
 var fireplaceType
+var air
 var make
 var model
 var kw
@@ -23,45 +24,23 @@ var colourPrice
 //data edit
 var editList
 
-
-
  $(document).ready(function(){
      $("#data-entry").hide()
 
+  $('#salesman').delegate('.border-salesman', 'click', function(e){
+         $(".border-salesman").removeClass("selected")
+         var select = $(this).addClass("selected")
+         var salesmanID = $(this).attr('id')
+         salesman = select.text()
+       })
 
-
-   $("#salesman-1").click(function(){
-          $("#salesman-1").addClass("selected");
-          $("#salesman-2").removeClass("selected");
-          $("#salesman-3").removeClass("selected");
-          salesman = "Salesman - 1"
-      });
-
-    $("#salesman-2").click(function(){
-           $("#salesman-2").addClass("selected");
-           $("#salesman-1").removeClass("selected");
-           $("#salesman-3").removeClass("selected");
-           salesman = "Salesman - 2"
-       });
-
-   $("#salesman-3").click(function(){
-          $("#salesman-3").addClass("selected");
-          $("#salesman-2").removeClass("selected");
-          $("#salesman-1").removeClass("selected");
-          salesman = "Salesman - 3"
-      });
-
-    $("#clean-air").click(function(){
-           $("#clean-air").addClass("selected");
-           $("#rural").removeClass("selected");
-           airType = 'Clean Air'
-       });
-
-   $("#rural").click(function(){
-          $("#rural").addClass("selected");
-          $("#clean-air").removeClass("selected");
-          airType = 'Rural'
-      });
+       $('#air').delegate('.border-air', 'click', function(e){
+              $(".border-air").removeClass("selected")
+              var select = $(this).addClass("selected")
+              var airID = $(this).attr('id')
+              air = select.text()
+              alert(air)
+            })
 
       function hideShow(){
             $("#jayline").hide()
@@ -96,127 +75,67 @@ var editList
             $("#fogata").hide()
           }
 
-    $("#gas").click(function(){
-         fireplaceType = ""
-          hideShow()
-          $("#gas").addClass("selected");
-          $("#wood").removeClass("selected");
-          $("#electric").removeClass("selected");
-          $("#multi-fuel").removeClass("selected");
-          $("#biofuel").removeClass("selected");
-          $("#cookers").removeClass("selected");
-          $("#heat-glo" ).show()
-          $("#gazco" ).show()
-          $("#escea" ).show()
-          $("#living-flame" ).show()
-          $("#warmington" ).show()
-          $("#realfires" ).show()
-          $("#ortal" ).show()
-          $("#blank").hide()
+          $('#fireplace').delegate('.border-fireplace', 'click', function(e){
+                hideShow()
+                 $(".border-fireplace").removeClass("selected")
+                 var select = $(this).addClass("selected")
+                 var fireplaceID = $(this).attr('id')
+                 fireplaceType = select.text()
+                 if(fireplaceID == 'gas'){
+                   $("#heat-glo" ).show()
+                   $("#gazco" ).show()
+                   $("#escea" ).show()
+                   $("#living-flame" ).show()
+                   $("#warmington" ).show()
+                   $("#realfires" ).show()
+                   $("#ortal" ).show()
+                   $("#blank").hide()
+                 } else if (fireplaceID == 'wood'){
+                   $("#jayline").show()
+                   $("#gazco").show()
+                   $("#jetmaster").show()
+                   $("#escea").show()
+                   $("#bosca").show()
+                   $("#pyroclassic").show()
+                   $("#metro").show()
+                   $("#firenzo").show()
+                   $("#woodsman").show()
+                   $("#esse").show()
+                   $("#yunca").show()
+                   $("#ethos").show()
+                   $("#warmington").show()
+                   $("#quadrafire").show()
+                   $("#kent").show()
+                   $("#stovax").show()
+                   $("#mitsubishi").show()
+                   $("#trendz").show()
+                   $("#cast-iron-chiminea").show()
+                   $("#fogata").show()
+                   $("#blank").hide()
+                 } else if (fireplaceID == 'electric') {
+                  $("#gazco").show()
+                  $("#esse").show()
+                  $("#bromic").show()
+                  $("#blank").hide()
+                } else if(fireplaceID == "multi-fuel"){
+                  $("#fisher").show()
+                  $("#firenzo").show()
+                  $("#esse").show()
+                  $("#yunca").show()
+                  $("#blank").hide()
 
-          fireplaceType = $("#gas").text()
+                }else if (fireplaceID == 'biofuel'){
+                  $("#the-bio-flame").show()
+                  $("#blank").hide()
+                } else if (fireplaceID == 'cooker'){
+                  $("#fisher").show()
+                  $("#firenzo").show()
+                  $("#esse").show()
+                  $("#yunca").show()
+                  $("#blank").hide()
+                }
+               })
 
-       });
-
-   $("#wood").click(function(){
-        fireplaceType = ""
-         hideShow()
-         $("#wood").addClass("selected");
-         $("#gas").removeClass("selected");
-         $("#electric").removeClass("selected");
-         $("#multi-fuel").removeClass("selected");
-         $("#biofuel").removeClass("selected");
-         $("#cookers").removeClass("selected");
-         $("#jayline").show()
-         $("#gazco").show()
-         $("#jetmaster").show()
-         $("#escea").show()
-         $("#bosca").show()
-         $("#pyroclassic").show()
-         $("#metro").show()
-         $("#firenzo").show()
-         $("#woodsman").show()
-         $("#esse").show()
-         $("#yunca").show()
-         $("#ethos").show()
-         $("#warmington").show()
-         $("#quadrafire").show()
-         $("#kent").show()
-         $("#stovax").show()
-         $("#mitsubishi").show()
-         $("#trendz").show()
-         $("#cast-iron-chiminea").show()
-         $("#fogata").show()
-         $("#blank").hide()
-         fireplaceType = $("#wood").text();
-      });
-
-  $("#electric").click(function(){
-    fireplaceType = ""
-        hideShow()
-        $("#electric").addClass("selected");
-        $("#gas").removeClass("selected");
-        $("#wood").removeClass("selected");
-        $("#multi-fuel").removeClass("selected");
-        $("#biofuel").removeClass("selected");
-        $("#cookers").removeClass("selected");
-
-       $("#gazco").show()
-       $("#esse").show()
-       $("#bromic").show()
-       $("#blank").hide()
-        fireplaceType = $("#electric").text();
-     });
-
- $("#multi-fuel").click(function(){
-       hideShow()
-       fireplaceType = ""
-        $("#multi-fuel").addClass("selected");
-        $("#gas").removeClass("selected");
-        $("#electric").removeClass("selected");
-        $("#wood").removeClass("selected");
-        $("#biofuel").removeClass("selected");
-        $("#cookers").removeClass("selected");
-
-        $("#fisher").show()
-        $("#firenzo").show()
-        $("#esse").show()
-        $("#yunca").show()
-        $("#blank").hide()
-
-        fireplaceType = $("#multi-fuel").text();
-
-    });
-
-$("#biofuel").click(function(){
-      hideShow()
-       $("#biofuel").addClass("selected");
-       $("#gas").removeClass("selected");
-       $("#electric").removeClass("selected");
-       $("#multi-fuel").removeClass("selected");
-       $("#wood").removeClass("selected");
-       $("#cookers").removeClass("selected");
-       $("#the-bio-flame").show()
-       $("#blank").hide()
-
-       fireplaceType = $("#biofuel").text();
-   });
-
-$("#cookers").click(function(){
-      hideShow()
-      $("#cookers").addClass("selected");
-      $("#gas").removeClass("selected");
-      $("#electric").removeClass("selected");
-      $("#multi-fuel").removeClass("selected");
-      $("#biofuel").removeClass("selected");
-      $("#wood").removeClass("selected");
-      $("#esse").show()
-      $("#trendz").show()
-      $("#cast-iron-chiminea").show()
-      $("#blank").hide()
-
-      fireplaceType = $("#cookers").text();
-  });
 
 
 
@@ -246,8 +165,7 @@ $("#cookers").click(function(){
 
    $('#data-submit').click(function(e){
      e.preventDefault()
-     type =$("#input-type").val()
-     make = $("#input-make").val()
+     make = $("#make").val()
      model = $("#input-model").val()
      kw = $("#input-kw").val()
      cleanAir = $("#input-clean-air").val()
@@ -263,7 +181,7 @@ $("#cookers").click(function(){
           method: "POST",
           url: "/database",
           data: {
-                  type:type,
+                  type:air,
                   fuel:fireplaceType,
                   make: make,
                   model: model,
@@ -287,7 +205,7 @@ $("#cookers").click(function(){
 
    function clearDataSubmit (){
      type =$("#input-type").removeClass("selected")
-     make = $("#input-make").val('')//hmmmmm
+     make = $("#make").val('')//hmmmmm
      model = $("#input-model").val('')
      kw = $("#input-kw").val('')
      cleanAir = $("#input-clean-air").val('')
@@ -299,8 +217,6 @@ $("#cookers").click(function(){
      wallHearth = $("#input-wall-hearth").val('')
      cornerHearth = $("#input-corner-hearth").val('')
      colourPrice = $("#input-colour-price").val('')
-
-
    }
 
    //====
@@ -311,10 +227,56 @@ $("#cookers").click(function(){
      $("#data-entry").hide()
      $("#fireplace").hide()
      $("#air").hide()
+     $("#make").hide()
 
 
     editLine = $('#edit-data')
 
+    function displayEdit(edit){
+      var editTemplate = ""+
+        "<table>" +
+          "<tr>"+
+            "<th>Edit / Delete</th>" +
+            "<th>Type</th>" +
+            "<th>Make</th>" +
+            "<th>Model</th>" +
+            "<th>Kw</th>" +
+            "<th>Clean Air</th>" +
+            "<th>Clean Air WB</th>" +
+            "<th>Rural</th>" +
+            "<th>Rural WB</th>" +
+            "<th>Hearth</th>" +
+            "<th>Wall Hearth</th>" +
+            "<th>Corner Hearth</th>" +
+            "<th>Model</th>" +
+            "<th>Colour</th>" +
+            "<th>Colour Price</th>" +
+          "</tr>"+
+          "<tr>"+
+            "<td><button class='click-to-edit' data-id ="+editList._id+">Edit Entry</button>" +
+            "<button class='click-to-delete' data-id ="+editList._id+">Delete Entry</button>" +
+            "</td>"+
+            "<td>"+editList.type+"</td>" +
+            "<td>"+editList.fuel+"</td>" +
+            "<td>"+editList.make+"</td>" +
+            "<td>"+editList.model+"</td>" +
+            "<td>"+editList.kw+"</td>" +
+            "<td>"+editList.cleanAir+"</td>" +
+            "<td>"+editList.cleanAirWB+"</td>" +
+            "<td>"+editList.rural+"</td>" +
+            "<td>"+editList.ruralWB+"</td>" +
+            "<td>"+editList.hearth+"</td>" +
+            "<td>"+editList.wallHearth+"</td>" +
+            "<td> "+editList.cornerHearth+"</td>" +
+            "<td>"+editList.colour+"</td>" +
+            "<td>"+editList.colourPrice+"</td>" +
+          "</tr>"+
+        "</table>"
+      editLine.append(editTemplate, edit)
+    }
+
+
+    /*
   function displayEdit(edit){
     var editTemplate = ""+
       "<li>" +
@@ -322,10 +284,11 @@ $("#cookers").click(function(){
       "<button class='click-to-delete' data-id ="+editList._id+">Delete Entry</button>" +
       "<p>Make: "+editList.make+"</p>" +
       "<p>Model: "+editList.model+"</p>" +
+      "<p>type: "+editList.type+"</p>" +
       "</li>"
     editLine.append(editTemplate, edit)
   }
-
+*/
   $.ajax({
     url: "/fireplaceData",
     success: function(result){

@@ -1,4 +1,12 @@
-.border{
+.border-salesman {
+    border: 1px solid #B39476;
+}
+
+.border-air {
+    border: 1px solid #B39476;
+}
+
+.border-fireplace{
     border: 1px solid #B39476;
 }
 
@@ -7,14 +15,14 @@
    color: #E6E0BE
 }
 
-.table {
-    width: 100%;
-    border: 2px orange solid;
-    margin: 20px 0px 20px 10px;
-    padding-left: 30px;
-    background: aliceblue;
+
+table {
+    border: 1px solid black;
 }
 
+td {
+        border-right: 1px solid orange;
+}
 
 .x{
 }
