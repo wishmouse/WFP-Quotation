@@ -1,13 +1,40 @@
+.wrapper{
+      overflow: auto;
+      margin-top:10px;
+}
+
 .border-salesman {
     border: 1px solid #B39476;
+    width: 32%;
+    height:35px;
+    float: left;
+    text-align: center;
 }
 
 .border-air {
     border: 1px solid #B39476;
+    width: 49%;
+    height:35px;
+    float: left;
+    text-align: center;
 }
 
 .border-fireplace{
     border: 1px solid #B39476;
+    width: 16%;
+    height:35px;
+    float: left;
+    text-align: center;
+}
+
+.border-make{
+  border: 1px solid #B39476;
+  width: 16%;
+  height: 35px;
+  float: left;
+  text-align: center;
+  margin: 0px 0px 4px 0px;
+  background-color: white
 }
 
 .selected{
@@ -16,14 +43,110 @@
 }
 
 
-table {
+
+#data-submit {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 30px;
+  background: #78b777;
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
+}
+
+#data-entry-button{
+
+    display: inline-block;
     border: 1px solid black;
+    border-radius: 8px;
+    padding: 12px 24px;
+    background: #78b777;
+    font-size: 10pt;
+    font-family: helvetica;
+    color: white;
+
+}
+#edit-data-button{
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 30px;
+  background: #b77778;
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
 }
 
-td {
-        border-right: 1px solid orange;
+#quotation-button{
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 30px;
+  background: #7778b7;
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
+
 }
 
-.x{
+.quote-dropdown{
+  display: inline-block;
+  border: 1px solid black;
+  padding: 12px 24px;
+  margin: 30px;
+  border: 1px solid #B39476;
+  font-size: 10pt;
+  font-family: helvetica;
+}
+
+.click-to-edit{
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  background: #78b777;
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
+  width: 72px;
+  padding: 6px 10px 6px 10px;
+  margin: 10px 0px 0px 0px;
+
+
+}
+
+.click-to-delete{
+  display: inline-block;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: #CC0000;
+    font-size: 10pt;
+    font-family: helvetica;
+    color: white;
+    width: 72px;
+    padding: 6px 10px 6px 10px;
+    margin: 10px 0px 0px 0px;
+
+}
+div#data-submit:hover {
+    background-color: 477f4f;
+}
+
+
+
+.table-header{
+  font-size: 8pt;
+  font-family: helvetica;
+  font-weight: 300;
+  border-right: 1px solid #78b777;
+}
+
+.table-body{
+  font-family: helvetica;
+  font-weight: 300;
+  border-right: 1px solid #78b777;
 }
 https://color.adobe.com/sinNat-Brown-2-color-theme-9178330/
