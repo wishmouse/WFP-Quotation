@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./bin/www",
-    "build": "browserify -t hbsfy ./public/client.js -o ./public/bundle.js -dv",
-    "watch": "watchify -t hbsfy ./public/client.js -o ./public/bundle.js -dv"
+    "build": "browserify -t hbsfy ./public/javascript/client.js -o ./public/bundle.js -dv",
+    "watch": "watchify -t hbsfy ./public/javascript/client.js -o ./public/bundle.js -dv"
   },
   "repository": {
     "type": "git",
