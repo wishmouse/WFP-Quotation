@@ -43,7 +43,8 @@ app.post('/database', function(req, res){
 
 
 app.post('/quotation', function(req, res){
-  inputData =  req.body //returns object
+  inputDataQuote =  req.body //returns object
+  console.log("this is inputDataQuote", inputDataQuote)
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/quotation"
 
@@ -52,7 +53,7 @@ app.post('/quotation', function(req, res){
       console.log("ooops there's an error: ", err)
     } else {
       var collection = db.collection("quotation")
-      var newData = inputData
+      var newData = inputDataQuote
         collection.insert([newData], function(err, result){
         if (err){
           conosole.log("there is an error: ", err)

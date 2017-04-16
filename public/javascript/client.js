@@ -4,14 +4,11 @@ var request = require('superagent')
 var _hideShow = require('./_hideShow')
 var _dataInput = require('./_dataInput')
 var _clearData = require('./_clearData')
-//var _dataReturn = require('./_dataReturn')
-
-
+//var _quoteInput = require('./_quoteInput')
 
 //quotation submit
 var salesman
 var airType
-
 
 // data entry
 var fireplaceType
@@ -88,56 +85,42 @@ var editList
                 success: function(result){
                   getData = JSON.parse(result)
                   for (i = 0; i < getData.length; i++) {
-                    dataReturn= getData[i]
-                    if(fireplaceType == dataReturn.fuel && air == dataReturn.type && dataReturn.make == make  )
-                      $("#dropdown-selector").show()
-                      $(dataReturn).each(function(){
-                        var optionModel = $('<option />');
-                        optionModel.attr('value', this.model).text(this.model);
-                        $('#make-dropdown').append(optionModel);
-                        var optionCorner = $('<option />');
-                        optionCorner.attr('value', this.cornerHearth).text(this.cornerHearth);
-                        $('#cornerHearth-dropdown').append(optionCorner);
+                    var dataReturn= getData[i]
+                    if(fireplaceType == dataReturn.fuel && air == dataReturn.type && dataReturn.make == make ){
+                        $("#dropdown-selector").show()
+                        $(dataReturn).each(function(){
+                          var optionModel = $('<option />')
+                          optionModel.attr('value', this.model).text(this.model)
+                          $('#model-dropdown').append(optionModel)
 
-                        var optionKw = $('<option />');
-                        optionKw.attr('value', this.kw).text(this.kw);
-                        $('#kw-dropdown').append(optionKw);
+                      })
+                    }
 
-                        var optionCleanAir = $('<option />');
-                        optionCleanAir.attr('value', this.cleanAir).text(this.cleanAir);
-                        $('#cleanAir-dropdown').append(optionCleanAir);
-
-                        var optionRural = $('<option />');
-                        optionRural.attr('value', this.rural).text(this.rural);
-                        $('#rural-dropdown').append(optionRural);
-
-                        var optionRuralWB = $('<option />');
-                        optionRuralWB.attr('value', this.ruralWB).text(this.ruralWB);
-                        $('#ruralWB-dropdown').append(optionRuralWB);
-
-                        var optionHearth = $('<option />');
-                        optionHearth.attr('value', this.hearth).text(this.hearth);
-                        $('#hearth-dropdown').append(optionHearth);
-
-                        var optionWallHearth = $('<option />');
-                        optionWallHearth.attr('value', this.wallHearth).text(this.wallHearth);
-                        $('#wallHearth-dropdown').append(optionWallHearth);
-
-                        var optionColour = $('<option />');
-                        optionColour.attr('value', this.colour).text(this.colour);
-                        $('#colour-dropdown').append(optionColour);
-
-                        var optionColourPrice= $('<option />');
-                        optionColourPrice.attr('value', this.colourPrice).text(this.colourPrice);
-                        $('#colourPrice-dropdown').append(optionColourPrice);
-                      });
                   }
                 }
               })
             }
            })
 
-
+           $("#model-dropdown" ).change(function() {
+             var modelValue = $("#model-dropdown" ).val()
+             for (i = 0; i < getData.length; i++) {
+               var dataReturn= getData[i]
+               console.log(dataReturn)
+               if (modelValue == dataReturn.model){
+                 $("#kw-dropdown").html(dataReturn.kw)
+                 $("#cleanAir-dropdown").html(dataReturn.cleanAir)
+                 $("#cleanAirWB-dropdown").html(dataReturn.cleanAirWB)
+                 $("#rural-dropdown").html(dataReturn.rural)
+                 $("#ruralWB-dropdown").html(dataReturn.ruralWB)
+                 $("#hearth-dropdown").html(dataReturn.hearth)
+                 $("#wallHearth-dropdown").html(dataReturn.wallHearth)
+                 $("#cornerHearth-dropdown").html(dataReturn.cornerHearth)
+                 $("#colour-dropdown").html(dataReturn.colour)
+                 $("#colourPrice-dropdown").html(dataReturn.colourPrice)
+               }
+             }
+           })
 
 //====
 //==== Database entry
@@ -195,6 +178,8 @@ var editList
                })
 
        _clearData.clearDataSubmit()
+       _clearData.removeClassSubmit()
+       $("#data-submit-notification").show().delay(2000).fadeOut();
    })
 
 
@@ -314,8 +299,9 @@ if(entryTypeController == 'data entry'){
    //==== quotation- entry
    //====
 
-   $('#quotation-submit').click(function(e){
+   $('#quotation-submit-button').click(function(e){
      e.preventDefault()
+
      customerName = $("#customer-name").val()
      quoteDate = $("date").val()
      email = $("#customer-email").val()
@@ -326,27 +312,57 @@ if(entryTypeController == 'data entry'){
      suburb = $("#sublocality_level_1").val()
      city = $("#locality").val()
      postCode = $("#postal_code").val()
+     fuel = fireplaceType
+     model = $("#model-dropdown").val()
+     kw = $("#kw-dropdown").text()
+     cleanAir = $("#cleanAir-dropdown").text()
+     cleanAirWB = $("#cleanAirWB-dropdown").text()
+     rural = $("#rural-dropdown").text()
+     ruralWB = $("#ruralWB-dropdown").text()
+     hearth = $("#hearth-dropdown").text()
+     colour = $("#colour-dropdown").text()
+     wallHearth = $("#wallHearth-dropdown").text()
+     cornerHearth = $("#cornerHearth-dropdown").text()
+     colourPrice = $("#colourPrice-dropdown").text()
 
-      /*  $.ajax({
+       $.ajax({
           method: "POST",
           url: "/quotation",
-          data: { customerName: customerName,
+          data: {
+                  customerName: customerName,
                   quoteDate: quoteDate,
                   email: email,
-                  phone:phone
+                  phone:phone,
+                  streetNumber:streetNumber,
+                  streetName:streetName,
+                  address1:address1,
+                  suburb:suburb,
+                  city:city,
+                  postcode:postCode,
+                  salesman:salesman,
+                  type:air,
+                  fuel:fireplaceType,
+                  make: make,
+                  model: model,
+                  kw: kw,
+                  cleanAir: cleanAir,
+                  cleanAirWB: cleanAirWB,
+                  rural: rural,
+                  ruralWB: ruralWB,
+                  hearth: hearth,
+                  wallHearth: wallHearth,
+                  cornerHearth: cornerHearth,
+                  colour: colour,
+                  colourPrice: colourPrice
+
                  }
                })
-               */
-     clearQuotationSubmit()
+     _clearData.clearQuotationSubmit()
+     _clearData.removeClassSubmit()
+     $("#dropdown-selector").hide()
+     $("#make").hide()
+
   })
-
-
- function clearQuotationSubmit(){
-   $("#salesman-1").removeClass("selected");
-   $("#salesman-2").removeClass("selected");
-   $("#salesman-3").removeClass("selected");
-   salesman = ""
- }
 
 
 })

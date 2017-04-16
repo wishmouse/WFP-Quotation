@@ -25,9 +25,9 @@
    Name :
    <input type="text" id="customer-name" value="" name="customer-name" class="customer" placeholder="Name and surname"/><br>
    Email:
-   <input type="text" id="customer-email" value="" name="customer-email" class="customer" placeholder="A.N.Other@none.com"/><br>
+   <input type="email" id="customer-email" value="" name="customer-email" class="customer" placeholder="A.N.Other@none.com"/><br>
    Phone number:
-   <input type="number" name="customer-phone" id="customer-phone class="customer="customer" placeholder="027 000 000"> <br>
+   <input type="number" name="customer-phone" id="customer-phone" class="customer" placeholder="027 000 000"> <br>
 
    <input type="submit" value="Submit" id="quotation-submit">
 
@@ -69,6 +69,7 @@
 </form>
 <button id="data-entry-button">Enter Data</button>
 </div>
+
 
 <div id="air" class="wrapper">
   <div id="clean-air" class="border-air" value="clean-air">Clean Air</div>
@@ -117,22 +118,23 @@
 </div>
 
 <div id="dropdown-selector">
-    <select class="quote-dropdown" id="make-dropdown"></select>
-    <select class="quote-dropdown" id="cornerHearth-dropdown"></select>
-    <select class="quote-dropdown" id="kw-dropdown"></select>
-    <select class="quote-dropdown" id="cleanAir-dropdown"></select>
-    <select class="quote-dropdown" id="rural-dropdown"></select>
-    <select class="quote-dropdown" id="ruralWB-dropdown"></select>
-    <select class="quote-dropdown" id="hearth-dropdown"></select>
-    <select class="quote-dropdown" id="wallHearth-dropdown"></select>
-    <select class="quote-dropdown" id="colour-dropdown"></select>
-    <select class="quote-dropdown" id="colourPrice-dropdown"></select>
+    <select class="quote-dropdown" id="model-dropdown"></select>
+    <div class="quote-dropdown" id="kw-dropdown"></div>
+    <div class="quote-dropdown" id="cleanAir-dropdown"></div>
+    <div class="quote-dropdown" id="cleanAirWB-dropdown"></div>
+    <div class="quote-dropdown" id="rural-dropdown"></div>
+    <div class="quote-dropdown" id="ruralWB-dropdown"></div>
+    <div class="quote-dropdown" id="hearth-dropdown"></div>
+    <div class="quote-dropdown" id="wallHearth-dropdown"></div>
+    <div class="quote-dropdown" id="cornerHearth-dropdown"></div>
+    <div class="quote-dropdown" id="colour-dropdown"></div>
+    <div class="quote-dropdown" id="colourPrice-dropdown"></div>
+  <button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
 </div>
 
 </select>
 <div id="data-entry">
   <form>
-
   <input type="text" id="input-model" placeholder="Model">
   <input type="number" id="input-kw" placeholder="kw">
   <input type="number" id="input-clean-air" placeholder="$ Clean-air">
@@ -155,8 +157,9 @@
 <div>
   <button id="data-submit">Submit Data </button>
   <button id="updated-data-submit">Update Data </button>
-  <button id="quotation-button">Back to quote</button>
+  <button class="quotation-button" id="quotation-button">Back to quote</button>
   <button id="edit-data-button">Edit Data</button>
+  <div id="data-submit-notification">Data submitted </div>
 </div>
 </form>
 </div>

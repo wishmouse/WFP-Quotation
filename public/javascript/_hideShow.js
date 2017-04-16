@@ -105,6 +105,7 @@ function hideShow(){
       $("#blank").hide()
     }
 
+
     module.exports = {
       hideShow:hideShow,
       gasShow:gasShow,
@@ -113,4 +114,5 @@ function hideShow(){
       multifuelShow:multifuelShow,
       biofuelShow:biofuelShow,
       cookerShow:cookerShow,
+
     }

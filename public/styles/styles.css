@@ -50,7 +50,7 @@
   border-radius: 8px;
   padding: 12px 24px;
   margin: 30px;
-  background: #78b777;
+  background: #78b777; /*green*/
   font-size: 10pt;
   font-family: helvetica;
   color: white;
@@ -62,7 +62,7 @@
     border: 1px solid black;
     border-radius: 8px;
     padding: 12px 24px;
-    background: #78b777;
+    background: #78b777;  /*green*/
     font-size: 10pt;
     font-family: helvetica;
     color: white;
@@ -74,7 +74,7 @@
   border-radius: 8px;
   padding: 12px 24px;
   margin: 30px;
-  background: #b77778;
+  background: #b77778; /*red*/
   font-size: 10pt;
   font-family: helvetica;
   color: white;
@@ -86,7 +86,20 @@
   border-radius: 8px;
   padding: 12px 24px;
   margin: 30px;
-  background: #7778b7;
+  background: #7778b7;  /*blue*/
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
+
+}
+
+.quotation-submit-button{
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 30px;
+  background: aqua;  /*blue*/
   font-size: 10pt;
   font-family: helvetica;
   color: white;

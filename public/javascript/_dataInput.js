@@ -10,6 +10,8 @@ function dataEntryButton(){
   $("#inbuilt-entry").hide()
   $("#quote-input").hide()
   $("#updated-data-submit").hide()
+  $("#data-submit-notification").hide()
+  $("#dropdown-selector").hide()
 
 }
 
