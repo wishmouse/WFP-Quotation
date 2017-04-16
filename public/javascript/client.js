@@ -88,7 +88,7 @@ var editList
                   getData = JSON.parse(result)
                   for (i = 0; i < getData.length; i++) {
                     var dataReturn= getData[i]
-                    if(fireplaceType == dataReturn.fuel && air == dataReturn.type && dataReturn.make == make ){
+                    if(fireplaceType == dataReturn.fuel && dataReturn.make == make ){
                         $("#dropdown-selector").show()
                         $(dataReturn).each(function(){
                           var optionModel = $('<option />')
@@ -161,7 +161,6 @@ var editList
           method: "POST",
           url: "/database",
           data: {
-                  type:air,
                   fuel:fireplaceType,
                   make: make,
                   model: model,
@@ -201,7 +200,6 @@ var editList
         "<table>" +
           "<tr>"+
             "<th class='table-header'>Edit / Delete</th>" +
-            "<th class='table-header'>Type</th>" +
             "<th class='table-header'>Fuel</th>" +
             "<th class='table-header'>Make</th>" +
             "<th class='table-header'>Model</th>" +
@@ -220,7 +218,6 @@ var editList
             "<td><button class='click-to-edit' data-id ="+editList._id+">Edit</button>" +
             "<button class='click-to-delete' data-id ="+editList._id+">Delete</button>" +
             "</td>"+
-            "<td class='table-body'>"+editList.type+"</td>" +
             "<td class='table-body'>"+editList.fuel+"</td>" +
             "<td class='table-body'>"+editList.make+"</td>" +
             "<td class='table-body'>"+editList.model+"</td>" +

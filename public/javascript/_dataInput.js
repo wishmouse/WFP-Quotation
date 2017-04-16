@@ -12,6 +12,7 @@ function dataEntryButton(){
   $("#updated-data-submit").hide()
   $("#data-submit-notification").hide()
   $("#dropdown-selector").hide()
+  $("#air").hide()
 
 }
 
