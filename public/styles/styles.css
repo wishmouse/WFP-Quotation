@@ -106,7 +106,20 @@
 
 }
 
-.quotation-edit-button{
+.back-to-quotation{
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 30px;
+  background: aqua;  /*blue*/
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
+
+}
+
+.edit-quotation-button {
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
@@ -139,7 +152,6 @@
   width: 72px;
   padding: 6px 10px 6px 10px;
   margin: 10px 0px 0px 0px;
-
 
 }
 

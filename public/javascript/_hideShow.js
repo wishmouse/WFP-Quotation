@@ -105,6 +105,41 @@ function hideShow(){
       $("#blank").hide()
     }
 
+    function backToQuote(){
+      $("#quotation").show()
+      $("#fireplace").show()
+      $("#air").show()
+      $("#make").show()
+      $("#back-to-quote").hide()
+    }
+
+    function editQuoteButton(){
+      $("#quotation").hide()
+      $("#fireplace").hide()
+      $("#air").hide()
+      $("#make").hide()
+      $("#edit-quotation-data").show()
+
+    }
+
+    function clickToEdit(){
+      $('#edit-data').hide()
+      $("#data-entry").show()
+      $("#updated-data-submit").show()
+      $("#fireplace").show()
+      $("#air").show()
+      $("#data-submit").hide()
+      $("#quotation-button").hide()
+      $("#edit-data-button").hide()
+    }
+
+    function dataEditButton(){
+      $("#data-entry").hide()
+      $("#fireplace").hide()
+      $("#air").hide()
+      $("#make").hide()
+
+    }
 
     module.exports = {
       hideShow:hideShow,
@@ -114,5 +149,8 @@ function hideShow(){
       multifuelShow:multifuelShow,
       biofuelShow:biofuelShow,
       cookerShow:cookerShow,
-
+      backToQuote:backToQuote,
+      editQuoteButton:editQuoteButton,
+      clickToEdit:clickToEdit,
+      dataEditButton:dataEditButton,
     }

@@ -35,6 +35,8 @@ var editList
      $("#data-entry").hide()
      $("#make").hide()
      $("#dropdown-selector").hide()
+     $("#edit-quotation-data").hide()
+
 
   $('#salesman').delegate('.border-salesman', 'click', function(e){
          $(".border-salesman").removeClass("selected")
@@ -189,10 +191,7 @@ var editList
    //====
    $('#edit-data-button').click(function(e){
      e.preventDefault()
-     $("#data-entry").hide()
-     $("#fireplace").hide()
-     $("#air").hide()
-     $("#make").hide()
+     _hideShow.dataEditButton()
 
 
     editLine = $('#edit-data')
@@ -264,16 +263,8 @@ if(entryTypeController == 'data entry'){
        editItem = JSON.parse(result)
        for (i = 0; i < editItem.length; i++) {
             editItemNow = editItem[i]
-            console.log("editItemNow", editItemNow)
+            _hideShow.clickToEdit()
 
-            $('#edit-data').hide()
-            $("#data-entry").show()
-            $("#updated-data-submit").show()
-            $("#fireplace").show()
-            $("#air").show()
-            $("#data-submit").hide()
-            $("#quotation-button").hide()
-            $("#edit-data-button").hide()
           }
         }
      })
@@ -364,5 +355,14 @@ if(entryTypeController == 'data entry'){
 
   })
 
+  $('#edit-quotation-button').click(function(e){
+    e.preventDefault()
+    _hideShow.editQuoteButton()
+  })
+
+    $("#back-to-quote").click(function(){
+    _hideShow.backToQuote()
+
+    })
 
 })
