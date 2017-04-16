@@ -106,6 +106,18 @@
 
 }
 
+.quotation-edit-button{
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 30px;
+  background: #b77778; /*red*/
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
+}
+
 .quote-dropdown{
   display: inline-block;
   border: 1px solid black;
