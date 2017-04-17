@@ -45,15 +45,39 @@ var editList
          salesman = select.text()
        })
 
-       $('#air').delegate('.border-air', 'click', function(e){
-              $(".border-air").removeClass("selected")
-              var select = $(this).addClass("selected")
-              var airID = $(this).attr('id')
-              air = select.text()
+   $('#air').delegate('.border-air', 'click', function(e){
+          $(".border-air").removeClass("selected")
+          var select = $(this).addClass("selected")
+          var airID = $(this).attr('id')
+          air = select.text()
+         _clearData.changeTypes()
+         _hideShow.airTypeShow()
+        })
 
-             _clearData.changeAirType()
-            })
+    $('#hearth').delegate('.border-hearth', 'click', function(e){
+           $(".border-hearth").removeClass("selected")
+           var select = $(this).addClass("selected")
+           var hearthID = $(this).attr('id')
+           hearth = select.text()
+          _clearData.changeTypes()
+          _hideShow.hearthTypeShow()
+         })
 
+   $('#wetback').delegate('.border-wetback', 'click', function(e){
+          $(".border-wetback").removeClass("selected")
+          var select = $(this).addClass("selected")
+          var wetbackID = $(this).attr('id')
+          wetback = select.text()
+         _clearData.changeTypes()
+         _hideShow.wetbackTypeShow()
+        })
+  $('#colour-price').delegate('.border-colour', 'click', function(e){
+           $(".border-colour").removeClass("selected")
+           var select = $(this).addClass("selected")
+           var colour = $(this).attr('id')
+           colour = select.text()
+          _clearData.changeTypes()
+         })
 
         $('#fireplace').delegate('.border-fireplace', 'click', function(e){
               _hideShow.hideShow()
@@ -110,24 +134,34 @@ var editList
              var modelValue = $("#model-dropdown" ).val()
              for (i = 0; i < getData.length; i++) {
                var dataReturn= getData[i]
-               if (modelValue == dataReturn.model && air == "Clean Air"){
+               console.log(dataReturn)
+               if (modelValue == dataReturn.model){
                  $("#kw-dropdown").html(dataReturn.kw)
-                 $("#cleanAir-dropdown").html(dataReturn.cleanAir)
-                 $("#cleanAirWB-dropdown").html(dataReturn.cleanAirWB)
-                 $("#hearth-dropdown").html(dataReturn.hearth)
-                 $("#wallHearth-dropdown").html(dataReturn.wallHearth)
-                 $("#cornerHearth-dropdown").html(dataReturn.cornerHearth)
-                 $("#colour-dropdown").html(dataReturn.colour)
-                 $("#colourPrice-dropdown").html(dataReturn.colourPrice)
-               } else if(modelValue == dataReturn.model && air == "Rural"){
-                 $("#kw-dropdown").html(dataReturn.kw)
-                 $("#rural-dropdown").html(dataReturn.rural)
-                 $("#ruralWB-dropdown").html(dataReturn.ruralWB)
-                 $("#hearth-dropdown").html(dataReturn.hearth)
-                 $("#wallHearth-dropdown").html(dataReturn.wallHearth)
-                 $("#cornerHearth-dropdown").html(dataReturn.cornerHearth)
-                 $("#colour-dropdown").html(dataReturn.colour)
-                 $("#colourPrice-dropdown").html(dataReturn.colourPrice)
+                 if(air == "Clean Air"){
+                   $("#cleanAir-dropdown").html(dataReturn.cleanAir)
+                   $("#rural-dropdown").hide()
+                 } else if(air == 'Rural'){
+                   $("#rural-dropdown").html(dataReturn.rural)
+                   $("#cleanAir-dropdown").hide()
+                 }
+                 if(wetback == 'Clean Air wetback'){
+                   $("#cleanAirWB-dropdown").html(dataReturn.cleanAirWB)
+                   $("#ruralWB-dropdown").hide()
+                 }else if (wetback == "Rural wetback"){
+                   $("#cleanAirWB-dropdown").hide()
+                   $("#ruralWB-dropdown").html(dataReturn.ruralWB)
+                 }
+                 if(hearth == 'Corner Hearth'){
+                   $("#cornerHearth-dropdown").html(dataReturn.cornerHearth)
+                   $("#wallHearth-dropdown").hide()
+                 }else if(hearth == 'Wall Hearth'){
+                   $("#wallHearth-dropdown").html(dataReturn.wallHearth)
+                   $("#cornerHearth-dropdown").hide()
+                 }
+                 if(dataReturn.colour == "Yes"){
+                   $("#colour-price").show()
+                   $("#colourPrice-extra").html(dataReturn.colourPrice)
+                 }
                }
              }
            })

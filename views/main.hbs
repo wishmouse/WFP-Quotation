@@ -71,10 +71,20 @@
 <button class="edit-quotation-button" id="edit-quotation-button">View Quote</button>
 </div>
 
+<div id="quote-select">
+  <div id="air" class="wrapper">
+    <div id="clean-air" class="border-air" value="clean-air">Clean Air</div>
+    <div id="rural" class="border-air" value="rural">Rural</div>
+  </div>
+  <div id="hearth" class="wrapper">
+    <div id="corner-hearth" class="border-hearth" >Corner Hearth</div>
+    <div id="wall-hearth" class="border-hearth">Wall Hearth</div>
+  </div>
 
-<div id="air" class="wrapper">
-  <div id="clean-air" class="border-air" value="clean-air">Clean Air</div>
-  <div id="rural" class="border-air" value="rural">Rural</div>
+  <div id="wetback" class="wrapper">
+    <div id="clean-air-wetback" class="border-wetback" >Clean Air wetback</div>
+    <div id="rural-wetback" class="border-wetback">Rural wetback</div>
+  </div>
 </div>
 <strong>Fireplace types </strong>
 <div id="fireplace" class=wrapper>
@@ -119,17 +129,20 @@
 </div>
 
 <div id="dropdown-selector">
-    <select class="quote-dropdown" id="model-dropdown"></select>
-    <div class="quote-dropdown" id="kw-dropdown"></div>
-    cleanAir <div class="quote-dropdown" id="cleanAir-dropdown"></div>
-    cleanAir WB<div class="quote-dropdown" id="cleanAirWB-dropdown"></div>
-    Rural<div class="quote-dropdown" id="rural-dropdown"></div>
-    Rural WB<div class="quote-dropdown" id="ruralWB-dropdown"></div>
-    <div class="quote-dropdown" id="hearth-dropdown"></div>
-    <div class="quote-dropdown" id="wallHearth-dropdown"></div>
-    <div class="quote-dropdown" id="cornerHearth-dropdown"></div>
-    <div class="quote-dropdown" id="colour-dropdown"></div>
-    <div class="quote-dropdown" id="colourPrice-dropdown"></div>
+    Model :<select class="quote-dropdown" id="model-dropdown"></select><br>
+    kw :<div class="quote-dropdown" id="kw-dropdown"></div><br>
+    cleanAir: <div class="quote-dropdown" id="cleanAir-dropdown"></div><br>
+    cleanAir WB:<div class="quote-dropdown" id="cleanAirWB-dropdown"></div><br>
+    Rural:<div class="quote-dropdown" id="rural-dropdown"></div><br>
+    Rural WB:<div class="quote-dropdown" id="ruralWB-dropdown"></div><br>
+    hearth: <div class="quote-dropdown" id="hearth-dropdown"></div><br>
+    Wall Hearth:<div class="quote-dropdown" id="wallHearth-dropdown"></div><br>
+    corner Hearth<div class="quote-dropdown" id="cornerHearth-dropdown"></div><br>
+      <div id="colour-price" class="wrapper">
+        <div id="colourPrice-extra" class="border-colour" ></div>
+        <div id="colourPrice-nocharge" class="border-colour">$0.00</div>
+      </div>
+    </div><br>
   <button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
 </div>
 

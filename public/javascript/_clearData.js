@@ -26,7 +26,7 @@ function removeClassSubmit(){
 
 }
 
-function changeAirType(){
+function changeTypes(){
   kw = $("#kw-dropdown").text("")
   cleanAir = $("#cleanAir-dropdown").text("")
   cleanAirWB = $("#cleanAirWB-dropdown").text("")
@@ -38,6 +38,7 @@ function changeAirType(){
   cornerHearth = $("#cornerHearth-dropdown").text("")
   colourPrice = $("#colourPrice-dropdown").text("")
 }
+
 
 function clearQuotationSubmit(){
   customerName = $("#customer-name").val('')
@@ -74,5 +75,5 @@ module.exports = {
   clearDataSubmit:clearDataSubmit,
   removeClassSubmit:removeClassSubmit,
   clearQuotationSubmit:clearQuotationSubmit,
-  changeAirType:changeAirType,
+  changeTypes:changeTypes,
 }

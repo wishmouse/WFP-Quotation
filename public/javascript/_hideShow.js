@@ -141,6 +141,24 @@ function hideShow(){
 
     }
 
+    function airTypeShow(){
+      $("#cleanAir-dropdown").show()
+      $("#cleanAirWB-dropdown").show()
+      $("#rural-dropdown").show()
+      $("#ruralWB-dropdown").show()
+    }
+
+    function hearthTypeShow(){
+      $("#wallHearth-dropdown").show()
+      $("#cornerHearth-dropdown").show()
+    }
+
+    function wetbackTypeShow(){
+      $("#ruralWB-dropdown").show()
+      $("#cleanAirWB-dropdown").show()
+    }
+
+
     module.exports = {
       hideShow:hideShow,
       gasShow:gasShow,
@@ -153,4 +171,7 @@ function hideShow(){
       editQuoteButton:editQuoteButton,
       clickToEdit:clickToEdit,
       dataEditButton:dataEditButton,
+      airTypeShow:airTypeShow,
+      hearthTypeShow:hearthTypeShow,
+      wetbackTypeShow:wetbackTypeShow,
     }
