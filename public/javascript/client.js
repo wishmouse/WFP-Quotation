@@ -50,6 +50,8 @@ var editList
               var select = $(this).addClass("selected")
               var airID = $(this).attr('id')
               air = select.text()
+
+             _clearData.changeAirType()
             })
 
 
@@ -108,11 +110,17 @@ var editList
              var modelValue = $("#model-dropdown" ).val()
              for (i = 0; i < getData.length; i++) {
                var dataReturn= getData[i]
-               console.log(dataReturn)
-               if (modelValue == dataReturn.model){
+               if (modelValue == dataReturn.model && air == "Clean Air"){
                  $("#kw-dropdown").html(dataReturn.kw)
                  $("#cleanAir-dropdown").html(dataReturn.cleanAir)
                  $("#cleanAirWB-dropdown").html(dataReturn.cleanAirWB)
+                 $("#hearth-dropdown").html(dataReturn.hearth)
+                 $("#wallHearth-dropdown").html(dataReturn.wallHearth)
+                 $("#cornerHearth-dropdown").html(dataReturn.cornerHearth)
+                 $("#colour-dropdown").html(dataReturn.colour)
+                 $("#colourPrice-dropdown").html(dataReturn.colourPrice)
+               } else if(modelValue == dataReturn.model && air == "Rural"){
+                 $("#kw-dropdown").html(dataReturn.kw)
                  $("#rural-dropdown").html(dataReturn.rural)
                  $("#ruralWB-dropdown").html(dataReturn.ruralWB)
                  $("#hearth-dropdown").html(dataReturn.hearth)

@@ -26,8 +26,20 @@ function removeClassSubmit(){
 
 }
 
-function clearQuotationSubmit(){
+function changeAirType(){
+  kw = $("#kw-dropdown").text("")
+  cleanAir = $("#cleanAir-dropdown").text("")
+  cleanAirWB = $("#cleanAirWB-dropdown").text("")
+  rural = $("#rural-dropdown").text("")
+  ruralWB = $("#ruralWB-dropdown").text("")
+  hearth = $("#hearth-dropdown").text("")
+  colour = $("#colour-dropdown").text("")
+  wallHearth = $("#wallHearth-dropdown").text("")
+  cornerHearth = $("#cornerHearth-dropdown").text("")
+  colourPrice = $("#colourPrice-dropdown").text("")
+}
 
+function clearQuotationSubmit(){
   customerName = $("#customer-name").val('')
   quoteDate = $("#date").val('')
   email = $("#customer-email").val('')
@@ -62,4 +74,5 @@ module.exports = {
   clearDataSubmit:clearDataSubmit,
   removeClassSubmit:removeClassSubmit,
   clearQuotationSubmit:clearQuotationSubmit,
+  changeAirType:changeAirType,
 }
