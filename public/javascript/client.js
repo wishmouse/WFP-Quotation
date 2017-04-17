@@ -71,6 +71,7 @@ var editList
          _clearData.changeTypes()
          _hideShow.wetbackTypeShow()
         })
+
   $('#colour-price').delegate('.border-colour', 'click', function(e){
            $(".border-colour").removeClass("selected")
            var select = $(this).addClass("selected")
@@ -134,14 +135,13 @@ var editList
              var modelValue = $("#model-dropdown" ).val()
              for (i = 0; i < getData.length; i++) {
                var dataReturn= getData[i]
-               console.log(dataReturn)
                if (modelValue == dataReturn.model){
                  $("#kw-dropdown").html(dataReturn.kw)
                  if(air == "Clean Air"){
                    $("#cleanAir-dropdown").html(dataReturn.cleanAir)
                    $("#rural-dropdown").hide()
                  } else if(air == 'Rural'){
-                   $("#rural-dropdown").html(dataReturn.rural)
+                   var ruralAir = $("#rural-dropdown").html(dataReturn.rural)
                    $("#cleanAir-dropdown").hide()
                  }
                  if(wetback == 'Clean Air wetback'){
@@ -162,9 +162,35 @@ var editList
                    $("#colour-price").show()
                    $("#colourPrice-extra").html(dataReturn.colourPrice)
                  }
+                quotationDisplay()
                }
              }
+
+
+
+             function quotationDisplay(){
+               var quoteLine = $('#quotation-display')
+               var editTemplate = ""+
+                 "<table>" +
+                   "<tr>"+
+                     "<th class='table-header'>Description</th>" +
+                     "<th class='table-header'>Price</th>" +
+                     "<th class='table-header'>Quanity</th>" +
+                     "<th class='table-header'>Total</th>" +
+                   "</tr>"+
+                   "<tr>"+
+                     "<td class='table-body'>"+make+' '+dataReturn.model+ "</td>" +
+                     "<td class='table-body'>"+'1'+"</td>" +
+                     "<td class='table-body'>"+dataReturn.cleanAirWB+"</td>" +
+                     "<td class='table-body'>"+dataReturn.colourPrice+"</td>"
+                   "</tr>"+
+                 "</table>"
+               quoteLine.append(editTemplate)
+             }
+
            })
+
+
 
 //====
 //==== Database entry
@@ -233,7 +259,6 @@ var editList
    $('#edit-data-button').click(function(e){
      e.preventDefault()
      _hideShow.dataEditButton()
-
 
     editLine = $('#edit-data')
 
