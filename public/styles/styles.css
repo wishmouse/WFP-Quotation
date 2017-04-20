@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.border-air, .border-hearth, .border-wetback, .border-colour {
+.border-air, .border-hearth, .border-wetback, .border-colour, .border-scaffold {
     border: 1px solid #B39476;
     width: 49%;
     height:35px;
@@ -44,7 +44,7 @@
 
 
 
-#data-submit {
+#fireplace-data-submit {
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;

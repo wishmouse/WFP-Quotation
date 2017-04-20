@@ -32,10 +32,12 @@ var editList
 
  $(document).ready(function(){
     entryTypeController = 'quotation'
-     $("#data-entry").hide()
+     $("#fireplace-data-entry").hide()
+
      $("#make").hide()
      $("#dropdown-selector").hide()
      $("#edit-quotation-data").hide()
+     $("#colour-price").hide()
 
 
   $('#salesman').delegate('.border-salesman', 'click', function(e){
@@ -75,9 +77,24 @@ var editList
   $('#colour-price').delegate('.border-colour', 'click', function(e){
            $(".border-colour").removeClass("selected")
            var select = $(this).addClass("selected")
-           var colour = $(this).attr('id')
-           colour = select.text()
-          _clearData.changeTypes()
+           var colourID = $(this).attr('id')
+           colour = parseInt(select.text())
+
+          function colourPrice(){
+            var quoteColourPrice = $('#quotation-colour-price')
+            var editTemplate = ""+
+              "<table>" +
+                "<tr>"+
+                  "<td class='table-body'>"+"Additional colour"+"</td>" +
+                  "<td class='table-body'>"+'1'+"</td>" +
+                  "<td class='table-body'>"+colour+"</td>" +
+                  "<td class='table-body'>"+'00.00'+"</td>" +
+                "</tr>"+
+              "</table>"
+            quoteColourPrice.append(editTemplate)
+          }
+          colourPrice()
+           _clearData.changeTypes()
          })
 
         $('#fireplace').delegate('.border-fireplace', 'click', function(e){
@@ -138,31 +155,30 @@ var editList
                if (modelValue == dataReturn.model){
                  $("#kw-dropdown").html(dataReturn.kw)
                  if(air == "Clean Air"){
-                   $("#cleanAir-dropdown").html(dataReturn.cleanAir)
-                   $("#rural-dropdown").hide()
+                  fireplaceCost = dataReturn.cleanAir
+                  airType = "Clean Air"
                  } else if(air == 'Rural'){
-                   var ruralAir = $("#rural-dropdown").html(dataReturn.rural)
-                   $("#cleanAir-dropdown").hide()
+                    fireplaceCost = dataReturn.rural
+                    airType = "Rural"
                  }
                  if(wetback == 'Clean Air wetback'){
-                   $("#cleanAirWB-dropdown").html(dataReturn.cleanAirWB)
-                   $("#ruralWB-dropdown").hide()
+                  fireplaceCost = dataReturn.cleanAirWB
+                  airType = "Clean Air wetback"
                  }else if (wetback == "Rural wetback"){
-                   $("#cleanAirWB-dropdown").hide()
-                   $("#ruralWB-dropdown").html(dataReturn.ruralWB)
+                    fireplaceCost = dataReturn.ruralWB
+                    airType = "Rural wetback"
                  }
                  if(hearth == 'Corner Hearth'){
-                   $("#cornerHearth-dropdown").html(dataReturn.cornerHearth)
-                   $("#wallHearth-dropdown").hide()
+                   hearthCost =dataReturn.cornerHearth
                  }else if(hearth == 'Wall Hearth'){
-                   $("#wallHearth-dropdown").html(dataReturn.wallHearth)
-                   $("#cornerHearth-dropdown").hide()
+                   hearthCost =dataReturn.wallHearth
                  }
+                 quotationDisplay()
+
                  if(dataReturn.colour == "Yes"){
                    $("#colour-price").show()
                    $("#colourPrice-extra").html(dataReturn.colourPrice)
                  }
-                quotationDisplay()
                }
              }
 
@@ -174,15 +190,15 @@ var editList
                  "<table>" +
                    "<tr>"+
                      "<th class='table-header'>Description</th>" +
-                     "<th class='table-header'>Price</th>" +
                      "<th class='table-header'>Quanity</th>" +
+                     "<th class='table-header'>Price</th>" +
                      "<th class='table-header'>Total</th>" +
                    "</tr>"+
                    "<tr>"+
                      "<td class='table-body'>"+make+' '+dataReturn.model+ "</td>" +
                      "<td class='table-body'>"+'1'+"</td>" +
-                     "<td class='table-body'>"+dataReturn.cleanAirWB+"</td>" +
-                     "<td class='table-body'>"+dataReturn.colourPrice+"</td>"
+                     "<td class='table-body'>"+parseInt(fireplaceCost)+ "</td>" +                   "</td>" +
+                     "<td class='table-body'>"+'0'+"</td>"
                    "</tr>"+
                  "</table>"
                quoteLine.append(editTemplate)
@@ -196,13 +212,15 @@ var editList
 //==== Database entry
 //====
    $("#data-entry-button").click(function() {
+     $("#quotation-submit-button").hide()
      _dataInput.dataEntryButton()
      entryTypeController = 'data entry'
    });
 
    $("#quotation-button").click(function() {
      $("#quotation").show()
-     $("#data-entry").hide()
+     $("#fireplace-data-entry").hide()
+     $("#quotation-submit-button").show()
    });
 
 
@@ -210,7 +228,7 @@ var editList
 //===============  Ajax data submit
 //===============
 
-   $('#data-submit').click(function(e){
+   $('#fireplace-data-submit').click(function(e){
      e.preventDefault()
      //make = $("#make").val()
      fuel = fireplaceType
@@ -218,13 +236,13 @@ var editList
      kw = $("#input-kw").val()
      cleanAir = $("#input-clean-air").val()
      cleanAirWB = $("#input-clean-air-wb").val()
-     rural = $("#input-rural").val()
-     ruralWB = $("#input-rural-wb").val()
+     rural = $("#input-rural").val(
+     ruralWB = $("#input-rural-wb").val())
      hearth = $("#input-hearth").val()
      colour = $("#input-colour-available").val()
      wallHearth = $("#input-wall-hearth").val()
      cornerHearth = $("#input-corner-hearth").val()
-     colourPrice = $("#input-colour-price").val()
+     colourPrice =$("#input-colour-price").val()
         $.ajax({
           method: "POST",
           url: "/database",
@@ -308,6 +326,7 @@ if(entryTypeController == 'data entry'){
     url: "/fireplaceData",
     success: function(result){
           editData = JSON.parse(result)
+          console.log(editData)
           for (i = 0; i < editData.length; i++) {
             editList = editData[i]
             displayEdit(editList)
@@ -370,6 +389,7 @@ if(entryTypeController == 'data entry'){
      fuel = fireplaceType
      model = $("#model-dropdown").val()
      kw = $("#kw-dropdown").text()
+     /*
      cleanAir = $("#cleanAir-dropdown").text()
      cleanAirWB = $("#cleanAirWB-dropdown").text()
      rural = $("#rural-dropdown").text()
@@ -378,7 +398,9 @@ if(entryTypeController == 'data entry'){
      colour = $("#colour-dropdown").text()
      wallHearth = $("#wallHearth-dropdown").text()
      cornerHearth = $("#cornerHearth-dropdown").text()
-     colourPrice = $("#colourPrice-dropdown").text()
+     */
+     airType = airType
+     fireplaceCost = fireplaceCost
 
        $.ajax({
           method: "POST",
@@ -395,23 +417,21 @@ if(entryTypeController == 'data entry'){
                   city:city,
                   postcode:postCode,
                   salesman:salesman,
-                  type:air,
+                  type:airType,
                   fuel:fireplaceType,
                   make: make,
                   model: model,
                   kw: kw,
-                  cleanAir: cleanAir,
-                  cleanAirWB: cleanAirWB,
-                  rural: rural,
-                  ruralWB: ruralWB,
+                  fireplaceCost:fireplaceCost,
                   hearth: hearth,
                   wallHearth: wallHearth,
                   cornerHearth: cornerHearth,
                   colour: colour,
-                  colourPrice: colourPrice
 
                  }
+
                })
+                                console.log("this is data", data)
      _clearData.clearQuotationSubmit()
      _clearData.removeClassSubmit()
      $("#dropdown-selector").hide()

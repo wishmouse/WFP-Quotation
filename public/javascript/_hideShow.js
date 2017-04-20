@@ -124,7 +124,7 @@ function hideShow(){
 
     function clickToEdit(){
       $('#edit-data').hide()
-      $("#data-entry").show()
+      $("#fireplace-data-entry").show()
       $("#updated-data-submit").show()
       $("#fireplace").show()
       $("#air").show()
@@ -134,7 +134,7 @@ function hideShow(){
     }
 
     function dataEditButton(){
-      $("#data-entry").hide()
+      $("#fireplace-data-entry").hide()
       $("#fireplace").hide()
       $("#air").hide()
       $("#make").hide()
