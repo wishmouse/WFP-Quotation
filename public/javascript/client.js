@@ -38,6 +38,7 @@ var editList
      $("#dropdown-selector").hide()
      $("#edit-quotation-data").hide()
      $("#colour-price").hide()
+     $("#quotation-comments").hide()
 
 
   $('#salesman').delegate('.border-salesman', 'click', function(e){
@@ -47,8 +48,8 @@ var editList
          salesman = select.text()
        })
 
-   $('#air').delegate('.border-air', 'click', function(e){
-          $(".border-air").removeClass("selected")
+   $('#air').delegate('.border-air-wetback', 'click', function(e){
+          $(".border-air-wetback").removeClass("selected")
           var select = $(this).addClass("selected")
           var airID = $(this).attr('id')
           air = select.text()
@@ -65,15 +66,6 @@ var editList
           _hideShow.hearthTypeShow()
          })
 
-   $('#wetback').delegate('.border-wetback', 'click', function(e){
-          $(".border-wetback").removeClass("selected")
-          var select = $(this).addClass("selected")
-          var wetbackID = $(this).attr('id')
-          wetback = select.text()
-         _clearData.changeTypes()
-         _hideShow.wetbackTypeShow()
-        })
-
   $('#colour-price').delegate('.border-colour', 'click', function(e){
            $(".border-colour").removeClass("selected")
            var select = $(this).addClass("selected")
@@ -81,14 +73,14 @@ var editList
            colour = parseInt(select.text())
 
           function colourPrice(){
-            var quoteColourPrice = $('#quotation-colour-price')
+            var quoteColourPrice = $('#quotation-colour-price-display')
             var editTemplate = ""+
               "<table>" +
                 "<tr>"+
-                  "<td class='table-body'>"+"Additional colour"+"</td>" +
-                  "<td class='table-body'>"+'1'+"</td>" +
-                  "<td class='table-body'>"+colour+"</td>" +
-                  "<td class='table-body'>"+'00.00'+"</td>" +
+                  "<td class='table-colour-description'>"+"Additional colour"+"</td>" +
+                  "<td class='table-colour-quanity'>"+'1'+"</td>" +
+                  "<td class='table-colour-price'>"+colour+"</td>" +
+                  "<td class='table-colour-total'>"+'00.00'+"</td>" +
                 "</tr>"+
               "</table>"
             quoteColourPrice.append(editTemplate)
@@ -124,6 +116,7 @@ var editList
             var select = $(this).addClass("selected")
             var makeID = $(this).attr('id')
             make = select.text()
+            $("#quotation-comments").show()
 
             if (entryTypeController == 'quotation'){
                 $.ajax({
@@ -156,17 +149,17 @@ var editList
                  $("#kw-dropdown").html(dataReturn.kw)
                  if(air == "Clean Air"){
                   fireplaceCost = dataReturn.cleanAir
-                  airType = "Clean Air"
+                  //airType = "Clean Air"
                  } else if(air == 'Rural'){
                     fireplaceCost = dataReturn.rural
-                    airType = "Rural"
+                    //airType = "Rural"
                  }
-                 if(wetback == 'Clean Air wetback'){
+                 if(air == 'Clean Air wetback'){
                   fireplaceCost = dataReturn.cleanAirWB
-                  airType = "Clean Air wetback"
-                 }else if (wetback == "Rural wetback"){
+                  //airType = "Clean Air wetback"
+                }else if (air == "Rural wetback"){
                     fireplaceCost = dataReturn.ruralWB
-                    airType = "Rural wetback"
+                  //  airType = "Rural wetback"
                  }
                  if(hearth == 'Corner Hearth'){
                    hearthCost =dataReturn.cornerHearth
@@ -189,16 +182,16 @@ var editList
                var editTemplate = ""+
                  "<table>" +
                    "<tr>"+
-                     "<th class='table-header'>Description</th>" +
+                     "<th class='table-header-description'>Description</th>" +
                      "<th class='table-header'>Quanity</th>" +
                      "<th class='table-header'>Price</th>" +
                      "<th class='table-header'>Total</th>" +
                    "</tr>"+
                    "<tr>"+
-                     "<td class='table-body'>"+make+' '+dataReturn.model+ "</td>" +
+                     "<td class='table-fireplace-description'>"+make+' '+dataReturn.model+ "</td>" +
                      "<td class='table-body'>"+'1'+"</td>" +
                      "<td class='table-body'>"+parseInt(fireplaceCost)+ "</td>" +                   "</td>" +
-                     "<td class='table-body'>"+'0'+"</td>"
+                     "<td class='table-body'>"+parseInt(fireplaceCost)+"</td>"
                    "</tr>"+
                  "</table>"
                quoteLine.append(editTemplate)
@@ -236,8 +229,8 @@ var editList
      kw = $("#input-kw").val()
      cleanAir = $("#input-clean-air").val()
      cleanAirWB = $("#input-clean-air-wb").val()
-     rural = $("#input-rural").val(
-     ruralWB = $("#input-rural-wb").val())
+     rural = $("#input-rural").val()
+     ruralWB = $("#input-rural-wb").val()
      hearth = $("#input-hearth").val()
      colour = $("#input-colour-available").val()
      wallHearth = $("#input-wall-hearth").val()
@@ -326,7 +319,6 @@ if(entryTypeController == 'data entry'){
     url: "/fireplaceData",
     success: function(result){
           editData = JSON.parse(result)
-          console.log(editData)
           for (i = 0; i < editData.length; i++) {
             editList = editData[i]
             displayEdit(editList)
@@ -388,19 +380,6 @@ if(entryTypeController == 'data entry'){
      postCode = $("#postal_code").val()
      fuel = fireplaceType
      model = $("#model-dropdown").val()
-     kw = $("#kw-dropdown").text()
-     /*
-     cleanAir = $("#cleanAir-dropdown").text()
-     cleanAirWB = $("#cleanAirWB-dropdown").text()
-     rural = $("#rural-dropdown").text()
-     ruralWB = $("#ruralWB-dropdown").text()
-     hearth = $("#hearth-dropdown").text()
-     colour = $("#colour-dropdown").text()
-     wallHearth = $("#wallHearth-dropdown").text()
-     cornerHearth = $("#cornerHearth-dropdown").text()
-     */
-     airType = airType
-     fireplaceCost = fireplaceCost
 
        $.ajax({
           method: "POST",
@@ -417,11 +396,10 @@ if(entryTypeController == 'data entry'){
                   city:city,
                   postcode:postCode,
                   salesman:salesman,
-                  type:airType,
+                  type:air,
                   fuel:fireplaceType,
                   make: make,
                   model: model,
-                  kw: kw,
                   fireplaceCost:fireplaceCost,
                   hearth: hearth,
                   wallHearth: wallHearth,
@@ -429,9 +407,7 @@ if(entryTypeController == 'data entry'){
                   colour: colour,
 
                  }
-
                })
-                                console.log("this is data", data)
      _clearData.clearQuotationSubmit()
      _clearData.removeClassSubmit()
      $("#dropdown-selector").hide()

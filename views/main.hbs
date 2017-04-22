@@ -8,7 +8,7 @@
   <meta name="author" content="">
   <script src="/bundle.js"></script>
   <link rel='stylesheet' type='text/css' href='../styles/styles.css'></link>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
   <!-- Mobile Specific Metas -->
@@ -74,17 +74,14 @@
 
 <div id="quote-select">
   <div id="air" class="wrapper">
-    <div id="clean-air" class="border-air" value="clean-air">Clean Air</div>
-    <div id="rural" class="border-air" value="rural">Rural</div>
+    <div id="clean-air" class="border-air-wetback" >Clean Air</div>
+    <div id="rural" class="border-air-wetback">Rural</div>
+    <div id="clean-air-wetback" class="border-air-wetback" >Clean Air wetback</div>
+    <div id="rural-wetback" class="border-air-wetback">Rural wetback</div>
   </div>
   <div id="hearth" class="wrapper">
     <div id="corner-hearth" class="border-hearth" >Corner Hearth</div>
     <div id="wall-hearth" class="border-hearth">Wall Hearth</div>
-  </div>
-
-  <div id="wetback" class="wrapper">
-    <div id="clean-air-wetback" class="border-wetback" >Clean Air wetback</div>
-    <div id="rural-wetback" class="border-wetback">Rural wetback</div>
   </div>
 </div>
 <strong>Fireplace types </strong>
@@ -138,7 +135,8 @@
 </div><br>
 
 <div id="quotation-display"> </div>
-<div id='quotation-colour-price'></div>
+<div id='quotation-colour-price-display'></div>
+<input type="text" id="quotation-comments" class = "quotation-comments" placeholder="comments">
   <button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
 
 
@@ -179,14 +177,7 @@
 <div id="edit-quotation-data">
   <div id="back-to-quote" class="back-to-quotation">Back to quote</div>
 </div>
-<!--
-<div id="installation-data-entry">
-  <div id="scaffold" class=wrapper>
-      <div id="full-hite" class="border-scaffold">Full Hire</div>
-      <div id="soffit" class="border-scaffold" value="wood" >Soffit</div>
-      <div id="small" class="border-scaffold" value="electric">Small</div>
-  </div>
--->
+
 </div>
 <!--  setting the address -->
     <script>

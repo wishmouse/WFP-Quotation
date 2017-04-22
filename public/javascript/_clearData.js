@@ -54,15 +54,14 @@ function clearQuotationSubmit(){
   postCode = $("#postal_code").val('')
   model = $("#model-dropdown").val('')
   kw = $("#kw-dropdown").text("")
-  cleanAir = $("#cleanAir-dropdown").text("")
-  cleanAirWB = $("#cleanAirWB-dropdown").text("")
-  rural = $("#rural-dropdown").text("")
-  ruralWB = $("#ruralWB-dropdown").text("")
   hearth = $("#hearth-dropdown").text("")
   colour = $("#colour-dropdown").text("")
-  wallHearth = $("#wallHearth-dropdown").text("")
-  cornerHearth = $("#cornerHearth-dropdown").text("")
-  colourPrice = $("#colourPrice-dropdown").text("")
+  $(".border-hearth").removeClass("selected")
+  $("#cornerHearth-dropdown").text("")
+  $(".border-air-wetback").removeClass("selected")
+  $('#quotation-display').empty()
+  $('#quotation-colour-price-display').empty()
+
    $("#salesman-1").removeClass("selected");
    $("#salesman-2").removeClass("selected");
    $("#salesman-3").removeClass("selected");
