@@ -73,17 +73,14 @@ var editList
            colour = parseInt(select.text())
 
           function colourPrice(){
-            var quoteColourPrice = $('#quotation-colour-price-display')
             var editTemplate = ""+
-              "<table>" +
                 "<tr>"+
-                  "<td class='table-colour-description'>"+"Additional colour"+"</td>" +
+                  "<td class='table-colour-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                   "<td class='table-colour-quanity'>"+'1'+"</td>" +
                   "<td class='table-colour-price'>"+colour+"</td>" +
                   "<td class='table-colour-total'>"+'00.00'+"</td>" +
-                "</tr>"+
-              "</table>"
-            quoteColourPrice.append(editTemplate)
+                "</tr>"
+            quoteLine.append(editTemplate)
           }
           colourPrice()
            _clearData.changeTypes()
@@ -122,6 +119,7 @@ var editList
                 $.ajax({
                 url: "/fireplaceData",
                 success: function(result){
+                  $('#model-dropdown').html('')
                   getData = JSON.parse(result)
                   for (i = 0; i < getData.length; i++) {
                     var dataReturn= getData[i]
@@ -149,17 +147,13 @@ var editList
                  $("#kw-dropdown").html(dataReturn.kw)
                  if(air == "Clean Air"){
                   fireplaceCost = dataReturn.cleanAir
-                  //airType = "Clean Air"
                  } else if(air == 'Rural'){
                     fireplaceCost = dataReturn.rural
-                    //airType = "Rural"
                  }
                  if(air == 'Clean Air wetback'){
                   fireplaceCost = dataReturn.cleanAirWB
-                  //airType = "Clean Air wetback"
                 }else if (air == "Rural wetback"){
                     fireplaceCost = dataReturn.ruralWB
-                  //  airType = "Rural wetback"
                  }
                  if(hearth == 'Corner Hearth'){
                    hearthCost =dataReturn.cornerHearth
@@ -178,7 +172,7 @@ var editList
 
 
              function quotationDisplay(){
-               var quoteLine = $('#quotation-display')
+               quoteLine = $('#quotation-display')
                var editTemplate = ""+
                  "<table>" +
                    "<tr>"+
@@ -190,7 +184,7 @@ var editList
                    "<tr>"+
                      "<td class='table-fireplace-description'>"+make+' '+dataReturn.model+ "</td>" +
                      "<td class='table-body'>"+'1'+"</td>" +
-                     "<td class='table-body'>"+parseInt(fireplaceCost)+ "</td>" +                   "</td>" +
+                     "<td class='table-body'>"+parseInt(fireplaceCost)+ "</td>" +"</td>" +
                      "<td class='table-body'>"+parseInt(fireplaceCost)+"</td>"
                    "</tr>"+
                  "</table>"
@@ -270,47 +264,46 @@ var editList
    $('#edit-data-button').click(function(e){
      e.preventDefault()
      _hideShow.dataEditButton()
+     editLine = $('#edit-data')
 
-    editLine = $('#edit-data')
-
-    function displayEdit(edit){
-      var editTemplate = ""+
-        "<table>" +
-          "<tr>"+
-            "<th class='table-header'>Edit / Delete</th>" +
-            "<th class='table-header'>Fuel</th>" +
-            "<th class='table-header'>Make</th>" +
-            "<th class='table-header'>Model</th>" +
-            "<th class='table-header'>Kw</th>" +
-            "<th class='table-header'>Clean Air</th>" +
-            "<th class='table-header'>Clean Air WB</th>" +
-            "<th class='table-header' >Rural</th>" +
-            "<th class='table-header'>Rural WB</th>" +
-            "<th class='table-header'>Hearth</th>" +
-            "<th class='table-header'>Wall Hearth</th>" +
-            "<th class='table-header'>Corner Hearth</th>" +
-            "<th class='table-header'>Colour</th>" +
-            "<th  class='table-header'>Colour Price</th>" +
-          "</tr>"+
-          "<tr>"+
-            "<td><button class='click-to-edit' data-id ="+editList._id+">Edit</button>" +
-            "<button class='click-to-delete' data-id ="+editList._id+">Delete</button>" +
-            "</td>"+
-            "<td class='table-body'>"+editList.fuel+"</td>" +
-            "<td class='table-body'>"+editList.make+"</td>" +
-            "<td class='table-body'>"+editList.model+"</td>" +
-            "<td class='table-body'>"+editList.kw+"</td>" +
-            "<td class='table-body'>"+editList.cleanAir+"</td>" +
-            "<td class='table-body'>"+editList.cleanAirWB+"</td>" +
-            "<td class='table-body'>"+editList.rural+"</td>" +
-            "<td class='table-body'>"+editList.ruralWB+"</td>" +
-            "<td class='table-body'>"+editList.hearth+"</td>" +
-            "<td class='table-body'>"+editList.wallHearth+"</td>" +
-            "<td class='table-body'>"+editList.cornerHearth+"</td>" +
-            "<td class='table-body'>"+editList.colour+"</td>" +
-            "<td class='table-body'>"+editList.colourPrice+"</td>" +
-          "</tr>"+
-        "</table>"
+      function displayEdit(edit){
+        var editTemplate = ""+
+          "<table>" +
+            "<tr>"+
+              "<th class='table-header'>Edit / Delete</th>" +
+              "<th class='table-header'>Fuel</th>" +
+              "<th class='table-header'>Make</th>" +
+              "<th class='table-header'>Model</th>" +
+              "<th class='table-header'>Kw</th>" +
+              "<th class='table-header'>Clean Air</th>" +
+              "<th class='table-header'>Clean Air WB</th>" +
+              "<th class='table-header' >Rural</th>" +
+              "<th class='table-header'>Rural WB</th>" +
+              "<th class='table-header'>Hearth</th>" +
+              "<th class='table-header'>Wall Hearth</th>" +
+              "<th class='table-header'>Corner Hearth</th>" +
+              "<th class='table-header'>Colour</th>" +
+              "<th  class='table-header'>Colour Price</th>" +
+            "</tr>"+
+            "<tr>"+
+              "<td><button class='click-to-edit' data-id ="+editList._id+">Edit</button>" +
+              "<button class='click-to-delete' data-id ="+editList._id+">Delete</button>" +
+              "</td>"+
+              "<td class='table-body'>"+editList.fuel+"</td>" +
+              "<td class='table-body'>"+editList.make+"</td>" +
+              "<td class='table-body'>"+editList.model+"</td>" +
+              "<td class='table-body'>"+editList.kw+"</td>" +
+              "<td class='table-body'>"+editList.cleanAir+"</td>" +
+              "<td class='table-body'>"+editList.cleanAirWB+"</td>" +
+              "<td class='table-body'>"+editList.rural+"</td>" +
+              "<td class='table-body'>"+editList.ruralWB+"</td>" +
+              "<td class='table-body'>"+editList.hearth+"</td>" +
+              "<td class='table-body'>"+editList.wallHearth+"</td>" +
+              "<td class='table-body'>"+editList.cornerHearth+"</td>" +
+              "<td class='table-body'>"+editList.colour+"</td>" +
+              "<td class='table-body'>"+editList.colourPrice+"</td>" +
+            "</tr>"+
+          "</table>"
       editLine.append(editTemplate, edit)
     }
 
@@ -351,7 +344,7 @@ if(entryTypeController == 'data entry'){
      var removeLi = $(this).closest('li')
 
      $.ajax({
-       url: "/delete/"+clickToDeleteId,
+       url: "/deleteQuotation/"+clickToDeleteId,
        success: function(result){
            removeLi.fadeOut(300, function(){
              $(this).remove()
@@ -380,7 +373,10 @@ if(entryTypeController == 'data entry'){
      postCode = $("#postal_code").val()
      fuel = fireplaceType
      model = $("#model-dropdown").val()
-
+     colourComment = $("#colour-comment").val()
+     alert(colourComment)
+     comments = $("#quotation-comments").val()
+     alert(comments)
        $.ajax({
           method: "POST",
           url: "/quotation",
@@ -405,6 +401,8 @@ if(entryTypeController == 'data entry'){
                   wallHearth: wallHearth,
                   cornerHearth: cornerHearth,
                   colour: colour,
+                  colourComment: colourComment,
+                  comments: comments,
 
                  }
                })
@@ -417,12 +415,65 @@ if(entryTypeController == 'data entry'){
 
   $('#edit-quotation-button').click(function(e){
     e.preventDefault()
-    _hideShow.editQuoteButton()
-  })
+      _hideShow.editQuoteButton()
+      entryTypeController = 'quotation'
+      editQuotationLine =$("#edit-quotation")
+
+      function displayEditQuotation(editQuotation){
+        var editQuotationTemplate = ""+
+          "<table>" +
+            "<tr>"+
+              "<th class='table-header'></th>" +
+              "<th class='table-header'>Model</th>" +
+              "<th class='table-header'>Make</th>" +
+            "</tr>"+
+            "<tr>"+
+              "<td><button class='click-to-edit-quotation' data-id ="+editQuotationList._id+">Edit</button>" +
+              "<button class='click-to-delete-quotation' data-id ="+editQuotationList._id+">Delete</button>" +
+              "</td>"+
+              "<td class='table-body'>"+editQuotationList.model+"</td>" +
+              "<td class='table-body'>"+editQuotationList._id+"</td>" +
+              "<td class='table-body'>"+editQuotationList.make+"</td>" +
+              "</tr>"+
+            "</table>"
+
+          editQuotationLine.append(editQuotationTemplate, editQuotation)
+      }
+
+      if(entryTypeController == 'quotation'){
+        $.ajax({
+          url: "/quotation",
+          success: function(result){
+                editQuotation = JSON.parse(result)
+                for (i = 0; i < editQuotation.length; i++) {
+                  editQuotationList = editQuotation[i]
+                  displayEditQuotation(editQuotationList)
+              }
+            }
+          })
+        }
+    })
+
+    $('#edit-quotation').delegate('.click-to-delete-quotation', 'click', function(){
+        deleteQuotationId = $(this).attr('data-id')
+        var removeLi = $(this).closest('li')
+
+        $.ajax({
+          url: "/deleteQuotation/"+deleteQuotationId,
+          success: function(result){
+              removeLi.fadeOut(300, function(){
+                $(this).remove()
+              })
+             }
+          })
+      })
 
     $("#back-to-quote").click(function(){
     _hideShow.backToQuote()
 
     })
+
+
+
 
 })

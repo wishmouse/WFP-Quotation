@@ -150,7 +150,7 @@
   font-family: helvetica;
 }
 
-.click-to-edit{
+.click-to-edit, .click-to-edit-quotation{
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
@@ -161,10 +161,9 @@
   width: 72px;
   padding: 6px 10px 6px 10px;
   margin: 10px 0px 0px 0px;
-
 }
 
-.click-to-delete{
+.click-to-delete, .click-to-delete-quotation{
   display: inline-block;
     border: 1px solid black;
     border-radius: 8px;
@@ -217,7 +216,7 @@ div#data-submit:hover {
   width: 100px;
   text-align: left;
   padding-right: 10px;
-  width: 191px
+  width: 350px
 }
 
 .table-colour-quanity, .table-colour-price, .table-colour-total{
@@ -226,7 +225,7 @@ div#data-submit:hover {
   border-right: 1px solid #78b777;
   text-align: right;
   padding-right: 10px;
-  width: 91px;
+  width: 92px;
 
 }
 
@@ -236,8 +235,13 @@ div#data-submit:hover {
   border-right: 1px solid #78b777;
   text-align: left;
   padding-right: 10px;
-  width: 100px;
+  width: 350px;
 
 }
+
+.colour-comment{
+  width: 90px;
+}
+
 
 https://color.adobe.com/sinNat-Brown-2-color-theme-9178330/

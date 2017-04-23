@@ -116,9 +116,10 @@ function hideShow(){
     function editQuoteButton(){
       $("#quotation").hide()
       $("#fireplace").hide()
-      $("#air").hide()
+      $("#quote-select").hide()
       $("#make").hide()
       $("#edit-quotation-data").show()
+      $("#quotation-submit-button").hide()
 
     }
 
