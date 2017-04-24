@@ -123,6 +123,17 @@ function hideShow(){
 
     }
 
+    function dataSalesmanButton(){
+      $("#quotation").hide()
+      $("#fireplace").hide()
+      $("#quote-select").hide()
+      $("#make").hide()
+      $("#edit-salemsan-data").show()
+      $("#quotation-submit-button").hide()
+      $("#edit-salemsan-data").show()
+
+    }
+
     function clickToEdit(){
       $('#edit-data').hide()
       $("#fireplace-data-entry").show()
@@ -170,6 +181,7 @@ function hideShow(){
       cookerShow:cookerShow,
       backToQuote:backToQuote,
       editQuoteButton:editQuoteButton,
+      dataSalesmanButton:dataSalesmanButton, 
       clickToEdit:clickToEdit,
       dataEditButton:dataEditButton,
       airTypeShow:airTypeShow,

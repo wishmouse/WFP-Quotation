@@ -8,7 +8,6 @@
   <meta name="author" content="">
   <script src="/bundle.js"></script>
   <link rel='stylesheet' type='text/css' href='../styles/styles.css'></link>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
   <!-- Mobile Specific Metas -->
@@ -19,6 +18,7 @@
 -->
 </head>
 <body>
+
 <div  id="quotation">
 <form id="customer-form">
    Date:
@@ -70,6 +70,7 @@
 </form>
 <button id="data-entry-button">Enter Data</button>
 <button class="edit-quotation-button" id="edit-quotation-button">View Quote</button>
+<button class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</button>
 </div>
 
 <div id="quote-select">
@@ -131,13 +132,14 @@
       <div id="colourPrice-extra" class="border-colour" ></div>
       <div id="colourPrice-nocharge" class="border-colour">$0.00</div>
     </div>
-</div><br>
-
-<div id="quotation-display"> </div>
-</div><br>
+</div>
+<div id="quotation-display"></div>
+<br>
 <textarea id="quotation-comments" class = "quotation-comments" placeholder="comments"  cols="100" rows="5"></textarea>
   <button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
-</div>
+
+<br>
+
 
 <div id="edit-quotation" class="edit-quotation"></div>
 
@@ -177,6 +179,14 @@
   <div id="back-to-quote" class="back-to-quotation">Back to quote</div>
 </div>
 
+<div id="edit-salemsan-data">
+  Name :
+  <input  id="salesman-name" class="salesman-name" placeholder="Name and surname"/><br>
+  Email:
+  <input type="email" id="salesman-email"  class="salesman-email" placeholder="A.N.Other@none.com"/><br>
+  Phone number:
+  <input type="number"  id="salesman-phone" class="salesman-phone" placeholder="027 000 000"> <br>
+  <button id="submit-salesman-button" class ="submit-salesman-button">salesman data submit </button>
 </div>
 <!--  setting the address -->
     <script>

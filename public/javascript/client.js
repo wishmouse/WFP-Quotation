@@ -4,6 +4,8 @@ var request = require('superagent')
 var _hideShow = require('./_hideShow')
 var _dataInput = require('./_dataInput')
 var _clearData = require('./_clearData')
+var PDFDocument = require('pdfkit')
+var doc = new PDFDocument
 //var _quoteInput = require('./_quoteInput')
 
 //quotation submit
@@ -39,6 +41,7 @@ var editList
      $("#edit-quotation-data").hide()
      $("#colour-price").hide()
      $("#quotation-comments").hide()
+     $("#edit-salemsan-data").hide()
 
 
   $('#salesman').delegate('.border-salesman', 'click', function(e){
@@ -374,9 +377,7 @@ if(entryTypeController == 'data entry'){
      fuel = fireplaceType
      model = $("#model-dropdown").val()
      colourComment = $("#colour-comment").val()
-     alert(colourComment)
      comments = $("#quotation-comments").val()
-     alert(comments)
        $.ajax({
           method: "POST",
           url: "/quotation",
@@ -423,17 +424,57 @@ if(entryTypeController == 'data entry'){
         var editQuotationTemplate = ""+
           "<table>" +
             "<tr>"+
-              "<th class='table-header'></th>" +
-              "<th class='table-header'>Model</th>" +
-              "<th class='table-header'>Make</th>" +
+              "<th class='table-header'></th>"+
+              "<th class='table-header'>customerName</th>"+
+              "<th class='table-header'>quoteDate </th>"+
+              "<th class='table-header'>email</th>"+
+              "<th class='table-header'>phone</th>"+
+              "<th class='table-header'>streetNumber</th>"+
+              "<th class='table-header'>streetName</th>"+
+              "<th class='table-header'>address1</th>"+
+              "<th class='table-header'>suburb</th>"+
+              "<th class='table-header'>city</th>"+
+              "<th class='table-header'>postcode</th>"+
+              "<th class='table-header'>salesman</th>"+
+              "<th class='table-header'>type</th>"+
+              "<th class='table-header'>fuel</th>"+
+              "<th class='table-header'>make</th>"+
+              "<th class='table-header'>model</th>"+
+              "<th class='table-header'>fireplaceCost</th>"+
+              "<th class='table-header'>hearth</th>"+
+              "<th class='table-header'>wallHearth</th>"+
+              "<th class='table-header'>cornerHearth</th>"+
+              "<th class='table-header'>colour</th>"+
+              "<th class='table-header'>colourComment</th>"+
+              "<th class='table-header'>comments</th>"+
             "</tr>"+
             "<tr>"+
               "<td><button class='click-to-edit-quotation' data-id ="+editQuotationList._id+">Edit</button>" +
               "<button class='click-to-delete-quotation' data-id ="+editQuotationList._id+">Delete</button>" +
               "</td>"+
-              "<td class='table-body'>"+editQuotationList.model+"</td>" +
-              "<td class='table-body'>"+editQuotationList._id+"</td>" +
-              "<td class='table-body'>"+editQuotationList.make+"</td>" +
+              "<td class='table-body'>"+editQuotationList.customerName+"</td>"+
+              "<td class='table-body'>"+editQuotationList.quoteDate +"</td>"+
+              "<td class='table-body'>"+editQuotationList.email+"</td>"+
+              "<td class='table-body'>"+editQuotationList.phone+"</td>"+
+              "<td class='table-body'>"+editQuotationList.streetNumber+"</td>"+
+              "<td class='table-body'>"+editQuotationList.streetName+"</td>"+
+              "<td class='table-body'>"+editQuotationList.address1+"</td>"+
+              "<td class='table-body'>"+editQuotationList.suburb+"</td>"+
+              "<td class='table-body'>"+editQuotationList.city+"</td>"+
+              "<td class='table-body'>"+editQuotationList.postcode+"</td>"+
+              "<td class='table-body'>"+editQuotationList.salesman+"</td>"+
+              "<td class='table-body'>"+editQuotationList.type+"</td>"+
+              "<td class='table-body'>"+editQuotationList.fuel+"</td>"+
+              "<td class='table-body'>"+editQuotationList.make+"</td>"+
+              "<td class='table-body'>"+editQuotationList.model+"</td>"+
+              "<td class='table-body'>"+editQuotationList.fireplaceCost+"</td>"+
+              "<td class='table-body'>"+editQuotationList.hearth+"</td>"+
+              "<td class='table-body'>"+editQuotationList.wallHearth+"</td>"+
+              "<td class='table-body'>"+editQuotationList.cornerHearth+"</td>"+
+              "<td class='table-body'>"+editQuotationList.colour+"</td>"+
+              "<td class='table-body'>"+editQuotationList.colourComment+"</td>"+
+              "<td class='table-body'>"+editQuotationList.comments+"</td>"+
+
               "</tr>"+
             "</table>"
 
@@ -473,7 +514,39 @@ if(entryTypeController == 'data entry'){
 
     })
 
+    //==================
+    //================== salesperson data
+    //==================
+
+    $('#salesman').delegate('.border-salesman', 'click', function(e){
+           $(".border-salesman").removeClass("selected")
+           var select = $(this).addClass("selected")
+           var salesmanID = $(this).attr('id')
+           salesman = select.text()
+         })
+
+     $('#entry-salesman-button').click(function(e){
+       e.preventDefault()
+       $("#quotation-button").show()
+         _hideShow.dataSalesmanButton()
 
 
+       })
 
-})
+     $('#submit-salesman-button').click(function(e){
+       e.preventDefault()
+       salesmanName = $("#salesman-name").val()
+       salesmanEmail = $("#salesman-email").val()
+       salesmanPhone = $("#salesman-phone").val()
+         $.ajax({
+            method: "POST",
+            url: "/salesman",
+            data: {
+                salesmanName:salesmanName,
+                salesmanEmail:salesmanEmail,
+                salesmanPhone:salesmanPhone,
+              }
+         })
+    })
+
+})//document ready

@@ -108,12 +108,26 @@
   border-radius: 8px;
   padding: 12px 24px;
   margin: 30px;
-  background: aqua;  /*blue*/
+  background: #7778b7;  /*blue*/
   font-size: 10pt;
   font-family: helvetica;
   color: white;
 
 }
+
+.submit-salesman-button{
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 30px;
+  background: #766F63;  /*grey*/
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
+
+}
+
 
 .back-to-quotation{
   display: inline-block;
@@ -135,6 +149,18 @@
   padding: 12px 24px;
   margin: 30px;
   background: #b77778; /*red*/
+  font-size: 10pt;
+  font-family: helvetica;
+  color: white;
+}
+
+.entry-salesman-button {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 30px;
+  background: #766F63; /*grey*/
   font-size: 10pt;
   font-family: helvetica;
   color: white;

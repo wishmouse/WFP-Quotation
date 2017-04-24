@@ -92,6 +92,30 @@ app.get('/fireplaceData',  function(req, res){
   })
 })
 
+app.post('/salesman', function(req, res){
+  inputDataSalesman =  req.body //returns object
+  var MongoClient = mongodb.MongoClient
+  var url = "mongodb://localhost:27017/quotation"
+  MongoClient.connect(url, function(err, db){
+    if (err){
+      console.log("ooops there's an error: ", err)
+    } else {
+      var collection = db.collection("saleman")
+      var newData = inputDataSalesman
+      console.log(newData)
+        collection.insert([newData], function(err, result){
+        if (err){
+          conosole.log("there is an error: ", err)
+        } else {
+          res.redirect('/')
+        }
+        db.close()
+      })
+    }
+  })
+})
+
+
 app.get('/quotation',  function(req, res){
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/quotation"
