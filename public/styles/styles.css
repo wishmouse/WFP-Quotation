@@ -77,7 +77,7 @@
     color: white;
 
 }
-#edit-data-button{
+#edit-data-button, #edit-salesman-button{
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
@@ -129,13 +129,13 @@
 }
 
 
-.back-to-quotation{
+.back-to-quotation, .salesman-back-to-quotation{
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
   padding: 12px 24px;
   margin: 30px;
-  background: aqua;  /*blue*/
+  background: #7778b7;  /*blue*/
   font-size: 10pt;
   font-family: helvetica;
   color: white;
@@ -265,6 +265,11 @@ div#data-submit:hover {
 
 }
 
+.submit-notification{
+      padding: 20px;
+      background-color: #47A8F5;
+      color: white;
+}
 .colour-comment{
   width: 90px;
 }

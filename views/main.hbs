@@ -13,9 +13,6 @@
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS
-  <link href="styles/main.css" rel="stylesheet" type="text/css">
--->
 </head>
 <body>
 
@@ -29,8 +26,6 @@
    <input type="email" id="customer-email" value="" name="customer-email" class="customer" placeholder="A.N.Other@none.com"/><br>
    Phone number:
    <input type="number" name="customer-phone" id="customer-phone" class="customer" placeholder="027 000 000"> <br>
-
-   <input type="submit" value="Submit" id="quotation-submit">
 
     <div id="locationField">
       <input id="autocomplete" placeholder="Enter your address"
@@ -168,9 +163,9 @@
 <div>
   <button id="fireplace-data-submit">Submit Fireplace Data </button>
   <button id="updated-data-submit">Update Data </button>
-  <button class="quotation-button" id="quotation-button">Back to quote</button>
+  <button id="quotation-button" class="quotation-button">Back to quote</button>
   <button id="edit-data-button">Edit Fireplace Data</button>
-  <div id="data-submit-notification">Data submitted </div>
+  <div id="data-submit-notification" class="submit-notification">Data submitted </div>
 </div>
 </form>
 </div>
@@ -179,14 +174,22 @@
   <div id="back-to-quote" class="back-to-quotation">Back to quote</div>
 </div>
 
-<div id="edit-salemsan-data">
+<form id="edit-salesman-data">
   Name :
-  <input  id="salesman-name" class="salesman-name" placeholder="Name and surname"/><br>
+  <input type="text" id="salesman-name" class="salesman-name" placeholder="Name and surname"/><br>
   Email:
   <input type="email" id="salesman-email"  class="salesman-email" placeholder="A.N.Other@none.com"/><br>
   Phone number:
   <input type="number"  id="salesman-phone" class="salesman-phone" placeholder="027 000 000"> <br>
-  <button id="submit-salesman-button" class ="submit-salesman-button">salesman data submit </button>
+  <div id="salesman-submit-notification" class="submit-notification">Data submitted</div>
+  <div>
+    <button id="submit-salesman-button" class ="submit-salesman-button">Salesman data submit </button>
+    <button id="salesman-back-to-quotation" class="salesman-back-to-quotation">Back to quote</button>
+    <button id="edit-salesman-button" class = "edit-salesman-button">Edit Salesman </button>
+  </div>
+</form>
+
+<div id="salesman-data">
 </div>
 <!--  setting the address -->
     <script>
@@ -260,11 +263,10 @@
 		});
 	});
 	</script>
-	<!-- drop down selector -->
-
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa_og4BGPFke8eLA6IROOGEzNyT4tQmCg
 &libraries=places&callback=initAutocomplete"
-        async defer></script>
+        async defer>
+    </script>
   </body>
 </html>

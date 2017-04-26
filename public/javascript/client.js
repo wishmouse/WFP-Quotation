@@ -35,13 +35,27 @@ var editList
  $(document).ready(function(){
     entryTypeController = 'quotation'
      $("#fireplace-data-entry").hide()
-
      $("#make").hide()
      $("#dropdown-selector").hide()
      $("#edit-quotation-data").hide()
      $("#colour-price").hide()
      $("#quotation-comments").hide()
-     $("#edit-salemsan-data").hide()
+     $("#edit-salesman-data").hide()
+/*
+       $.ajax({
+         url: "/salesman",
+         success: function(result){
+               salemanData = JSON.parse(result)
+               for (i = 0; i < salesmanData.length; i++) {
+                 salesmanList = salesmanData[i]
+                 console.log(salesmanList)
+                 displayEdit(salesmanList)
+
+               }
+             }
+           })
+           */
+
 
 
   $('#salesman').delegate('.border-salesman', 'click', function(e){
@@ -116,9 +130,9 @@ var editList
             var select = $(this).addClass("selected")
             var makeID = $(this).attr('id')
             make = select.text()
-            $("#quotation-comments").show()
 
             if (entryTypeController == 'quotation'){
+                $("#quotation-comments").show()
                 $.ajax({
                 url: "/fireplaceData",
                 success: function(result){
@@ -209,8 +223,8 @@ var editList
 
    $("#quotation-button").click(function() {
      $("#quotation").show()
-     $("#fireplace-data-entry").hide()
      $("#quotation-submit-button").show()
+     $("#fireplace-data-entry").hide()
    });
 
 
@@ -236,6 +250,7 @@ var editList
         $.ajax({
           method: "POST",
           url: "/database",
+
           data: {
                   fuel:fireplaceType,
                   make: make,
@@ -255,6 +270,7 @@ var editList
                })
 
        _clearData.clearDataSubmit()
+      $("#make").hide()
        _clearData.removeClassSubmit()
        $("#data-submit-notification").show().delay(2000).fadeOut();
    })
@@ -268,6 +284,8 @@ var editList
      e.preventDefault()
      _hideShow.dataEditButton()
      editLine = $('#edit-data')
+     entryTypeController = 'data entry'
+
 
       function displayEdit(edit){
         var editTemplate = ""+
@@ -310,19 +328,19 @@ var editList
       editLine.append(editTemplate, edit)
     }
 
-if(entryTypeController == 'data entry'){
-  $.ajax({
-    url: "/fireplaceData",
-    success: function(result){
-          editData = JSON.parse(result)
-          for (i = 0; i < editData.length; i++) {
-            editList = editData[i]
-            displayEdit(editList)
-
+  if(entryTypeController == 'data entry'){
+    alert(entryTypeController)
+    $.ajax({
+      url: "/fireplaceData",
+      success: function(result){
+            editData = JSON.parse(result)
+            for (i = 0; i < editData.length; i++) {
+              editList = editData[i]
+              displayEdit(editList)
+            }
           }
-        }
-      })
-    }
+        })
+      }
 })
 
  $('#edit-data').delegate('.click-to-edit', 'click', function(){
@@ -341,13 +359,13 @@ if(entryTypeController == 'data entry'){
      })
  })
 
-
+// delete fireplace
  $('#edit-data').delegate('.click-to-delete', 'click', function(){
      clickToDeleteId = $(this).attr('data-id')
-     var removeLi = $(this).closest('li')
+     var removeLi = $(this).closest('tr')
 
      $.ajax({
-       url: "/deleteQuotation/"+clickToDeleteId,
+       url: "/delete/"+clickToDeleteId,
        success: function(result){
            removeLi.fadeOut(300, function(){
              $(this).remove()
@@ -363,7 +381,7 @@ if(entryTypeController == 'data entry'){
 
    $('#quotation-submit-button').click(function(e){
      e.preventDefault()
-
+alert("hre")
      customerName = $("#customer-name").val()
      quoteDate = $("date").val()
      email = $("#customer-email").val()
@@ -409,6 +427,7 @@ if(entryTypeController == 'data entry'){
                })
      _clearData.clearQuotationSubmit()
      _clearData.removeClassSubmit()
+     alert("here number 2")
      $("#dropdown-selector").hide()
      $("#make").hide()
 
@@ -449,7 +468,7 @@ if(entryTypeController == 'data entry'){
               "<th class='table-header'>comments</th>"+
             "</tr>"+
             "<tr>"+
-              "<td><button class='click-to-edit-quotation' data-id ="+editQuotationList._id+">Edit</button>" +
+              "<td><button class='click-to-edit-email' data-id ="+editQuotationList._id+">Email</button>" +
               "<button class='click-to-delete-quotation' data-id ="+editQuotationList._id+">Delete</button>" +
               "</td>"+
               "<td class='table-body'>"+editQuotationList.customerName+"</td>"+
@@ -485,9 +504,10 @@ if(entryTypeController == 'data entry'){
         $.ajax({
           url: "/quotation",
           success: function(result){
-                editQuotation = JSON.parse(result)
-                for (i = 0; i < editQuotation.length; i++) {
-                  editQuotationList = editQuotation[i]
+                editQuotationData = JSON.parse(result)
+                console.log(editQuotationData)
+                for (i = 0; i < editQuotationData.length; i++) {
+                  editQuotationList = editQuotationData[i]
                   displayEditQuotation(editQuotationList)
               }
             }
@@ -527,17 +547,22 @@ if(entryTypeController == 'data entry'){
 
      $('#entry-salesman-button').click(function(e){
        e.preventDefault()
-       $("#quotation-button").show()
          _hideShow.dataSalesmanButton()
-
-
        })
+
+     $("#salesman-back-to-quotation").click(function(e){
+       e.preventDefault()
+       _hideShow.backToSalesButton
+
+      })
+
 
      $('#submit-salesman-button').click(function(e){
        e.preventDefault()
        salesmanName = $("#salesman-name").val()
        salesmanEmail = $("#salesman-email").val()
        salesmanPhone = $("#salesman-phone").val()
+
          $.ajax({
             method: "POST",
             url: "/salesman",
@@ -547,6 +572,55 @@ if(entryTypeController == 'data entry'){
                 salesmanPhone:salesmanPhone,
               }
          })
+
+
+         $('#edit-salesman-data')[0].reset();
+
+         $("#salesman-submit-notification").show().delay(2000).fadeOut();
     })
+
+
+ $('#edit-salesman-button').click(function(e){
+    e.preventDefault()
+    $("#edit-salesman-data").hide()
+
+    editSalemanLine =$("#salesman-data")
+
+    function displaySalesmanData(editSalesman){
+      var editSalesmanTemplate = ""+
+        "<table>" +
+          "<tr>"+
+            "<th class='table-header'></th>"+
+            "<th class='table-header'>Name</th>"+
+            "<th class='table-header'>Email</th>"+
+            "<th class='table-header'>Phone Number</th>"+
+          "</tr>"+
+          "<tr>"+
+            "<td><button class='click-to-edit-salesman' data-id ="+editSalesmanList._id+">Edit</button>" +
+            "<button class='click-to-delete-salesman' data-id ="+editSalesmanList._id+">Delete</button>" +
+            "</td>"+
+            "<td class='table-body'>"+editSalesmanList.salesmanName+"</td>"+
+
+            "<td class='table-body'>"+editSalesmanList.salesmanEmail+"</td>"+
+            "<td class='table-body'>"+editSalesmanList.salesmanPhone+"</td>"+
+
+            "</tr>"+
+          "</table>"
+
+        editSalemanLine.append(editSalesmanTemplate, editSalesman)
+    }
+      $.ajax({
+        url: "/salesman",
+        success: function(result){
+              editSalesmanData = JSON.parse(result)
+              console.log(editSalesmanData)
+              for (i = 0; i < editSalesmanData.length; i++) {
+                editSalesmanList = editSalesmanData[i]
+                displaySalesmanData(editSalesmanList)
+            }
+          }
+        })
+  })
+
 
 })//document ready

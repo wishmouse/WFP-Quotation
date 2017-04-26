@@ -5,6 +5,7 @@ var request = require('superagent')
 
 function dataEntryButton(){
   $("#quotation").hide()
+  $("quotation-comments").hide()
   $("#fireplace-data-entry").show()
   $("#free-standing-make").hide()
   $("#inbuilt-entry").hide()

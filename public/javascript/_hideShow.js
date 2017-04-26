@@ -109,7 +109,7 @@ function hideShow(){
       $("#quotation").show()
       $("#fireplace").show()
       $("#air").show()
-      $("#make").show()
+      $("#make").hide()
       $("#back-to-quote").hide()
     }
 
@@ -118,9 +118,10 @@ function hideShow(){
       $("#fireplace").hide()
       $("#quote-select").hide()
       $("#make").hide()
-      $("#edit-quotation-data").show()
+      $("#quotation-comments").hide()
       $("#quotation-submit-button").hide()
-
+      $("#quotation-display").hide()
+      $("#edit-quotation-data").show()
     }
 
     function dataSalesmanButton(){
@@ -128,9 +129,11 @@ function hideShow(){
       $("#fireplace").hide()
       $("#quote-select").hide()
       $("#make").hide()
-      $("#edit-salemsan-data").show()
+      $("#edit-salesman-data").show()
+      $("#quotation-button").show()
       $("#quotation-submit-button").hide()
-      $("#edit-salemsan-data").show()
+      $("#edit-salesman-data").show()
+      $("#salesman-submit-notification").hide()
 
     }
 
@@ -170,6 +173,16 @@ function hideShow(){
       $("#cleanAirWB-dropdown").show()
     }
 
+    function backToSalesButton(){
+           $("#quotation").show()
+           $("#quotation-submit-button").show()
+           $("#fireplace-data-entry").hide()
+           $('#edit--data').hide()
+           $("#quote-select").show()
+           $("#fireplace").show()
+           $("#edit-salesman-data").hide()
+         }
+
 
     module.exports = {
       hideShow:hideShow,
@@ -180,8 +193,9 @@ function hideShow(){
       biofuelShow:biofuelShow,
       cookerShow:cookerShow,
       backToQuote:backToQuote,
+      backToSalesButton:backToSalesButton,
       editQuoteButton:editQuoteButton,
-      dataSalesmanButton:dataSalesmanButton, 
+      dataSalesmanButton:dataSalesmanButton,
       clickToEdit:clickToEdit,
       dataEditButton:dataEditButton,
       airTypeShow:airTypeShow,
