@@ -114,6 +114,23 @@ app.get('/salesman',  function(req, res){
   })
 })
 
+app.get('/deleteSalesman/:id',  function(req, res){
+  var MongoClient = mongodb.MongoClient
+  var url = "mongodb://localhost:27017/salesman"
+  MongoClient.connect(url, function(err, db){
+    if (err){
+      console.log("ooops there's an error retreiving data from Database: ", err)
+    } else {
+      var collection = db.collection("salesman")
+      var ObjectId = require('mongodb').ObjectId;
+      var deleteId = req.params.id;
+      var o_id = new ObjectId(deleteId);
+      collection.remove({_id:o_id})
+        db.close()
+    }
+  })
+})
+
 app.get('/fireplaceData',  function(req, res){
   var MongoClient = mongodb.MongoClient
   console.log("we are here")
@@ -174,8 +191,7 @@ app.get('/quotation',  function(req, res){
 app.get('/edit/:id',  function(req, res){
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/database"
-  //var url = "mongodb://localhost:27017/database"
-  //var editId = req.params.id
+
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there's an error retreiving data from Database: ", err)
@@ -202,9 +218,7 @@ app.get('/edit/:id',  function(req, res){
 })
 
 app.get('/delete/:id',  function(req, res){
-  console.log("boom ")
   var MongoClient = mongodb.MongoClient
-  //var url = "mongodb://localhost:27017/database"
   var url = "mongodb://localhost:27017/database"
   MongoClient.connect(url, function(err, db){
     if (err){
@@ -222,7 +236,6 @@ app.get('/delete/:id',  function(req, res){
 
 app.get('/getData',  function(req, res){
   var MongoClient = mongodb.MongoClient
-  //var url = "mongodb://localhost:27017/database"
   var url ='mongodb://localhost:27017/database'
   MongoClient.connect(url, function(err, db){
     if (err){

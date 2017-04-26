@@ -176,7 +176,7 @@
   font-family: helvetica;
 }
 
-.click-to-edit, .click-to-edit-quotation{
+.click-to-edit, .click-to-edit-quotation, .click-to-edit-salesman{
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
@@ -189,7 +189,7 @@
   margin: 10px 0px 0px 0px;
 }
 
-.click-to-delete, .click-to-delete-quotation{
+.click-to-delete, .click-to-delete-quotation, .click-to-delete-salesman{
   display: inline-block;
     border: 1px solid black;
     border-radius: 8px;

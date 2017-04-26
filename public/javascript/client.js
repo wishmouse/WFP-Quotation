@@ -584,11 +584,11 @@ alert("hre")
     e.preventDefault()
     $("#edit-salesman-data").hide()
 
-    editSalemanLine =$("#salesman-data")
+    editSalemanLine =$("#edit-salesman")
 
     function displaySalesmanData(editSalesman){
       var editSalesmanTemplate = ""+
-        "<table>" +
+        "<table class='to-delete"+editSalesmanList._id+"'>" +
           "<tr>"+
             "<th class='table-header'></th>"+
             "<th class='table-header'>Name</th>"+
@@ -621,6 +621,18 @@ alert("hre")
           }
         })
   })
+
+  $('#edit-salesman').delegate('.click-to-delete-salesman', 'click', function(){
+      deleteSalesmanId = $(this).attr('data-id')
+      $( ".to-delete"+deleteSalesmanId ).fadeOut("slow")
+
+      $.ajax({
+        url: "/deleteSalesman/"+deleteSalesmanId,
+        success: function(result){
+           }
+        })
+
+    })
 
 
 })//document ready
