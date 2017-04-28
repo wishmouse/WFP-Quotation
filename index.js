@@ -41,19 +41,20 @@ app.post('/salesman', function(req, res){
   })
 })
 
-app.post('/database', function(req, res){
+app.post('/fireplaceDatabase', function(req, res){
   inputData =  req.body //returns object
+  console.log(inputData)
   var MongoClient = mongodb.MongoClient
-  var url = "mongodb://localhost:27017/database"
+  var url = "mongodb://localhost:27017/fireplaceDatabase"
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there is an error in database entry: ", err)
     } else {
-      var collection = db.collection("database")
+      var collection = db.collection("fireplaceDatabase")
       var newData = inputData
         collection.insert([newData], function(err, result){
         if (err){
-          conosole.log("ooops there is an error in database entry: ", err)
+          console.log("ooops there is an error in database entry: ", err)
         } else {
           res.redirect('/')
         }
@@ -134,12 +135,12 @@ app.get('/deleteSalesman/:id',  function(req, res){
 app.get('/fireplaceData',  function(req, res){
   var MongoClient = mongodb.MongoClient
   console.log("we are here")
-  var url = "mongodb://localhost:27017/database"
+  var url = "mongodb://localhost:27017/fireplaceDatabase"
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there's an error retreiving data from Database: ", err)
     } else {
-      var collection = db.collection("database")
+      var collection = db.collection("fireplaceDatabase")
       console.log("... and here")
       collection.find({}).toArray(function(err, result){
         if (err){
@@ -190,13 +191,13 @@ app.get('/quotation',  function(req, res){
 
 app.get('/edit/:id',  function(req, res){
   var MongoClient = mongodb.MongoClient
-  var url = "mongodb://localhost:27017/database"
+  var url = "mongodb://localhost:27017/fireplaceDatabase"
 
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there's an error retreiving data from Database: ", err)
     } else {
-      var collection = db.collection("database")
+      var collection = db.collection("fireplaceDatabase")
       var ObjectId = require('mongodb').ObjectId;
       var editId = req.params.id;
       var o_id = new ObjectId(editId);
@@ -219,12 +220,12 @@ app.get('/edit/:id',  function(req, res){
 
 app.get('/delete/:id',  function(req, res){
   var MongoClient = mongodb.MongoClient
-  var url = "mongodb://localhost:27017/database"
+  var url = "mongodb://localhost:27017/fireplaceDatabase"
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there's an error retreiving data from Database: ", err)
     } else {
-      var collection = db.collection("database")
+      var collection = db.collection("fireplaceDatabase")
       var ObjectId = require('mongodb').ObjectId;
       var editId = req.params.id;
       var o_id = new ObjectId(editId);
@@ -236,12 +237,12 @@ app.get('/delete/:id',  function(req, res){
 
 app.get('/getData',  function(req, res){
   var MongoClient = mongodb.MongoClient
-  var url ='mongodb://localhost:27017/database'
+  var url ='mongodb://localhost:27017/fireplaceDatabase'
   MongoClient.connect(url, function(err, db){
     if (err){
       console.log("ooops there's an error retreiving data from Database: ", err)
     } else {
-      var collection = db.collection("database")
+      var collection = db.collection("fireplaceDatabase")
       var ObjectId = require('mongodb').ObjectId;
       var editId = req.params.id;
       var o_id = new ObjectId(editId);

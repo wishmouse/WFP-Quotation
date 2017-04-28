@@ -54,8 +54,8 @@ var editList
                }
              }
            })
-           */
 
+*/
 
 
   $('#salesman').delegate('.border-salesman', 'click', function(e){
@@ -79,6 +79,7 @@ var editList
            var select = $(this).addClass("selected")
            var hearthID = $(this).attr('id')
            hearth = select.text()
+
           _clearData.changeTypes()
           _hideShow.hearthTypeShow()
          })
@@ -132,7 +133,6 @@ var editList
             make = select.text()
 
             if (entryTypeController == 'quotation'){
-                $("#quotation-comments").show()
                 $.ajax({
                 url: "/fireplaceData",
                 success: function(result){
@@ -146,15 +146,13 @@ var editList
                           var optionModel = $('<option />')
                           optionModel.attr('value', this.model).text(this.model)
                           $('#model-dropdown').append(optionModel)
-
-                      })
+                        })
                     }
-
                   }
                 }
               })
             }
-           })
+          })
 
            $("#model-dropdown" ).change(function() {
              var modelValue = $("#model-dropdown" ).val()
@@ -173,9 +171,10 @@ var editList
                     fireplaceCost = dataReturn.ruralWB
                  }
                  if(hearth == 'Corner Hearth'){
-                   hearthCost =dataReturn.cornerHearth
+                   cornerHearth =dataReturn.cornerHearth
+
                  }else if(hearth == 'Wall Hearth'){
-                   hearthCost =dataReturn.wallHearth
+                   wallHearth =dataReturn.wallHearth
                  }
                  quotationDisplay()
 
@@ -183,6 +182,7 @@ var editList
                    $("#colour-price").show()
                    $("#colourPrice-extra").html(dataReturn.colourPrice)
                  }
+
                }
              }
 
@@ -249,7 +249,7 @@ var editList
      colourPrice =$("#input-colour-price").val()
         $.ajax({
           method: "POST",
-          url: "/database",
+          url: "/fireplaceDatabase",
 
           data: {
                   fuel:fireplaceType,
@@ -329,7 +329,6 @@ var editList
     }
 
   if(entryTypeController == 'data entry'){
-    alert(entryTypeController)
     $.ajax({
       url: "/fireplaceData",
       success: function(result){
@@ -381,7 +380,6 @@ var editList
 
    $('#quotation-submit-button').click(function(e){
      e.preventDefault()
-alert("hre")
      customerName = $("#customer-name").val()
      quoteDate = $("date").val()
      email = $("#customer-email").val()
@@ -427,7 +425,6 @@ alert("hre")
                })
      _clearData.clearQuotationSubmit()
      _clearData.removeClassSubmit()
-     alert("here number 2")
      $("#dropdown-selector").hide()
      $("#make").hide()
 
