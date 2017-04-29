@@ -39,8 +39,9 @@ var editList
      $("#dropdown-selector").hide()
      $("#edit-quotation-data").hide()
      $("#colour-price").hide()
-     $("#quotation-comments").hide()
      $("#edit-salesman-data").hide()
+     $('#quotation-display-data').empty()
+     $("#enter-hearth-data").hide()
 /*
        $.ajax({
          url: "/salesman",
@@ -189,7 +190,7 @@ var editList
 
 
              function quotationDisplay(){
-               quoteLine = $('#quotation-display')
+               quoteLine = $('#quotation-display-data')
                var editTemplate = ""+
                  "<table>" +
                    "<tr>"+
@@ -221,11 +222,6 @@ var editList
      entryTypeController = 'data entry'
    });
 
-   $("#quotation-button").click(function() {
-     $("#quotation").show()
-     $("#quotation-submit-button").show()
-     $("#fireplace-data-entry").hide()
-   });
 
 
 //===============
@@ -272,7 +268,7 @@ var editList
        _clearData.clearDataSubmit()
       $("#make").hide()
        _clearData.removeClassSubmit()
-       $("#data-submit-notification").show().delay(2000).fadeOut();
+       $(".submit-notification").show().delay(2000).fadeOut();
    })
 
 
@@ -433,6 +429,7 @@ var editList
   $('#edit-quotation-button').click(function(e){
     e.preventDefault()
       _hideShow.editQuoteButton()
+      $("#edit-quotation").empty()
       entryTypeController = 'quotation'
       editQuotationLine =$("#edit-quotation")
 
@@ -526,10 +523,11 @@ var editList
           })
       })
 
-    $("#back-to-quote").click(function(){
+    $(".back-to-quotation").click(function(){
     _hideShow.backToQuote()
 
-    })
+    });
+
 
     //==================
     //================== salesperson data
@@ -559,6 +557,7 @@ var editList
        salesmanName = $("#salesman-name").val()
        salesmanEmail = $("#salesman-email").val()
        salesmanPhone = $("#salesman-phone").val()
+       salemanActive =$("#salesman-active").val()
 
          $.ajax({
             method: "POST",
@@ -567,6 +566,7 @@ var editList
                 salesmanName:salesmanName,
                 salesmanEmail:salesmanEmail,
                 salesmanPhone:salesmanPhone,
+                salemanActive:salemanActive,
               }
          })
 
@@ -630,6 +630,90 @@ var editList
         })
 
     })
+
+//==============
+//==============hearth data entry
+//==============
+$("#entry-hearth-button").click(function(){
+  _hideShow.dataHearthButton()
+  $(".submit-notification").hide()
+})
+
+$("#hearth-make").delegate('.border-make-hearth', 'click', function(e){
+       $(".border-make-hearth").removeClass("selected")
+       var select = $(this).addClass("selected")
+       var hearthMakeID = $(this).attr('id')
+       hearthMake = select.text()
+     })
+
+$('#hearth-data-submit').click(function(e){
+  e.preventDefault()
+  hearthModel = $("#input-model-hearth").val()
+  hearthFinish = $("#hearth-finish").val()
+  hearthPrice =$("#input-price-hearth").val()
+  hearthAddFinish =$("#input-additional-finish-hearth").val()
+  hearthAddFinishPrice =$("#input-price-hearth-add-finish").val()
+
+    $.ajax({
+       method: "POST",
+       url: "/hearth",
+       data: {
+         hearthMake:hearthMake,
+         hearthModel:hearthModel,
+         hearthFinish:hearthFinish,
+         hearthPrice:hearthPrice,
+         hearthAddFinish:hearthAddFinish,
+         hearthAddFinishPrice:hearthAddFinishPrice,
+         }
+    })
+    $('#enter-hearth-data')[0].reset();
+
+    $(".submit-notification").show().delay(2000).fadeOut();
+})
+
+/*
+$('#edit-hearth-button').click(function(e){
+   e.preventDefault()
+   $("#edit-hearth-data").hide()
+
+   editHearthLine =$("#edit-hearth")
+
+   function displaySalesmanData(editHearth){
+     var editHearthTemplate = ""+
+       "<table class='to-delete"+editSalesmanList._id+"'>" +
+         "<tr>"+
+           "<th class='table-header'></th>"+
+           "<th class='table-header'>Name</th>"+
+           "<th class='table-header'>Email</th>"+
+           "<th class='table-header'>Phone Number</th>"+
+         "</tr>"+
+         "<tr>"+
+           "<td><button class='click-to-edit-salesman' data-id ="+editSalesmanList._id+">Edit</button>" +
+           "<button class='click-to-delete-salesman' data-id ="+editSalesmanList._id+">Delete</button>" +
+           "</td>"+
+           "<td class='table-body'>"+editSalesmanList.salesmanName+"</td>"+
+
+           "<td class='table-body'>"+editSalesmanList.salesmanEmail+"</td>"+
+           "<td class='table-body'>"+editSalesmanList.salesmanPhone+"</td>"+
+
+           "</tr>"+
+         "</table>"
+
+       editHearthLine.append(editHearthTemplate, editHearth)
+   }
+     $.ajax({
+       url: "/getHearthData",
+       success: function(result){
+             editHearthData = JSON.parse(result)
+             console.log(editHearthData)
+             for (i = 0; i < editHearthData.length; i++) {
+               editHearthList = editHearthData[i]
+               displaySalesmanData(editHearthList)
+           }
+         }
+       })
+ })
+ */
 
 
 })//document ready

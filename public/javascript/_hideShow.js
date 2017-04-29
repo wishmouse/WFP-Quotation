@@ -109,18 +109,22 @@ function hideShow(){
       $("#quotation").show()
       $("#fireplace").show()
       $("#air").show()
-      $("#make").hide()
+      $("#dropdown-selector").show()
       $("#back-to-quote").hide()
+      $("#dropdown-selector").hide()
+      $("#edit-quotation").empty()
+      $("#enter-hearth-data").hide()
     }
 
     function editQuoteButton(){
       $("#quotation").hide()
       $("#fireplace").hide()
-      $("#quote-select").hide()
+      $("#air").hide()
+      $("#dropdown-selector").hide()
       $("#make").hide()
       $("#quotation-comments").hide()
       $("#quotation-submit-button").hide()
-      $("#quotation-display").hide()
+      $("#quotation-display-data").hide()
       $("#edit-quotation-data").show()
     }
 
@@ -134,7 +138,15 @@ function hideShow(){
       $("#quotation-submit-button").hide()
       $("#edit-salesman-data").show()
       $("#salesman-submit-notification").hide()
+    }
 
+    function dataHearthButton(){
+      $("#quotation").hide()
+      $("#fireplace").hide()
+      $("#air").hide()
+      $("#make").hide()
+      $("#dropdown-selector").hide()
+      $("#enter-hearth-data").show()
     }
 
     function clickToEdit(){
@@ -201,4 +213,5 @@ function hideShow(){
       airTypeShow:airTypeShow,
       hearthTypeShow:hearthTypeShow,
       wetbackTypeShow:wetbackTypeShow,
+      dataHearthButton:dataHearthButton,
     }

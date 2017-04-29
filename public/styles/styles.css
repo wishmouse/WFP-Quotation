@@ -36,7 +36,7 @@
     text-align: center;
 }
 
-.border-make{
+.border-make, .border-make-hearth{
   border: 1px solid #B39476;
   width: 16%;
   height: 35px;
@@ -53,7 +53,7 @@
 
 
 
-#fireplace-data-submit {
+#fireplace-data-submit, #hearth-data-submit {
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
@@ -77,7 +77,7 @@
     color: white;
 
 }
-#edit-data-button, #edit-salesman-button{
+#edit-data-button, #edit-salesman-button, #edit-hearth-button{
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
