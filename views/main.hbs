@@ -127,6 +127,25 @@
       <div id="colourPrice-nocharge" class="border-colour">0.00</div>
     </div>
 
+Hearth
+<div id="hearth-style" class="wrapper">
+  <div id="hearth-corner" class="border-style-hearth">Corner Hearth</div>
+  <div id="hearth-wall" class="border-style-hearth">Wall Hearth</div>
+</div>
+
+<div id="display-hearth-make" style='margin-top: 25px'>Make:<br>
+  <div id="display-hearth-bosca" class='border-make-hearth-display' value="Bosca">Bosca</div>
+  <div id="display-hearth-pyroclassic"  class='border-make-hearth-display' value="pyroclassic">Pyroclassic</div>
+  <div id="display-hearth-metro" class='border-make-hearth-display' value="metro">Metrofires</div>
+  <div id="display-hearth-warmington" class='border-make-hearth-display' value="warmington">Warmington</div>
+  <div id="display-hearth-kent" class='border-make-hearth-display' value="kent">Kent</div>
+  <div id="display-hearth-stovax" class='border-make-hearth-display' value="stovax">Stovax</div>
+</div>
+
+Model :<select class="quote-dropdown" id="model-dropdown-hearth"></select><br>
+
+
+
 <div id="quotation-display-data"></div>
   <br>
   <textarea id="quotation-comments" class = "quotation-comments" placeholder="comments"  cols="100" rows="5"></textarea>
@@ -204,11 +223,16 @@
   </div>
 
   <input type="text" id="input-model-hearth" placeholder="Model">
+  Hearth :
+  <select id='hearth-style'>
+    <option class="hearth-corner">Corner Hearth</option>
+    <option class="hearth-wall">Wall Hearth</option>
+  </select>
   Finish:
   <select id='hearth-finish'>
     <option class="hearth-finish">Steel</option>
     <option class="hearth-finish">Smoked Glass</option>
-    <option class="hearth-finish">Options</option>
+      <option class="hearth-finish">Options</option>
     <option class="hearth-finish">Galaxy</option>
     <option class="hearth-finish">Champagne</option>
   </select>
@@ -230,7 +254,10 @@ Standard Finish price:
   </div>
 
 </form>
-<div id="edit-hearth"></div>
+
+<div id="edit-hearth-view">
+</div>
+
 <!--  setting the address -->
     <script>
       var placeSearch, autocomplete;

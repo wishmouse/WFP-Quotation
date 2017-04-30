@@ -114,6 +114,8 @@ function hideShow(){
       $("#dropdown-selector").hide()
       $("#edit-quotation").empty()
       $("#enter-hearth-data").hide()
+      $("#edit-salesman-data").hide()
+      $("#edit-hearth-view").empty()
     }
 
     function editQuoteButton(){
@@ -133,6 +135,7 @@ function hideShow(){
       $("#fireplace").hide()
       $("#quote-select").hide()
       $("#make").hide()
+      $("#air").hide()
       $("#edit-salesman-data").show()
       $("#quotation-button").show()
       $("#quotation-submit-button").hide()

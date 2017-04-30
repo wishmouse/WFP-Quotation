@@ -4,6 +4,7 @@ var request = require('superagent')
 var _hideShow = require('./_hideShow')
 var _dataInput = require('./_dataInput')
 var _clearData = require('./_clearData')
+var _quoteInput = require('./_quoteInput')
 var PDFDocument = require('pdfkit')
 var doc = new PDFDocument
 //var _quoteInput = require('./_quoteInput')
@@ -75,15 +76,6 @@ var editList
          _hideShow.airTypeShow()
         })
 
-    $('#hearth').delegate('.border-hearth', 'click', function(e){
-           $(".border-hearth").removeClass("selected")
-           var select = $(this).addClass("selected")
-           var hearthID = $(this).attr('id')
-           hearth = select.text()
-
-          _clearData.changeTypes()
-          _hideShow.hearthTypeShow()
-         })
 
   $('#colour-price').delegate('.border-colour', 'click', function(e){
            $(".border-colour").removeClass("selected")
@@ -96,7 +88,8 @@ var editList
                 "<tr>"+
                   "<td class='table-colour-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                   "<td class='table-colour-quanity'>"+'1'+"</td>" +
-                  "<td class='table-colour-price'>"+colour+"</td>" +
+                  "<td class='table-colour-price'><input type='number' id='colour-price-text' value="+colour+"></input></td>" +
+
                   "<td class='table-colour-total'>"+'00.00'+"</td>" +
                 "</tr>"
             quoteLine.append(editTemplate)
@@ -104,6 +97,74 @@ var editList
           colourPrice()
            _clearData.changeTypes()
          })
+
+
+       $('#hearth-style').delegate('.border-style-hearth', 'click', function(e){
+              $(".border-style-hearth").removeClass("selected")
+              var select = $(this).addClass("selected")
+              var hearthID = $(this).attr('id')
+              hearthStyle = select.text()
+
+             _clearData.changeTypes()
+             _hideShow.hearthTypeShow()
+        })
+
+        $('#display-hearth-make').delegate('.border-make-hearth-display', 'click', function(e){
+               $(".border-make-hearth-display").removeClass("selected")
+               var select = $(this).addClass("selected")
+               var hearthMakeID = $(this).attr('id')
+               hearthMakeDisplay = select.text()
+
+              _clearData.changeTypes()
+              _hideShow.hearthTypeShow()
+
+              if (entryTypeController == 'quotation'){
+                  $.ajax({
+                  url: "/getHearthData",
+                  success: function(result){
+                    $('#model-dropdown-hearth').html('')
+                    getHearthData = JSON.parse(result)
+                    for (i = 0; i < getHearthData.length; i++) {
+                       hearthDataReturn = getHearthData[i]
+                      if(hearthMakeDisplay == hearthDataReturn.hearthMake){
+                          $("#dropdown-selector").show()
+                          $(hearthDataReturn).each(function(){
+                            var hearthOptionModel = $('<option />')
+                            hearthOptionModel.attr('value', this.hearthModel).text(this.hearthModel)
+                            $('#model-dropdown-hearth').append(hearthOptionModel)
+                          })
+                      }
+
+                    }
+                  }
+                })
+            }
+          })
+
+      $("#model-dropdown-hearth").change(function() {
+        var modelHearthValue = $("#model-dropdown-hearth" ).val()
+          for (i = 0; i < getHearthData.length; i++){
+              hearthModelReturn = getHearthData[i]
+            if(hearthModelReturn.hearthModel == modelHearthValue ){
+              hearthPrice()
+            }
+          }
+        })
+
+
+
+      function hearthPrice(){
+        var editTemplate = ""+
+            "<tr>"+
+              "<td class='table-hearth-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
+              "<td class='table-colour-quanity'>"+'1'+"</td>" +
+              "<td class='table-colour-price'><input type='number' id='heart-price-text' value="+parseInt(hearthDataReturn.hearthPrice)+"></input></td>" +
+              "<td class='table-colour-total'>"+'00.00'+"</td>" +
+            "</tr>"
+        quoteLine.append(editTemplate)
+       _clearData.changeTypes()
+    }
+
 
         $('#fireplace').delegate('.border-fireplace', 'click', function(e){
               _hideShow.hideShow()
@@ -155,6 +216,10 @@ var editList
             }
           })
 
+
+
+
+
            $("#model-dropdown" ).change(function() {
              var modelValue = $("#model-dropdown" ).val()
              for (i = 0; i < getData.length; i++) {
@@ -202,7 +267,7 @@ var editList
                    "<tr>"+
                      "<td class='table-fireplace-description'>"+make+' '+dataReturn.model+ "</td>" +
                      "<td class='table-body'>"+'1'+"</td>" +
-                     "<td class='table-body'>"+parseInt(fireplaceCost)+ "</td>" +"</td>" +
+                     "<td class='table-body'><input type='number' id='fireplace-price-text' value="+parseInt(fireplaceCost)+"></input></td>" +
                      "<td class='table-body'>"+parseInt(fireplaceCost)+"</td>"
                    "</tr>"+
                  "</table>"
@@ -523,10 +588,7 @@ var editList
           })
       })
 
-    $(".back-to-quotation").click(function(){
-    _hideShow.backToQuote()
 
-    });
 
 
     //==================
@@ -554,6 +616,7 @@ var editList
 
      $('#submit-salesman-button').click(function(e){
        e.preventDefault()
+
        salesmanName = $("#salesman-name").val()
        salesmanEmail = $("#salesman-email").val()
        salesmanPhone = $("#salesman-phone").val()
@@ -574,50 +637,55 @@ var editList
          $('#edit-salesman-data')[0].reset();
 
          $("#salesman-submit-notification").show().delay(2000).fadeOut();
+
     })
 
 
  $('#edit-salesman-button').click(function(e){
-    e.preventDefault()
-    $("#edit-salesman-data").hide()
+   e.preventDefault()
+   $("#edit-salesman-data").hide()
 
-    editSalemanLine =$("#edit-salesman")
 
-    function displaySalesmanData(editSalesman){
-      var editSalesmanTemplate = ""+
-        "<table class='to-delete"+editSalesmanList._id+"'>" +
-          "<tr>"+
-            "<th class='table-header'></th>"+
-            "<th class='table-header'>Name</th>"+
-            "<th class='table-header'>Email</th>"+
-            "<th class='table-header'>Phone Number</th>"+
-          "</tr>"+
-          "<tr>"+
-            "<td><button class='click-to-edit-salesman' data-id ="+editSalesmanList._id+">Edit</button>" +
-            "<button class='click-to-delete-salesman' data-id ="+editSalesmanList._id+">Delete</button>" +
-            "</td>"+
-            "<td class='table-body'>"+editSalesmanList.salesmanName+"</td>"+
+   editSalemanLine =$("#edit-salesman")
 
-            "<td class='table-body'>"+editSalesmanList.salesmanEmail+"</td>"+
-            "<td class='table-body'>"+editSalesmanList.salesmanPhone+"</td>"+
+   function displaySalesmanData(editSalesman){
+     var editSalesmanTemplate = ""+
+       "<table class='to-delete"+editSalesmanList._id+"'>" +
+         "<tr>"+
+           "<th class='table-header'></th>"+
+           "<th class='table-header'>Name</th>"+
+           "<th class='table-header'>Email</th>"+
+           "<th class='table-header'>Phone Number</th>"+
+           "<th class='table-header'>Active</th>"+
+         "</tr>"+
+         "<tr>"+
+           "<td><button class='click-to-edit-salesman' data-id ="+editSalesmanList._id+">Edit</button>" +
+           "<button class='click-to-delete-salesman' data-id ="+editSalesmanList._id+">Delete</button>" +
+           "</td>"+
+           "<td class='table-body'>"+editSalesmanList.salesmanName+"</td>"+
 
-            "</tr>"+
-          "</table>"
+           "<td class='table-body'>"+editSalesmanList.salesmanEmail+"</td>"+
+           "<td class='table-body'>"+editSalesmanList.salesmanPhone+"</td>"+
+           "<td class='table-body'>"+editSalesmanList.salesmanActive+"</td>"+
 
-        editSalemanLine.append(editSalesmanTemplate, editSalesman)
-    }
-      $.ajax({
-        url: "/salesman",
-        success: function(result){
-              editSalesmanData = JSON.parse(result)
-              console.log(editSalesmanData)
-              for (i = 0; i < editSalesmanData.length; i++) {
-                editSalesmanList = editSalesmanData[i]
-                displaySalesmanData(editSalesmanList)
-            }
-          }
-        })
+           "</tr>"+
+         "</table>"+
+         "<button class='back-to-quotation'>Back to Quotation</button>"
+       editSalemanLine.append(editSalesmanTemplate, editSalesman)
+   }
+     $.ajax({
+       url: "/salesman",
+       success: function(result){
+             editSalesmanData = JSON.parse(result)
+             console.log(editSalesmanData)
+             for (i = 0; i < editSalesmanData.length; i++) {
+               editSalesmanList = editSalesmanData[i]
+               displaySalesmanData(editSalesmanList)
+           }
+         }
+       })
   })
+
 
   $('#edit-salesman').delegate('.click-to-delete-salesman', 'click', function(){
       deleteSalesmanId = $(this).attr('data-id')
@@ -648,11 +716,13 @@ $("#hearth-make").delegate('.border-make-hearth', 'click', function(e){
 
 $('#hearth-data-submit').click(function(e){
   e.preventDefault()
+
   hearthModel = $("#input-model-hearth").val()
   hearthFinish = $("#hearth-finish").val()
   hearthPrice =$("#input-price-hearth").val()
   hearthAddFinish =$("#input-additional-finish-hearth").val()
   hearthAddFinishPrice =$("#input-price-hearth-add-finish").val()
+  hearthStyle = $("#hearth-style").val()
 
     $.ajax({
        method: "POST",
@@ -664,6 +734,7 @@ $('#hearth-data-submit').click(function(e){
          hearthPrice:hearthPrice,
          hearthAddFinish:hearthAddFinish,
          hearthAddFinishPrice:hearthAddFinishPrice,
+         hearthStyle:hearthStyle,
          }
     })
     $('#enter-hearth-data')[0].reset();
@@ -671,30 +742,40 @@ $('#hearth-data-submit').click(function(e){
     $(".submit-notification").show().delay(2000).fadeOut();
 })
 
-/*
+
 $('#edit-hearth-button').click(function(e){
    e.preventDefault()
-   $("#edit-hearth-data").hide()
+   $("#enter-hearth-data").hide()
+   $("#edit-hearth-view").show()
 
-   editHearthLine =$("#edit-hearth")
+   editHearthLine =$("#edit-hearth-view")
 
-   function displaySalesmanData(editHearth){
+
+   function displayHearthData(editHearth){
      var editHearthTemplate = ""+
-       "<table class='to-delete"+editSalesmanList._id+"'>" +
+       "<table class='to-delete"+editHearthList._id+"'>" +
          "<tr>"+
            "<th class='table-header'></th>"+
-           "<th class='table-header'>Name</th>"+
-           "<th class='table-header'>Email</th>"+
-           "<th class='table-header'>Phone Number</th>"+
+           "<th class='table-header'>Make</th>"+
+           "<th class='table-header'>Model</th>"+
+           "<th class='table-header'>Style</th>"+
+           "<th class='table-header'>Finish</th>"+
+           "<th class='table-header'>Price</th>"+
+           "<th class='table-header'>Add Finish</th>"+
+           "<th class='table-header'>Add Finish Price</th>"+
          "</tr>"+
          "<tr>"+
-           "<td><button class='click-to-edit-salesman' data-id ="+editSalesmanList._id+">Edit</button>" +
-           "<button class='click-to-delete-salesman' data-id ="+editSalesmanList._id+">Delete</button>" +
+           "<td><button class='click-to-edit-hearth' data-id ="+editHearthList._id+">Edit</button>" +
+           "<button class='click-to-delete-hearth' data-id ="+editHearthList._id+">Delete</button>" +
            "</td>"+
-           "<td class='table-body'>"+editSalesmanList.salesmanName+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthMake+"</td>"+
 
-           "<td class='table-body'>"+editSalesmanList.salesmanEmail+"</td>"+
-           "<td class='table-body'>"+editSalesmanList.salesmanPhone+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthModel+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthFinish+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthStyle+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthPrice+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthAddFinish+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthAddFinishPrice+"</td>"+
 
            "</tr>"+
          "</table>"
@@ -708,12 +789,25 @@ $('#edit-hearth-button').click(function(e){
              console.log(editHearthData)
              for (i = 0; i < editHearthData.length; i++) {
                editHearthList = editHearthData[i]
-               displaySalesmanData(editHearthList)
+               displayHearthData(editHearthList)
            }
          }
        })
+
  })
- */
+
+ $('#edit-hearth-view').delegate('.click-to-delete-hearth', 'click', function(){
+     deleteHearthId = $(this).attr('data-id')
+     $( ".to-delete"+deleteHearthId ).fadeOut("slow")
+
+     $.ajax({
+       url: "/deleteHearth/"+deleteHearthId,
+       success: function(result){
+          }
+       })
+
+   })
+
 
 
 })//document ready
