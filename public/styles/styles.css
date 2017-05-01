@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.border-air, .border-hearth, .border-wetback, .border-colour, .border-style-hearth {
+.border-air, .border-hearth, .border-wetback, .border-colour, .border-style-hearth, .hearth-tile-border-colour {
     border: 1px solid #B39476;
     width: 49%;
     height:35px;
@@ -230,25 +230,44 @@ div#data-submit:hover {
   width: 200px
 }
 
-.table-header{
+
+.table-header-quantity{
   font-size: 8pt;
   font-family: helvetica;
-  font-weight: 300;
+  font-weight: 50;
   border-right: 1px solid #78b777;
   border-bottom: 1px solid #78b777;
   width: 100px
 }
 
-.table-body{
+.table-header-price{
+  font-size: 8pt;
   font-family: helvetica;
-  font-weight: 300;
+  font-weight: 50;
   border-right: 1px solid #78b777;
-  text-align: right;
-  padding-right: 10px;
-
+  border-bottom: 1px solid #78b777;
+  width: 100px
+}
+.table-header-vat{
+  font-size: 8pt;
+  font-family: helvetica;
+  font-weight: 50;
+  border-right: 1px solid #78b777;
+  border-bottom: 1px solid #78b777;
+  width: 100px
 }
 
-.table-colour-description{
+.table-header-total{
+  font-size: 8pt;
+  font-family: helvetica;
+  font-weight: 50;
+  border-right: 1px solid #78b777;
+  border-bottom: 1px solid #78b777;
+  width: 100px
+}
+
+
+.table-description{
   font-family: helvetica;
   font-weight: 300;
   border-right: 1px solid #78b777;
@@ -258,7 +277,15 @@ div#data-submit:hover {
   width: 350px
 }
 
-.table-colour-quanity, .table-colour-price, .table-colour-total{
+.table-quantity{
+  font-family: helvetica;
+  font-weight: 300;
+  border-right: 1px solid #78b777;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.table-price{
   font-family: helvetica;
   font-weight: 300;
   border-right: 1px solid #78b777;
@@ -268,15 +295,25 @@ div#data-submit:hover {
 
 }
 
-.table-fireplace-description{
+.table-vat{
   font-family: helvetica;
   font-weight: 300;
   border-right: 1px solid #78b777;
-  text-align: left;
+  text-align: right;
   padding-right: 10px;
-  width: 350px;
+  width: 92px;
 
 }
+.table-total{
+  font-family: helvetica;
+  font-weight: 300;
+  border-right: 1px solid #78b777;
+  text-align: right;
+  padding-right: 10px;
+  width: 92px;
+
+}
+
 
 .submit-notification{
       padding: 20px;

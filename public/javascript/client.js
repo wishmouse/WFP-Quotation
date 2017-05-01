@@ -43,6 +43,7 @@ var editList
      $("#edit-salesman-data").hide()
      $('#quotation-display-data').empty()
      $("#enter-hearth-data").hide()
+     $("#hearth-tile-price").hide()
 /*
        $.ajax({
          url: "/salesman",
@@ -77,24 +78,25 @@ var editList
         })
 
 
-  $('#colour-price').delegate('.border-colour', 'click', function(e){
-           $(".border-colour").removeClass("selected")
+  $('#hearth-tile-price').delegate('.hearth-tile-border-colour', 'click', function(e){
+           $(".hearth-tile-border-colour").removeClass("selected")
            var select = $(this).addClass("selected")
-           var colourID = $(this).attr('id')
-           colour = parseInt(select.text())
+           var hearthTileID = $(this).attr('id')
+           hearthTileText = parseInt(select.text())
 
-          function colourPrice(){
+          function hearthTile(){
             var editTemplate = ""+
                 "<tr>"+
-                  "<td class='table-colour-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
-                  "<td class='table-colour-quanity'>"+'1'+"</td>" +
-                  "<td class='table-colour-price'><input type='number' id='colour-price-text' value="+colour+"></input></td>" +
+                  "<td class='table-description'>"+ "Additional Tile colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
+                  "<td class='table-quantity'>"+'1'+"</td>" +
+                  "<td class='table-price'><input type='number' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
+                  "<td class='table-vat'>"+'00.00'+"</td>" +
+                  "<td class='table-total'>"+'00.00'+"</td>" +
 
-                  "<td class='table-colour-total'>"+'00.00'+"</td>" +
                 "</tr>"
             quoteLine.append(editTemplate)
           }
-          colourPrice()
+          hearthTile()
            _clearData.changeTypes()
          })
 
@@ -147,19 +149,44 @@ var editList
               hearthModelReturn = getHearthData[i]
             if(hearthModelReturn.hearthModel == modelHearthValue ){
               hearthPrice()
+              if(hearthModelReturn.hearthAddFinish == "Yes" ){
+                $("#hearth-tile-price").show()
+                $("#hearth-tile-extra").html(hearthModelReturn.hearthAddFinishPrice)
+               }
             }
           }
         })
 
 
+        $('#colour-price').delegate('.border-colour', 'click', function(e){
+                 $(".border-colour").removeClass("selected")
+                 var select = $(this).addClass("selected")
+                 var colourID = $(this).attr('id')
+                 colour = parseInt(select.text())
+
+                function colourPrice(){
+                  var editTemplate = ""+
+                      "<tr>"+
+                        "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
+                        "<td class='table-quantity'>"+'1'+"</td>" +
+                        "<td class='table-price'><input type='number' id='colour-price-text' value="+colour+"></input></td>" +
+                        "<td class='table-vat'>"+'00.00'+"</td>" +
+                        "<td class='table-total'>"+'00.00'+"</td>" +
+                      "</tr>"
+                  quoteLine.append(editTemplate)
+                }
+                colourPrice()
+                 _clearData.changeTypes()
+               })
 
       function hearthPrice(){
         var editTemplate = ""+
             "<tr>"+
-              "<td class='table-hearth-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
-              "<td class='table-colour-quanity'>"+'1'+"</td>" +
-              "<td class='table-colour-price'><input type='number' id='heart-price-text' value="+parseInt(hearthDataReturn.hearthPrice)+"></input></td>" +
-              "<td class='table-colour-total'>"+'00.00'+"</td>" +
+              "<td class='table-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
+              "<td class='table-quantity'>"+'1'+"</td>" +
+              "<td class='table-price'><input type='number' id='heart-price-text' value="+parseInt(hearthDataReturn.hearthPrice)+"></input></td>" +
+              "<td class='table-vat'>"+'00.00'+"</td>" +
+              "<td class='table-total'>"+'00.00'+"</td>" +
             "</tr>"
         quoteLine.append(editTemplate)
        _clearData.changeTypes()
@@ -260,15 +287,17 @@ var editList
                  "<table>" +
                    "<tr>"+
                      "<th class='table-header-description'>Description</th>" +
-                     "<th class='table-header'>Quanity</th>" +
-                     "<th class='table-header'>Price</th>" +
-                     "<th class='table-header'>Total</th>" +
+                     "<th class='table-header-quantity'>Quanity</th>" +
+                     "<th class='table-header-price'>Price</th>" +
+                     "<th class='table-header-vat'>VAT</th>" +
+                     "<th class='table-header-total'>Total</th>" +
                    "</tr>"+
                    "<tr>"+
-                     "<td class='table-fireplace-description'>"+make+' '+dataReturn.model+ "</td>" +
-                     "<td class='table-body'>"+'1'+"</td>" +
-                     "<td class='table-body'><input type='number' id='fireplace-price-text' value="+parseInt(fireplaceCost)+"></input></td>" +
-                     "<td class='table-body'>"+parseInt(fireplaceCost)+"</td>"
+                     "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
+                     "<td class='table-quantity'>"+'1'+"</td>" +
+                     "<td class='table-price'><input type='number' id='fireplace-price-text' value="+parseInt(fireplaceCost)+"></input></td>" +
+                     "<td class='table-vat'>"+'00.00'+"</td>" +
+                     "<td class='table-total'>"+parseInt(fireplaceCost)+"</td>"
                    "</tr>"+
                  "</table>"
                quoteLine.append(editTemplate)
