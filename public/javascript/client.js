@@ -87,18 +87,19 @@ var editList
           function hearthTile(){
             var editTemplate = ""+
                 "<tr>"+
+                  "<td class='w3-padding w3-xlarge fa fa-trash'></td>"+
                   "<td class='table-description'>"+ "Additional Tile colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                   "<td class='table-quantity'>"+'1'+"</td>" +
                   "<td class='table-price'><input type='number' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
                   "<td class='table-vat'>"+'00.00'+"</td>" +
                   "<td class='table-total'>"+'00.00'+"</td>" +
-
                 "</tr>"
             quoteLine.append(editTemplate)
           }
           hearthTile()
            _clearData.changeTypes()
          })
+
 
 
        $('#hearth-style').delegate('.border-style-hearth', 'click', function(e){
@@ -166,7 +167,8 @@ var editList
 
                 function colourPrice(){
                   var editTemplate = ""+
-                      "<tr>"+
+                      "<tr class='delete-colour-table'>"+
+                        "<td class='w3-padding w3-xlarge fa fa-trash'></td>"+
                         "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                         "<td class='table-quantity'>"+'1'+"</td>" +
                         "<td class='table-price'><input type='number' id='colour-price-text' value="+colour+"></input></td>" +
@@ -182,6 +184,7 @@ var editList
       function hearthPrice(){
         var editTemplate = ""+
             "<tr>"+
+              "<td class='w3-padding w3-xlarge fa fa-trash'></td>"+
               "<td class='table-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
               "<td class='table-quantity'>"+'1'+"</td>" +
               "<td class='table-price'><input type='number' id='heart-price-text' value="+parseInt(hearthDataReturn.hearthPrice)+"></input></td>" +
@@ -247,7 +250,7 @@ var editList
 
 
 
-           $("#model-dropdown" ).change(function() {
+           $("#model-dropdown").change(function() {
              var modelValue = $("#model-dropdown" ).val()
              for (i = 0; i < getData.length; i++) {
                var dataReturn= getData[i]
@@ -286,13 +289,15 @@ var editList
                var editTemplate = ""+
                  "<table>" +
                    "<tr>"+
+                     "<td></td>"+
                      "<th class='table-header-description'>Description</th>" +
                      "<th class='table-header-quantity'>Quanity</th>" +
                      "<th class='table-header-price'>Price</th>" +
                      "<th class='table-header-vat'>VAT</th>" +
                      "<th class='table-header-total'>Total</th>" +
                    "</tr>"+
-                   "<tr>"+
+                   "<tr'>"+
+                     "<td> <button class='delete-fireplace-table w3-padding w3-xlarge fa fa-trash'></button></td>"+
                      "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
                      "<td class='table-quantity'>"+'1'+"</td>" +
                      "<td class='table-price'><input type='number' id='fireplace-price-text' value="+parseInt(fireplaceCost)+"></input></td>" +
@@ -305,6 +310,12 @@ var editList
 
            })
 
+           $('#quotation-display-data').delegate('.delete-fireplace-table', 'click', function(){
+               var removeTable = $(this).closest('tr')
+               removeTable.remove()
+               $('.delete-colour-table').remove()
+
+             })
 
 
 //====
@@ -837,6 +848,10 @@ $('#edit-hearth-button').click(function(e){
 
    })
 
+   $("#row-delete").click(function(e) {
+     e.preventDefault
+     $('#table-delete').remove()
 
+   })
 
 })//document ready
