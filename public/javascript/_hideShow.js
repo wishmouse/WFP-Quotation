@@ -181,6 +181,7 @@ function hideShow(){
     function hearthTypeShow(){
       $("#wallHearth-dropdown").show()
       $("#cornerHearth-dropdown").show()
+      $('#model-dropdown-hearth').show()
     }
 
     function wetbackTypeShow(){

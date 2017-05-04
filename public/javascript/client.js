@@ -12,6 +12,7 @@ var doc = new PDFDocument
 //quotation submit
 var salesman
 var airType
+var vatRate=17.5
 
 // data entry
 var fireplaceType
@@ -44,6 +45,7 @@ var editList
      $('#quotation-display-data').empty()
      $("#enter-hearth-data").hide()
      $("#hearth-tile-price").hide()
+     $('#model-dropdown-hearth').hide()
 /*
        $.ajax({
          url: "/salesman",
@@ -91,14 +93,23 @@ var editList
                   "<td class='table-description'>"+ "Additional Tile colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                   "<td class='table-quantity'>"+'1'+"</td>" +
                   "<td class='table-price'><input type='number' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
-                  "<td class='table-vat'>"+'00.00'+"</td>" +
-                  "<td class='table-total'>"+'00.00'+"</td>" +
+                  "<td class='table-vat' id='hearth-colour-vat-text'></td>" +
+                  "<td class='table-total' id='hearth-colour-total-text'></td>" +
                 "</tr>"
             quoteLine.append(editTemplate)
           }
           hearthTile()
+          calculateTotalTile()
            _clearData.changeTypes()
          })
+
+         function calculateTotalTile(num){
+           var num = parseInt($('#hearth-colour-price-text').val())
+           var vatCalc = num / 100*vatRate
+           $('#hearth-colour-vat-text').html(vatCalc.toFixed(2))
+           var grandtotal = num + vatCalc
+           $('#hearth-colour-total-text').html(grandtotal.toFixed(2))
+       }
 
      $('#quotation-display-data').delegate('.delete-tile-table', 'click', function(){
           var removeTable = $(this).closest('tr')
@@ -176,14 +187,23 @@ var editList
                         "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                         "<td class='table-quantity'>"+'1'+"</td>" +
                         "<td class='table-price'><input type='number' id='colour-price-text' value="+colour+"></input></td>" +
-                        "<td class='table-vat'>"+'00.00'+"</td>" +
-                        "<td class='table-total'>"+'00.00'+"</td>" +
+                        "<td class='table-vat' id='colour-vat-text'></td>" +
+                        "<td class='table-total' id='colour-total-text'></td>" +
                       "</tr>"
                   quoteLine.append(editTemplate)
                 }
                 colourPrice()
+                calculateTotalColour()
                  _clearData.changeTypes()
           })
+
+    function calculateTotalColour(num){
+      var num = parseInt($('#colour-price-text').val())
+      var vatCalc = num / 100*vatRate
+      $('#colour-vat-text').html(vatCalc.toFixed(2))
+      var grandtotal = num + vatCalc
+      $('#colour-total-text').html(grandtotal.toFixed(2))
+  }
 
 
         $('#quotation-display-data').delegate('.delete-colour-table', 'click', function(){
@@ -197,13 +217,22 @@ var editList
               "<td> <div class='delete-hearth-table w3-padding w3-xlarge fa fa-trash'></div></td>"+
               "<td class='table-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
               "<td class='table-quantity'>"+'1'+"</td>" +
-              "<td class='table-price'><input type='number' id='heart-price-text' value="+parseInt(hearthDataReturn.hearthPrice)+"></input></td>" +
-              "<td class='table-vat'>"+'00.00'+"</td>" +
-              "<td class='table-total'>"+'00.00'+"</td>" +
+              "<td class='table-price'><input type='number' id='heart-price-text' value="+hearthDataReturn.hearthPrice+"></input></td>" +
+              "<td class='table-vat' id='hearth-vat-text'></td>" +
+              "<td class='table-total' id='hearth-total-text'></td>" +
             "</tr>"
         quoteLine.append(editTemplate)
+        calculateTotalHearth()
        _clearData.changeTypes()
     }
+
+    function calculateTotalHearth(num){
+      var num = parseInt($('#heart-price-text').val())
+      var vatCalc = num / 100*vatRate
+      $('#hearth-vat-text').html(vatCalc.toFixed(2))
+      var grandtotal = num + vatCalc
+      $('#hearth-total-text').html(grandtotal.toFixed(2))
+  }
 
     $('#quotation-display-data').delegate('.delete-hearth-table', 'click', function(){
          var removeTable = $(this).closest('tr')
@@ -316,15 +345,26 @@ var editList
                      "<td> <div class='delete-fireplace-table w3-padding w3-xlarge fa fa-trash'></div></td>"+
                      "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
                      "<td class='table-quantity'>"+'1'+"</td>" +
-                     "<td class='table-price'><input type='number' id='fireplace-price-text' value="+parseInt(fireplaceCost)+"></input></td>" +
-                     "<td class='table-vat'>"+'00.00'+"</td>" +
-                     "<td class='table-total'>"+parseInt(fireplaceCost)+"</td>"
+                     "<td class='table-price'><input type='number' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
+                     "<td class='table-vat' id='fireplace-vat-text'></td>" +
+                     "<td class='table-total' id='fireplace-total-text'>"+parseInt(fireplaceCost)+"</td>"
                    "</tr>"+
                  "</table>"
                quoteLine.append(editTemplate)
              }
 
+             calculateTotal()
            })
+
+
+
+   function calculateTotal(num){
+     var num = parseInt($('#fireplace-price-text').val())
+     var vatCalc = num / 100*vatRate
+     $('#fireplace-vat-text').html(vatCalc.toFixed(2))
+     var grandtotal = num + vatCalc
+     $('#fireplace-total-text').html(grandtotal.toFixed(2))
+   }
 
     $('#quotation-display-data').delegate('.delete-fireplace-table', 'click', function(){
          var removeTable = $(this).closest('tr')
@@ -850,6 +890,7 @@ $('#edit-hearth-button').click(function(e){
        })
 
  })
+
 
  $('#edit-hearth-view').delegate('.click-to-delete-hearth', 'click', function(){
      deleteHearthId = $(this).attr('data-id')
