@@ -46,6 +46,7 @@ var editList
      $("#enter-hearth-data").hide()
      $("#hearth-tile-price").hide()
      $('#model-dropdown-hearth').hide()
+    quotationTemplate()
 /*
        $.ajax({
          url: "/salesman",
@@ -310,7 +311,7 @@ var editList
                  }
                  if(air == 'Clean Air wetback'){
                   fireplaceCost = dataReturn.cleanAirWB
-                }else if (air == "Rural wetback"){
+                 }else if (air == "Rural wetback"){
                     fireplaceCost = dataReturn.ruralWB
                  }
                  if(hearth == 'Corner Hearth'){
@@ -329,32 +330,36 @@ var editList
              }
 
 
-             function quotationDisplay(){
-               quoteLine = $('#quotation-display-data')
-               var editTemplate = ""+
-                 "<table>" +
-                   "<tr>"+
-                     "<td></td>"+
-                     "<th class='table-header-description'>Description</th>" +
-                     "<th class='table-header-quantity'>Quanity</th>" +
-                     "<th class='table-header-price'>Price</th>" +
-                     "<th class='table-header-vat'>VAT</th>" +
-                     "<th class='table-header-total'>Total</th>" +
-                   "</tr>"+
-                   "<tr'>"+
-                     "<td> <div class='delete-fireplace-table w3-padding w3-xlarge fa fa-trash'></div></td>"+
-                     "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
-                     "<td class='table-quantity'>"+'1'+"</td>" +
-                     "<td class='table-price'><input type='number' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
-                     "<td class='table-vat' id='fireplace-vat-text'></td>" +
-                     "<td class='table-total' id='fireplace-total-text'>"+parseInt(fireplaceCost)+"</td>"
-                   "</tr>"+
-                 "</table>"
-               quoteLine.append(editTemplate)
-             }
+         function quotationDisplay(){
+           var editTemplate = ""+
+               "<tr class='delete-fireplace-table'>"+
+                 "<td class='delete-fireplace-table 3-padding w3-xlarge fa fa-trash'></td>"+
+                 "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
+                 "<td class='table-quantity'>"+'1'+"</td>" +
+                 "<td class='table-price'><input type='number' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
+                 "<td class='table-vat' id='fireplace-vat-text'></td>" +
+                 "<td class='table-total' id='fireplace-total-text'>"+parseInt(fireplaceCost)+"</td>"
+               "</tr>"
+           quoteLine.append(editTemplate)
+          }
+         calculateTotal()
+       })
 
-             calculateTotal()
-           })
+       function quotationTemplate(){
+         quoteLine = $('#quotation-display-data')
+         var editTemplate = ""+
+           "<table>" +
+             "<tr>"+
+               "<td></td>"+
+               "<th class='table-header-description'>Description</th>" +
+               "<th class='table-header-quantity'>Quanity</th>" +
+               "<th class='table-header-price'>Price</th>" +
+               "<th class='table-header-vat'>VAT</th>" +
+               "<th class='table-header-total'>Total</th>" +
+             "</tr>"
+           "</table>"
+         quoteLine.append(editTemplate)
+       }
 
 
 
