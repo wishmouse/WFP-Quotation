@@ -12,7 +12,7 @@ var doc = new PDFDocument
 //quotation submit
 var salesman
 var airType
-var vatRate=17.5
+var vatRate=15
 
 // data entry
 var fireplaceType
@@ -47,6 +47,7 @@ var editList
      $("#hearth-tile-price").hide()
      $('#model-dropdown-hearth').hide()
     quotationTemplate()
+
 /*
        $.ajax({
          url: "/salesman",
@@ -81,6 +82,18 @@ var editList
         })
 
 
+
+/*
+        "<tr class='delete-tile-table'>"+
+          "<td class='delete-tile-table w3-padding w3-xlarge fa fa-trash'></td>"+
+          "<td class='table-description'>"+ "Additional Tile colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
+          "<td class='table-quantity'>"+'1'+"</td>" +
+          "<td class='table-price' unit-price='"+hearthTileText+"'><input type='number' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
+          "<td class='table-vat' id='hearth-colour-vat-text'></td>" +
+          "<td class='table-total' id='hearth-colour-total-text'></td>" +
+        "</tr>"
+*/
+
   $('#hearth-tile-price').delegate('.hearth-tile-border-colour', 'click', function(e){
            $(".hearth-tile-border-colour").removeClass("selected")
            var select = $(this).addClass("selected")
@@ -93,7 +106,7 @@ var editList
                   "<td class='delete-tile-table w3-padding w3-xlarge fa fa-trash'></td>"+
                   "<td class='table-description'>"+ "Additional Tile colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                   "<td class='table-quantity'>"+'1'+"</td>" +
-                  "<td class='table-price'><input type='number' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
+                  "<td class='table-price' unit-price='"+hearthTileText+"'><input type='number' class='price' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
                   "<td class='table-vat' id='hearth-colour-vat-text'></td>" +
                   "<td class='table-total' id='hearth-colour-total-text'></td>" +
                 "</tr>"
@@ -104,12 +117,24 @@ var editList
            _clearData.changeTypes()
          })
 
+
+function add(){
+            		var exclSum = 0;
+                var vatSum = 0
+            		$(".ex-price").each(function() {
+            			if(this.value && this.value.length!=0) {
+            				exclSum += parseFloat(this.value);
+            			}
+            		})
+            		 $("#quotation-exc-total").html(exclSum.toFixed(2));
+}
          function calculateTotalTile(num){
            var num = parseInt($('#hearth-colour-price-text').val())
-           var vatCalc = num / 100*vatRate
-           $('#hearth-colour-vat-text').html(vatCalc.toFixed(2))
-           var grandtotal = num + vatCalc
-           $('#hearth-colour-total-text').html(grandtotal.toFixed(2))
+           var vatCalcTiles = num / 100*vatRate
+           vatTilesText = $('#hearth-colour-vat-text').html(vatCalcTiles.toFixed(2))
+           var grandTotalTiles = num + vatCalcTiles
+           $('#hearth-colour-total-text').html(grandTotalTiles.toFixed(2))
+
        }
 
      $('#quotation-display-data').delegate('.delete-tile-table', 'click', function(){
@@ -187,7 +212,7 @@ var editList
                         "<td> <div class='delete-colour-table w3-padding w3-xlarge fa fa-trash'></div></td>"+
                         "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                         "<td class='table-quantity'>"+'1'+"</td>" +
-                        "<td class='table-price'><input type='number' id='colour-price-text' value="+colour+"></input></td>" +
+                        "<td class='table-price'><input type='number'  class='price' id='colour-price-text' value="+colour+"></input></td>" +
                         "<td class='table-vat' id='colour-vat-text'></td>" +
                         "<td class='table-total' id='colour-total-text'></td>" +
                       "</tr>"
@@ -195,15 +220,16 @@ var editList
                 }
                 colourPrice()
                 calculateTotalColour()
+                add()
                  _clearData.changeTypes()
           })
 
     function calculateTotalColour(num){
       var num = parseInt($('#colour-price-text').val())
-      var vatCalc = num / 100*vatRate
-      $('#colour-vat-text').html(vatCalc.toFixed(2))
-      var grandtotal = num + vatCalc
-      $('#colour-total-text').html(grandtotal.toFixed(2))
+      var vatCalcColour = num / 100*vatRate
+      vatColourText = $('#colour-vat-text').html(vatCalcColour.toFixed(2))
+      var grandTotalColour = num + vatCalcColour
+      $('#colour-total-text').html(grandTotalColour.toFixed(2))
   }
 
 
@@ -218,22 +244,26 @@ var editList
               "<td> <div class='delete-hearth-table w3-padding w3-xlarge fa fa-trash'></div></td>"+
               "<td class='table-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
               "<td class='table-quantity'>"+'1'+"</td>" +
-              "<td class='table-price'><input type='number' id='heart-price-text' value="+hearthDataReturn.hearthPrice+"></input></td>" +
+              "<td class='table-price'><input type='number'  class='price' id='heart-price-text' value="+hearthDataReturn.hearthPrice+"></input></td>" +
               "<td class='table-vat' id='hearth-vat-text'></td>" +
               "<td class='table-total' id='hearth-total-text'></td>" +
             "</tr>"
         quoteLine.append(editTemplate)
         calculateTotalHearth()
+        add()
        _clearData.changeTypes()
     }
 
     function calculateTotalHearth(num){
       var num = parseInt($('#heart-price-text').val())
-      var vatCalc = num / 100*vatRate
-      $('#hearth-vat-text').html(vatCalc.toFixed(2))
-      var grandtotal = num + vatCalc
-      $('#hearth-total-text').html(grandtotal.toFixed(2))
+      vatCalcHearth = num / 100*vatRate
+      vatHearthText = $('#hearth-vat-text').html(vatCalcHearth.toFixed(2))
+      var grandTotalHearth = num + vatCalcHearth
+      $('#hearth-total-text').html(grandTotalHearth.toFixed(2))
+
   }
+
+
 
     $('#quotation-display-data').delegate('.delete-hearth-table', 'click', function(){
          var removeTable = $(this).closest('tr')
@@ -336,13 +366,14 @@ var editList
                  "<td class='delete-fireplace-table 3-padding w3-xlarge fa fa-trash'></td>"+
                  "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
                  "<td class='table-quantity'>"+'1'+"</td>" +
-                 "<td class='table-price'><input type='number' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
+                 "<td class='table-price'><input type='number' class='price' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
                  "<td class='table-vat' id='fireplace-vat-text'></td>" +
                  "<td class='table-total' id='fireplace-total-text'>"+parseInt(fireplaceCost)+"</td>"
                "</tr>"
            quoteLine.append(editTemplate)
           }
          calculateTotal()
+         add()
        })
 
        function quotationTemplate(){
@@ -359,16 +390,19 @@ var editList
              "</tr>"
            "</table>"
          quoteLine.append(editTemplate)
+
        }
 
 
 
    function calculateTotal(num){
      var num = parseInt($('#fireplace-price-text').val())
-     var vatCalc = num / 100*vatRate
-     $('#fireplace-vat-text').html(vatCalc.toFixed(2))
-     var grandtotal = num + vatCalc
-     $('#fireplace-total-text').html(grandtotal.toFixed(2))
+     var vatCalcFireplace = num / 100*vatRate
+     vatFireplaceText = $('#fireplace-vat-text').html(vatCalcFireplace.toFixed(2))
+     grandTotalFireplace = num + vatCalcFireplace
+     $('#fireplace-total-text').html(grandTotalFireplace.toFixed(2))
+
+
    }
 
     $('#quotation-display-data').delegate('.delete-fireplace-table', 'click', function(){
@@ -376,6 +410,7 @@ var editList
          removeTable.remove()
          $('.delete-colour-table').remove()
       })
+
 
 
 //====
