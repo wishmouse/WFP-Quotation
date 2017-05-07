@@ -13,6 +13,8 @@ var doc = new PDFDocument
 var salesman
 var airType
 var vatRate=15
+vatFireplaceText = 0
+gtF =0
 
 // data entry
 var fireplaceType
@@ -82,18 +84,6 @@ var editList
         })
 
 
-
-/*
-        "<tr class='delete-tile-table'>"+
-          "<td class='delete-tile-table w3-padding w3-xlarge fa fa-trash'></td>"+
-          "<td class='table-description'>"+ "Additional Tile colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
-          "<td class='table-quantity'>"+'1'+"</td>" +
-          "<td class='table-price' unit-price='"+hearthTileText+"'><input type='number' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
-          "<td class='table-vat' id='hearth-colour-vat-text'></td>" +
-          "<td class='table-total' id='hearth-colour-total-text'></td>" +
-        "</tr>"
-*/
-
   $('#hearth-tile-price').delegate('.hearth-tile-border-colour', 'click', function(e){
            $(".hearth-tile-border-colour").removeClass("selected")
            var select = $(this).addClass("selected")
@@ -103,11 +93,11 @@ var editList
           function hearthTile(){
             var editTemplate = ""+
                 "<tr class='delete-tile-table'>"+
-                  "<td class='delete-tile-table w3-padding w3-xlarge fa fa-trash'></td>"+
+                  "<td class='delete-tile-button w3-padding w3-xlarge fa fa-trash'></td>"+
                   "<td class='table-description'>"+ "Additional Tile colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                   "<td class='table-quantity'>"+'1'+"</td>" +
-                  "<td class='table-price' unit-price='"+hearthTileText+"'><input type='number' class='price' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
-                  "<td class='table-vat' id='hearth-colour-vat-text'></td>" +
+                  "<td class='table-price' unit-price='"+hearthTileText+"'><input type='number' class='excl-price' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
+                  "<td class='table-vat' id='hearth-colour-vat-text'>0</td>" +
                   "<td class='table-total' id='hearth-colour-total-text'></td>" +
                 "</tr>"
             quoteLine.append(editTemplate)
@@ -119,15 +109,37 @@ var editList
 
 
 function add(){
-            		var exclSum = 0;
-                var vatSum = 0
-            		$(".ex-price").each(function() {
-            			if(this.value && this.value.length!=0) {
-            				exclSum += parseFloat(this.value);
-            			}
-            		})
-            		 $("#quotation-exc-total").html(exclSum.toFixed(2));
+		var exclSum = 0
+    var vatSum = 0
+    var grandSum = 0
+
+   $(".table-vat").each(function() {
+       var value = $(this).text()
+       if(!isNaN(value) && value.length != 0) {
+           vatSum += parseFloat(value)
+       }
+        $("#quotation-vat-total").html(vatSum.toFixed(2))
+   })
+
+		$(".excl-price").each(function() {
+			if(this.value && this.value.length!=0) {
+				exclSum += parseFloat(this.value)
+			}
+      $("#quotation-excl-total").html(exclSum.toFixed(2))
+		})
+
+
+
+    $(".table-total").each(function() {
+      var value = $(this).text()
+      if(!isNaN(value) && value.length != 0) {
+          grandSum += parseFloat(value)
+      }
+    $("#quotation-grand-total").html(grandSum.toFixed(2))
+   })
+
 }
+
          function calculateTotalTile(num){
            var num = parseInt($('#hearth-colour-price-text').val())
            var vatCalcTiles = num / 100*vatRate
@@ -137,9 +149,10 @@ function add(){
 
        }
 
-     $('#quotation-display-data').delegate('.delete-tile-table', 'click', function(){
+     $('#quotation-display-data').delegate('.delete-tile-button', 'click', function(){
           var removeTable = $(this).closest('tr')
           removeTable.remove()
+          add()
        })
 
 
@@ -209,11 +222,11 @@ function add(){
                 function colourPrice(){
                   var editTemplate = ""+
                       "<tr class='delete-colour-table'>"+
-                        "<td> <div class='delete-colour-table w3-padding w3-xlarge fa fa-trash'></div></td>"+
+                        "<td> <div class='delete-colour-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
                         "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                         "<td class='table-quantity'>"+'1'+"</td>" +
-                        "<td class='table-price'><input type='number'  class='price' id='colour-price-text' value="+colour+"></input></td>" +
-                        "<td class='table-vat' id='colour-vat-text'></td>" +
+                        "<td class='table-price'><input type='number'  class='excl-price' id='colour-price-text' value="+colour+"></input></td>" +
+                        "<td class='table-vat' id='colour-vat-text'>0</td>" +
                         "<td class='table-total' id='colour-total-text'></td>" +
                       "</tr>"
                   quoteLine.append(editTemplate)
@@ -233,19 +246,20 @@ function add(){
   }
 
 
-        $('#quotation-display-data').delegate('.delete-colour-table', 'click', function(){
+        $('#quotation-display-data').delegate('.delete-colour-button', 'click', function(){
              var removeTable = $(this).closest('tr')
              removeTable.remove()
+             add()
           })
 
       function hearthPrice(){
         var editTemplate = ""+
             "<tr class='delete-hearth-table'>"+
-              "<td> <div class='delete-hearth-table w3-padding w3-xlarge fa fa-trash'></div></td>"+
+              "<td> <div class='delete-hearth-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
               "<td class='table-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
               "<td class='table-quantity'>"+'1'+"</td>" +
-              "<td class='table-price'><input type='number'  class='price' id='heart-price-text' value="+hearthDataReturn.hearthPrice+"></input></td>" +
-              "<td class='table-vat' id='hearth-vat-text'></td>" +
+              "<td class='table-price'><input type='number'  class='excl-price' id='heart-price-text' value="+hearthDataReturn.hearthPrice+"></input></td>" +
+              "<td class='table-vat' id='hearth-vat-text'>0</td>" +
               "<td class='table-total' id='hearth-total-text'></td>" +
             "</tr>"
         quoteLine.append(editTemplate)
@@ -265,10 +279,11 @@ function add(){
 
 
 
-    $('#quotation-display-data').delegate('.delete-hearth-table', 'click', function(){
+    $('#quotation-display-data').delegate('.delete-hearth-button', 'click', function(){
          var removeTable = $(this).closest('tr')
          removeTable.remove()
          $('.delete-tile-table').remove()
+         add()
       })
 
 
@@ -361,18 +376,19 @@ function add(){
 
 
          function quotationDisplay(){
+
            var editTemplate = ""+
                "<tr class='delete-fireplace-table'>"+
-                 "<td class='delete-fireplace-table 3-padding w3-xlarge fa fa-trash'></td>"+
+                 "<td class='delete-fireplace-button 3-padding w3-xlarge fa fa-trash'></td>"+
                  "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
                  "<td class='table-quantity'>"+'1'+"</td>" +
-                 "<td class='table-price'><input type='number' class='price' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
-                 "<td class='table-vat' id='fireplace-vat-text'></td>" +
-                 "<td class='table-total' id='fireplace-total-text'>"+parseInt(fireplaceCost)+"</td>"
+                 "<td class='table-price'><input type='number' class='excl-price' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
+                 "<td class='table-vat'<div id='fireplace-vat-text'>0</div></td>" +
+                 "<td class='table-total' id='fireplace-total-text' alt=''></td>"+
                "</tr>"
            quoteLine.append(editTemplate)
           }
-         calculateTotal()
+         calculateTotalFireplace()
          add()
        })
 
@@ -395,20 +411,24 @@ function add(){
 
 
 
-   function calculateTotal(num){
+   function calculateTotalFireplace(num){
+
      var num = parseInt($('#fireplace-price-text').val())
-     var vatCalcFireplace = num / 100*vatRate
-     vatFireplaceText = $('#fireplace-vat-text').html(vatCalcFireplace.toFixed(2))
+     vatCalcFireplace = num / 100*vatRate
+     $(".table-vat").attr('value', vatCalcFireplace)
+     $('#fireplace-vat-text').html(vatCalcFireplace.toFixed(2))
      grandTotalFireplace = num + vatCalcFireplace
+
+     $(".table-total").attr('value','grandTotalFireplace')
      $('#fireplace-total-text').html(grandTotalFireplace.toFixed(2))
-
-
    }
 
-    $('#quotation-display-data').delegate('.delete-fireplace-table', 'click', function(){
+
+    $('#quotation-display-data').delegate('.delete-fireplace-button', 'click', function(){
          var removeTable = $(this).closest('tr')
          removeTable.remove()
          $('.delete-colour-table').remove()
+         add()
       })
 
 
