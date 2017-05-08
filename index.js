@@ -28,10 +28,10 @@ app.post('/salesman', function(req, res){
     } else {
       var collection = db.collection("salesman")
       var newData = inputDataSalesman
-      console.log("saleman", newData)
+      console.log("salesman", newData)
         collection.insert([newData], function(err, result){
         if (err){
-          conosole.log("there is an error: ", err)
+          console.log("there is an error: ", err)
         } else {
           res.redirect('/')
         }

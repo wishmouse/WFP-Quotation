@@ -50,21 +50,24 @@ var editList
      $('#model-dropdown-hearth').hide()
     quotationTemplate()
 
-/*
+
        $.ajax({
          url: "/salesman",
          success: function(result){
-               salemanData = JSON.parse(result)
+               salesmanData = JSON.parse(result)
                for (i = 0; i < salesmanData.length; i++) {
                  salesmanList = salesmanData[i]
-                 console.log(salesmanList)
-                 displayEdit(salesmanList)
+                 salesmanDisplay(salesmanList)
 
                }
              }
            })
 
-*/
+function salesmanDisplay(){
+
+
+}
+
 
 
   $('#salesman').delegate('.border-salesman', 'click', function(e){
@@ -775,19 +778,19 @@ function add(){
        salesmanName = $("#salesman-name").val()
        salesmanEmail = $("#salesman-email").val()
        salesmanPhone = $("#salesman-phone").val()
-       salemanActive =$("#salesman-active").val()
+       salesmanActive =$("#salesman-active").val()
 
-         $.ajax({
+
+     $.ajax({
             method: "POST",
             url: "/salesman",
             data: {
                 salesmanName:salesmanName,
                 salesmanEmail:salesmanEmail,
                 salesmanPhone:salesmanPhone,
-                salemanActive:salemanActive,
+                salesmanActive:salesmanActive,
               }
          })
-
 
          $('#edit-salesman-data')[0].reset();
 
@@ -801,7 +804,7 @@ function add(){
    $("#edit-salesman-data").hide()
 
 
-   editSalemanLine =$("#edit-salesman")
+   editSalesmanLine =$("#edit-salesman")
 
    function displaySalesmanData(editSalesman){
      var editSalesmanTemplate = ""+
@@ -824,9 +827,8 @@ function add(){
            "<td class='table-body'>"+editSalesmanList.salesmanActive+"</td>"+
 
            "</tr>"+
-         "</table>"+
-         "<button class='back-to-quotation'>Back to Quotation</button>"
-       editSalemanLine.append(editSalesmanTemplate, editSalesman)
+         "</table>"
+       editSalesmanLine.append(editSalesmanTemplate, editSalesman)
    }
      $.ajax({
        url: "/salesman",
