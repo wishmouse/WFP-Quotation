@@ -57,16 +57,19 @@ var editList
                salesmanData = JSON.parse(result)
                for (i = 0; i < salesmanData.length; i++) {
                  salesmanList = salesmanData[i]
+                 console.log(salesmanList)
                  salesmanDisplay(salesmanList)
+
+                 function salesmanDisplay(displaySalesman){
+                   var displaySalesmanTemplate ='' +
+                 	  "<div id='salesman-"+ salesmanList.salesmanName+"' class='border-salesman' >"+salesmanList.salesmanName +"</div>"
+                 $("#salesman").append(displaySalesmanTemplate, displaySalesman)
+                 }
 
                }
              }
            })
 
-function salesmanDisplay(){
-
-
-}
 
 
 
