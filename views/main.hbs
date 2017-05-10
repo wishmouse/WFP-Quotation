@@ -67,6 +67,7 @@
   <button class="edit-quotation-button" id="edit-quotation-button">View Quote</button>
   <button class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</button>
   <button class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</button>
+  <button class="entry-flue-button" id="entry-flue-button">Enter Flue</button>
 </div>
 </div>
 
@@ -266,6 +267,46 @@ Standard Finish price:
 </form>
 
 <div id="edit-hearth-view">
+</div>
+
+<div id = "enter-flue-data">
+  <select id="flue-make" style='margin-top: 25px'> Flue Make
+    <option id="flue-metro" class='flue-border-make' value="metro">Metrofires</option>
+    <option id="flue-jayline" class='flue-border-make' value="Jayline">Jayline</option>
+    <option id="flue-spf" class='flue-border-make' value="sfp">SFP</option>
+    <option id="flue-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</option>
+    <option id="flue-woodsman" class='flue-border-make' value="woodsman">Woodsman</option>
+    <option id="flue-ethos" class='flue-border-make' value="ethos">Ethos</option>
+ </select>
+
+  Flue Model<input type="text" id="input-model-flue" placeholder="Model">
+
+  <select id='flue-finish'>Flue finish
+    <option class="flue-finish">Galv</option>
+    <option class="flue-finish">S/S</option>
+    <option class="flue-finish">Met Black</option>
+    <option class="flue-finish">Pewter</option>
+  </select>
+
+  <select id='flue-size'>Flue Size
+    <option class="flue-size">4.2m</option>
+    <option class="flue-size">1.2m</option>
+    <option class="flue-size">4.0m</option>
+    <option class="flue-size">4.75m</option>
+    <option class="flue-size">4.8m</option>
+    <option class="flue-size">NA</option>
+  </select>
+
+  <div id="shield" style='margin-top: 25px'>Shield:
+      <div id="shield-metro" class='shield-border-make' value="metro">Metrofires</div>
+      <div id="shield-jayline" class='shield-border-make' value="Jayline">Jayline</div>
+      <div id="shield-bosca" class='shield-border-make' value="Bosca">Bosca</div>
+      <div id="shield-yunca" class='shield-border-make' value="Yunca">Yunca</div>
+      <div id="shield-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</div>
+      <div id="shield-woodsman" class='shield-border-make' value="woodsman">Woodsman</div>
+      <div id="shield-ethos" class='shield-border-make' value="ethos">Ethos</div>
+   </div>
+Flue Price :<input type="number" id="input-price-flue" placeholder="Price $$">
 </div>
 
 <!--  setting the address -->

@@ -152,6 +152,16 @@ function hideShow(){
       $("#enter-hearth-data").show()
     }
 
+    function dataFlueButton(){
+      $("#quotation").hide()
+      $("#fireplace").hide()
+      $("#air").hide()
+      $("#make").hide()
+      $("#dropdown-selector").hide()
+      $("#enter-hearth-data").hide()
+      $("#enter-flue-data").show()
+
+    }
     function clickToEdit(){
       $('#edit-data').hide()
       $("#fireplace-data-entry").show()

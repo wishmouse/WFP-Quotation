@@ -48,6 +48,8 @@ var editList
      $("#enter-hearth-data").hide()
      $("#hearth-tile-price").hide()
      $('#model-dropdown-hearth').hide()
+     $('#enter-flue-data').hide()
+
     quotationTemplate()
 
 
@@ -57,7 +59,6 @@ var editList
                salesmanData = JSON.parse(result)
                for (i = 0; i < salesmanData.length; i++) {
                  salesmanList = salesmanData[i]
-                 console.log(salesmanList)
                  salesmanDisplay(salesmanList)
 
                  function salesmanDisplay(displaySalesman){
@@ -975,4 +976,22 @@ $('#edit-hearth-button').click(function(e){
 
    })
 
+   //==============
+   //==============flue data entry
+   //==============
+   $("#entry-flue-button").click(function(){
+    // _hideShow.dataFlueButton()
+    $("#quotation").hide()
+    $("#fireplace").hide()
+    $("#air").hide()
+    $("#make").hide()
+    $("#dropdown-selector").hide()
+    $("#enter-hearth-data").hide()
+    $("#enter-flue-data").show()
+    $(".submit-notification").hide()
+    alert("1")
+
+   })
+
+alert("2")
 })//document ready
