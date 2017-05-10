@@ -51,7 +51,7 @@ var editList
      $('#enter-flue-data').hide()
 
     quotationTemplate()
-
+/*
 
        $.ajax({
          url: "/salesman",
@@ -70,6 +70,7 @@ var editList
                }
              }
            })
+           */
 
 
 
@@ -766,7 +767,9 @@ function add(){
 
      $('#entry-salesman-button').click(function(e){
        e.preventDefault()
-         _hideShow.dataSalesmanButton()
+       _hideShow.dataSalesmanButton()
+
+
        })
 
      $("#salesman-back-to-quotation").click(function(e){
@@ -979,19 +982,37 @@ $('#edit-hearth-button').click(function(e){
    //==============
    //==============flue data entry
    //==============
-   $("#entry-flue-button").click(function(){
-    // _hideShow.dataFlueButton()
-    $("#quotation").hide()
-    $("#fireplace").hide()
-    $("#air").hide()
-    $("#make").hide()
-    $("#dropdown-selector").hide()
-    $("#enter-hearth-data").hide()
-    $("#enter-flue-data").show()
-    $(".submit-notification").hide()
-    alert("1")
-
+   $("#entry-flue-button").click(function(e){
+     e.preventDefault
+     _hideShow.dataFlueButton()
    })
 
-alert("2")
+   $('#flue-data-submit').click(function(e){
+     e.preventDefault()
+
+     flueMake = $("#flue-make").val()
+     flueModel = $("#input-model-flue").val()
+     flueFinish =$("#flue-finish").val()
+     flueSize =$("#flue-size").val()
+     flueShield =$("#flue-shield").val()
+     fluePrice = $("#input-price-flue").val()
+
+       $.ajax({
+          method: "POST",
+          url: "/hearth",
+          data: {
+            flueMake:flueMake,
+            flueModel:flueModel,
+            flueFinish:flueFinish,
+            flueSize:flueSize,
+            flueShield:flueShield,
+            fluePrice:fluePrice,
+            }
+       })
+       //$('#enter-flue-data')[0].reset();
+
+       $(".submit-notification").show().delay(200).fadeOut();
+   })
+
+
 })//document ready

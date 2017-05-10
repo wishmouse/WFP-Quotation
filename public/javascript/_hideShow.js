@@ -159,6 +159,7 @@ function hideShow(){
       $("#make").hide()
       $("#dropdown-selector").hide()
       $("#enter-hearth-data").hide()
+      $("#data-submit-notification-flue").hide()
       $("#enter-flue-data").show()
 
     }
@@ -228,4 +229,5 @@ function hideShow(){
       hearthTypeShow:hearthTypeShow,
       wetbackTypeShow:wetbackTypeShow,
       dataHearthButton:dataHearthButton,
+      dataFlueButton:dataFlueButton,
     }

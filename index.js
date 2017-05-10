@@ -6,6 +6,7 @@ var hbs = require('handlebars')
 var hbsfy = require('hbsfy')
 var request = require('superagent')
 var mongodb = require('mongodb')
+var polyfill = require("babel-polyfill")
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
@@ -111,6 +112,28 @@ app.post('/hearth', function(req, res){
   })
 })
 
+app.post('/flue', function(req, res){
+  inputDataHearth =  req.body //returns object
+  var MongoClient = mongodb.MongoClient
+  var url = "mongodb://localhost:27017/flue"
+  MongoClient.connect(url, function(err, db){
+    if (err){
+      console.log("ooops there's an error: ", err)
+    } else {
+      var collection = db.collection("flue")
+      var newData = inputDataHearth
+      console.log(newData)
+        collection.insert([newData], function(err, result){
+        if (err){
+          conosole.log("there is an error: ", err)
+        } else {
+          res.redirect('/')
+        }
+        db.close()
+      })
+    }
+  })
+})
 
 
 app.get('/salesman',  function(req, res){
@@ -126,7 +149,6 @@ app.get('/salesman',  function(req, res){
           conosole.log("there is an error retreiving data from database: ", err)
           res.send(err)
         } else if (result.length){
-          console.log("this is result", result)
           res.send(JSON.stringify(result))
         }
         else{

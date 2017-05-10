@@ -53,7 +53,7 @@
 
 
 
-#fireplace-data-submit, #hearth-data-submit {
+#fireplace-data-submit, #hearth-data-submit, #flue-data-submit {
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
@@ -77,7 +77,7 @@
     color: white;
 }
 
-#edit-data-button, #edit-salesman-button, #edit-hearth-button{
+#edit-data-button, #edit-salesman-button, #edit-hearth-button, #edit-flue-button{
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;

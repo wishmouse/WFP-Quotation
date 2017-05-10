@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/wishmouse/WFP-Quotation#readme",
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "browserify": "^14.0.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
