@@ -161,8 +161,20 @@ function hideShow(){
       $("#enter-hearth-data").hide()
       $("#data-submit-notification-flue").hide()
       $("#enter-flue-data").show()
-
     }
+
+    function editFlueButton(){
+      $("#quotation").hide()
+      $("#fireplace").hide()
+      $("#air").hide()
+      $("#make").hide()
+      $("#dropdown-selector").hide()
+      $("#enter-hearth-data").hide()
+      $("#data-submit-notification-flue").hide()
+      $("#enter-flue-data").hide()
+      $("#edit-flue-data").show()
+    }
+
     function clickToEdit(){
       $('#edit-data').hide()
       $("#fireplace-data-entry").show()
@@ -230,4 +242,5 @@ function hideShow(){
       wetbackTypeShow:wetbackTypeShow,
       dataHearthButton:dataHearthButton,
       dataFlueButton:dataFlueButton,
+      editFlueButton:editFlueButton,
     }

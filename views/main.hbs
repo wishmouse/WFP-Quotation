@@ -266,52 +266,57 @@ Standard Finish price:
 
 <div id="edit-hearth-view"></div>
 
-<div id="enter-flue-data"> Flue Make
-  <select id="flue-make" style='margin-top: 25px'>
-    <option id="flue-metro" class='flue-border-make' value="metro">Metrofires</option>
-    <option id="flue-jayline" class='flue-border-make' value="Jayline">Jayline</option>
-    <option id="flue-spf" class='flue-border-make' value="sfp">SFP</option>
-    <option id="flue-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</option>
-    <option id="flue-woodsman" class='flue-border-make' value="woodsman">Woodsman</option>
-    <option id="flue-ethos" class='flue-border-make' value="ethos">Ethos</option>
- </select>
+<div id="enter-flue-data">
+  <!--<form id="entry-flue-data-form">-->
+    Flue Make
+    <select id="flue-make" style='margin-top: 25px'>
+      <option id="flue-metro" class='flue-border-make' value="metro">Metrofires</option>
+      <option id="flue-jayline" class='flue-border-make' value="Jayline">Jayline</option>
+      <option id="flue-spf" class='flue-border-make' value="sfp">SFP</option>
+      <option id="flue-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</option>
+      <option id="flue-woodsman" class='flue-border-make' value="woodsman">Woodsman</option>
+      <option id="flue-ethos" class='flue-border-make' value="ethos">Ethos</option>
+   </select>
 
-  Flue Model<input type="text" id="input-model-flue" placeholder="Model"/>
-<br>Flue finish
-  <select id='flue-finish'>
-    <option class="flue-finish" selected disabled></option>
-    <option class="flue-finish">Galv</option>
-    <option class="flue-finish">S/S</option>
-    <option class="flue-finish">Met Black</option>
-    <option class="flue-finish">Pewter</option>
-  </select>
-<br>Flue Size
-  <select id='flue-size'>
-    <option class="flue-size">4.2m</option>
-    <option class="flue-size">1.2m</option>
-    <option class="flue-size">4.0m</option>
-    <option class="flue-size">4.75m</option>
-    <option class="flue-size">4.8m</option>
-    <option selected class="flue-size">NA</option>
-  </select>
-<br>Shield:
-	<select id="flue-shield" style='margin-top: 25px'>
-      <option id="shield-metro" class='shield-border-make' value="metro"></option>
-      <option id="shield-metro" class='shield-border-make' value="metro">Metrofires</option>
-      <option id="shield-jayline" class='shield-border-make' value="Jayline">Jayline</option>
-      <option id="shield-bosca" class='shield-border-make' value="Bosca">Bosca</option>
-      <option id="shield-yunca" class='shield-border-make' value="Yunca">Yunca</option>
-      <option id="shield-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</option>
-      <option id="shield-woodsman" class='shield-border-make' value="woodsman">Woodsman</option>
-      <option id="shield-ethos" class='shield-border-make' value="ethos">Ethos</option>
-	</select>
-   Flue Price :<input type="number" id="input-price-flue" placeholder="Price $$"/>
+    Flue Model<input type="text" id="input-model-flue" placeholder="Model"/>
+  <br>Flue finish
+    <select id='flue-finish'>
+      <option class="flue-finish" selected disabled></option>
+      <option class="flue-finish">Galv</option>
+      <option class="flue-finish">S/S</option>
+      <option class="flue-finish">Met Black</option>
+      <option class="flue-finish">Pewter</option>
+    </select>
+  <br>Flue Size
+    <select id='flue-size'>
+      <option class="flue-size">4.2m</option>
+      <option class="flue-size">1.2m</option>
+      <option class="flue-size">4.0m</option>
+      <option class="flue-size">4.75m</option>
+      <option class="flue-size">4.8m</option>
+      <option selected class="flue-size">NA</option>
+    </select>
+  <br>Shield:
+  	<select id="flue-shield" style='margin-top: 25px'>
+        <option id="shield-metro" class='shield-border-make' value="metro"></option>
+        <option id="shield-metro" class='shield-border-make' value="metro">Metrofires</option>
+        <option id="shield-jayline" class='shield-border-make' value="Jayline">Jayline</option>
+        <option id="shield-bosca" class='shield-border-make' value="Bosca">Bosca</option>
+        <option id="shield-yunca" class='shield-border-make' value="Yunca">Yunca</option>
+        <option id="shield-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</option>
+        <option id="shield-woodsman" class='shield-border-make' value="woodsman">Woodsman</option>
+        <option id="shield-ethos" class='shield-border-make' value="ethos">Ethos</option>
+  	</select>
+     Flue Price :<input type="number" id="input-price-flue" placeholder="Price $$"/>
 
-   <button id="flue-data-submit">Submit Flue Data </button>
-   <button class="back-to-quotation">Back to quote</button>
-   <button id="edit-flue-button">Edit Flue Data</button>
-   <div id="data-submit-notification-flue" class="submit-notification">Data submitted </div>
+     <button id="flue-data-submit">Submit Flue Data </button>
+     <button class="back-to-quotation">Back to quote</button>
+     <button id="edit-flue-button">Edit Flue Data</button>
+     <div id="data-submit-notification-flue" class="submit-notification">Data submitted </div>
+
 </div>
+
+<div id='edit-flue-view'></div>
 <!--  setting the address -->
     <script>
       var placeSearch, autocomplete;

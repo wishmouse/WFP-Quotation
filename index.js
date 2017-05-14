@@ -113,7 +113,7 @@ app.post('/hearth', function(req, res){
 })
 
 app.post('/flue', function(req, res){
-  inputDataHearth =  req.body //returns object
+  inputDataFlue=  req.body //returns object
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/flue"
   MongoClient.connect(url, function(err, db){
@@ -121,8 +121,8 @@ app.post('/flue', function(req, res){
       console.log("ooops there's an error: ", err)
     } else {
       var collection = db.collection("flue")
-      var newData = inputDataHearth
-      console.log(newData)
+      var newData = inputDataFlue
+      console.log("flue",newData)
         collection.insert([newData], function(err, result){
         if (err){
           conosole.log("there is an error: ", err)
@@ -369,6 +369,34 @@ app.get('/deleteHearth/:id',  function(req, res){
     }
   })
 })
+
+app.get('/getFlueData',  function(req, res){
+  var MongoClient = mongodb.MongoClient
+  console.log("heeeer")
+  var url = "mongodb://localhost:27017/flue"
+  MongoClient.connect(url, function(err, db){
+    if (err){
+      console.log("ooops there's an error retreiving data from Database: ", err)
+    } else {
+      var collection = db.collection("flue")
+      collection.find({}).toArray(function(err, result){
+        if (err){
+          conosole.log("there is an error retreiving data from database: ", err)
+          res.send(err)
+        } else if (result.length){
+          console.log("this is result for flue", result)
+          res.send(JSON.stringify(result))
+        }
+        else{
+          console.log("No document found")
+          res.send("No documents found")
+        }
+        db.close()
+      })
+    }
+  })
+})
+
 
 
 app.listen(3000, function(){

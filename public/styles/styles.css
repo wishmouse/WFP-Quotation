@@ -36,7 +36,7 @@
     text-align: center;
 }
 
-.border-make, .border-make-hearth, .border-make-hearth-display{
+.border-make, .border-make-hearth, .border-make-hearth-display .border-make-flue{
   border: 1px solid #B39476;
   width: 16%;
   height: 35px;
@@ -200,7 +200,7 @@
   font-family: helvetica;
 }
 
-.click-to-edit, .click-to-edit-quotation, .click-to-edit-salesman, .click-to-edit-hearth{
+.click-to-edit, .click-to-edit-quotation, .click-to-edit-salesman, .click-to-edit-hearth, .click-to-edit-flue{
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;
@@ -213,7 +213,7 @@
   margin: 10px 0px 0px 0px;
 }
 
-.click-to-delete, .click-to-delete-quotation, .click-to-delete-salesman, .click-to-delete-hearth{
+.click-to-delete, .click-to-delete-quotation, .click-to-delete-salesman, .click-to-delete-hearthj, .click-to-delete-flue{
   display: inline-block;
     border: 1px solid black;
     border-radius: 8px;
@@ -335,5 +335,16 @@ div#data-submit:hover {
   width: 90px;
 }
 
+
+.table-header, .table-body{
+  font-family: helvetica;
+  font-weight: 300;
+  border-right: 1px solid #78b777;
+  width: 100px;
+  text-align: left;
+  padding-right: 10px;
+  border-right: black 1px solid;
+  border-bottom: black 1px solid;
+}
 
 https://color.adobe.com/sinNat-Brown-2-color-theme-9178330/

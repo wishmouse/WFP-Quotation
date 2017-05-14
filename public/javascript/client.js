@@ -914,7 +914,6 @@ $('#edit-hearth-button').click(function(e){
 
    editHearthLine =$("#edit-hearth-view")
 
-
    function displayHearthData(editHearth){
      var editHearthTemplate = ""+
        "<table class='to-delete"+editHearthList._id+"'>" +
@@ -933,7 +932,6 @@ $('#edit-hearth-button').click(function(e){
            "<button class='click-to-delete-hearth' data-id ="+editHearthList._id+">Delete</button>" +
            "</td>"+
            "<td class='table-body'>"+editHearthList.hearthMake+"</td>"+
-
            "<td class='table-body'>"+editHearthList.hearthModel+"</td>"+
            "<td class='table-body'>"+editHearthList.hearthFinish+"</td>"+
            "<td class='table-body'>"+editHearthList.hearthStyle+"</td>"+
@@ -957,7 +955,6 @@ $('#edit-hearth-button').click(function(e){
            }
          }
        })
-
  })
 
 
@@ -999,7 +996,7 @@ $('#edit-hearth-button').click(function(e){
 
        $.ajax({
           method: "POST",
-          url: "/hearth",
+          url: "/flue",
           data: {
             flueMake:flueMake,
             flueModel:flueModel,
@@ -1009,10 +1006,76 @@ $('#edit-hearth-button').click(function(e){
             fluePrice:fluePrice,
             }
        })
-       //$('#enter-flue-data')[0].reset();
+       $('#entry-flue-data-form')[0].reset();
 
        $(".submit-notification").show().delay(200).fadeOut();
    })
+
+   $("#edit-flue-button").click(function(){
+     _hideShow.editFlueButton()
+
+     editFlueLine =$("#edit-flue-view")
+     flueTemplate()
+     function flueTemplate(){
+       editFlueLine =$("#edit-flue-view")
+       var editFlueTemplate = ""+
+         "<table>" +
+           "<tr>"+
+             "<th class='table-header'></th>"+
+             "<th class='table-header'>Make</th>"+
+             "<th class='table-header'>Model</th>"+
+             "<th class='table-header'>Finish</th>"+
+             "<th class='table-header'>Size</th>"+
+             "<th class='table-header'>Shield</th>"+
+             "<th class='table-header'>Price</th>"+
+           "</tr>"+
+          "</table>"
+          editFlueLine.append(editFlueTemplate)
+      }
+
+      function displayFlueData(){
+        var editFlueTemplate = ""+
+        "<tr>"+
+            "<td>"+
+              "<button class='click-to-edit-flue' data-id ="+editFlueList._id+">Edit</button>" + "<br>"
+              "<button class='click-to-delete-flue' data-id ="+editFlueList._id+">Delete</button>" +
+            "</td>"+
+            "<td class='table-body'>"+editFlueList.flueMake+"</td>"+
+
+            "<td class='table-body'>"+editFlueList.flueModel+"</td>"+
+            "<td class='table-body'>"+editFlueList.flueFinish+"</td>"+
+            "<td class='table-body'>"+editFlueList.flueSize+"</td>"+
+            "<td class='table-body'>"+editFlueList.flueShield+"</td>"+
+            "<td class='table-body'>"+editFlueList.fluePrice+"</td>"+
+          "</tr>"
+        editFlueLine.append(editFlueTemplate)
+       }
+
+
+      $.ajax({
+        url: "/getFlueData",
+        success: function(result){
+              editFlueData = JSON.parse(result)
+              console.log("this is flue",editFlueData)
+              for (i = 0; i < editFlueData.length; i++) {
+                editFlueList = editFlueData[i]
+                displayFlueData(editFlueList)
+            }
+          }
+        })
+   })
+
+   $('#edit-flue-view').delegate('.click-to-delete-flue', 'click', function(){
+       deleteHearthId = $(this).attr('data-id')
+       $( ".to-delete"+deleteHearthId ).fadeOut("slow")
+
+       $.ajax({
+         url: "/deleteHearth/"+deleteHearthId,
+         success: function(result){
+            }
+         })
+
+     })
 
 
 })//document ready
