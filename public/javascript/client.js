@@ -148,14 +148,14 @@ function add(){
 
 }
 
-         function calculateTotalTile(num){
-           var num = parseInt($('#hearth-colour-price-text').val())
-           var vatCalcTiles = num / 100*vatRate
-           vatTilesText = $('#hearth-colour-vat-text').html(vatCalcTiles.toFixed(2))
-           var grandTotalTiles = num + vatCalcTiles
-           $('#hearth-colour-total-text').html(grandTotalTiles.toFixed(2))
+     function calculateTotalTile(num){
+       var num = parseInt($('#hearth-colour-price-text').val())
+       var vatCalcTiles = num / 100*vatRate
+       vatTilesText = $('#hearth-colour-vat-text').html(vatCalcTiles.toFixed(2))
+       var grandTotalTiles = num + vatCalcTiles
+       $('#hearth-colour-total-text').html(grandTotalTiles.toFixed(2))
 
-       }
+   }
 
      $('#quotation-display-data').delegate('.delete-tile-button', 'click', function(){
           var removeTable = $(this).closest('tr')
@@ -285,16 +285,12 @@ function add(){
 
   }
 
-
-
     $('#quotation-display-data').delegate('.delete-hearth-button', 'click', function(){
          var removeTable = $(this).closest('tr')
          removeTable.remove()
          $('.delete-tile-table').remove()
          add()
       })
-
-
 
 
         $('#fireplace').delegate('.border-fireplace', 'click', function(e){
@@ -319,68 +315,64 @@ function add(){
 
              })
 
-         $('#make').delegate('.border-make', 'click', function(e){
-            $(".border-make").removeClass("selected")
-            var select = $(this).addClass("selected")
-            var makeID = $(this).attr('id')
-            make = select.text()
+     $('#make').delegate('.border-make', 'click', function(e){
+        $(".border-make").removeClass("selected")
+        var select = $(this).addClass("selected")
+        var makeID = $(this).attr('id')
+        make = select.text()
 
-            if (entryTypeController == 'quotation'){
-                $.ajax({
-                url: "/fireplaceData",
-                success: function(result){
-                  $('#model-dropdown').html('')
-                  getData = JSON.parse(result)
-                  for (i = 0; i < getData.length; i++) {
-                    var dataReturn= getData[i]
-                    if(fireplaceType == dataReturn.fuel && dataReturn.make == make ){
-                        $("#dropdown-selector").show()
-                        $(dataReturn).each(function(){
-                          var optionModel = $('<option />')
-                          optionModel.attr('value', this.model).text(this.model)
-                          $('#model-dropdown').append(optionModel)
-                        })
-                    }
-                  }
+        if (entryTypeController == 'quotation'){
+            $.ajax({
+            url: "/fireplaceData",
+            success: function(result){
+              $('#model-dropdown').html('')
+              getData = JSON.parse(result)
+              for (i = 0; i < getData.length; i++) {
+                var dataReturn= getData[i]
+                if(fireplaceType == dataReturn.fuel && dataReturn.make == make ){
+                    $("#dropdown-selector").show()
+                    $(dataReturn).each(function(){
+                      var optionModel = $('<option />')
+                      optionModel.attr('value', this.model).text(this.model)
+                      $('#model-dropdown').append(optionModel)
+                    })
                 }
-              })
+              }
             }
           })
+        }
+      })
 
-
-
-
-
-           $("#model-dropdown").change(function() {
-             var modelValue = $("#model-dropdown" ).val()
-             for (i = 0; i < getData.length; i++) {
-               var dataReturn= getData[i]
-               if (modelValue == dataReturn.model){
-                 $("#kw-dropdown").html(dataReturn.kw)
-                 if(air == "Clean Air"){
-                  fireplaceCost = dataReturn.cleanAir
-                 } else if(air == 'Rural'){
-                    fireplaceCost = dataReturn.rural
-                 }
-                 if(air == 'Clean Air wetback'){
-                  fireplaceCost = dataReturn.cleanAirWB
-                 }else if (air == "Rural wetback"){
-                    fireplaceCost = dataReturn.ruralWB
-                 }
-                 if(hearth == 'Corner Hearth'){
-                   cornerHearth =dataReturn.cornerHearth
-
-                 }else if(hearth == 'Wall Hearth'){
-                   wallHearth =dataReturn.wallHearth
-                 }
-                 quotationDisplay()
-
-                 if(dataReturn.colour == "Yes"){
-                   $("#colour-price").show()
-                   $("#colourPrice-extra").html(dataReturn.colourPrice)
-                 }
-               }
+       $("#model-dropdown").change(function() {
+         var modelValue = $("#model-dropdown" ).val()
+         for (i = 0; i < getData.length; i++) {
+           var dataReturn= getData[i]
+           if (modelValue == dataReturn.model){
+             $("#kw-dropdown").html(dataReturn.kw)
+             if(air == "Clean Air"){
+              fireplaceCost = dataReturn.cleanAir
+             } else if(air == 'Rural'){
+                fireplaceCost = dataReturn.rural
              }
+             if(air == 'Clean Air wetback'){
+              fireplaceCost = dataReturn.cleanAirWB
+             }else if (air == "Rural wetback"){
+                fireplaceCost = dataReturn.ruralWB
+             }
+             if(hearth == 'Corner Hearth'){
+               cornerHearth =dataReturn.cornerHearth
+
+             }else if(hearth == 'Wall Hearth'){
+               wallHearth =dataReturn.wallHearth
+             }
+             quotationDisplay()
+
+             if(dataReturn.colour == "Yes"){
+               $("#colour-price").show()
+               $("#colourPrice-extra").html(dataReturn.colourPrice)
+             }
+           }
+         }
 
 
          function quotationDisplay(){
@@ -439,6 +431,50 @@ function add(){
          add()
       })
 
+//===============
+// flue quotation
+//===============
+
+  $('#flue-style-wrapper').delegate('.border-style-flue', 'click', function(e){
+     $(".border-style-flue").removeClass("selected")
+     var select = $(this).addClass("selected")
+     var flueStyleId = $(this).attr('id')
+     flueStyle = select.text()
+
+
+  })
+   $('#flue-source-wrapper').delegate('.border-source-flue', 'click', function(e){
+      $(".border-source-flue").removeClass("selected")
+      var select = $(this).addClass("selected")
+      var flueSourceId = $(this).attr('id')
+      flueSource = select.text()
+
+    })
+    $('#flue-make').delegate('.flue-border-make', 'click', function(e){
+       $(".flue-border-make").removeClass("selected")
+       var select = $(this).addClass("selected")
+       var flueMakeId = $(this).attr('id')
+       flueMake = select.text()
+
+           $.ajax({
+           url: "/getFlueData",
+           success: function(result){
+             $('#model-dropdown-flue').html('')
+             getFlueData = JSON.parse(result)
+             console.log(getFlueData)
+             for (i = 0; i < getFlueData.length; i++) {
+               var dataReturn= getFlueData[i]
+               if(flueMake == dataReturn.flueMake){
+                   $(dataReturn).each(function(){
+                     var optionModel = $('<option />')
+                     optionModel.attr('value', this.flueModel).text(this.flueModel)
+                     $('#model-dropdown-flue').append(optionModel)
+                   })
+               }
+             }
+           }
+       })
+     })
 
 
 //====
@@ -987,17 +1023,29 @@ $('#edit-hearth-button').click(function(e){
    $('#flue-data-submit').click(function(e){
      e.preventDefault()
 
-     flueMake = $("#flue-make").val()
+     flueFuel = $("#flue-fuel").val()
+     flueStyle = $("#flue-style").val()
+     flueSource = $("#flue-source").val()
+     flueMake = $("#flue-make-entry").val()
      flueModel = $("#input-model-flue").val()
-     flueFinish =$("#flue-finish").val()
-     flueSize =$("#flue-size").val()
-     flueShield =$("#flue-shield").val()
+     flueFinish = $("#flue-finish-entry").val()
+     flueSize = $("#flue-size").val()
+     flueShield = $("#flue-shield").val()
+     flueInner = $("#flue-inner").val()
+     flueOuter = $("#flue-outer").val()
      fluePrice = $("#input-price-flue").val()
+     flueLiner = $("#flue-liners").val()
 
        $.ajax({
           method: "POST",
           url: "/flue",
           data: {
+            flueFuel:flueFuel,
+            flueStyle:flueStyle,
+            flueSource:flueSource,
+            flueInner: flueInner,
+            flueOuter:flueOuter,
+            flueLiner:flueLiner,
             flueMake:flueMake,
             flueModel:flueModel,
             flueFinish:flueFinish,
@@ -1056,7 +1104,6 @@ $('#edit-hearth-button').click(function(e){
         url: "/getFlueData",
         success: function(result){
               editFlueData = JSON.parse(result)
-              console.log("this is flue",editFlueData)
               for (i = 0; i < editFlueData.length; i++) {
                 editFlueList = editFlueData[i]
                 displayFlueData(editFlueList)

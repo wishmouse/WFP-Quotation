@@ -144,11 +144,34 @@
 		Model :<select class="quote-dropdown" id="model-dropdown-hearth"></select><br>
 
 		Additional tile cost:
-		  <div id="hearth-tile-price" class="wrapper">
-			<div id="hearth-tile-extra" class="hearth-tile-border-colour" ></div>
-			<div id="hearth-tile-nocharge" class="hearth-tile-border-colour">0.00</div>
-		  </div>
+	  <div id="hearth-tile-price" class="wrapper">
+  		<div id="hearth-tile-extra" class="hearth-tile-border-colour" ></div>
+  		<div id="hearth-tile-nocharge" class="hearth-tile-border-colour">0.00</div>
+	  </div>
 
+    Flue
+    <div id="flue-style-wrapper" class="wrapper">
+      <div id="flue-inbuilt" class="border-style-flue">Inbuilt</div>
+      <div id="flue-freestanding" class="border-style-flue">Free Standing</div>
+    </div>
+    Style
+    <div id="flue-source-wrapper" class="wrapper">
+      <div id="custom" class="border-source-flue">Custom Flue</div>
+      <div id="flue-freestanding" class="border-source-flue">Flue Kit</div>
+    </div>
+
+    Flue Make
+    <div id="flue-make" style='margin-top: 25px'>
+        <div id="flue-metro" class='flue-border-make' value="metro">Metrofires</div>
+        <div id="flue-jayline" class='flue-border-make' value="Jayline">Jayline</div>
+        <div id="flue-spf" class='flue-border-make' value="sfp">SFP</div>
+        <div id="flue-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</div>
+        <div id="flue-woodsman" class='flue-border-make' value="woodsman">Woodsman</div>
+        <div id="flue-ethos" class='flue-border-make' value="ethos">Ethos</div>
+    </div>
+    flue Model
+    <select  class="quote-dropdown" id='model-dropdown-flue'></select>
+    <br>
 		<div id='quotation-display-data'></div>
     <table>
       <tr>
@@ -283,38 +306,43 @@ Standard Finish price:
 <div id="edit-hearth-view"></div>
 
 <div id="enter-flue-data">
+  Fuel
+  <select id="flue-fuel">
+    <option  class='flue-border-fuel' >Wood</option>
+    <option class='flue-border-fuel'>Gas</option>
+  </select>
+ <br>
   Inbuilt  / FreeStanding
   <select id="flue-style">
-    <option  class='flue-border-style' value="In built">Inbuilt</option>
-    <option class='flue-border-style' value="Jayline">Free standing</option>
+    <option  class='flue-border-style'>Inbuilt</option>
+    <option class='flue-border-style'>Free standing</option>
   </select>
  <br>
 Kit / Custom
   <select id="flue-source" >
-    <option class='source-border-style'>Kit</option>
-    <option class='scource-border-style'>Custom</option>
+    <option class='flue-border-source'>Kit</option>
+    <option class='flue-border-source'>Custom</option>
   </select>
 <br>
 
-
     Flue Make
-    <select id="flue-make" style='margin-top: 25px'>
-      <option id="flue-metro" class='flue-border-make' value="metro">Metrofires</option>
-      <option id="flue-jayline" class='flue-border-make' value="Jayline">Jayline</option>
-      <option id="flue-spf" class='flue-border-make' value="sfp">SFP</option>
-      <option id="flue-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</option>
-      <option id="flue-woodsman" class='flue-border-make' value="woodsman">Woodsman</option>
-      <option id="flue-ethos" class='flue-border-make' value="ethos">Ethos</option>
+    <select id="flue-make-entry">
+      <option class='flue-border-make' value ="Metrofires">Metrofires</option>
+      <option class='flue-border-make' value ="Jayline">Jayline</option>
+      <option class='flue-border-make' value ="SFP">SFP</option>
+      <option class="flue-border-make" value ="Pyroclassic">Pyroclassic</option>
+      <option class='flue-border-make' value ="Woodsman">Woodsman</option>
+      <option class='flue-border-make' value ="Ethos">Ethos</option>
    </select>
 
     Flue Model<input type="text" id="input-model-flue" placeholder="Model"/>
   <br>Flue finish
-    <select id='flue-finish'>
+    <select id='flue-finish-entry'>
       <option class="flue-finish" selected disabled></option>
-      <option class="flue-finish">Galv</option>
-      <option class="flue-finish">S/S</option>
-      <option class="flue-finish">Met Black</option>
-      <option class="flue-finish">Pewter</option>
+      <option class="flue-finish" value ="Galv">Galv</option>
+      <option class="flue-finish" value ="S/S">S/S</option>
+      <option class="flue-finish" value ="Met Black">Met Black</option>
+      <option class="flue-finish" value="Pewter">Pewter</option>
     </select>
 
   <br>Flue Size
@@ -361,6 +389,7 @@ Kit / Custom
           <option class='flue-liners'>300</option>
           <option class='flue-liners'>400</option>
         </select>
+
 
      Flue Price :<input type="number" id="input-price-flue" placeholder="Price $$"/>
      <button id="flue-data-submit">Submit Flue Data </button>
