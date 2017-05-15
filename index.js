@@ -372,7 +372,6 @@ app.get('/deleteHearth/:id',  function(req, res){
 
 app.get('/getFlueData',  function(req, res){
   var MongoClient = mongodb.MongoClient
-  console.log("heeeer")
   var url = "mongodb://localhost:27017/flue"
   MongoClient.connect(url, function(err, db){
     if (err){
@@ -397,6 +396,24 @@ app.get('/getFlueData',  function(req, res){
   })
 })
 
+app.get('/deleteFlue/:id',  function(req, res){
+  var MongoClient = mongodb.MongoClient
+  console.log("got this far")
+  var url = "mongodb://localhost:27017/flue"
+  MongoClient.connect(url, function(err, db){
+    if (err){
+      console.log("ooops there's an error retreiving data from Database: ", err)
+    } else {
+      var collection = db.collection("flue")
+      var ObjectId = require('mongodb').ObjectId;
+      var deleteId = req.params.id;
+      console.log("deleteId", deleteId)
+      var o_id = new ObjectId(deleteId);
+      collection.remove({_id:o_id})
+        db.close()
+    }
+  })
+})
 
 
 app.listen(3000, function(){

@@ -1006,7 +1006,7 @@ $('#edit-hearth-button').click(function(e){
             fluePrice:fluePrice,
             }
        })
-       $('#entry-flue-data-form')[0].reset();
+      // $('#enter-flue-data')[0].reset();
 
        $(".submit-notification").show().delay(200).fadeOut();
    })
@@ -1037,7 +1037,7 @@ $('#edit-hearth-button').click(function(e){
         var editFlueTemplate = ""+
         "<tr>"+
             "<td>"+
-              "<button class='click-to-edit-flue' data-id ="+editFlueList._id+">Edit</button>" + "<br>"
+              "<button class='click-to-edit-flue' data-id ="+editFlueList._id+">Edit</button>" +
               "<button class='click-to-delete-flue' data-id ="+editFlueList._id+">Delete</button>" +
             "</td>"+
             "<td class='table-body'>"+editFlueList.flueMake+"</td>"+
@@ -1066,16 +1066,17 @@ $('#edit-hearth-button').click(function(e){
    })
 
    $('#edit-flue-view').delegate('.click-to-delete-flue', 'click', function(){
-       deleteHearthId = $(this).attr('data-id')
-       $( ".to-delete"+deleteHearthId ).fadeOut("slow")
-
+       deleteFlueId = $(this).attr('data-id')
+       $( ".to-delete"+deleteFlueId )
        $.ajax({
-         url: "/deleteHearth/"+deleteHearthId,
+         url: "/deleteFlue/"+deleteFlueId,
          success: function(result){
             }
          })
 
      })
+
+
 
 
 })//document ready

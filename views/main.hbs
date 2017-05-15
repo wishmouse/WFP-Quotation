@@ -150,15 +150,30 @@
 		  </div>
 
 		<div id='quotation-display-data'></div>
-		Excl VAT total <div id='quotation-excl-total'></div>
-		VAT <div id='quotation-vat-total'></div>
-		Grand Total<div id="quotation-grand-total"></div>
+    <table>
+      <tr>
+  		    <td class='total-description'>Excl VAT total</td>
+          <td class='total-value'> <div id='quotation-excl-total'></div>  </td>
+      </tr>
+      <tr>
+          <td class='total-description'>VAT</td>
+          <td class='total-value'> <div id='quotation-vat-total'></div> </td>
+      </tr>
+      <tr>
+          <td class='total-description'>Grand Total</td>
+          <td class='total-value'> <div id="quotation-grand-total"></div> </td>
+      </tr>
+    </table>
 		<br>
 		<textarea id="quotation-comments" class = "quotation-comments" placeholder="comments"  cols="100" rows="5"></textarea>
 		<button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
 		<br>
 	</div>
 </div>
+
+<!-- // /// //// /// -->
+<!--end of quotation -->
+<!-- // /// //// /// -->
 
 <div id="edit-quotation" class="edit-quotation"></div>
 
@@ -189,7 +204,7 @@
 			<div>
 			  <button id="fireplace-data-submit">Submit Fireplace Data </button>
 			  <button id="updated-data-submit">Update Data </button>
-			  <button id="quotation-button" class="back-to-quotation">Back to quote</button>
+			  <button id="quotation-button" class="back-to-quotation">Back to quote!</button>
 			  <button id="edit-data-button">Edit Fireplace Data</button>
 			  <div id="data-submit-notification" class="submit-notification">Data submitted </div>
 			</div>
@@ -215,6 +230,7 @@
   <div>
     <button id="submit-salesman-button" class ="submit-salesman-button">Salesman data submit </button>
     <button id="salesman-back-to-quotation" class="back-to-quotation">Back to quote</button>
+
     <button id="edit-salesman-button" class = "edit-salesman-button">Edit Salesman </button>
   </div>
 </form>
@@ -267,7 +283,20 @@ Standard Finish price:
 <div id="edit-hearth-view"></div>
 
 <div id="enter-flue-data">
-  <!--<form id="entry-flue-data-form">-->
+  Inbuilt  / FreeStanding
+  <select id="flue-style">
+    <option  class='flue-border-style' value="In built">Inbuilt</option>
+    <option class='flue-border-style' value="Jayline">Free standing</option>
+  </select>
+ <br>
+Kit / Custom
+  <select id="flue-source" >
+    <option class='source-border-style'>Kit</option>
+    <option class='scource-border-style'>Custom</option>
+  </select>
+<br>
+
+
     Flue Make
     <select id="flue-make" style='margin-top: 25px'>
       <option id="flue-metro" class='flue-border-make' value="metro">Metrofires</option>
@@ -287,6 +316,7 @@ Standard Finish price:
       <option class="flue-finish">Met Black</option>
       <option class="flue-finish">Pewter</option>
     </select>
+
   <br>Flue Size
     <select id='flue-size'>
       <option class="flue-size">4.2m</option>
@@ -307,9 +337,36 @@ Standard Finish price:
         <option id="shield-woodsman" class='shield-border-make' value="woodsman">Woodsman</option>
         <option id="shield-ethos" class='shield-border-make' value="ethos">Ethos</option>
   	</select>
-     Flue Price :<input type="number" id="input-price-flue" placeholder="Price $$"/>
 
+    Inners
+      <select id="flue-inner" style='margin-top: 25px'>
+        <option class='flue-inner'>100</option>
+        <option class='flue-inner'>200</option>
+        <option class='flue-inner'>300</option>
+        <option class='flue-inner'>400</option>
+      </select>
+
+    Outers
+      <select id="flue-outer" style='margin-top: 25px'>
+        <option class='flue-outer'>100</option>
+        <option class='flue-outer'>200</option>
+        <option class='flue-outer'>300</option>
+        <option class='flue-outer'>400</option>
+      </select>
+
+      Liners
+        <select id="flue-liners" style='margin-top: 25px'>
+          <option class='flue-liners'>100</option>
+          <option class='flue-liners'>200</option>
+          <option class='flue-liners'>300</option>
+          <option class='flue-liners'>400</option>
+        </select>
+
+     Flue Price :<input type="number" id="input-price-flue" placeholder="Price $$"/>
      <button id="flue-data-submit">Submit Flue Data </button>
+
+
+
      <button class="back-to-quotation">Back to quote</button>
      <button id="edit-flue-button">Edit Flue Data</button>
      <div id="data-submit-notification-flue" class="submit-notification">Data submitted </div>
