@@ -7,9 +7,15 @@ var hbsfy = require('hbsfy')
 var request = require('superagent')
 var mongodb = require('mongodb')
 var polyfill = require("babel-polyfill")
+var cons = require('consolidate')
 
+// view engine setup
+app.engine('html', cons.swig)
 app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'hbs')
+app.set('view engine', 'html')
+
+//app.set('views', path.join(__dirname, 'views'))
+//app.set('view engine', 'hbs')
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
