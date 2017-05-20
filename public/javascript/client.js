@@ -1020,37 +1020,46 @@ $('#edit-hearth-button').click(function(e){
      _hideShow.dataFlueButton()
    })
 
-   $('#flue-data-submit').click(function(e){
+   $("#flue-enter-options").change(function() {
+     var flueOption = $("#flue-enter-options" ).val()
+     if(flueOption == "Inner flue"){
+        $("#flue-inner-options").show()
+     }
+     if(flueOption == "Outer flue"){
+        $("#flue-outer-options").show()
+     }
+     if(flueOption == "Flue liner"){
+        $("#flue-liner-options").show()
+     }
+     if(flueOption == "Cowel"){
+       $("#flue-cowel-options").show()
+     }
+     if(flueOption == "Spider"){
+       $("#flue-spider-options").show()
+     }
+     if(flueOption == "Guides"){
+       $("#flue-guides-options")
+
+     }
+     })
+   $('#flue-data-inner-submit').click(function(e){
      e.preventDefault()
 
      flueFuel = $("#flue-fuel").val()
      flueStyle = $("#flue-style").val()
      flueSource = $("#flue-source").val()
-     flueMake = $("#flue-make-entry").val()
-     flueModel = $("#input-model-flue").val()
-     flueFinish = $("#flue-finish-entry").val()
-     flueSize = $("#flue-size").val()
-     flueShield = $("#flue-shield").val()
      flueInner = $("#flue-inner").val()
-     flueOuter = $("#flue-outer").val()
      fluePrice = $("#input-price-flue").val()
-     flueLiner = $("#flue-liners").val()
+
 
        $.ajax({
           method: "POST",
-          url: "/flue",
+          url: "/flueInner",
           data: {
             flueFuel:flueFuel,
             flueStyle:flueStyle,
             flueSource:flueSource,
             flueInner: flueInner,
-            flueOuter:flueOuter,
-            flueLiner:flueLiner,
-            flueMake:flueMake,
-            flueModel:flueModel,
-            flueFinish:flueFinish,
-            flueSize:flueSize,
-            flueShield:flueShield,
             fluePrice:fluePrice,
             }
        })

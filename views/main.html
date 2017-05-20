@@ -312,12 +312,20 @@ Standard Finish price:
     <option class='flue-border-fuel'>Gas</option>
   </select>
  <br>
-  Inbuilt  / FreeStanding
+  Inbuilt / FreeStanding
   <select id="flue-style">
     <option  class='flue-border-style'>Inbuilt</option>
     <option class='flue-border-style'>Free standing</option>
   </select>
- <br>
+    <br>
+<br>Flue finish
+  <select id='flue-finish'>
+    <option class="flue-border-finish" selected disabled></option>
+    <option class="flue-border-finish" value ="Galv">Galv</option>
+    <option class="flue-border-finish" value ="S/S">S/S</option>
+    <option class="flue-border-finish" value ="Met Black">Met Black</option>
+    <option class="flue-border-finish" value="Pewter">Pewter</option>
+  </select>
 Kit / Custom
   <select id="flue-source" >
     <option class='flue-border-source'>Kit</option>
@@ -325,74 +333,97 @@ Kit / Custom
   </select>
 <br>
 
-    Flue Make
-    <select id="flue-make-entry">
-      <option class='flue-border-make' value ="Metrofires">Metrofires</option>
-      <option class='flue-border-make' value ="Jayline">Jayline</option>
-      <option class='flue-border-make' value ="SFP">SFP</option>
-      <option class="flue-border-make" value ="Pyroclassic">Pyroclassic</option>
-      <option class='flue-border-make' value ="Woodsman">Woodsman</option>
-      <option class='flue-border-make' value ="Ethos">Ethos</option>
-   </select>
+Entering
+<select id="flue-enter-options" style='margin-top: 25px'>
+  <option class='enter-options' selected disabled></option>
+    <option class='enter-options'>Inner flue</option>
+    <option class='enter-options'>Outer flue</option>
+    <option class='enter-options'>Flue liner</option>
+    <option class='enter-options'>Cowel</option>
+    <option class='enter-options'>Spider</option>
+    <option class='enter-options'>Guides</option>
+</select>
 
-    Flue Model<input type="text" id="input-model-flue" placeholder="Model"/>
-  <br>Flue finish
-    <select id='flue-finish-entry'>
-      <option class="flue-finish" selected disabled></option>
-      <option class="flue-finish" value ="Galv">Galv</option>
-      <option class="flue-finish" value ="S/S">S/S</option>
-      <option class="flue-finish" value ="Met Black">Met Black</option>
-      <option class="flue-finish" value="Pewter">Pewter</option>
+<div id="flue-inner-options">
+  <select id="flue-inner" style='margin-top: 25px'>
+    <option class='enter-options' placeholder>Flue size Inner</option>
+    <option class='flue-inner'>100</option>
+    <option class='flue-inner'>200</option>
+    <option class='flue-inner'>300</option>
+    <option class='flue-inner'>400</option>
+  </select>
+  <br>
+  Flue Inner Price :<input type="number" id="flue-inner-price" placeholder="Price $$"/>
+  <button id="flue-data-inner-submit">Submit Flue-inner</button>
+</div>
+
+
+<div id="flue-outer-options">
+Flue Size outers
+    <select id='flue-outer'>
+      <option class="flue-outer"></option>
+      <option class="flue-outer">4.2m</option>
+      <option class="flue-outer">1.2m</option>
+      <option class="flue-outer">4.0m</option>
+      <option class="flue-outer">4.75m</option>
+      <option class="flue-outer">4.8m</option>
+      <option selected class="flue-outer">NA</option>
     </select>
+  Flue Outer Price :<input type="number" id="flue-outer-price" placeholder="Price $$"/>
+    <button id="flue-data-outer-submit">Submit Flue-outer</button>
+  </div>
 
-  <br>Flue Size
-    <select id='flue-size'>
-      <option class="flue-size">4.2m</option>
-      <option class="flue-size">1.2m</option>
-      <option class="flue-size">4.0m</option>
-      <option class="flue-size">4.75m</option>
-      <option class="flue-size">4.8m</option>
-      <option selected class="flue-size">NA</option>
+  <div id="flue-liner-options">
+  Liners
+    <select id="flue-liners" style='margin-top: 25px'>
+      <option class='flue-liners'>100</option>
+      <option class='flue-liners'>200</option>
+      <option class='flue-liners'>300</option>
+      <option class='flue-liners'>400</option>
     </select>
-  <br>Shield:
-  	<select id="flue-shield" style='margin-top: 25px'>
-        <option id="shield-metro" class='shield-border-make' value="metro"></option>
-        <option id="shield-metro" class='shield-border-make' value="metro">Metrofires</option>
-        <option id="shield-jayline" class='shield-border-make' value="Jayline">Jayline</option>
-        <option id="shield-bosca" class='shield-border-make' value="Bosca">Bosca</option>
-        <option id="shield-yunca" class='shield-border-make' value="Yunca">Yunca</option>
-        <option id="shield-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</option>
-        <option id="shield-woodsman" class='shield-border-make' value="woodsman">Woodsman</option>
-        <option id="shield-ethos" class='shield-border-make' value="ethos">Ethos</option>
-  	</select>
-
-    Inners
-      <select id="flue-inner" style='margin-top: 25px'>
-        <option class='flue-inner'>100</option>
-        <option class='flue-inner'>200</option>
-        <option class='flue-inner'>300</option>
-        <option class='flue-inner'>400</option>
+    Flue Liner Price :<input type="number" id="flue-liner-price" placeholder="Price $$"/>
+      <button id="flue-data-liner-submit">Submit Flue-liner</button>
+    </div>
+    <div id="flue-cowel-options">
+    Cowel
+      <select id="flue-cowel" style='margin-top: 25px'>
+        <option class='flue-cowel'>100</option>
+        <option class='flue-cowel'>200</option>
+        <option class='flue-cowel'>300</option>
+        <option class='flue-cowel'>400</option>
       </select>
-
-    Outers
-      <select id="flue-outer" style='margin-top: 25px'>
-        <option class='flue-outer'>100</option>
-        <option class='flue-outer'>200</option>
-        <option class='flue-outer'>300</option>
-        <option class='flue-outer'>400</option>
+      Flue Cowel Price :<input type="number" id="cowel-price" placeholder="Price $$"/>
+        <button id="flue-cowel-submit">Submit Cowel</button>
+      </div>
+ <div id="flue-spider-options">
+  	  Spider
+      <select id="flue-spider" style='margin-top: 25px'>
+        <option class='flue-spider'>100</option>
+        <option class='flue-spider'>200</option>
+        <option class='flue-spider'>300</option>
+        <option class='flue-spider'>400</option>
       </select>
+      Flue Spider Price :<input type="number" id="cowel-price" placeholder="Price $$"/>
+        <button id="flue-cowel-submit">Submit Spider</button>
+  </div>
 
-      Liners
-        <select id="flue-liners" style='margin-top: 25px'>
-          <option class='flue-liners'>100</option>
-          <option class='flue-liners'>200</option>
-          <option class='flue-liners'>300</option>
-          <option class='flue-liners'>400</option>
-        </select>
+ <div id="flue-guides-options">
+	  Guides
+    <select id="flue-guides" style='margin-top: 25px'>
+      <option class='flue-guides'>100</option>
+      <option class='flue-guides'>200</option>
+      <option class='flue-guides'>300</option>
+      <option class='flue-guides'>400</option>
+    </select>
+    Flue Spider Price :<input type="number" id="guide-price" placeholder="Price $$"/>
+      <button id="flue-cowel-submit">Submit Guide</button>
+    </div>
 
 
-     Flue Price :<input type="number" id="input-price-flue" placeholder="Price $$"/>
-     <button id="flue-data-submit">Submit Flue Data </button>
+
+
+
+
 
 
 
