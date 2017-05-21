@@ -161,6 +161,17 @@ function hideShow(){
       $("#enter-hearth-data").hide()
       $("#data-submit-notification-flue").hide()
       $("#enter-flue-data").show()
+      dataFlueChange()
+    }
+
+    function dataFlueChange(){
+      $("#flue-inner-options").hide()
+      $("#flue-outer-options").hide()
+      $("#flue-liner-options").hide()
+      $("#flue-cowel-options").hide()
+      $("#flue-guides-options").hide()
+      $("#flue-spider-options").hide()
+
     }
 
     function editFlueButton(){
@@ -172,7 +183,7 @@ function hideShow(){
       $("#enter-hearth-data").hide()
       $("#data-submit-notification-flue").hide()
       $("#enter-flue-data").hide()
-      $("#edit-flue-data").show()
+
     }
 
     function clickToEdit(){
@@ -243,4 +254,5 @@ function hideShow(){
       dataHearthButton:dataHearthButton,
       dataFlueButton:dataFlueButton,
       editFlueButton:editFlueButton,
+      dataFlueChange:dataFlueChange,
     }

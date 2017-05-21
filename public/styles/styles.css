@@ -53,7 +53,7 @@
 
 
 
-#fireplace-data-submit, #hearth-data-submit, #flue-data-submit {
+#fireplace-data-submit, #hearth-data-submit, #flue-inner-submit, #flue-outer-submit, #flue-liner-submit, #flue-cowel-submit, #flue-cowel-submit, #flue-guide-submit {
   display: inline-block;
   border: 1px solid black;
   border-radius: 8px;

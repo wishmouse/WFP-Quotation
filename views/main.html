@@ -306,134 +306,142 @@ Standard Finish price:
 <div id="edit-hearth-view"></div>
 
 <div id="enter-flue-data">
-  Fuel
-  <select id="flue-fuel">
-    <option  class='flue-border-fuel' >Wood</option>
-    <option class='flue-border-fuel'>Gas</option>
-  </select>
- <br>
-  Inbuilt / FreeStanding
-  <select id="flue-style">
-    <option  class='flue-border-style'>Inbuilt</option>
-    <option class='flue-border-style'>Free standing</option>
-  </select>
-    <br>
-<br>Flue finish
-  <select id='flue-finish'>
-    <option class="flue-border-finish" selected disabled></option>
-    <option class="flue-border-finish" value ="Galv">Galv</option>
-    <option class="flue-border-finish" value ="S/S">S/S</option>
-    <option class="flue-border-finish" value ="Met Black">Met Black</option>
-    <option class="flue-border-finish" value="Pewter">Pewter</option>
-  </select>
-Kit / Custom
-  <select id="flue-source" >
-    <option class='flue-border-source'>Kit</option>
-    <option class='flue-border-source'>Custom</option>
-  </select>
-<br>
-
-Entering
-<select id="flue-enter-options" style='margin-top: 25px'>
-  <option class='enter-options' selected disabled></option>
-    <option class='enter-options'>Inner flue</option>
-    <option class='enter-options'>Outer flue</option>
-    <option class='enter-options'>Flue liner</option>
-    <option class='enter-options'>Cowel</option>
-    <option class='enter-options'>Spider</option>
-    <option class='enter-options'>Guides</option>
-</select>
-
-<div id="flue-inner-options">
-  <select id="flue-inner" style='margin-top: 25px'>
-    <option class='enter-options' placeholder>Flue size Inner</option>
-    <option class='flue-inner'>100</option>
-    <option class='flue-inner'>200</option>
-    <option class='flue-inner'>300</option>
-    <option class='flue-inner'>400</option>
-  </select>
+    <form class="enter-flue-data">
+    Fuel
+    <select id="flue-fuel">
+      <option  class='flue-border-fuel' >Wood</option>
+      <option class='flue-border-fuel'>Gas</option>
+    </select>
+   <br>
+    Inbuilt / FreeStanding
+    <select id="flue-style">
+      <option  class='flue-border-style'>Inbuilt</option>
+      <option class='flue-border-style'>Free standing</option>
+    </select>
+      <br>
+  <br>Flue finish
+    <select id='flue-finish'>
+      <option class="flue-border-finish" selected disabled></option>
+      <option class="flue-border-finish" value ="Galv">Galv</option>
+      <option class="flue-border-finish" value ="S/S">S/S</option>
+      <option class="flue-border-finish" value ="Met Black">Met Black</option>
+      <option class="flue-border-finish" value="Pewter">Pewter</option>
+    </select>
+  Kit / Custom
+    <select id="flue-source" >
+      <option class='flue-border-source'>Custom</option>
+      <option class='flue-border-source'>Kit</option>
+    </select>
   <br>
-  Flue Inner Price :<input type="number" id="flue-inner-price" placeholder="Price $$"/>
-  <button id="flue-data-inner-submit">Submit Flue-inner</button>
-</div>
+
+  Entering options
+  <select id="flue-enter-options" style='margin-top: 25px'>
+    <option class='enter-options' selected disabled></option>
+      <option class='enter-options'>Inner flue</option>
+      <option class='enter-options'>Outer flue</option>
+      <option class='enter-options'>Flue liner</option>
+      <option class='enter-options'>Cowel</option>
+      <option class='enter-options'>Spider</option>
+      <option class='enter-options'>Guides</option>
+  </select>
 
 
-<div id="flue-outer-options">
-Flue Size outers
-    <select id='flue-outer'>
-      <option class="flue-outer"></option>
-      <option class="flue-outer">4.2m</option>
-      <option class="flue-outer">1.2m</option>
-      <option class="flue-outer">4.0m</option>
-      <option class="flue-outer">4.75m</option>
-      <option class="flue-outer">4.8m</option>
-      <option selected class="flue-outer">NA</option>
+    <select id="flue-inner" style='margin-top: 25px'>
+      <option class='flue-inner'></option>
+      <option class='flue-inner'>100</option>
+      <option class='flue-inner'>200</option>
+      <option class='flue-inner'>300</option>
+      <option class='flue-inner'>400</option>
     </select>
-  Flue Outer Price :<input type="number" id="flue-outer-price" placeholder="Price $$"/>
-    <button id="flue-data-outer-submit">Submit Flue-outer</button>
+  <div id="flue-inner-options">
+    <br>
+    Flue Inner Price :<input type="number" id="flue-inner-price" placeholder="Price $$"/>
+    <button id="flue-inner-submit" class="submit-flue-data">Submit Flue-inner</button>
   </div>
 
-  <div id="flue-liner-options">
-  Liners
-    <select id="flue-liners" style='margin-top: 25px'>
-      <option class='flue-liners'>100</option>
-      <option class='flue-liners'>200</option>
-      <option class='flue-liners'>300</option>
-      <option class='flue-liners'>400</option>
-    </select>
-    Flue Liner Price :<input type="number" id="flue-liner-price" placeholder="Price $$"/>
-      <button id="flue-data-liner-submit">Submit Flue-liner</button>
-    </div>
-    <div id="flue-cowel-options">
-    Cowel
-      <select id="flue-cowel" style='margin-top: 25px'>
-        <option class='flue-cowel'>100</option>
-        <option class='flue-cowel'>200</option>
-        <option class='flue-cowel'>300</option>
-        <option class='flue-cowel'>400</option>
+
+  <div id="flue-outer-options">
+  Flue Size outers
+      <select id='flue-outer'>
+        <option class="flue-outer"></option>
+        <option class="flue-outer">1.2m</option>
+        <option class="flue-outer">4.0m</option>
+        <option class="flue-outer">4.2m</option>
+        <option class="flue-outer">4.75m</option>
+        <option class="flue-outer">4.8m</option>
       </select>
-      Flue Cowel Price :<input type="number" id="cowel-price" placeholder="Price $$"/>
-        <button id="flue-cowel-submit">Submit Cowel</button>
+    Flue Outer Price :<input type="number" id="flue-outer-price" placeholder="Price $$"/>
+      <button id="flue-outer-submit" class="submit-flue-data">Submit Flue-outer</button>
+    </div>
+
+    <div id="flue-liner-options">
+    Liners
+      <select id="flue-liners" style='margin-top: 25px'>
+        <option class='flue-liners'></option>
+        <option class='flue-liners'>100</option>
+        <option class='flue-liners'>200</option>
+        <option class='flue-liners'>300</option>
+        <option class='flue-liners'>400</option>
+      </select>
+      Flue Liner Price :<input type="number" id="flue-liner-price" placeholder="Price $$"/>
+        <button id="flue-liner-submit" class="submit-flue-data">Submit Flue-liner</button>
       </div>
- <div id="flue-spider-options">
-  	  Spider
-      <select id="flue-spider" style='margin-top: 25px'>
-        <option class='flue-spider'>100</option>
-        <option class='flue-spider'>200</option>
-        <option class='flue-spider'>300</option>
-        <option class='flue-spider'>400</option>
-      </select>
-      Flue Spider Price :<input type="number" id="cowel-price" placeholder="Price $$"/>
-        <button id="flue-cowel-submit">Submit Spider</button>
-  </div>
-
- <div id="flue-guides-options">
-	  Guides
-    <select id="flue-guides" style='margin-top: 25px'>
-      <option class='flue-guides'>100</option>
-      <option class='flue-guides'>200</option>
-      <option class='flue-guides'>300</option>
-      <option class='flue-guides'>400</option>
-    </select>
-    Flue Spider Price :<input type="number" id="guide-price" placeholder="Price $$"/>
-      <button id="flue-cowel-submit">Submit Guide</button>
+      <div id="flue-cowel-options">
+      Cowel
+        <select id="flue-cowel" style='margin-top: 25px'>
+          <option class='flue-cowel'></option>
+          <option class='flue-cowel'>100</option>
+          <option class='flue-cowel'>200</option>
+          <option class='flue-cowel'>300</option>
+          <option class='flue-cowel'>400</option>
+        </select>
+        Flue Cowel Price :<input type="number" id="flue-cowel-price" placeholder="Price $$"/>
+          <button id="flue-cowel-submit" class="submit-flue-data">Submit Cowel</button>
+        </div>
+   <div id="flue-spider-options">
+    	  Spider
+        <select id="flue-spider" style='margin-top: 25px'>
+          <option class='flue-spider'></option>
+          <option class='flue-spider'>100</option>
+          <option class='flue-spider'>200</option>
+          <option class='flue-spider'>300</option>
+          <option class='flue-spider'>400</option>
+        </select>
+        Flue Spider Price :<input type="number" id="flue-spider-price" placeholder="Price $$"/>
+          <button id="flue-cowel-submit" class="submit-flue-data">Submit Spider</button>
     </div>
 
-
-
-
-
-
-
-
-
-     <button class="back-to-quotation">Back to quote</button>
-     <button id="edit-flue-button">Edit Flue Data</button>
-     <div id="data-submit-notification-flue" class="submit-notification">Data submitted </div>
-
+   <div id="flue-guides-options">
+  	  Guides
+      <select id="flue-guides" style='margin-top: 25px'>
+        <option class='flue-guides'></option>
+        <option class='flue-guides'>100</option>
+        <option class='flue-guides'>200</option>
+        <option class='flue-guides'>300</option>
+        <option class='flue-guides'>400</option>
+      </select>
+      Flue Spider Price :<input type="number" id="flue-guides-price" placeholder="Price $$"/>
+        <button id="flue-guide-submit" class="submit-flue-data">Submit Guide</button>
+      </div>
+  </form>
+  <button class="back-to-quotation">Back to quote</button>
+  <div style="border: orange 1px solid">
+    <button id="edit-flue-button">Edit Flue Data</button>
+    <select id="flue-edit-options">
+      <option class='enter-options' selected disabled></option>
+        <option class='enter-options'>Inner flue</option>
+        <option class='enter-options'>Outer flue</option>
+        <option class='enter-options'>Flue liner</option>
+        <option class='enter-options'>Cowel</option>
+        <option class='enter-options'>Spider</option>
+        <option class='enter-options'>Guides</option>
+    </select>
+  </div>
+    <div>
+      <div id="data-submit-notification-flue" class="submit-notification">Data submitted </div>
+    </div>
 </div>
-
-<div id='edit-flue-view'></div>
+<div id='edit-flue-view'>chicken</div>
 <!--  setting the address -->
     <script>
       var placeSearch, autocomplete;

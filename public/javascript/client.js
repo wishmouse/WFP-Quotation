@@ -1018,9 +1018,11 @@ $('#edit-hearth-button').click(function(e){
    $("#entry-flue-button").click(function(e){
      e.preventDefault
      _hideShow.dataFlueButton()
+
    })
 
    $("#flue-enter-options").change(function() {
+     _hideShow.dataFlueChange()
      var flueOption = $("#flue-enter-options" ).val()
      if(flueOption == "Inner flue"){
         $("#flue-inner-options").show()
@@ -1038,76 +1040,104 @@ $('#edit-hearth-button').click(function(e){
        $("#flue-spider-options").show()
      }
      if(flueOption == "Guides"){
-       $("#flue-guides-options")
-
+       $("#flue-guides-options").show()
      }
-     })
-   $('#flue-data-inner-submit').click(function(e){
+
+   })
+
+   $('.submit-flue-data').click(function(e){
      e.preventDefault()
 
      flueFuel = $("#flue-fuel").val()
      flueStyle = $("#flue-style").val()
-     flueSource = $("#flue-source").val()
+     flueFinish = $("#flue-finish").val()
+     flueEntryOptions = $("#flue-enter-options").val()
+     flueSource = $("#flue-source").val()  //kit vs custom
      flueInner = $("#flue-inner").val()
-     fluePrice = $("#input-price-flue").val()
+     flueInnerPrice = $("#flue-inner-price").val()
+     flueOuter =$("#flue-outer").val()
+     flueOuterPrice = $("#flue-outer-price").val()
+     flueLiner= $("#flue-liners").val()
+     flueLinerPrice= $("#flue-liner-price").val()
+     flueCowel= $("#flue-cowel").val()
+     flueCowelPrice= $("#flue-cowel-price").val()
+     flueSpider = $("#flue-spider").val()
+     flueSpiderPrice = $("#flue-spider-price").val()
+     flueGuides= $("#flue-guides").val()
+     flueGuidesPrice = $("#flue-guides-price").val()
 
+    $('.enter-flue-data')[0].reset();
 
        $.ajax({
           method: "POST",
-          url: "/flueInner",
+          url: "/flue",
           data: {
             flueFuel:flueFuel,
             flueStyle:flueStyle,
+            flueFinish:flueFinish,
+            flueEntryOptions:flueEntryOptions,
             flueSource:flueSource,
             flueInner: flueInner,
-            fluePrice:fluePrice,
+            flueInnerPrice: flueInnerPrice,
+            flueOuter:flueOuter,
+            flueOuterPrice:flueOuterPrice,
+            flueLiner:flueLiner,
+            flueLinerPrice:flueLinerPrice,
+            flueCowel: flueCowel,
+            flueCowelPrice: flueCowelPrice,
+            flueSpider:flueSpider,
+            flueSpiderPrice:flueSpider,
+            flueGuides:flueGuides,
+            flueGuidesPrice:flueGuides,
             }
        })
       // $('#enter-flue-data')[0].reset();
 
        $(".submit-notification").show().delay(200).fadeOut();
-   })
+})
 
    $("#edit-flue-button").click(function(){
      _hideShow.editFlueButton()
-
+     $("#edit-flue-view").show()
+     editFlueOptions = $("#flue-edit-options").val()
      editFlueLine =$("#edit-flue-view")
-     flueTemplate()
-     function flueTemplate(){
+
+
+     function innerFlueTemplate(){
        editFlueLine =$("#edit-flue-view")
        var editFlueTemplate = ""+
          "<table>" +
            "<tr>"+
              "<th class='table-header'></th>"+
-             "<th class='table-header'>Make</th>"+
-             "<th class='table-header'>Model</th>"+
+             "<th class='table-header'>Entry Option</th>"+
+             "<th class='table-header'>Fuel</th>"+
+             "<th class='table-header'>Style</th>"+
              "<th class='table-header'>Finish</th>"+
+             "<th class='table-header'>Kit/Custom</th>"+
              "<th class='table-header'>Size</th>"+
-             "<th class='table-header'>Shield</th>"+
              "<th class='table-header'>Price</th>"+
            "</tr>"+
           "</table>"
           editFlueLine.append(editFlueTemplate)
       }
 
-      function displayFlueData(){
+      function displayInnerFlueData(){
         var editFlueTemplate = ""+
         "<tr>"+
             "<td>"+
               "<button class='click-to-edit-flue' data-id ="+editFlueList._id+">Edit</button>" +
               "<button class='click-to-delete-flue' data-id ="+editFlueList._id+">Delete</button>" +
             "</td>"+
-            "<td class='table-body'>"+editFlueList.flueMake+"</td>"+
-
-            "<td class='table-body'>"+editFlueList.flueModel+"</td>"+
+            "<td class='table-body'>"+editFlueList.flueEntryOptions+"</td>"+
+            "<td class='table-body'>"+editFlueList.flueFuel+"</td>"+
+            "<td class='table-body'>"+editFlueList.flueStyle+"</td>"+
             "<td class='table-body'>"+editFlueList.flueFinish+"</td>"+
-            "<td class='table-body'>"+editFlueList.flueSize+"</td>"+
-            "<td class='table-body'>"+editFlueList.flueShield+"</td>"+
-            "<td class='table-body'>"+editFlueList.fluePrice+"</td>"+
+            "<td class='table-body'>"+editFlueList.flueSource+"</td>"+
+            "<td class='table-body'>"+editFlueList.flueInner + editFlueList.flueOuter + editFlueList.flueLiner + editFlueList.flueCowel + editFlueList.flueSpider + editFlueList.flueGuides + "</td>"+
+            "<td class='table-body'>"+editFlueList.flueInnerPrice + editFlueList.flueOuterPrice + editFlueList.flueLinerPrice + editFlueList.flueCowelPrice + editFlueList.flueSpiderPrice + editFlueList.flueGuidesPrice +"</td>"+
           "</tr>"
         editFlueLine.append(editFlueTemplate)
        }
-
 
       $.ajax({
         url: "/getFlueData",
@@ -1115,11 +1145,36 @@ $('#edit-hearth-button').click(function(e){
               editFlueData = JSON.parse(result)
               for (i = 0; i < editFlueData.length; i++) {
                 editFlueList = editFlueData[i]
-                displayFlueData(editFlueList)
+                if(editFlueOptions == editFlueList.flueEntryOptions){
+                  console.log(editFlueList)
+                  alert(editFlueList.flueSource)
+                  innerFlueTemplate()
+                  displayInnerFlueData(editFlueList)
+                }
             }
           }
         })
+
+        function displayFlueData(){
+          var editFlueTemplate = ""+
+          "<tr>"+
+              "<td>"+
+                "<button class='click-to-edit-flue' data-id ="+editFlueList._id+">Edit</button>" +
+                "<button class='click-to-delete-flue' data-id ="+editFlueList._id+">Delete</button>" +
+              "</td>"+
+              "<td class='table-body'>"+editFlueList.flueFluel+"</td>"+
+              "<td class='table-body'>"+editFlueList.flueStyle+"</td>"+
+              "<td class='table-body'>"+editFlueList.flueFinish+"</td>"+
+              "<td class='table-body'>"+editFlueList.flueEntryOptions+"</td>"+
+              "<td class='table-body'>"+editFlueList.flueShield+"</td>"+
+              "<td class='table-body'>"+editFlueList.fluePrice+"</td>"+
+            "</tr>"
+          editFlueLine.append(editFlueTemplate)
+         }
    })
+
+
+
 
    $('#edit-flue-view').delegate('.click-to-delete-flue', 'click', function(){
        deleteFlueId = $(this).attr('data-id')
