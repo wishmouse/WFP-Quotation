@@ -1100,28 +1100,10 @@ $('#edit-hearth-button').click(function(e){
      _hideShow.editFlueButton()
      $("#edit-flue-view").show()
      editFlueOptions = $("#flue-edit-options").val()
-     editFlueLine =$("#edit-flue-view")
+     editFlueLine =$("#edit-flue-table")
 
 
-     function innerFlueTemplate(){
-       editFlueLine =$("#edit-flue-view")
-       var editFlueTemplate = ""+
-         "<table>" +
-           "<tr>"+
-             "<th class='table-header'></th>"+
-             "<th class='table-header'>Entry Option</th>"+
-             "<th class='table-header'>Fuel</th>"+
-             "<th class='table-header'>Style</th>"+
-             "<th class='table-header'>Finish</th>"+
-             "<th class='table-header'>Kit/Custom</th>"+
-             "<th class='table-header'>Size</th>"+
-             "<th class='table-header'>Price</th>"+
-           "</tr>"+
-          "</table>"
-          editFlueLine.append(editFlueTemplate)
-      }
-
-      function displayInnerFlueData(){
+      function displayFlueData(){
         var editFlueTemplate = ""+
         "<tr>"+
             "<td>"+
@@ -1148,30 +1130,13 @@ $('#edit-hearth-button').click(function(e){
                 if(editFlueOptions == editFlueList.flueEntryOptions){
                   console.log(editFlueList)
                   alert(editFlueList.flueSource)
-                  innerFlueTemplate()
-                  displayInnerFlueData(editFlueList)
+
+                  displayFlueData(editFlueList)
                 }
             }
           }
         })
-
-        function displayFlueData(){
-          var editFlueTemplate = ""+
-          "<tr>"+
-              "<td>"+
-                "<button class='click-to-edit-flue' data-id ="+editFlueList._id+">Edit</button>" +
-                "<button class='click-to-delete-flue' data-id ="+editFlueList._id+">Delete</button>" +
-              "</td>"+
-              "<td class='table-body'>"+editFlueList.flueFluel+"</td>"+
-              "<td class='table-body'>"+editFlueList.flueStyle+"</td>"+
-              "<td class='table-body'>"+editFlueList.flueFinish+"</td>"+
-              "<td class='table-body'>"+editFlueList.flueEntryOptions+"</td>"+
-              "<td class='table-body'>"+editFlueList.flueShield+"</td>"+
-              "<td class='table-body'>"+editFlueList.fluePrice+"</td>"+
-            "</tr>"
-          editFlueLine.append(editFlueTemplate)
-         }
-   })
+})
 
 
 
