@@ -274,7 +274,7 @@ function add(){
               "<td> <div class='delete-hearth-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
               "<td class='table-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
               "<td class='table-quantity'>"+'1'+"</td>" +
-              "<td class='table-price'><input type='number'  class='excl-price' id='heart-price-text' value="+hearthDataReturn.hearthPrice+"></input></td>" +
+              "<td class='table-price'><input type='text' name='hearth-price-text'  class='excl-price' id='heart-price-text' value="+hearthDataReturn.hearthPrice+"></input></td>" +
               "<td class='table-vat' id='hearth-vat-text'>0</td>" +
               "<td class='table-total' id='hearth-total-text'></td>" +
             "</tr>"
@@ -286,7 +286,8 @@ function add(){
 
 
     function calculateTotalHearth(num){
-      var num = parseInt($('#heart-price-text').val())
+
+     var num =parseInt($('input:text[name=hearth-price-text]').val())
       vatCalcHearth = num / 100*vatRate
       vatHearthText = $('#hearth-vat-text').html(vatCalcHearth.toFixed(2))
       var grandTotalHearth = num + vatCalcHearth
