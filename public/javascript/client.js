@@ -103,9 +103,9 @@ var editList
             var editTemplate = ""+
                 "<tr class='delete-tile-table'>"+
                   "<td class='delete-tile-button w3-padding w3-xlarge fa fa-trash'></td>"+
-                  "<td class='table-description'>"+ "Additional Tile colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
+                  "<td class='table-description'>"+ "Additional Tile colour: "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                   "<td class='table-quantity'>"+'1'+"</td>" +
-                  "<td class='table-price' unit-price='"+hearthTileText+"'><input type='number' class='excl-price' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
+                  "<td class='table-price' unit-price='"+hearthTileText+"'><input type='text' name='hearth-colour-price-text' class='excl-price' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
                   "<td class='table-vat' id='hearth-colour-vat-text'>0</td>" +
                   "<td class='table-total' id='hearth-colour-total-text'></td>" +
                 "</tr>"
@@ -154,7 +154,7 @@ function add(){
 }
 
      function calculateTotalTile(num){
-       var num = parseInt($('#hearth-colour-price-text').val())
+       var num =parseInt($('input:text[name=hearth-colour-price-text]').val())
        var vatCalcTiles = num / 100*vatRate
        vatTilesText = $('#hearth-colour-vat-text').html(vatCalcTiles.toFixed(2))
        var grandTotalTiles = num + vatCalcTiles
@@ -238,7 +238,7 @@ function add(){
                     "<td> <div class='delete-colour-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
                     "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                     "<td class='table-quantity'>"+'1'+"</td>" +
-                    "<td class='table-price'><input type='number' name='colour-price-text' class='excl-price' id='colour-price-text' value="+colour+"></input></td>" +
+                    "<td class='table-price'><input type='text' name='colour-price-text' class='excl-price' id='colour-price-text' value="+colour+"></input></td>" +
                     "<td class='table-vat' id='colour-vat-text'>0</td>" +
                     "<td class='table-total' id='colour-total-text'></td>" +
                   "</tr>"
@@ -254,7 +254,6 @@ function add(){
 
     function calculateTotalColour(num){
      var num =parseInt($('input:text[name=colour-price-text]').val())
-      var num = parseInt($('#colour-price-text').val())
       var vatCalcColour = num / 100*vatRate
       vatColourText = $('#colour-vat-text').html(vatCalcColour.toFixed(2))
       var grandTotalColour = num + vatCalcColour
