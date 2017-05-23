@@ -159,19 +159,14 @@
       <div id="custom" class="border-source-flue">Custom Flue</div>
       <div id="flue-freestanding" class="border-source-flue">Flue Kit</div>
     </div>
-
-    Flue Make
-    <div id="flue-make" style='margin-top: 25px'>
-        <div id="flue-metro" class='flue-border-make' value="metro">Metrofires</div>
-        <div id="flue-jayline" class='flue-border-make' value="Jayline">Jayline</div>
-        <div id="flue-spf" class='flue-border-make' value="sfp">SFP</div>
-        <div id="flue-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</div>
-        <div id="flue-woodsman" class='flue-border-make' value="woodsman">Woodsman</div>
-        <div id="flue-ethos" class='flue-border-make' value="ethos">Ethos</div>
+    Flue inner Size
+    <div id="flue-inner-wrapper" class = "wrapper">
+      <div id="flue-inner-100"class='border-flue-inner'>100</div>
+      <div id="flue-inner-200"class='border-flue-inner'>200</div>
+      <div id="flue-inner-300"class='border-flue-inner'>300</div>
+      <div id="flue-inner-400"class='border-flue-inner'>400</div>
     </div>
-    flue Model
-    <select  class="quote-dropdown" id='model-dropdown-flue'></select>
-    <br>
+
 		<div id='quotation-display-data'></div>
     <table>
       <tr>
@@ -192,6 +187,7 @@
 		<button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
 		<br>
 	</div>
+  <div id ="add-quote-again" class="fa fa-thumbs-o-up" style="font-size:60px;"></div>
 </div>
 
 <!-- // /// //// /// -->
@@ -345,7 +341,7 @@ Standard Finish price:
       <option class='enter-options'>Guides</option>
   </select>
 
-
+Inner flue diamater
     <select id="flue-inner" style='margin-top: 25px'>
       <option class='flue-inner'></option>
       <option class='flue-inner'>100</option>
@@ -426,7 +422,6 @@ Standard Finish price:
   </form>
   <button class="back-to-quotation">Back to quote</button>
   <div style="border: orange 1px solid">
-    <button id="edit-flue-button">Edit Flue Data</button>
     <select id="flue-edit-options">
       <option class='enter-options' selected disabled></option>
         <option class='enter-options'>Inner flue</option>
@@ -436,6 +431,7 @@ Standard Finish price:
         <option class='enter-options'>Spider</option>
         <option class='enter-options'>Guides</option>
     </select>
+      <button id="edit-flue-button">Edit Flue Data</button>
   </div>
     <div>
       <div id="data-submit-notification-flue" class="submit-notification">Data submitted </div>
@@ -450,6 +446,7 @@ Standard Finish price:
       <th class='table-header'>Style</th>
       <th class='table-header'>Finish</th>
       <th class='table-header'>Kit/Custom</th>
+      <th class='table-header'>Inner flue diamater</th>
       <th class='table-header'>Size</th>
       <th class='table-header'>Price</th>
     </tr>

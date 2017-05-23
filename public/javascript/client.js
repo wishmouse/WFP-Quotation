@@ -49,6 +49,7 @@ var editList
      $("#hearth-tile-price").hide()
      $('#model-dropdown-hearth').hide()
      $('#enter-flue-data').hide()
+     $('#edit-flue-view').hide()
 
     quotationTemplate()
 /*
@@ -110,11 +111,15 @@ var editList
                 "</tr>"
             quoteLine.append(editTemplate)
           }
-          hearthTile()
-          calculateTotalTile()
-           _clearData.changeTypes()
-         })
+    hearthTile()
+    calculateTotalTile()
+     _clearData.changeTypes()
+})
 
+
+$("#hearth-colour-price-text").change(function(){
+  calculateTotalTile()
+})
 
 function add(){
 		var exclSum = 0
@@ -221,29 +226,31 @@ function add(){
         })
 
 
-        $('#colour-price').delegate('.border-colour', 'click', function(e){
-                 $(".border-colour").removeClass("selected")
-                 var select = $(this).addClass("selected")
-                 var colourID = $(this).attr('id')
-                 colour = parseInt(select.text())
+    $('#colour-price').delegate('.border-colour', 'click', function(e){
+             $(".border-colour").removeClass("selected")
+             var select = $(this).addClass("selected")
+             var colourID = $(this).attr('id')
+             colour = parseInt(select.text())
 
-                function colourPrice(){
-                  var editTemplate = ""+
-                      "<tr class='delete-colour-table'>"+
-                        "<td> <div class='delete-colour-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
-                        "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
-                        "<td class='table-quantity'>"+'1'+"</td>" +
-                        "<td class='table-price'><input type='number'  class='excl-price' id='colour-price-text' value="+colour+"></input></td>" +
-                        "<td class='table-vat' id='colour-vat-text'>0</td>" +
-                        "<td class='table-total' id='colour-total-text'></td>" +
-                      "</tr>"
-                  quoteLine.append(editTemplate)
-                }
-                colourPrice()
-                calculateTotalColour()
-                add()
-                 _clearData.changeTypes()
-          })
+            function colourPrice(){
+              var editTemplate = ""+
+                  "<tr class='delete-colour-table'>"+
+                    "<td> <div class='delete-colour-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
+                    "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
+                    "<td class='table-quantity'>"+'1'+"</td>" +
+                    "<td class='table-price'><input type='number'  class='excl-price' id='colour-price-text' value="+colour+"></input></td>" +
+                    "<td class='table-vat' id='colour-vat-text'>0</td>" +
+                    "<td class='table-total' id='colour-total-text'></td>" +
+                  "</tr>"
+              quoteLine.append(editTemplate)
+            }
+        colourPrice()
+        calculateTotalColour()
+        add()
+         _clearData.changeTypes()
+      })
+
+
 
     function calculateTotalColour(num){
       var num = parseInt($('#colour-price-text').val())
@@ -275,6 +282,7 @@ function add(){
         add()
        _clearData.changeTypes()
     }
+
 
     function calculateTotalHearth(num){
       var num = parseInt($('#heart-price-text').val())
@@ -382,7 +390,7 @@ function add(){
                  "<td class='delete-fireplace-button 3-padding w3-xlarge fa fa-trash'></td>"+
                  "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
                  "<td class='table-quantity'>"+'1'+"</td>" +
-                 "<td class='table-price'><input type='number' class='excl-price' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
+                 "<td class='table-price'><input type='text' name='fireplace-price-text' class='excl-price' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
                  "<td class='table-vat'<div id='fireplace-vat-text'>0</div></td>" +
                  "<td class='table-total' id='fireplace-total-text' alt=''></td>"+
                "</tr>"
@@ -391,6 +399,15 @@ function add(){
          calculateTotalFireplace()
          add()
        })
+
+$("#add-quote-again").click(function(){
+         calculateTotalFireplace()
+         calculateTotalHearth()
+         calculateTotalColour()
+         calculateTotalTile()
+         add()
+
+})
 
        function quotationTemplate(){
          quoteLine = $('#quotation-display-data')
@@ -413,7 +430,8 @@ function add(){
 
    function calculateTotalFireplace(num){
 
-     var num = parseInt($('#fireplace-price-text').val())
+     //var num = parseInt($('#fireplace-price-text').val())
+     var num =parseInt($('input:text[name=fireplace-price-text]').val())
      vatCalcFireplace = num / 100*vatRate
      $(".table-vat").attr('value', vatCalcFireplace)
      $('#fireplace-vat-text').html(vatCalcFireplace.toFixed(2))
@@ -450,11 +468,11 @@ function add(){
       flueSource = select.text()
 
     })
-    $('#flue-make').delegate('.flue-border-make', 'click', function(e){
-       $(".flue-border-make").removeClass("selected")
+    $('#flue-inner-wrapper').delegate('.border-flue-inner', 'click', function(e){
+       $(".border-flue-inner").removeClass("selected")
        var select = $(this).addClass("selected")
-       var flueMakeId = $(this).attr('id')
-       flueMake = select.text()
+       var flueInner = $(this).attr('id')
+       flueInner = select.text()
 
            $.ajax({
            url: "/getFlueData",
@@ -464,13 +482,14 @@ function add(){
              console.log(getFlueData)
              for (i = 0; i < getFlueData.length; i++) {
                var dataReturn= getFlueData[i]
-               if(flueMake == dataReturn.flueMake){
+              /* if(flueMake == dataReturn.flueMake){
                    $(dataReturn).each(function(){
                      var optionModel = $('<option />')
                      optionModel.attr('value', this.flueModel).text(this.flueModel)
                      $('#model-dropdown-flue').append(optionModel)
                    })
-               }
+
+               }*/
              }
            }
        })
@@ -1091,7 +1110,7 @@ $('#edit-hearth-button').click(function(e){
             flueGuidesPrice:flueGuides,
             }
        })
-      // $('#enter-flue-data')[0].reset();
+       $('#enter-flue-data')[0].reset();
 
        $(".submit-notification").show().delay(200).fadeOut();
 })
@@ -1115,7 +1134,8 @@ $('#edit-hearth-button').click(function(e){
             "<td class='table-body'>"+editFlueList.flueStyle+"</td>"+
             "<td class='table-body'>"+editFlueList.flueFinish+"</td>"+
             "<td class='table-body'>"+editFlueList.flueSource+"</td>"+
-            "<td class='table-body'>"+editFlueList.flueInner + editFlueList.flueOuter + editFlueList.flueLiner + editFlueList.flueCowel + editFlueList.flueSpider + editFlueList.flueGuides + "</td>"+
+            "<td class='table-body'>"+editFlueList.flueInner +"</td>"+
+            "<td class='table-body'>"+editFlueList.flueOuter + editFlueList.flueLiner + editFlueList.flueCowel + editFlueList.flueSpider + editFlueList.flueGuides + "</td>"+
             "<td class='table-body'>"+editFlueList.flueInnerPrice + editFlueList.flueOuterPrice + editFlueList.flueLinerPrice + editFlueList.flueCowelPrice + editFlueList.flueSpiderPrice + editFlueList.flueGuidesPrice +"</td>"+
           "</tr>"
         editFlueLine.append(editFlueTemplate)
@@ -1128,9 +1148,6 @@ $('#edit-hearth-button').click(function(e){
               for (i = 0; i < editFlueData.length; i++) {
                 editFlueList = editFlueData[i]
                 if(editFlueOptions == editFlueList.flueEntryOptions){
-                  console.log(editFlueList)
-                  alert(editFlueList.flueSource)
-
                   displayFlueData(editFlueList)
                 }
             }
