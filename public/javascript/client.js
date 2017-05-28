@@ -199,7 +199,8 @@ function add(){
                hearthMakeDisplay = select.text()
 
               _clearData.changeTypes()
-              _hideShow.hearthTypeShow()
+              _hideShow.hearthModelShow()
+
 
               if (entryTypeController == 'quotation'){
                   $.ajax({
@@ -284,7 +285,7 @@ function add(){
         var editTemplate = ""+
             "<tr class='delete-hearth-table'>"+
               "<td> <div class='delete-hearth-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
-              "<td class='table-description'>"+ hearthDataReturn.hearthMake +" " + hearthDataReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
+              "<td class='table-description'>"+ hearthModelReturn.hearthMake +" " + hearthModelReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
               "<td class='table-quantity'>"+'1'+"</td>" +
               "<td class='table-price'><input type='text' name='hearth-price-text'  class='excl-price' id='heart-price-text' value="+hearthDataReturn.hearthPrice+"></input></td>" +
               "<td class='table-vat' id='hearth-vat-text'>0</td>" +

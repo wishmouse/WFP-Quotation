@@ -215,6 +215,9 @@ function hideShow(){
     function hearthTypeShow(){
       $("#wallHearth-dropdown").show()
       $("#cornerHearth-dropdown").show()
+    }
+
+    function hearthModelShow(){
       $('#model-dropdown-hearth').show()
     }
 
@@ -255,4 +258,5 @@ function hideShow(){
       dataFlueButton:dataFlueButton,
       editFlueButton:editFlueButton,
       dataFlueChange:dataFlueChange,
+      hearthModelShow:hearthModelShow
     }
