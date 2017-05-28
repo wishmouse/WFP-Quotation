@@ -135,6 +135,7 @@ function add(){
    })
 
 		$(".excl-price").each(function() {
+
 			if(this.value && this.value.length!=0) {
 				exclSum += parseFloat(this.value)
 			}
@@ -142,6 +143,18 @@ function add(){
 		})
 
 
+    $(".excl-price").keypress(function(e){
+      if (e.which == 13)
+      {
+        calculateTotalFireplace()
+        calculateTotalHearth()
+        calculateTotalColour()
+        calculateTotalTile()
+        add()
+
+        e.preventDefault();
+      }
+    })
 
     $(".table-total").each(function() {
       var value = $(this).text()
@@ -401,14 +414,9 @@ function add(){
          add()
        })
 
-$("#add-quote-again").click(function(){
-         calculateTotalFireplace()
-         calculateTotalHearth()
-         calculateTotalColour()
-         calculateTotalTile()
-         add()
 
-})
+
+
 
        function quotationTemplate(){
          quoteLine = $('#quotation-display-data')
