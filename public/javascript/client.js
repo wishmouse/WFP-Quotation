@@ -1,5 +1,6 @@
 
 var $ = require('jquery')
+var numeral = require('numeral')
 var request = require('superagent')
 var _hideShow = require('./_hideShow')
 var _dataInput = require('./_dataInput')
@@ -437,16 +438,18 @@ function add(){
        }
 
 
-
    function calculateTotalFireplace(num){
      var num =parseInt($('input:text[name=fireplace-price-text]').val())
      vatCalcFireplace = num / 100*vatRate
      $(".table-vat").attr('value', vatCalcFireplace)
-     $('#fireplace-vat-text').html(vatCalcFireplace.toFixed(2))
+     var vatCalcFireplace = vatCalcFireplace.toFixed(2)
+     var vatformatNumber = numeral(vatCalcFireplace)
+     var formatVatCalcFireplace = vatformatNumber.format('$0,0.00')
+     $('#fireplace-vat-text').html(formatVatCalcFireplace)
      grandTotalFireplace = num + vatCalcFireplace
 
      $(".table-total").attr('value','grandTotalFireplace')
-     $('#fireplace-total-text').html(grandTotalFireplace.toFixed(2))
+     $('#fireplace-total-text').html(grandTotalFireplace)
    }
 
 

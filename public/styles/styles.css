@@ -285,7 +285,12 @@ div#data-submit:hover {
   width: 100px;
   text-align: left;
   padding-right: 10px;
-  width: 350px
+  width: 350px;
+  font-size: 20px;
+  border-bottom: 1px solid #78b777;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .table-quantity{
@@ -294,16 +299,21 @@ div#data-submit:hover {
   border-right: 1px solid #78b777;
   text-align: right;
   padding-right: 10px;
+  font-size: 20px;
+  border-bottom: 1px solid #78b777;
+  padding-left: 20px;
 }
 
-.table-price{
+.table-price, .excl-price{
   font-family: helvetica;
   font-weight: 300;
   border-right: 1px solid #78b777;
   text-align: right;
   padding-right: 10px;
   width: 92px;
-
+  font-size: 20px;
+  border-bottom: 1px solid #78b777;
+  padding-left: 20px;
 }
 
 .table-vat{
@@ -313,6 +323,9 @@ div#data-submit:hover {
   text-align: right;
   padding-right: 10px;
   width: 92px;
+  font-size: 20px;
+  border-bottom: 1px solid #78b777;
+  padding-left: 20px;
 
 }
 .table-total{
@@ -322,6 +335,9 @@ div#data-submit:hover {
   text-align: right;
   padding-right: 10px;
   width: 92px;
+  font-size: 20px;
+  border-bottom: 1px solid #78b777;
+  padding-left: 20px;
 
 }
 
@@ -349,11 +365,14 @@ div#data-submit:hover {
 
 .total-description{
   font-family: helvetica;
-  font-weight: 400;
+  font-weight: 600;
   border-right: 1px solid #78b777;
   width: 700px;
   padding-right: 30px;
   text-align: right;
+  height: 40px;
+  font-size: 20px;
+
 }
 
 .total-value{
