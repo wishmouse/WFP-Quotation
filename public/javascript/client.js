@@ -52,6 +52,7 @@ var editList
      $('#enter-flue-data').hide()
      $('#edit-flue-view').hide()
 
+
     quotationTemplate()
 /*
 
@@ -441,13 +442,12 @@ function add(){
    function calculateTotalFireplace(num){
      var num =parseInt($('input:text[name=fireplace-price-text]').val())
      vatCalcFireplace = num / 100*vatRate
-     $(".table-vat").attr('value', vatCalcFireplace)
-     var vatCalcFireplace = vatCalcFireplace.toFixed(2)
+     $(".table-vat").attr('value', vatCalcFireplace) // add value to page
      var vatformatNumber = numeral(vatCalcFireplace)
      var formatVatCalcFireplace = vatformatNumber.format('$0,0.00')
-     $('#fireplace-vat-text').html(formatVatCalcFireplace)
+     //$('#fireplace-vat-text').html(formatVatCalcFireplace)
+     $('#fireplace-vat-text').html(vatCalcFireplace.toFixed(2))
      grandTotalFireplace = num + vatCalcFireplace
-
      $(".table-total").attr('value','grandTotalFireplace')
      $('#fireplace-total-text').html(grandTotalFireplace)
    }
@@ -975,7 +975,7 @@ $('#hearth-data-submit').click(function(e){
 
 $('#edit-hearth-button').click(function(e){
    e.preventDefault()
-   $("#enter-hearth-data").hide()
+   //$("#enter-hearth-data").hide()
    $("#edit-hearth-view").show()
 
    editHearthLine =$("#edit-hearth-view")
@@ -1045,6 +1045,7 @@ $('#edit-hearth-button').click(function(e){
    //==============
    //==============flue data entry
    //==============
+
    $("#entry-flue-button").click(function(e){
      e.preventDefault
      _hideShow.dataFlueButton()

@@ -180,7 +180,7 @@ function hideShow(){
       $("#air").hide()
       $("#make").hide()
       $("#dropdown-selector").hide()
-      $("#enter-hearth-data").hide()
+     $("#enter-hearth-data").hide()
       $("#data-submit-notification-flue").hide()
       $("#enter-flue-data").hide()
 
