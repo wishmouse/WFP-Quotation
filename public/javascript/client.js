@@ -401,13 +401,15 @@ function add(){
 
 
          function quotationDisplay(){
+           var fn = numeral(fireplaceCost)
+           var fpn = fn.format('0,0.00')
 
            var editTemplate = ""+
                "<tr class='delete-fireplace-table'>"+
                  "<td class='delete-fireplace-button 3-padding w3-xlarge fa fa-trash'></td>"+
                  "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
                  "<td class='table-quantity'>"+'1'+"</td>" +
-                 "<td class='table-price'><input type='text' name='fireplace-price-text' class='excl-price' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
+                 "<td class='table-price'><input type='text' name='fireplace-price-text' class='excl-price' id='fireplace-price-text' value="+fpn+"></input></td>" +
                  "<td class='table-vat'<div id='fireplace-vat-text'>0</div></td>" +
                  "<td class='table-total' id='fireplace-total-text' alt=''></td>"+
                "</tr>"
@@ -443,13 +445,15 @@ function add(){
      var num =parseInt($('input:text[name=fireplace-price-text]').val())
      vatCalcFireplace = num / 100*vatRate
      $(".table-vat").attr('value', vatCalcFireplace) // add value to page
-     var vatformatNumber = numeral(vatCalcFireplace)
-     var formatVatCalcFireplace = vatformatNumber.format('$0,0.00')
-     //$('#fireplace-vat-text').html(formatVatCalcFireplace)
-     $('#fireplace-vat-text').html(vatCalcFireplace.toFixed(2))
-     grandTotalFireplace = num + vatCalcFireplace
-     $(".table-total").attr('value','grandTotalFireplace')
-     $('#fireplace-total-text').html(grandTotalFireplace)
+     var vn = numeral(vatCalcFireplace)
+     var vfn = vn.format('$0,0.00')
+     $('#fireplace-vat-text').html(vfn)
+     //$('#fireplace-vat-text').html(vatCalcFireplace.toFixed(2))
+     grandTotalFireplace = num + vatCalcFireplace//
+     $(".table-total").attr('value','grandTotalFireplace')//
+     var gn = numeral(grandTotalFireplace)
+     var gfn = gn.format('$0,0.00')
+     $('#fireplace-total-text').html(gfn)
    }
 
 
