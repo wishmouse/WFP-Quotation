@@ -11,8 +11,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-
-
+<!-- //// -->
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!-- //// -->
 
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,56 +23,81 @@
 </head>
 <body>
 
+<div data-role="page" id="page-one">
+  <div data-role="main" class="ui-content">
+    <form id="customer-form">
+  	   Date:
+  	   <input type="date" id="date"><br>
+  	   Name :
+  	   <input type="text" id="customer-name" value="" name="customer-name" class="customer" placeholder="Name and surname"/><br>
+  	   Email:
+  	   <input type="email" id="customer-email" value="" name="customer-email" class="customer" placeholder="A.N.Other@none.com"/><br>
+  	   Phone number:
+  	   <input type="number" name="customer-phone" id="customer-phone" class="customer" placeholder="027 000 000"> <br>
+
+  		<div id="locationField">
+  		  <input id="autocomplete" placeholder="Enter your address"
+  				 onFocus="geolocate()" type="text"></input>
+  		</div>
+
+  		<table id="address">
+  		  <tr>
+  			<td class="label">Street address</td>
+  			<td class="slimField"><input class="field" id="street_number"
+  				  disabled="true"></input></td>
+  			<td class="wideField" colspan="2"><input class="field" id="route"
+  				  disabled="true"></input></td>
+  		  </tr>
+  		  <tr>
+  			<td class="label">Suburb</td>
+  			<td class="wideField" colspan="3"><input class="field"
+  				  id="sublocality_level_1" disabled="true"></input></td>
+  		  </tr>
+  		  <tr>
+  			<td class="label">City</td>
+  			<td class="wideField" colspan="3"><input class="field" id="locality"
+  				  disabled="true"></input></td>
+  		  </tr>
+  		  <tr>
+  			<td class="label">Post code</td>
+  			<td class="wideField"><input class="field" id="postal_code"
+  				  disabled="true"></input></td>
+  		  </tr>
+  		</table>
+
+  	 <div id="salesman" class="wrapper"></div>
+
+    <a href="#page-two" data-transition="slide">Slide to Page Two</a>
+    <a href="#data-buttons" data-transition="slide">Slide data buttons</a>
+  </div>
+</div>
+
+
+
+<div data-role="page" id="data-buttons">
+  <div data-role="main" class="ui-content">
+      <button id="data-entry-button">Enter Data</button>
+      <button class="edit-quotation-button" id="edit-quotation-button">View Quote</button>
+      <button class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</button>
+      <a href="#enter-hearth-data" data-transition="slide" class="entry-hearth-button">Enter Hearth Data</a>
+      <!--<button class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</button> -->
+      <button class="entry-flue-button" id="entry-flue-button">Enter Flue</button>
+    <a href="#page-one" data-transition="slide" data-direction="reverse">Back to Page 1</a>
+  </div>
+</div>
+
+<div data-role="page" id="page-two">
+  <div data-role="main" class="ui-content">
+
+    <a href="#page-one" data-transition="slide" data-direction="reverse">Back to Page 1</a>
+  </div>
+</div>
+
+
+
 <div  id="quotation">
-	<form id="customer-form">
-	   Date:
-	   <input type="date" id="date"><br>
-	   Name :
-	   <input type="text" id="customer-name" value="" name="customer-name" class="customer" placeholder="Name and surname"/><br>
-	   Email:
-	   <input type="email" id="customer-email" value="" name="customer-email" class="customer" placeholder="A.N.Other@none.com"/><br>
-	   Phone number:
-	   <input type="number" name="customer-phone" id="customer-phone" class="customer" placeholder="027 000 000"> <br>
+</form>
 
-		<div id="locationField">
-		  <input id="autocomplete" placeholder="Enter your address"
-				 onFocus="geolocate()" type="text"></input>
-		</div>
-
-		<table id="address">
-		  <tr>
-			<td class="label">Street address</td>
-			<td class="slimField"><input class="field" id="street_number"
-				  disabled="true"></input></td>
-			<td class="wideField" colspan="2"><input class="field" id="route"
-				  disabled="true"></input></td>
-		  </tr>
-		  <tr>
-			<td class="label">Suburb</td>
-			<td class="wideField" colspan="3"><input class="field"
-				  id="sublocality_level_1" disabled="true"></input></td>
-		  </tr>
-		  <tr>
-			<td class="label">City</td>
-			<td class="wideField" colspan="3"><input class="field" id="locality"
-				  disabled="true"></input></td>
-		  </tr>
-		  <tr>
-			<td class="label">Post code</td>
-			<td class="wideField"><input class="field" id="postal_code"
-				  disabled="true"></input></td>
-		  </tr>
-		</table>
-
-	 <div id="salesman" class="wrapper"></div>
-
-	</form>
-
-	<button id="data-entry-button">Enter Data</button>
-	<button class="edit-quotation-button" id="edit-quotation-button">View Quote</button>
-	<button class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</button>
-	<button class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</button>
-	<button class="entry-flue-button" id="entry-flue-button">Enter Flue</button>
 
 	<div id="air" class="wrapper">
 	  <div id="clean-air" class="border-air-wetback" >Clean Air</div>
@@ -258,50 +286,55 @@
 
 <div id="edit-salesman"></div>
 
-<div id="enter-hearth-data">
-  <div id="hearth-make" style='margin-top: 25px'>Make:<br>
-    <div id="hearth-bosca" class='border-make-hearth' value="Bosca">Bosca</div>
-    <div id="hearth-pyroclassic"  class='border-make-hearth' value="pyroclassic">Pyroclassic</div>
-    <div id="hearth-metro" class='border-make-hearth' value="metro">Metrofires</div>
-    <div id="hearth-warmington" class='border-make-hearth' value="warmington">Warmington</div>
-    <div id="hearth-kent" class='border-make-hearth' value="kent">Kent</div>
-    <div id="hearth-stovax" class='border-make-hearth' value="stovax">Stovax</div>
-  </div>
+<div data-role="page" id="enter-hearth-data">
+  <div data-role="main" class="ui-content">
+    <div id="hearth-make" style='margin-top: 25px'>Make:<br>
+      <div id="hearth-bosca" class='border-make-hearth' value="Bosca">Bosca</div>
+      <div id="hearth-pyroclassic"  class='border-make-hearth' value="pyroclassic">Pyroclassic</div>
+      <div id="hearth-metro" class='border-make-hearth' value="metro">Metrofires</div>
+      <div id="hearth-warmington" class='border-make-hearth' value="warmington">Warmington</div>
+      <div id="hearth-kent" class='border-make-hearth' value="kent">Kent</div>
+      <div id="hearth-stovax" class='border-make-hearth' value="stovax">Stovax</div>
+    </div>
 
-  <input type="text" id="input-model-hearth" placeholder="Model"/>
-  Hearth :
-  <select id='hearth-style'>
-    <option class="hearth-corner">Corner Hearth</option>
-    <option class="hearth-wall">Wall Hearth</option>
-  </select>
-  Finish:
-  <select id='hearth-finish'>
-    <option class="hearth-finish">Steel</option>
-    <option class="hearth-finish">Smoked Glass</option>
-    <option class="hearth-finish">Options</option>
-    <option class="hearth-finish">Galaxy</option>
-    <option class="hearth-finish">Champagne</option>
-  </select>
-Standard Finish price:
-  <input type="number" id="input-price-hearth" placeholder="$ price"/>
-  Additional Finish:
-    <select id='input-additional-finish-hearth'>
-      <option class="additional-hearth-finish">Yes</option>
-      <option class="-additional-hearth-finish">No</option>
+    <input type="text" id="input-model-hearth" placeholder="Model"/>
+    Hearth :
+    <select id='hearth-style'>
+      <option class="hearth-corner">Corner Hearth</option>
+      <option class="hearth-wall">Wall Hearth</option>
     </select>
-  Additional Finish Price:
-  <input type="number" id="input-price-hearth-add-finish" placeholder="Additional finish $"/>
+    Finish:
+    <select id='hearth-finish'>
+      <option class="hearth-finish">Steel</option>
+      <option class="hearth-finish">Smoked Glass</option>
+      <option class="hearth-finish">Options</option>
+      <option class="hearth-finish">Galaxy</option>
+      <option class="hearth-finish">Champagne</option>
+    </select>
+  Standard Finish price:
+    <input type="number" id="input-price-hearth" placeholder="$ price"/>
+    Additional Finish:
+      <select id='input-additional-finish-hearth'>
+        <option class="additional-hearth-finish">Yes</option>
+        <option class="-additional-hearth-finish">No</option>
+      </select>
+    Additional Finish Price:
+    <input type="number" id="input-price-hearth-add-finish" placeholder="Additional finish $"/>
 
-  <div>
-    <button id="hearth-data-submit">Submit Hearth Data </button>
-    <button class="back-to-quotation">Back to quote</button>
-    <button id="edit-hearth-button">Edit Hearth Data</button>
-    <div id="data-submit-notification-hearth" class="submit-notification">Data submitted </div>
+    <div>
+      <button id="hearth-data-submit">Submit Hearth Data </button>
+      <button class="back-to-quotation">Back to quote</button>
+      <button id="edit-hearth-button">Edit Hearth Data</button>
+      <div id="data-submit-notification-hearth" class="submit-notification">Data submitted </div>
+    </div>
+
+    <a href="#page-one" data-transition="slide" data-direction="reverse">Back to Page 1</a>
+    <div id="edit-hearth-view"></div>
   </div>
-
 </div>
 
-<div id="edit-hearth-view"></div>
+
+
 
 <div id="enter-flue-data">
     <form class="enter-flue-data">
