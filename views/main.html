@@ -80,7 +80,7 @@
       <button class="edit-quotation-button" id="edit-quotation-button">View Quote</button>
       <a href="#edit-salesman-data" class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</a>
       <button class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</button>
-      <button class="entry-flue-button" id="entry-flue-button">Enter Flue</button>
+      <a href="#enter-flue-data" data-transition="slide" class="entry-flue-button" id="entry-flue-button">Enter Flue Data</a>
     <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
   </div>
 </div>
@@ -362,9 +362,11 @@
 </div>
 
 
+  <a href="#enter-flue-data" data-transition="slide" >Enter Flue Data</a>
 
-
-<div id="enter-flue-data">
+<!--<div id="enter-flue-data"> -->
+<div data-role="page" id="enter-flue-data">
+  <div data-role="header">
     <form class="enter-flue-data">
     Fuel
     <select id="flue-fuel">
@@ -483,7 +485,7 @@ Inner flue diamater
         <button id="flue-guide-submit" class="submit-flue-data">Submit Guide</button>
       </div>
   </form>
-  <button class="back-to-quotation">Back to quote</button>
+
   <div style="border: orange 1px solid">
     <select id="flue-edit-options">
       <option class='enter-options' selected disabled></option>
@@ -500,6 +502,8 @@ Inner flue diamater
       <div id="data-submit-notification-flue" class="submit-notification">Data submitted </div>
     </div>
 </div>
+</div>
+
 <div id='edit-flue-view'>
   <table>
     <tr>

@@ -50,8 +50,8 @@ var editList
      $("#enter-hearth-data").show()
      $("#hearth-tile-price").hide()
      $('#model-dropdown-hearth').hide()
-     $('#enter-flue-data').hide()
-     $('#edit-flue-view').hide()
+     //$('#enter-flue-data').hide()
+     //$('#edit-flue-view').hide()
      $("#enter-hearth-data").hide()
 
 
@@ -1075,12 +1075,13 @@ $('#edit-hearth-button').click(function(e){
    //==============
    //==============flue data entry
    //==============
-
+/*
    $("#entry-flue-button").click(function(e){
      e.preventDefault
      _hideShow.dataFlueButton()
 
    })
+   */
 
    $("#flue-enter-options").change(function() {
      _hideShow.dataFlueChange()
