@@ -67,7 +67,7 @@
 
   	 <div id="salesman" class="wrapper"></div>
 
-    <a href="#page-two" data-transition="slide">Slide to Page Two</a>
+    <a href="#page-two" id="go-to-fireplace" data-transition="slide">Slide to Fireplace</a><br>
     <a href="#data-buttons" data-transition="slide">Slide data buttons</a>
   </div>
 </div>
@@ -78,108 +78,105 @@
   <div data-role="main" class="ui-content">
       <button id="data-entry-button">Enter Data</button>
       <button class="edit-quotation-button" id="edit-quotation-button">View Quote</button>
-      <button class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</button>
-      <a href="#enter-hearth-data" data-transition="slide" class="entry-hearth-button">Enter Hearth Data</a>
-      <!--<button class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</button> -->
+      <a href="#edit-salesman-data" class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</a>
+      <button class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</button>
       <button class="entry-flue-button" id="entry-flue-button">Enter Flue</button>
-    <a href="#page-one" data-transition="slide" data-direction="reverse">Back to Page 1</a>
+    <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
   </div>
 </div>
 
 <div data-role="page" id="page-two">
   <div data-role="main" class="ui-content">
 
-    <a href="#page-one" data-transition="slide" data-direction="reverse">Back to Page 1</a>
+    <div id="air" class="wrapper">
+      <div id="clean-air" class="border-air-wetback" >Clean Air</div>
+      <div id="rural" class="border-air-wetback">Rural</div>
+      <div id="clean-air-wetback" class="border-air-wetback" >Clean Air wetback</div>
+      <div id="rural-wetback" class="border-air-wetback">Rural wetback</div>
+    </div>
+
+    <div id="fireplace" class=wrapper>
+      <div id="gas" class="border-fireplace" value="gas">Gas</div>
+      <div id="wood" class="border-fireplace" value="wood" >Wood</div>
+      <div id="electric" class="border-fireplace" value="electric">Electric</div>
+      <div id="multi-fuel" class="border-fireplace" value="multi-fuel">Multi-Fuel</div>
+      <div id="biofuel" class="border-fireplace" value="biofuel">Biofuel</div>
+      <div id="cooker"  class="border-fireplace" value="cookers">Cookers</div>
+    </div>
+    <div id="make" style='margin-top: 25px'>
+      <div id="jayline" class='border-make' value="Jayline">Jayline</div>
+      <div id="fisher" class='border-make' value="Fisher">Fisher</div>
+      <div id="gazco" class='border-make' value="Gazco">Gazco</div>
+      <div id="jetmaster" class='border-make' value="Jetmaster">Jetmaster</div>
+      <div id="escea" class='border-make' value="Escea">Escea</div>
+      <div id="living-flame"  class='border-make' value="living-flame">Living Flame</div>
+      <div id="bosca" class='border-make' value="Bosca">Bosca</div>
+      <div id="pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</div>
+      <div id="metro" class='border-make' value="metro">Metrofires</div>
+      <div id="firenzo"  class='border-make' value="firenzo">Firenzo</div>
+      <div id="woodsman" class='border-make' value="woodsman">Woodsman</div>
+      <div id="quadra-fire" class='border-make' value="quadra-fire">Quadra-Fire</div>
+      <div id="esse" class='border-make' value="esse">Esse</div>
+      <div id="yunca" class='border-make' value="yunca">Yunca</div>
+      <div id="ethos" class='border-make' value="ethos">Ethos</div>
+      <div id="warmington" class='border-make' value="warmington">Warmington</div>
+      <div id="quadrafire" class='border-make' value="quadrafire">Quadrafire</div>
+      <div id="kent" class='border-make' value="kent">Kent</div>
+      <div id="stovax" class='border-make' value="stovax">Stovax</div>
+      <div id="mitsubishi" class='border-make' value="mitsubishi">Mitsubishi-electric</div>
+      <div id="beef-eater" class='border-make' value="beef-eater">Beef Eater</div>
+      <div id="ortal" class='border-make' value="ortal">Ortal</div>
+      <div id="heat-glo" class='border-make' value="heat-glo">Heat & Glo</div>
+      <div id="trendz"class='border-make'  value="trendz">Trendz</div>
+      <div id="bromic" class='border-make' value="bromic">Bromic Heating</div>
+      <div id="realfires"class='border-make'  value="realfires">Realfires</div>
+      <div id="the-bio-flame"class='border-make' value="the-bio-flame">The Bio Flame</div>
+      <div id="fogata" class='border-make'value="fogata">Fogata</div>
+      <div id="cast-iron-chiminea" class='border-make' value="cast-iron-chiminea">Cast iron chiminea</div>
+      <div id="the-fireplace" class='border-make'  value="the-fireplace">The Fireplace</div>
+    </div>
+
+    <div id="dropdown-selector">
+      <br>
+      Model :<select class="quote-dropdown" id="model-dropdown"></select><br>
+      <br>
+      colour
+      <div id="colour-price" class="wrapper">
+        <div id="colourPrice-extra" class="border-colour" ></div>
+        <div id="colourPrice-nocharge" class="border-colour">0.00</div>
+      </div>
+
+      Hearth
+      <div id="hearth-style" class="wrapper">
+        <div id="hearth-corner" class="border-style-hearth">Corner Hearth</div>
+        <div id="hearth-wall" class="border-style-hearth">Wall Hearth</div>
+      </div>
+
+      <div id="display-hearth-make" style='margin-top: 25px'>Make:<br>
+        <div id="display-hearth-bosca" class='border-make-hearth-display' value="Bosca">Bosca</div>
+        <div id="display-hearth-pyroclassic"  class='border-make-hearth-display' value="pyroclassic">Pyroclassic</div>
+        <div id="display-hearth-metro" class='border-make-hearth-display' value="metro">Metrofires</div>
+        <div id="display-hearth-warmington" class='border-make-hearth-display' value="warmington">Warmington</div>
+        <div id="display-hearth-kent" class='border-make-hearth-display' value="kent">Kent</div>
+        <div id="display-hearth-stovax" class='border-make-hearth-display' value="stovax">Stovax</div>
+      </div>
+
+      Model :<select class="quote-dropdown" id="model-dropdown-hearth"></select><br>
+
+      Additional tile cost:
+      <div id="hearth-tile-price" class="wrapper">
+        <div id="hearth-tile-extra" class="hearth-tile-border-colour" ></div>
+        <div id="hearth-tile-nocharge" class="hearth-tile-border-colour">0.00</div>
+      </div>
+    </div>
+    <a href="#page-three" id="go-to-flue" data-transition="slide">Flue entry</a>
+    <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
   </div>
 </div>
 
 
-
-<div  id="quotation">
-</form>
-
-
-	<div id="air" class="wrapper">
-	  <div id="clean-air" class="border-air-wetback" >Clean Air</div>
-	  <div id="rural" class="border-air-wetback">Rural</div>
-	  <div id="clean-air-wetback" class="border-air-wetback" >Clean Air wetback</div>
-	  <div id="rural-wetback" class="border-air-wetback">Rural wetback</div>
-	</div>
-
-	<div id="fireplace" class=wrapper>
-		<div id="gas" class="border-fireplace" value="gas">Gas</div>
-		<div id="wood" class="border-fireplace" value="wood" >Wood</div>
-		<div id="electric" class="border-fireplace" value="electric">Electric</div>
-		<div id="multi-fuel" class="border-fireplace" value="multi-fuel">Multi-Fuel</div>
-		<div id="biofuel" class="border-fireplace" value="biofuel">Biofuel</div>
-		<div id="cooker"  class="border-fireplace" value="cookers">Cookers</div>
-	</div>
-	<div id="make" style='margin-top: 25px'>
-	  <div id="jayline" class='border-make' value="Jayline">Jayline</div>
-	  <div id="fisher" class='border-make' value="Fisher">Fisher</div>
-	  <div id="gazco" class='border-make' value="Gazco">Gazco</div>
-	  <div id="jetmaster" class='border-make' value="Jetmaster">Jetmaster</div>
-	  <div id="escea" class='border-make' value="Escea">Escea</div>
-	  <div id="living-flame"  class='border-make' value="living-flame">Living Flame</div>
-	  <div id="bosca" class='border-make' value="Bosca">Bosca</div>
-	  <div id="pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</div>
-	  <div id="metro" class='border-make' value="metro">Metrofires</div>
-	  <div id="firenzo"  class='border-make' value="firenzo">Firenzo</div>
-	  <div id="woodsman" class='border-make' value="woodsman">Woodsman</div>
-	  <div id="quadra-fire" class='border-make' value="quadra-fire">Quadra-Fire</div>
-	  <div id="esse" class='border-make' value="esse">Esse</div>
-	  <div id="yunca" class='border-make' value="yunca">Yunca</div>
-	  <div id="ethos" class='border-make' value="ethos">Ethos</div>
-	  <div id="warmington" class='border-make' value="warmington">Warmington</div>
-	  <div id="quadrafire" class='border-make' value="quadrafire">Quadrafire</div>
-	  <div id="kent" class='border-make' value="kent">Kent</div>
-	  <div id="stovax" class='border-make' value="stovax">Stovax</div>
-	  <div id="mitsubishi" class='border-make' value="mitsubishi">Mitsubishi-electric</div>
-	  <div id="beef-eater" class='border-make' value="beef-eater">Beef Eater</div>
-	  <div id="ortal" class='border-make' value="ortal">Ortal</div>
-	  <div id="heat-glo" class='border-make' value="heat-glo">Heat & Glo</div>
-	  <div id="trendz"class='border-make'  value="trendz">Trendz</div>
-	  <div id="bromic" class='border-make' value="bromic">Bromic Heating</div>
-	  <div id="realfires"class='border-make'  value="realfires">Realfires</div>
-	  <div id="the-bio-flame"class='border-make' value="the-bio-flame">The Bio Flame</div>
-	  <div id="fogata" class='border-make'value="fogata">Fogata</div>
-	  <div id="cast-iron-chiminea" class='border-make' value="cast-iron-chiminea">Cast iron chiminea</div>
-	  <div id="the-fireplace" class='border-make'  value="the-fireplace">The Fireplace</div>
-	</div>
-
-	<div id="dropdown-selector">
-	  <br>
-		Model :<select class="quote-dropdown" id="model-dropdown"></select><br>
-	  <br>
-	  colour
-		<div id="colour-price" class="wrapper">
-		  <div id="colourPrice-extra" class="border-colour" ></div>
-		  <div id="colourPrice-nocharge" class="border-colour">0.00</div>
-		</div>
-
-		Hearth
-		<div id="hearth-style" class="wrapper">
-		  <div id="hearth-corner" class="border-style-hearth">Corner Hearth</div>
-		  <div id="hearth-wall" class="border-style-hearth">Wall Hearth</div>
-		</div>
-
-		<div id="display-hearth-make" style='margin-top: 25px'>Make:<br>
-		  <div id="display-hearth-bosca" class='border-make-hearth-display' value="Bosca">Bosca</div>
-		  <div id="display-hearth-pyroclassic"  class='border-make-hearth-display' value="pyroclassic">Pyroclassic</div>
-		  <div id="display-hearth-metro" class='border-make-hearth-display' value="metro">Metrofires</div>
-		  <div id="display-hearth-warmington" class='border-make-hearth-display' value="warmington">Warmington</div>
-		  <div id="display-hearth-kent" class='border-make-hearth-display' value="kent">Kent</div>
-		  <div id="display-hearth-stovax" class='border-make-hearth-display' value="stovax">Stovax</div>
-		</div>
-
-		Model :<select class="quote-dropdown" id="model-dropdown-hearth"></select><br>
-
-		Additional tile cost:
-	  <div id="hearth-tile-price" class="wrapper">
-  		<div id="hearth-tile-extra" class="hearth-tile-border-colour" ></div>
-  		<div id="hearth-tile-nocharge" class="hearth-tile-border-colour">0.00</div>
-	  </div>
-
+  <div data-role="page" id="page-three">
+      <div data-role="main" class="ui-content">
     Flue
     <div id="flue-style-wrapper" class="wrapper">
       <div id="flue-inbuilt" class="border-style-flue">Inbuilt</div>
@@ -197,27 +194,45 @@
       <div id="flue-inner-300"class='border-flue-inner'>300</div>
       <div id="flue-inner-400"class='border-flue-inner'>400</div>
     </div>
-
-		<div id='quotation-display-data'></div>
-    <table>
-      <tr>
-  		    <td class='total-description'>Excl VAT total</td>
-          <td class='total-value'> <div id='quotation-excl-total'></div>  </td>
-      </tr>
-      <tr>
-          <td class='total-description'>VAT</td>
-          <td class='total-value'> <div id='quotation-vat-total'></div> </td>
-      </tr>
-      <tr>
-          <td class='total-description'>Grand Total</td>
-          <td class='total-value'> <div id="quotation-grand-total"></div> </td>
-      </tr>
-    </table>
-		<br>
-		<textarea id="quotation-comments" class = "quotation-comments" placeholder="comments"  cols="100" rows="5"></textarea>
-		<button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
-		<br>
+    <a href="#page-four" id="go-to-quote" data-transition="slide">Go to quote</a>
+    <a href="#page-two" data-transition="slide" data-direction="reverse">Back to Fireplace</a>
 	</div>
+</div>
+
+<div data-role="page" id="page-four">
+    <div data-role="main" class="ui-content">
+
+      <div id="customer-name-quote"></div>
+      <div id="customer-email-quote"></div>
+      <div id="customer-phone-quote"></div>
+
+      <div id="address-quote"></div>
+      <div id="suburb-quote"></div>
+      <div id="city-quote"></div>
+      <div id="post-code-quoe"></div>
+
+      <div id='quotation-display-data'></div>
+      <table>
+        <tr>
+            <td class='total-description'>Excl VAT total</td>
+            <td class='total-value'> <div id='quotation-excl-total'></div>  </td>
+        </tr>
+        <tr>
+            <td class='total-description'>VAT</td>
+            <td class='total-value'> <div id='quotation-vat-total'></div> </td>
+        </tr>
+        <tr>
+            <td class='total-description'>Grand Total</td>
+            <td class='total-value'> <div id="quotation-grand-total"></div> </td>
+        </tr>
+      </table>
+      <br>
+      <textarea id="quotation-comments" class = "quotation-comments" placeholder="comments"  cols="100" rows="5"></textarea>
+      <button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
+
+      <a href="#page-three"  id="go-to-flue" data-direction="reverse" data-transition="slide">Go to flue</a>
+      <a href="#page-one" data-transition="slide" data-direction="reverse">Back to home</a>
+    </div>
 </div>
 
 <!-- // /// //// /// -->
@@ -264,30 +279,44 @@
 <div id="edit-quotation-data">
   <div id="back-to-quote" class="back-to-quotation">Back to quote</div>
 </div>
-
-<form id="edit-salesman-data">
-  Name :
-  <input type="text" id="salesman-name" class="salesman-name" placeholder="Name and surname"/><br>
-  Email:
-  <input type="email" id="salesman-email"  class="salesman-email" placeholder="A.N.Other@none.com"/><br>
-  Phone number:
-  <input type="number"  id="salesman-phone" class="salesman-phone" placeholder="027 000 000"/> <br>
-  Active:
-    <input type="radio"  id="salesman-active" class="salesman-active"/>
-    <br>
-  <div id="salesman-submit-notification" class="submit-notification">Data submitted</div>
-  <div>
-    <button id="submit-salesman-button" class ="submit-salesman-button">Salesman data submit </button>
-    <button id="salesman-back-to-quotation" class="back-to-quotation">Back to quote</button>
-
-    <button id="edit-salesman-button" class = "edit-salesman-button">Edit Salesman </button>
-  </div>
-</form>
-
-<div id="edit-salesman"></div>
-
-<div data-role="page" id="enter-hearth-data">
+<!-- enter salesman data------->
+<!-- enter salesman data------->
+<!-- enter salesman data------->
+<div data-role="page" id="edit-salesman-data">
   <div data-role="main" class="ui-content">
+      Name :
+      <input type="text" id="salesman-name" class="salesman-name" placeholder="Name and surname"/><br>
+      Email:
+      <input type="email" id="salesman-email"  class="salesman-email" placeholder="A.N.Other@none.com"/><br>
+      Phone number:
+      <input type="number"  id="salesman-phone" class="salesman-phone" placeholder="027 000 000"/> <br>
+      Active:
+        <input type="radio"  id="salesman-active" class="salesman-active"/>
+        <br>
+      <div id="salesman-submit-notification" class="submit-notification">Data submitted</div>
+      <div>
+
+        <button id="submit-salesman-button" class ="submit-salesman-button">Salesman data submit </button>
+
+        <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+        <a href="#edit-salesman-slide" data-transition="slide" class="edit-salesman-button" id="edit-salesman-button">Edit Salesman </a>
+      </div>
+  </div>
+</div>
+<div data-role="page" id="edit-salesman-slider">
+  <div data-role="main" class="ui-content">
+     <a href="#edit-salesman-data" class="entry-salesman-button" data-direction="reverse" id="entry-salesman-button">Enter Salesman</a>
+     <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+
+     <div id="edit-salesman"></div>
+
+  </div>
+</div>
+<!-- Enter Hearth Data ------->
+<!-- Enter Hearth Data ------->
+<!-- Enter Hearth Data ------->
+
+<div id="enter-hearth-data">
     <div id="hearth-make" style='margin-top: 25px'>Make:<br>
       <div id="hearth-bosca" class='border-make-hearth' value="Bosca">Bosca</div>
       <div id="hearth-pyroclassic"  class='border-make-hearth' value="pyroclassic">Pyroclassic</div>
@@ -330,7 +359,6 @@
 
     <a href="#page-one" data-transition="slide" data-direction="reverse">Back to Page 1</a>
     <div id="edit-hearth-view"></div>
-  </div>
 </div>
 
 
@@ -561,9 +589,7 @@ Inner flue diamater
 	});
 	</script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa_og4BGPFke8eLA6IROOGEzNyT4tQmCg
-&libraries=places&callback=initAutocomplete"
-        async defer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa_og4BGPFke8eLA6IROOGEzNyT4tQmCg&libraries=places&callback=initAutocomplete" async defer>
     </script>
   </body>
 </html>

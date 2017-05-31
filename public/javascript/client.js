@@ -40,11 +40,11 @@ var editList
  $(document).ready(function(){
     entryTypeController = 'quotation'
      $("#fireplace-data-entry").hide()
-     $("#make").hide()
+     //$("#make").hide()
      $("#dropdown-selector").hide()
      $("#edit-quotation-data").hide()
      $("#colour-price").hide()
-     $("#edit-salesman-data").hide()
+     //$("#edit-salesman-data").hide()
      $('#quotation-display-data').empty()
      $("#enter-hearth-data").hide()
      $("#enter-hearth-data").show()
@@ -319,6 +319,9 @@ function add(){
          add()
       })
 
+      $("#go-to-fireplace").click(function(){
+        _hideShow.hideShow()
+      })
 
         $('#fireplace').delegate('.border-fireplace', 'click', function(e){
               _hideShow.hideShow()
@@ -510,13 +513,13 @@ function add(){
 //====
 //==== Database entry
 //====
-/*
+
    $("#data-entry-button").click(function() {
      $("#quotation-submit-button").hide()
      _dataInput.dataEntryButton()
      entryTypeController = 'data entry'
    });
-*/
+
 
 
 
@@ -562,7 +565,7 @@ function add(){
                })
 
        _clearData.clearDataSubmit()
-      $("#make").hide()
+      //$("#make").hide()
        _clearData.removeClassSubmit()
        $(".submit-notification").show().delay(2000).fadeOut();
    })
@@ -670,6 +673,30 @@ function add(){
    //==== quotation- entry
    //====
 
+$("#go-to-quote").click(function(){
+  customerName = $("#customer-name").val()
+  quoteDate = $("date").val()
+  email = $("#customer-email").val()
+  phone = $("#customer-phone").val()
+  streetNumber = $("#street_number").val()
+  streetName = $("#route").val()
+  address1= $("#street_number").val() +' '+ $("#route").val()
+  suburb = $("#sublocality_level_1").val()
+  city = $("#locality").val()
+  postCode = $("#postal_code").val()
+
+  $("#customer-name-quote").html(customerName)
+  $("#customer-email-quote").html(email)
+  $("#customer-phone-quote").html(phone)
+  $("#address-quote").html(address1)
+  $("#suburb-quote").html(suburb)
+  $("#city-quote").html(city)
+  $("#post-code-quoe").html(postCode)
+
+
+})
+
+
    $('#quotation-submit-button').click(function(e){
      e.preventDefault()
      customerName = $("#customer-name").val()
@@ -718,7 +745,7 @@ function add(){
      _clearData.clearQuotationSubmit()
      _clearData.removeClassSubmit()
      $("#dropdown-selector").hide()
-     $("#make").hide()
+     //$("#make").hide()
 
   })
 
@@ -835,7 +862,7 @@ function add(){
 
      $('#entry-salesman-button').click(function(e){
        e.preventDefault()
-       _hideShow.dataSalesmanButton()
+    //  $("#salesman-submit-notification").hide()
 
 
        })
@@ -934,11 +961,12 @@ function add(){
 //==============
 //==============hearth data entry
 //==============
+/*
 $("#entry-hearth-button").click(function(){
   _hideShow.dataHearthButton()
   $(".submit-notification").hide()
 })
-
+*/
 $("#hearth-make").delegate('.border-make-hearth', 'click', function(e){
        $(".border-make-hearth").removeClass("selected")
        var select = $(this).addClass("selected")

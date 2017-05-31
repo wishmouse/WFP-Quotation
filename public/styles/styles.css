@@ -238,7 +238,7 @@ div#data-submit:hover {
   font-weight: 300;
   border-right: 1px solid #78b777;
   border-bottom: 1px solid #78b777;
-  width: 200px
+  width: 384px;
 }
 
 
@@ -248,7 +248,7 @@ div#data-submit:hover {
   font-weight: 50;
   border-right: 1px solid #78b777;
   border-bottom: 1px solid #78b777;
-  width: 100px
+  width: 42px;
 }
 
 .table-header-price{
@@ -257,7 +257,7 @@ div#data-submit:hover {
   font-weight: 50;
   border-right: 1px solid #78b777;
   border-bottom: 1px solid #78b777;
-  width: 100px
+  width: 118px;
 }
 .table-header-vat{
   font-size: 8pt;
@@ -265,7 +265,7 @@ div#data-submit:hover {
   font-weight: 50;
   border-right: 1px solid #78b777;
   border-bottom: 1px solid #78b777;
-  width: 100px
+  width: 118px;
 }
 
 .table-header-total{
@@ -274,7 +274,7 @@ div#data-submit:hover {
   font-weight: 50;
   border-right: 1px solid #78b777;
   border-bottom: 1px solid #78b777;
-  width: 100px
+  width: 123px;
 }
 
 
@@ -367,7 +367,7 @@ div#data-submit:hover {
   font-family: helvetica;
   font-weight: 600;
   border-right: 1px solid #78b777;
-  width: 700px;
+  width: 652px;
   padding-right: 30px;
   text-align: right;
   height: 40px;
@@ -381,6 +381,6 @@ div#data-submit:hover {
   border-right: 1px solid #78b777;
   width: 100px;
   text-align: right;
-  padding-right: 30px;
+  padding-right: 25px;
 }
 https://color.adobe.com/sinNat-Brown-2-color-theme-9178330/
