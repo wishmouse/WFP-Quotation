@@ -967,6 +967,8 @@ $("#entry-hearth-button").click(function(){
   $(".submit-notification").hide()
 })
 */
+
+
 $("#hearth-make").delegate('.border-make-hearth', 'click', function(e){
        $(".border-make-hearth").removeClass("selected")
        var select = $(this).addClass("selected")
@@ -1082,6 +1084,12 @@ $('#edit-hearth-button').click(function(e){
 
    })
    */
+   $("#entry-flue-button").click(function(e){
+     alert("boom")
+     e.preventDefault
+    $("#submit-notification").hide()
+   })
+
 
    $("#flue-enter-options").change(function() {
      _hideShow.dataFlueChange()

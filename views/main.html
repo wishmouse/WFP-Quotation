@@ -362,12 +362,12 @@
 </div>
 
 
-  <a href="#enter-flue-data" data-transition="slide" >Enter Flue Data</a>
+  <a href="#enter-flue-data"  id="flue-data-slide" data-transition="slide" >Enter Flue Data</a>
 
 <!--<div id="enter-flue-data"> -->
 <div data-role="page" id="enter-flue-data">
   <div data-role="header">
-    <form class="enter-flue-data">
+    <div class="enter-flue-data">
     Fuel
     <select id="flue-fuel">
       <option  class='flue-border-fuel' >Wood</option>
@@ -382,7 +382,6 @@
       <br>
   <br>Flue finish
     <select id='flue-finish'>
-      <option class="flue-border-finish" selected disabled></option>
       <option class="flue-border-finish" value ="Galv">Galv</option>
       <option class="flue-border-finish" value ="S/S">S/S</option>
       <option class="flue-border-finish" value ="Met Black">Met Black</option>
@@ -397,7 +396,6 @@
 
   Entering options
   <select id="flue-enter-options" style='margin-top: 25px'>
-    <option class='enter-options' selected disabled></option>
       <option class='enter-options'>Inner flue</option>
       <option class='enter-options'>Outer flue</option>
       <option class='enter-options'>Flue liner</option>
@@ -408,7 +406,6 @@
 
 Inner flue diamater
     <select id="flue-inner" style='margin-top: 25px'>
-      <option class='flue-inner'></option>
       <option class='flue-inner'>100</option>
       <option class='flue-inner'>200</option>
       <option class='flue-inner'>300</option>
@@ -424,7 +421,6 @@ Inner flue diamater
   <div id="flue-outer-options">
   Flue Size outers
       <select id='flue-outer'>
-        <option class="flue-outer"></option>
         <option class="flue-outer">1.2m</option>
         <option class="flue-outer">4.0m</option>
         <option class="flue-outer">4.2m</option>
@@ -435,10 +431,9 @@ Inner flue diamater
       <button id="flue-outer-submit" class="submit-flue-data">Submit Flue-outer</button>
     </div>
 
-    <div id="flue-liner-options">
+      <div id="flue-liner-options">
     Liners
       <select id="flue-liners" style='margin-top: 25px'>
-        <option class='flue-liners'></option>
         <option class='flue-liners'>100</option>
         <option class='flue-liners'>200</option>
         <option class='flue-liners'>300</option>
@@ -450,7 +445,6 @@ Inner flue diamater
       <div id="flue-cowel-options">
       Cowel
         <select id="flue-cowel" style='margin-top: 25px'>
-          <option class='flue-cowel'></option>
           <option class='flue-cowel'>100</option>
           <option class='flue-cowel'>200</option>
           <option class='flue-cowel'>300</option>
@@ -462,7 +456,6 @@ Inner flue diamater
    <div id="flue-spider-options">
     	  Spider
         <select id="flue-spider" style='margin-top: 25px'>
-          <option class='flue-spider'></option>
           <option class='flue-spider'>100</option>
           <option class='flue-spider'>200</option>
           <option class='flue-spider'>300</option>
@@ -475,7 +468,6 @@ Inner flue diamater
    <div id="flue-guides-options">
   	  Guides
       <select id="flue-guides" style='margin-top: 25px'>
-        <option class='flue-guides'></option>
         <option class='flue-guides'>100</option>
         <option class='flue-guides'>200</option>
         <option class='flue-guides'>300</option>
@@ -484,11 +476,9 @@ Inner flue diamater
       Flue Spider Price :<input type="number" id="flue-guides-price" placeholder="Price $$"/>
         <button id="flue-guide-submit" class="submit-flue-data">Submit Guide</button>
       </div>
-  </form>
+  </div>
 
-  <div style="border: orange 1px solid">
     <select id="flue-edit-options">
-      <option class='enter-options' selected disabled></option>
         <option class='enter-options'>Inner flue</option>
         <option class='enter-options'>Outer flue</option>
         <option class='enter-options'>Flue liner</option>
@@ -496,18 +486,21 @@ Inner flue diamater
         <option class='enter-options'>Spider</option>
         <option class='enter-options'>Guides</option>
     </select>
-      <button id="edit-flue-button">Edit Flue Data</button>
-  </div>
     <div>
-      <div id="data-submit-notification-flue" class="submit-notification">Data submitted </div>
+      <div id="" class="submit-notification">Data submitted </div>
     </div>
+    <div>
+    <a href="#edit-flue-view" data-transition="slide" id="edit-flue-button">Edit Flue Data</a>
+    <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+  </div>
 </div>
 </div>
 
-<div id='edit-flue-view'>
+
+<div data-role="page" id='edit-flue-view'>
+  <div data-role="header">
   <table>
     <tr>
-      <th class='table-header'></th>
       <th class='table-header'>Entry Option</th>
       <th class='table-header'>Fuel</th>
       <th class='table-header'>Style</th>
@@ -518,7 +511,8 @@ Inner flue diamater
       <th class='table-header'>Price</th>
     </tr>
    </table>
-<div id='edit-flue-table'></div>
+   <div id='edit-flue-table'></div>
+ </div>
 </div>
 <!--  setting the address -->
     <script>
