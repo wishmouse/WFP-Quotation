@@ -140,7 +140,7 @@ function hideShow(){
       $("#quotation-button").show()
       $("#quotation-submit-button").hide()
       $("#edit-salesman-data").show()
-      $("#salesman-submit-notification").hide()
+      //$("#salesman-submit-notification").hide()
     }
 
     function dataHearthButton(){
@@ -159,8 +159,8 @@ function hideShow(){
       //$("#make").hide()
       $("#dropdown-selector").hide()
       $("#enter-hearth-data").hide()
-      $("#data-submit-notification-flue").hide()
-      $("#enter-flue-data").show()
+      //$("#data-submit-notification-flue").hide()
+      //$("#enter-flue-data").show()
       dataFlueChange()
     }
 
@@ -181,8 +181,8 @@ function hideShow(){
       //$("#make").hide()
       $("#dropdown-selector").hide()
      $("#enter-hearth-data").hide()
-      $("#data-submit-notification-flue").hide()
-      $("#enter-flue-data").hide()
+    //  $("#data-submit-notification-flue").hide()
+    //  $("#enter-flue-data").hide()
 
     }
 

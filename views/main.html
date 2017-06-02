@@ -478,16 +478,9 @@ Inner flue diamater
       </div>
   </div>
 
-    <select id="flue-edit-options">
-        <option class='enter-options'>Inner flue</option>
-        <option class='enter-options'>Outer flue</option>
-        <option class='enter-options'>Flue liner</option>
-        <option class='enter-options'>Cowel</option>
-        <option class='enter-options'>Spider</option>
-        <option class='enter-options'>Guides</option>
-    </select>
+
     <div>
-      <div id="" class="submit-notification">Data submitted </div>
+      <div id="submit-notification-flue" class="submit-notification-flue">Flue Data submitted </div>
     </div>
     <div>
     <a href="#edit-flue-view" data-transition="slide" id="edit-flue-button">Edit Flue Data</a>
@@ -499,6 +492,15 @@ Inner flue diamater
 
 <div data-role="page" id='edit-flue-view'>
   <div data-role="header">
+    <select id="flue-edit-options">
+        <option class='enter-options'></option>
+        <option class='enter-options'>Inner flue</option>
+        <option class='enter-options'>Outer flue</option>
+        <option class='enter-options'>Flue liner</option>
+        <option class='enter-options'>Cowel</option>
+        <option class='enter-options'>Spider</option>
+        <option class='enter-options'>Guides</option>
+    </select>
   <table>
     <tr>
       <th class='table-header'>Entry Option</th>
@@ -512,6 +514,11 @@ Inner flue diamater
     </tr>
    </table>
    <div id='edit-flue-table'></div>
+ <div>
+   <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+
+   <a href="#enter-flue-data"  id="flue-data-slide" data-transition="slide" >Enter Flue Data</a>
+ </div>
  </div>
 </div>
 <!--  setting the address -->

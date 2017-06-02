@@ -1085,9 +1085,8 @@ $('#edit-hearth-button').click(function(e){
    })
    */
    $("#entry-flue-button").click(function(e){
-     alert("boom")
      e.preventDefault
-    $("#submit-notification").hide()
+    $("#submit-notification-flue").hide()
    })
 
 
@@ -1163,12 +1162,10 @@ $('#edit-hearth-button').click(function(e){
        })
        $('#enter-flue-data')[0].reset();
 
-       $(".submit-notification").show().delay(200).fadeOut();
+       $(".submit-notification-flue").show().delay(200).fadeOut();
 })
 
-   $("#edit-flue-button").click(function(){
-     _hideShow.editFlueButton()
-     $("#edit-flue-view").show()
+   $("#flue-edit-options").change(function(){
      editFlueOptions = $("#flue-edit-options").val()
      editFlueLine =$("#edit-flue-table")
 
@@ -1196,8 +1193,10 @@ $('#edit-hearth-button').click(function(e){
         url: "/getFlueData",
         success: function(result){
               editFlueData = JSON.parse(result)
+              console.log(editFlueData)
               for (i = 0; i < editFlueData.length; i++) {
                 editFlueList = editFlueData[i]
+                console.log(editFlueList)
                 if(editFlueOptions == editFlueList.flueEntryOptions){
                   displayFlueData(editFlueList)
                 }
