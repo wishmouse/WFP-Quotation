@@ -39,7 +39,7 @@ var editList
 
  $(document).ready(function(){
     entryTypeController = 'quotation'
-     $("#fireplace-data-entry").hide()
+     //$("#fireplace-data-entry").hide()
      $("#dropdown-selector").hide()
      $("#edit-quotation-data").hide()
      $("#colour-price").hide()
@@ -88,6 +88,7 @@ var editList
          _clearData.changeTypes()
          _hideShow.airTypeShow()
         })
+
 
 
   $('#hearth-tile-price').delegate('.hearth-tile-border-colour', 'click', function(e){
@@ -338,13 +339,14 @@ function add(){
 
              })
 
+
+
      $('#make').delegate('.border-make', 'click', function(e){
         $(".border-make").removeClass("selected")
         var select = $(this).addClass("selected")
         var makeID = $(this).attr('id')
         make = select.text()
 
-        if (entryTypeController == 'quotation'){
             $.ajax({
             url: "/fireplaceData",
             success: function(result){
@@ -363,8 +365,9 @@ function add(){
               }
             }
           })
-        }
       })
+
+
 
        $("#model-dropdown").change(function() {
          var modelValue = $("#model-dropdown" ).val()
@@ -504,18 +507,69 @@ function add(){
 
 
 //====
-//==== Database entry
+//==== Fireplace entry
 //====
 
    $("#data-entry-button").click(function() {
-     $("#quotation-submit-button").hide()
-     _dataInput.dataEntryButton()
-     entryTypeController = 'data entry'
+     $("#data-submit-notification").hide()
    });
 
 
+  $('#entry-fireplace').delegate('.border-fireplace', 'click', function(e){
+    _hideShow.entryHideShow()
+     $(".border-fireplace").removeClass("selected")
+     var select = $(this).addClass("selected")
+     var fireplaceID = $(this).html()
+     fireplaceType = select.text()
+     if(fireplaceID == 'Gas'){
+         _hideShow.entryGasShow ()
+       } else if (fireplaceID == 'Wood'){
+          _hideShow.entryWoodShow()
+       } else if (fireplaceID == 'Electric') {
+         _hideShow.entryElectricShow()
+       } else if(fireplaceID == "Multi-Fuel"){
+         _hideShow.entryMultifuelShow ()
+       } else if (fireplaceID == 'Biofuel'){
+        _hideShow.entryBiofuelShow ()
+       } else if (fireplaceID == 'Cooker'){
+        _hideShow.entryCookerShow()
+       }
+  })
 
+  $('#entry-make').delegate('.border-make', 'click', function(e){
+     $(".border-make").removeClass("selected")
+     var select = $(this).addClass("selected")
+     var makeID = $(this).text()
+   })
 
+   $('#entry-air').delegate('.border-air-wetback', 'click', function(e){
+      $(".border-air-wetback").removeClass("selected")
+      var select = $(this).addClass("selected")
+      var airID = $(this).text()
+
+      if (airID == "Clean Air"){
+        $("#input-clean-air").show()
+        $("#input-clean-air-wb").hide()
+        $("#input-rural").hide()
+        $("#input-rural-wb").hide()
+      } if (airID == "Rural"){
+        $("#input-clean-air-wb").hide()
+        $("#input-rural").show()
+        $("#input-clean-air").hide()
+        $("#input-rural-wb").hide()
+
+      } if (airID == "Clean Air wetback"){
+        $("#input-rural-wb").hide()
+        $("#input-clean-air-wb").show()
+        $("#input-clean-air").hide()
+        $("#input-rural").hide()
+      }if (airID == "Rural wetback"){
+        $("#input-clean-air-wb").hide()
+        $("#input-clean-air").hide()
+        $("#input-rural").hide()
+        $("#input-rural-wb").show()
+      }
+    })
 //===============
 //===============  Ajax data submit
 //===============
@@ -558,7 +612,7 @@ function add(){
 
        _clearData.clearDataSubmit()
        _clearData.removeClassSubmit()
-       $(".submit-notification").show().delay(2000).fadeOut();
+       $("#data-submit-notification").show().delay(2000).fadeOut();
    })
 
 
@@ -566,32 +620,14 @@ function add(){
    //====
    //==== data edit
    //====
-   $('#edit-data-button').click(function(e){
-     e.preventDefault()
-     _hideShow.dataEditButton()
+   $('#edit-data-button').click(function(){
+     //_hideShow.dataEditButton()
      editLine = $('#edit-data')
      entryTypeController = 'data entry'
 
 
       function displayEdit(edit){
         var editTemplate = ""+
-          "<table>" +
-            "<tr>"+
-              "<th class='table-header'>Edit / Delete</th>" +
-              "<th class='table-header'>Fuel</th>" +
-              "<th class='table-header'>Make</th>" +
-              "<th class='table-header'>Model</th>" +
-              "<th class='table-header'>Kw</th>" +
-              "<th class='table-header'>Clean Air</th>" +
-              "<th class='table-header'>Clean Air WB</th>" +
-              "<th class='table-header' >Rural</th>" +
-              "<th class='table-header'>Rural WB</th>" +
-              "<th class='table-header'>Hearth</th>" +
-              "<th class='table-header'>Wall Hearth</th>" +
-              "<th class='table-header'>Corner Hearth</th>" +
-              "<th class='table-header'>Colour</th>" +
-              "<th  class='table-header'>Colour Price</th>" +
-            "</tr>"+
             "<tr>"+
               "<td><button class='click-to-edit' data-id ="+editList._id+">Edit</button>" +
               "<button class='click-to-delete' data-id ="+editList._id+">Delete</button>" +
@@ -614,7 +650,6 @@ function add(){
       editLine.append(editTemplate, edit)
     }
 
-  if(entryTypeController == 'data entry'){
     $.ajax({
       url: "/fireplaceData",
       success: function(result){
@@ -625,8 +660,7 @@ function add(){
             }
           }
         })
-      }
-})
+  })
 
  $('#edit-data').delegate('.click-to-edit', 'click', function(){
      clickToEditId = $(this).attr('data-id')

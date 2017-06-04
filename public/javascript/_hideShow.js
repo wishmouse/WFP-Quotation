@@ -1,6 +1,107 @@
 var $ = require('jquery')
 var request = require('superagent')
 
+function entryHideShow(){
+      $("#entry-jayline").hide()
+      $("#entry-fisher" ).hide()
+      $("#entry-gazco" ).hide()
+      $("#entry-jetmaster" ).hide()
+      $("#entry-escea" ).hide()
+      $("#entry-living-flame" ).hide()
+      $("#entry-bosca" ).hide()
+      $("#entry-pyroclassic" ).hide()
+      $("#entry-metro" ).hide()
+      $("#entry-firenzo" ).hide()
+      $("#entry-woodsman" ).hide()
+      $("#entry-quadra-fire" ).hide()
+      $("#entry-esse" ).hide()
+      $("#entry-yunca" ).hide()
+      $("#entry-ethos" ).hide()
+      $("#entry-warmington" ).hide()
+      $("#entry-quadrafire" ).hide()
+      $("#entry-kent" ).hide()
+      $("#entry-stovax" ).hide()
+      $("#entry-mitsubishi" ).hide()
+      $("#entry-beef-eater" ).hide()
+      $("#entry-ortal" ).hide()
+      $("#entry-heat-glo" ).hide()
+      $("#entry-trendz" ).hide()
+      $("#entry-bromic" ).hide()
+      $("#entry-realfires" ).hide()
+      $("#entry-the-fireplace" ).hide()
+      $("#entry-cast-iron-chiminea").hide()
+      $("#entry-the-bio-flame").hide()
+      $("#entry-fogata").hide()
+    }
+
+    function entryGasShow (){
+     $("#entry-make").show()
+     $("#entry-heat-glo" ).show()
+     $("#entry-gazco" ).show()
+     $("#entry-escea" ).show()
+     $("#entry-living-flame" ).show()
+     $("#entry-warmington" ).show()
+     $("#entry-realfires" ).show()
+     $("#entry-ortal" ).show()
+     $("#entry-blank").hide()
+   }
+
+   function entryWoodShow(){
+     $("#entry-make").show()
+     $("#entry-jayline").show()
+     $("#entry-gazco").show()
+     $("#entry-jetmaster").show()
+     $("#entry-escea").show()
+     $("#entry-bosca").show()
+     $("#entry-pyroclassic").show()
+     $("#entry-metro").show()
+     $("#entry-firenzo").show()
+     $("#entry-woodsman").show()
+     $("#entry-esse").show()
+     $("#entry-yunca").show()
+     $("#entry-ethos").show()
+     $("#entry-warmington").show()
+     $("#entry-quadrafire").show()
+     $("#entry-kent").show()
+     $("#entry-stovax").show()
+     $("#entry-mitsubishi").show()
+     $("#entry-trendz").show()
+     $("#entry-cast-iron-chiminea").show()
+     $("#entry-fogata").show()
+     $("#entry-blank").hide()
+   }
+
+   function entryElectricShow (){
+     $("#entry-make").show()
+     $("#entry-gazco").show()
+     $("#entry-esse").show()
+     $("#entry-bromic").show()
+     $("#entry-blank").hide()
+   }
+
+   function entryMultifuelShow(){
+     $("#entry-make").show()
+     $("#entry-fisher").show()
+     $("#entry-firenzo").show()
+     $("#entry-esse").show()
+     $("#entry-yunca").show()
+     $("#entry-blank").hide()
+   }
+
+   function entryBiofuelShow(){
+     $("#entry-make").show()
+     $("#entry-the-bio-flame").show()
+     $("#entry-blank").hide()
+   }
+
+   function entryCookerShow (){
+    $("#entry-make").show()
+     $("#entry-fisher").show()
+     $("#entry-firenzo").show()
+     $("#entry-esse").show()
+     $("#entry-yunca").show()
+     $("#entry-blank").hide()
+   }
 
 function hideShow(){
       $("#jayline").hide()
@@ -238,13 +339,13 @@ function hideShow(){
 
 
     module.exports = {
-      hideShow:hideShow,
-      gasShow:gasShow,
-      woodShow:woodShow,
-      electricShow:electricShow,
-      multifuelShow:multifuelShow,
-      biofuelShow:biofuelShow,
-      cookerShow:cookerShow,
+      entryHideShow:entryHideShow,
+      entryGasShow:entryGasShow,
+      entryWoodShow:entryWoodShow,
+      entryElectricShow:entryElectricShow,
+      entryMultifuelShow:entryMultifuelShow,
+      entryBiofuelShow:entryBiofuelShow,
+      entryCookerShow:entryCookerShow,
       backToQuote:backToQuote,
       backToSalesButton:backToSalesButton,
       editQuoteButton:editQuoteButton,

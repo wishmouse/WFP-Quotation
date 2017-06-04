@@ -50,6 +50,7 @@ app.post('/salesman', function(req, res){
 
 app.post('/fireplaceDatabase', function(req, res){
   inputData =  req.body //returns object
+  console.log(inputData)
   var MongoClient = mongodb.MongoClient
   var url = "mongodb://localhost:27017/fireplaceDatabase"
   MongoClient.connect(url, function(err, db){

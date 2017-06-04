@@ -76,7 +76,7 @@
 
 <div data-role="page" id="data-buttons">
   <div data-role="main" class="ui-content">
-      <button id="data-entry-button">Enter Data</button>
+      <a href="#fireplace-data-entry" id="data-entry-button" class="data-entry-button">Enter Fireplace Data</a>
       <a href="#edit-quotation-slide" class="edit-quotation-button" id="edit-quotation-button">View Quote</a>
       <a href="#edit-salesman-data" class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</a>
       <a href="#enter-hearth-data" class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</a>
@@ -275,9 +275,60 @@
   </div>
 </div>
 
-<div id="fireplace-data-entry">
+<div data-role="page" id="fireplace-data-entry">
+  <div data-role="main" class="ui-content">
 	<form>
-		  <input type="text" id="input-model" placeholder="Model">
+    <div id="entry-air" class="wrapper">
+      <div id="entry-clean-air" class="border-air-wetback" >Clean Air</div>
+      <div id="entry-rural" class="border-air-wetback">Rural</div>
+      <div id="entry-clean-air-wetback" class="border-air-wetback" >Clean Air wetback</div>
+      <div id="entry-rural-wetback" class="border-air-wetback">Rural wetback</div>
+    </div>
+
+    <div id="entry-fireplace" class=wrapper>
+      <div id="entry-gas" class="border-fireplace" value="gas">Gas</div>
+      <div id="entry-wood" class="border-fireplace" value="wood" >Wood</div>
+      <div id="entry-electric" class="border-fireplace" value="electric">Electric</div>
+      <div id="entry-multi-fuel" class="border-fireplace" value="multi-fuel">Multi-Fuel</div>
+      <div id="entry-biofuel" class="border-fireplace" value="biofuel">Biofuel</div>
+      <div id="entry-cooker"  class="border-fireplace" value="cookers">Cookers</div>
+    </div>
+    <div id="entry-make" style='margin-top: 25px'>
+      <div id="entry-jayline" class='border-make' value="Jayline">Jayline</div>
+      <div id="entry-fisher" class='border-make' value="Fisher">Fisher</div>
+      <div id="entry-gazco" class='border-make' value="Gazco">Gazco</div>
+      <div id="entry-jetmaster" class='border-make' value="Jetmaster">Jetmaster</div>
+      <div id="entry-escea" class='border-make' value="Escea">Escea</div>
+      <div id="entry-living-flame"  class='border-make' value="living-flame">Living Flame</div>
+      <div id="entry-bosca" class='border-make' value="Bosca">Bosca</div>
+      <div id="entry-pyroclassic" class="border-make" value="pyroclassic">Pyroclassic</div>
+      <div id="entry-metro" class='border-make' value="metro">Metrofires</div>
+      <div id="entry-firenzo"  class='border-make' value="firenzo">Firenzo</div>
+      <div id="entry-woodsman" class='border-make' value="woodsman">Woodsman</div>
+      <div id="entry-quadra-fire" class='border-make' value="quadra-fire">Quadra-Fire</div>
+      <div id="entry-esse" class='border-make' value="esse">Esse</div>
+      <div id="entry-yunca" class='border-make' value="yunca">Yunca</div>
+      <div id="entry-ethos" class='border-make' value="ethos">Ethos</div>
+      <div id="entry-warmington" class='border-make' value="warmington">Warmington</div>
+      <div id="entry-quadrafire" class='border-make' value="quadrafire">Quadrafire</div>
+      <div id="entry-kent" class='border-make' value="kent">Kent</div>
+      <div id="entry-stovax" class='border-make' value="stovax">Stovax</div>
+      <div id="entry-mitsubishi" class='border-make' value="mitsubishi">Mitsubishi-electric</div>
+      <div id="entry-beef-eater" class='border-make' value="beef-eater">Beef Eater</div>
+      <div id="entry-ortal" class='border-make' value="ortal">Ortal</div>
+      <div id="entry-heat-glo" class='border-make' value="heat-glo">Heat & Glo</div>
+      <div id="entry-trendz"class='border-make'  value="trendz">Trendz</div>
+      <div id="entry-bromic" class='border-make' value="bromic">Bromic Heating</div>
+      <div id="entry-realfires"class='border-make'  value="realfires">Realfires</div>
+      <div id="entry-the-bio-flame"class='border-make' value="the-bio-flame">The Bio Flame</div>
+      <div id="entry-fogata" class='border-make'value="fogata">Fogata</div>
+      <div id="entry-cast-iron-chiminea" class='border-make' value="cast-iron-chiminea">Cast iron chiminea</div>
+      <div id="entry-the-fireplace" class='border-make'  value="the-fireplace">The Fireplace</div>
+    </div>
+    <div style="border: 1px orange solid; height: 83px;">
+
+    </div>
+      <input type="text" id="input-model" placeholder="Model">
 		  <input type="number" id="input-kw" placeholder="kw">
 		  <input type="number" id="input-clean-air" placeholder="$ Clean-air">
 		  <input type="number" id="input-clean-air-wb" placeholder="$ Clean air Wetback"><br>
@@ -302,16 +353,37 @@
 			<div>
 			  <button id="fireplace-data-submit">Submit Fireplace Data </button>
 			  <button id="updated-data-submit">Update Data </button>
-			  <button id="quotation-button" class="back-to-quotation">Back to quote!</button>
-			  <button id="edit-data-button">Edit Fireplace Data</button>
-			  <div id="data-submit-notification" class="submit-notification">Data submitted </div>
+        <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+        <a href="#edit-data-button-slide" data-transition="slide" class="edit-data-button" id="edit-data-button">Edit Fireplace Data </a>
+			  <div id="data-submit-notification" class="submit-notification">Fireplace data submitted </div>
 			</div>
 	</form>
+  </div>
 </div>
-<div id="edit-data"></div>
-
-<div id="edit-quotation-data">
-  <div id="back-to-quote" class="back-to-quotation">Back to quote</div>
+<div data-role="page" id="edit-data-button-slide">
+    <div data-role="main" class="ui-content">
+      <table>
+        <tr>
+          <th class='table-header'>Edit / Delete</th>
+          <th class='table-header'>Fuel</th>
+          <th class='table-header'>Make</th>
+          <th class='table-header'>Model</th>
+          <th class='table-header'>Kw</th>
+          <th class='table-header'>Clean Air</th>
+          <th class='table-header'>Clean Air WB</th>
+          <th class='table-header' >Rural</th>
+          <th class='table-header'>Rural WB</th>
+          <th class='table-header'>Hearth</th>
+          <th class='table-header'>Wall Hearth</th>
+          <th class='table-header'>Corner Hearth</th>
+          <th class='table-header'>Colour</th>
+          <th  class='table-header'>Colour Price</th>
+        </tr>
+      </table>
+      <div id="edit-data"></div>
+      <a href="#fireplace-data-entry" data-transition="slide" data-direction='reverse' class="back-to-quotation" >Firplace Data Entry</a>
+      <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+  </div>
 </div>
 <!-- enter salesman data------->
 <!-- enter salesman data------->
