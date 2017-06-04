@@ -77,9 +77,9 @@
 <div data-role="page" id="data-buttons">
   <div data-role="main" class="ui-content">
       <button id="data-entry-button">Enter Data</button>
-      <button class="edit-quotation-button" id="edit-quotation-button">View Quote</button>
+      <a href="#edit-quotation-slide" class="edit-quotation-button" id="edit-quotation-button">View Quote</a>
       <a href="#edit-salesman-data" class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</a>
-      <button class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</button>
+      <a href="#enter-hearth-data" class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</a>
       <a href="#enter-flue-data" data-transition="slide" class="entry-flue-button" id="entry-flue-button">Enter Flue Data</a>
     <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
   </div>
@@ -238,8 +238,42 @@
 <!-- // /// //// /// -->
 <!--end of quotation -->
 <!-- // /// //// /// -->
+<div data-role="page" id="edit-quotation-slide">
+  <div data-role="main" class="ui-content">
+    <table>
+    	<tr>
+    		<th class='table-header'></th>
+    		<th class='table-header'>customerName</th>
+    		<th class='table-header'>quoteDate </th>
+    		<th class='table-header'>email</th>
+    		<th class='table-header'>phone</th>
+    		<th class='table-header'>streetNumber</th>
+    		<th class='table-header'>streetName</th>
+    		<th class='table-header'>address1</th>
+    		<th class='table-header'>suburb</th>
+    		<th class='table-header'>city</th>
+    		<th class='table-header'>postcode</th>
+    		<th class='table-header'>salesman</th>
+    		<th class='table-header'>type</th>
+    		<th class='table-header'>fuel</th>
+    		<th class='table-header'>make</th>
+    		<th class='table-header'>model</th>
+    		<th class='table-header'>fireplaceCost</th>
+    		<th class='table-header'>hearth</th>
+    		<th class='table-header'>wallHearth</th>
+    		<th class='table-header'>cornerHearth</th>
+    		<th class='table-header'>colour</th>
+    		<th class='table-header'>colourComment</th>
+    		<th class='table-header'>comments</th>
+    	</tr>
+    </table>
 
-<div id="edit-quotation" class="edit-quotation"></div>
+    <div id="edit-quotation" class="edit-quotation"></div>
+    <div>
+      <a href="#page-one" data-transition="slide" data-direction="reverse">Back to home</a>
+    </div>
+  </div>
+</div>
 
 <div id="fireplace-data-entry">
 	<form>
@@ -315,8 +349,9 @@
 <!-- Enter Hearth Data ------->
 <!-- Enter Hearth Data ------->
 <!-- Enter Hearth Data ------->
+<div data-role="page" id="enter-hearth-data">
+  <div data-role="main" class="ui-content">
 
-<div id="enter-hearth-data">
     <div id="hearth-make" style='margin-top: 25px'>Make:<br>
       <div id="hearth-bosca" class='border-make-hearth' value="Bosca">Bosca</div>
       <div id="hearth-pyroclassic"  class='border-make-hearth' value="pyroclassic">Pyroclassic</div>
@@ -352,21 +387,41 @@
 
     <div>
       <button id="hearth-data-submit">Submit Hearth Data </button>
-      <button class="back-to-quotation">Back to quote</button>
-      <button id="edit-hearth-button">Edit Hearth Data</button>
-      <div id="data-submit-notification-hearth" class="submit-notification">Data submitted </div>
+      <a href="#edit-hearth-view-slide" data-transition="slide" class="edit-hearth-button" id="edit-hearth-button">Edit Hearth Data</a>
+      <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+      <div id="data-submit-notification-hearth" data-direction="reverse" class="submit-notification">Hearth Data submitted </div>
     </div>
-
-    <a href="#page-one" data-transition="slide" data-direction="reverse">Back to Page 1</a>
-    <div id="edit-hearth-view"></div>
+</div>
 </div>
 
+<div data-role="page" id="edit-hearth-view-slide">
+  <div data-role="main" class="ui-content">
+    <table>
+      <tr>
+        <th class='table-header'></th>
+        <th class='table-header'>Make</th>
+        <th class='table-header'>Model</th>
+        <th class='table-header'>Style</th>
+        <th class='table-header'>Finish</th>
+        <th class='table-header'>Price</th>
+        <th class='table-header'>Add Finish</th>
+       <th class='table-header'>Add Finish Price</th>
+      </tr>
+    </table>
+      <div id="edit-hearth-view"></div>
 
+
+  <div>
+      <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+      <a href="#enter-hearth-data" class="entry-hearth-button" data-direction="reverse" id="entry-hearth-button">Enter Hearth</a>
+  </div>
+  </div>
+</div>
   <a href="#enter-flue-data"  id="flue-data-slide" data-transition="slide" >Enter Flue Data</a>
 
 <!--<div id="enter-flue-data"> -->
 <div data-role="page" id="enter-flue-data">
-  <div data-role="header">
+  <div data-role="main">
     <div class="enter-flue-data">
     Fuel
     <select id="flue-fuel">

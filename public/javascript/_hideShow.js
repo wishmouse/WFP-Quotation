@@ -113,7 +113,7 @@ function hideShow(){
       $("#back-to-quote").hide()
       $("#dropdown-selector").hide()
       $("#edit-quotation").empty()
-      $("#enter-hearth-data").hide()
+    //  $("#enter-hearth-data").hide()
       $("#edit-salesman-data").hide()
       $("#edit-hearth-view").empty()
     }
@@ -149,7 +149,7 @@ function hideShow(){
       $("#air").hide()
       //$("#make").hide()
       $("#dropdown-selector").hide()
-      $("#enter-hearth-data").show()
+      //$("#enter-hearth-data").show()
     }
 
     function dataFlueButton(){
@@ -158,7 +158,7 @@ function hideShow(){
       $("#air").hide()
       //$("#make").hide()
       $("#dropdown-selector").hide()
-      $("#enter-hearth-data").hide()
+      //$("#enter-hearth-data").hide()
       //$("#data-submit-notification-flue").hide()
       //$("#enter-flue-data").show()
       dataFlueChange()
@@ -180,7 +180,7 @@ function hideShow(){
       $("#air").hide()
       //$("#make").hide()
       $("#dropdown-selector").hide()
-     $("#enter-hearth-data").hide()
+    // $("#enter-hearth-data").hide()
     //  $("#data-submit-notification-flue").hide()
     //  $("#enter-flue-data").hide()
 

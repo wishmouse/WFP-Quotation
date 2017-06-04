@@ -228,6 +228,7 @@ app.get('/quotation',  function(req, res){
           conosole.log("there is an error retreiving data from database: ", err)
           res.send(err)
         } else if (result.length){
+          console.log(result)
           res.send(JSON.stringify(result))
         }
         else{

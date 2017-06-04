@@ -40,19 +40,12 @@ var editList
  $(document).ready(function(){
     entryTypeController = 'quotation'
      $("#fireplace-data-entry").hide()
-     //$("#make").hide()
      $("#dropdown-selector").hide()
      $("#edit-quotation-data").hide()
      $("#colour-price").hide()
-     //$("#edit-salesman-data").hide()
      $('#quotation-display-data').empty()
-     $("#enter-hearth-data").hide()
-     $("#enter-hearth-data").show()
      $("#hearth-tile-price").hide()
      $('#model-dropdown-hearth').hide()
-     //$('#enter-flue-data').hide()
-     //$('#edit-flue-view').hide()
-     $("#enter-hearth-data").hide()
 
 
     quotationTemplate()
@@ -529,7 +522,6 @@ function add(){
 
    $('#fireplace-data-submit').click(function(e){
      e.preventDefault()
-     //make = $("#make").val()
      fuel = fireplaceType
      model = $("#input-model").val()
      kw = $("#input-kw").val()
@@ -565,7 +557,6 @@ function add(){
                })
 
        _clearData.clearDataSubmit()
-      //$("#make").hide()
        _clearData.removeClassSubmit()
        $(".submit-notification").show().delay(2000).fadeOut();
    })
@@ -749,42 +740,16 @@ $("#go-to-quote").click(function(){
 
   })
 
-  $('#edit-quotation-button').click(function(e){
-    e.preventDefault()
-      _hideShow.editQuoteButton()
+  $('#edit-quotation-button').click(function(){
+
+      //_hideShow.editQuoteButton()
       $("#edit-quotation").empty()
       entryTypeController = 'quotation'
       editQuotationLine =$("#edit-quotation")
 
       function displayEditQuotation(editQuotation){
         var editQuotationTemplate = ""+
-          "<table>" +
-            "<tr>"+
-              "<th class='table-header'></th>"+
-              "<th class='table-header'>customerName</th>"+
-              "<th class='table-header'>quoteDate </th>"+
-              "<th class='table-header'>email</th>"+
-              "<th class='table-header'>phone</th>"+
-              "<th class='table-header'>streetNumber</th>"+
-              "<th class='table-header'>streetName</th>"+
-              "<th class='table-header'>address1</th>"+
-              "<th class='table-header'>suburb</th>"+
-              "<th class='table-header'>city</th>"+
-              "<th class='table-header'>postcode</th>"+
-              "<th class='table-header'>salesman</th>"+
-              "<th class='table-header'>type</th>"+
-              "<th class='table-header'>fuel</th>"+
-              "<th class='table-header'>make</th>"+
-              "<th class='table-header'>model</th>"+
-              "<th class='table-header'>fireplaceCost</th>"+
-              "<th class='table-header'>hearth</th>"+
-              "<th class='table-header'>wallHearth</th>"+
-              "<th class='table-header'>cornerHearth</th>"+
-              "<th class='table-header'>colour</th>"+
-              "<th class='table-header'>colourComment</th>"+
-              "<th class='table-header'>comments</th>"+
-            "</tr>"+
-            "<tr>"+
+          "<tr>"+
               "<td><button class='click-to-edit-email' data-id ="+editQuotationList._id+">Email</button>" +
               "<button class='click-to-delete-quotation' data-id ="+editQuotationList._id+">Delete</button>" +
               "</td>"+
@@ -810,9 +775,8 @@ $("#go-to-quote").click(function(){
               "<td class='table-body'>"+editQuotationList.colour+"</td>"+
               "<td class='table-body'>"+editQuotationList.colourComment+"</td>"+
               "<td class='table-body'>"+editQuotationList.comments+"</td>"+
+          "</tr>"
 
-              "</tr>"+
-            "</table>"
 
           editQuotationLine.append(editQuotationTemplate, editQuotation)
       }
@@ -862,9 +826,6 @@ $("#go-to-quote").click(function(){
 
      $('#entry-salesman-button').click(function(e){
        e.preventDefault()
-    //  $("#salesman-submit-notification").hide()
-
-
        })
 
      $("#salesman-back-to-quotation").click(function(e){
@@ -961,12 +922,11 @@ $("#go-to-quote").click(function(){
 //==============
 //==============hearth data entry
 //==============
-/*
+
 $("#entry-hearth-button").click(function(){
-  _hideShow.dataHearthButton()
-  $(".submit-notification").hide()
+$("#data-submit-notification-hearth").hide()
 })
-*/
+
 
 
 $("#hearth-make").delegate('.border-make-hearth', 'click', function(e){
@@ -1005,13 +965,11 @@ $('#hearth-data-submit').click(function(e){
 })
 
 
-$('#edit-hearth-button').click(function(e){
-   e.preventDefault()
-   //$("#enter-hearth-data").hide()
-   $("#edit-hearth-view").show()
+$('#edit-hearth-button').click(function(){
+
 
    editHearthLine =$("#edit-hearth-view")
-
+/*
    function displayHearthData(editHearth){
      var editHearthTemplate = ""+
        "<table class='to-delete"+editHearthList._id+"'>" +
@@ -1039,6 +997,26 @@ $('#edit-hearth-button').click(function(e){
 
            "</tr>"+
          "</table>"
+
+       editHearthLine.append(editHearthTemplate, editHearth)
+   }
+
+   */
+
+   function displayHearthData(editHearth){
+     var editHearthTemplate = ""+
+         "<tr class='to-delete"+editHearthList._id+"'>" +
+           "<td><button class='click-to-edit-hearth' data-id ="+editHearthList._id+">Edit</button>" +
+           "<button class='click-to-delete-hearth' data-id ="+editHearthList._id+">Delete</button>" +
+           "</td>"+
+           "<td class='table-body'>"+editHearthList.hearthMake+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthModel+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthFinish+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthStyle+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthPrice+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthAddFinish+"</td>"+
+           "<td class='table-body'>"+editHearthList.hearthAddFinishPrice+"</td>"+
+           "</tr>"
 
        editHearthLine.append(editHearthTemplate, editHearth)
    }
@@ -1077,13 +1055,6 @@ $('#edit-hearth-button').click(function(e){
    //==============
    //==============flue data entry
    //==============
-/*
-   $("#entry-flue-button").click(function(e){
-     e.preventDefault
-     _hideShow.dataFlueButton()
-
-   })
-   */
    $("#entry-flue-button").click(function(e){
      e.preventDefault
     $("#submit-notification-flue").hide()
