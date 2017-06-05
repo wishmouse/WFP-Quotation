@@ -218,67 +218,15 @@ function hideShow(){
       $("#model-dropdown-hearth").empty()
       $(".hearth-tile-border-colour").removeClass("selected")
       $("#hearth-tile-extra").empty()
-    //  $("#model-dropdown-hearth-button").html("")
-    //  $('#model-dropdown-button').html("")
       $("#dropdown-selector").hide()
     }
 
-    function backToQuote(){
-      $("#quotation").show()
-      $("#fireplace").show()
-      $("#air").show()
-      $("#dropdown-selector").show()
-      $("#back-to-quote").hide()
-      $("#dropdown-selector").hide()
-      $("#edit-quotation").empty()
-    //  $("#enter-hearth-data").hide()
-      $("#edit-salesman-data").hide()
-      $("#edit-hearth-view").empty()
-    }
-
-    function editQuoteButton(){
-      $("#quotation").hide()
-      $("#fireplace").hide()
-      $("#air").hide()
-      $("#dropdown-selector").hide()
-      //$("#make").hide()
-      $("#quotation-comments").hide()
-      $("#quotation-submit-button").hide()
-      $("#quotation-display-data").hide()
-      $("#edit-quotation-data").show()
-    }
-
-    function dataSalesmanButton(){
-      $("#quotation").hide()
-      $("#fireplace").hide()
-      $("#quote-select").hide()
-      //$("#make").hide()
-      $("#air").hide()
-      $("#edit-salesman-data").show()
-      $("#quotation-button").show()
-      $("#quotation-submit-button").hide()
-      $("#edit-salesman-data").show()
-      //$("#salesman-submit-notification").hide()
-    }
-
-    function dataHearthButton(){
-      $("#quotation").hide()
-      $("#fireplace").hide()
-      $("#air").hide()
-      //$("#make").hide()
-      $("#dropdown-selector").hide()
-      //$("#enter-hearth-data").show()
-    }
 
     function dataFlueButton(){
       $("#quotation").hide()
       $("#fireplace").hide()
       $("#air").hide()
-      //$("#make").hide()
       $("#dropdown-selector").hide()
-      //$("#enter-hearth-data").hide()
-      //$("#data-submit-notification-flue").hide()
-      //$("#enter-flue-data").show()
       dataFlueChange()
     }
 
@@ -292,36 +240,7 @@ function hideShow(){
 
     }
 
-    function editFlueButton(){
-      $("#quotation").hide()
-      $("#fireplace").hide()
-      $("#air").hide()
-      //$("#make").hide()
-      $("#dropdown-selector").hide()
-    // $("#enter-hearth-data").hide()
-    //  $("#data-submit-notification-flue").hide()
-    //  $("#enter-flue-data").hide()
 
-    }
-
-    function clickToEdit(){
-      $('#edit-data').hide()
-      $("#fireplace-data-entry").show()
-      $("#updated-data-submit").show()
-      $("#fireplace").show()
-      $("#air").show()
-      $("#data-submit").hide()
-      $("#quotation-button").hide()
-      $("#edit-data-button").hide()
-    }
-
-    function dataEditButton(){
-      $("#fireplace-data-entry").hide()
-      $("#fireplace").hide()
-      $("#air").hide()
-    //  $("#make").hide()
-
-    }
 
     function airTypeShow(){
       $("#cleanAir-dropdown").show()
@@ -344,15 +263,6 @@ function hideShow(){
       $("#cleanAirWB-dropdown").show()
     }
 
-    function backToSalesButton(){
-           $("#quotation").show()
-           $("#quotation-submit-button").show()
-           $("#fireplace-data-entry").hide()
-           $('#edit--data').hide()
-           $("#quote-select").show()
-           $("#fireplace").show()
-           $("#edit-salesman-data").hide()
-         }
 
 
     module.exports = {
@@ -371,18 +281,10 @@ function hideShow(){
         biofuelShow:biofuelShow,
         cookerShow:cookerShow,
         reset:reset,
-        backToQuote:backToQuote,
-        backToSalesButton:backToSalesButton,
-        editQuoteButton:editQuoteButton,
-        dataSalesmanButton:dataSalesmanButton,
-        clickToEdit:clickToEdit,
-        dataEditButton:dataEditButton,
         airTypeShow:airTypeShow,
         hearthTypeShow:hearthTypeShow,
         wetbackTypeShow:wetbackTypeShow,
-        dataHearthButton:dataHearthButton,
         dataFlueButton:dataFlueButton,
-        editFlueButton:editFlueButton,
         dataFlueChange:dataFlueChange,
         hearthModelShow:hearthModelShow
     }

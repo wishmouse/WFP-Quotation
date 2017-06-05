@@ -8,14 +8,13 @@ var _clearData = require('./_clearData')
 var _quoteInput = require('./_quoteInput')
 var PDFDocument = require('pdfkit')
 var doc = new PDFDocument
-//var _quoteInput = require('./_quoteInput')
 
 //quotation submit
 var salesman
 var airType
 var vatRate=15
 vatFireplaceText = 0
-gtF =0
+gtF = 0
 
 // data entry
 var fireplaceType
@@ -1011,39 +1010,7 @@ $('#edit-hearth-button').click(function(){
 
 
    editHearthLine =$("#edit-hearth-view")
-/*
-   function displayHearthData(editHearth){
-     var editHearthTemplate = ""+
-       "<table class='to-delete"+editHearthList._id+"'>" +
-         "<tr>"+
-           "<th class='table-header'></th>"+
-           "<th class='table-header'>Make</th>"+
-           "<th class='table-header'>Model</th>"+
-           "<th class='table-header'>Style</th>"+
-           "<th class='table-header'>Finish</th>"+
-           "<th class='table-header'>Price</th>"+
-           "<th class='table-header'>Add Finish</th>"+
-           "<th class='table-header'>Add Finish Price</th>"+
-         "</tr>"+
-         "<tr>"+
-           "<td><button class='click-to-edit-hearth' data-id ="+editHearthList._id+">Edit</button>" +
-           "<button class='click-to-delete-hearth' data-id ="+editHearthList._id+">Delete</button>" +
-           "</td>"+
-           "<td class='table-body'>"+editHearthList.hearthMake+"</td>"+
-           "<td class='table-body'>"+editHearthList.hearthModel+"</td>"+
-           "<td class='table-body'>"+editHearthList.hearthFinish+"</td>"+
-           "<td class='table-body'>"+editHearthList.hearthStyle+"</td>"+
-           "<td class='table-body'>"+editHearthList.hearthPrice+"</td>"+
-           "<td class='table-body'>"+editHearthList.hearthAddFinish+"</td>"+
-           "<td class='table-body'>"+editHearthList.hearthAddFinishPrice+"</td>"+
 
-           "</tr>"+
-         "</table>"
-
-       editHearthLine.append(editHearthTemplate, editHearth)
-   }
-
-   */
 
    function displayHearthData(editHearth){
      var editHearthTemplate = ""+
