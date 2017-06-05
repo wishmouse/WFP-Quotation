@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.border-air-wetback {
+.border-air-wetback, .hearth-finish, .border-flue-inner,{
     border: 1px solid #B39476;
     width: 24%;
     height:35px;
@@ -36,7 +36,7 @@
     text-align: center;
 }
 
-.border-make, .border-make-hearth, .border-make-hearth-display, .border-make-flue, .border-source-flue, .border-style-flue, .border-flue-inner{
+.border-make, .border-make-hearth, .border-make-hearth-display, .border-make-flue, .border-source-flue, .border-style-flue,  .border-flue-outer{
   border: 1px solid #B39476;
   width: 16%;
   height: 35px;

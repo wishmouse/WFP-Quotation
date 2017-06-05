@@ -181,47 +181,55 @@ function add(){
 
 
        $('#hearth-style').delegate('.border-style-hearth', 'click', function(e){
-              $(".border-style-hearth").removeClass("selected")
+             $(".hearth-finish").removeClass("selected")
+             $(".border-style-hearth").removeClass("selected")
+             $(".border-make-hearth-display").removeClass("selected")
+             $("#hearth-tile-extra").html("")
               var select = $(this).addClass("selected")
-              var hearthID = $(this).attr('id')
               hearthStyle = select.text()
-
              _clearData.changeTypes()
              _hideShow.hearthTypeShow()
         })
 
-        $('#display-hearth-make').delegate('.border-make-hearth-display', 'click', function(e){
+        $('#hearth-finish').delegate('.hearth-finish', 'click', function(e){
+               $(".hearth-finish").removeClass("selected")
                $(".border-make-hearth-display").removeClass("selected")
+               $("#hearth-tile-extra").html("")
                var select = $(this).addClass("selected")
-               var hearthMakeID = $(this).attr('id')
-               hearthMakeDisplay = select.text()
-
+               hearthFinish = $(this).text()
               _clearData.changeTypes()
-              _hideShow.hearthModelShow()
+              _hideShow.hearthTypeShow()
+         })
 
+         $('#display-hearth-make').delegate('.border-make-hearth-display', 'click', function(e){
+            $(".border-make-hearth-display").removeClass("selected")
+            $("#hearth-tile-extra").html("")
+            var select = $(this).addClass("selected")
+            hearthMakeDisplay = select.text()
 
-              if (entryTypeController == 'quotation'){
-                  $.ajax({
-                  url: "/getHearthData",
-                  success: function(result){
-                    $('#model-dropdown-hearth').html('')
-                    getHearthData = JSON.parse(result)
-                    for (i = 0; i < getHearthData.length; i++) {
-                       hearthDataReturn = getHearthData[i]
-                      if(hearthMakeDisplay == hearthDataReturn.hearthMake){
-                          $("#dropdown-selector").show()
-                          $(hearthDataReturn).each(function(){
-                            var hearthOptionModel = $('<option />')
-                            hearthOptionModel.attr('value', this.hearthModel).text(this.hearthModel)
-                            $('#model-dropdown-hearth').append(hearthOptionModel)
-                          })
-                      }
+            _clearData.changeTypes()
+            _hideShow.hearthModelShow()
 
-                    }
+        $.ajax({
+            url: "/getHearthData",
+            success: function(result){
+              $('#model-dropdown-hearth').html('')
+              getHearthData = JSON.parse(result)
+                for (i = 0; i < getHearthData.length; i++) {
+                hearthDataReturn = getHearthData[i]
+                if(hearthMakeDisplay == hearthDataReturn.hearthMake && hearthFinish == hearthDataReturn.hearthFinish && hearthDataReturn.hearthStyle == hearthStyle){
+                  $("#finish-dropdown-selector").show()
+                    $(hearthDataReturn).each(function(){
+                    var hearthOptionModel = $('<option />')
+                    hearthOptionModel.attr('value', this.hearthModel).text(this.hearthModel)
+                    $("#model-dropdown-hearth").append(hearthOptionModel)
+                  })
                   }
-                })
-            }
-          })
+              }
+          }
+      })
+    })
+
 
       $("#model-dropdown-hearth").change(function() {
         var modelHearthValue = $("#model-dropdown-hearth" ).val()
@@ -315,6 +323,7 @@ function add(){
 
       $("#go-to-fireplace").click(function(){
         _hideShow.hideShow()
+        _hideShow.reset()
       })
 
         $('#fireplace').delegate('.border-fireplace', 'click', function(e){
@@ -396,6 +405,9 @@ function add(){
              if(dataReturn.colour == "Yes"){
                $("#colour-price").show()
                $("#colourPrice-extra").html(dataReturn.colourPrice)
+             } else {
+                $("#colourPrice-extra").html("")
+                $("#colour-price").hide()
              }
            }
          }
@@ -512,6 +524,11 @@ function add(){
 
    $("#data-entry-button").click(function() {
      $("#data-submit-notification").hide()
+     $("#input-rural-wb").hide()
+     $("#input-clean-air-wb").hide()
+     $("#input-clean-air").hide()
+     $("#input-rural").hide()
+     _hideShow.entryHideShow()
    });
 
 
@@ -539,7 +556,7 @@ function add(){
   $('#entry-make').delegate('.border-make', 'click', function(e){
      $(".border-make").removeClass("selected")
      var select = $(this).addClass("selected")
-     var makeID = $(this).text()
+      makeID = $(this).text()
    })
 
    $('#entry-air').delegate('.border-air-wetback', 'click', function(e){
@@ -549,24 +566,11 @@ function add(){
 
       if (airID == "Clean Air"){
         $("#input-clean-air").show()
-        $("#input-clean-air-wb").hide()
-        $("#input-rural").hide()
-        $("#input-rural-wb").hide()
       } if (airID == "Rural"){
-        $("#input-clean-air-wb").hide()
         $("#input-rural").show()
-        $("#input-clean-air").hide()
-        $("#input-rural-wb").hide()
-
       } if (airID == "Clean Air wetback"){
-        $("#input-rural-wb").hide()
         $("#input-clean-air-wb").show()
-        $("#input-clean-air").hide()
-        $("#input-rural").hide()
       }if (airID == "Rural wetback"){
-        $("#input-clean-air-wb").hide()
-        $("#input-clean-air").hide()
-        $("#input-rural").hide()
         $("#input-rural-wb").show()
       }
     })
@@ -594,7 +598,7 @@ function add(){
 
           data: {
                   fuel:fireplaceType,
-                  make: make,
+                  make: makeID,
                   model: model,
                   kw: kw,
                   cleanAir: cleanAir,
@@ -612,6 +616,11 @@ function add(){
 
        _clearData.clearDataSubmit()
        _clearData.removeClassSubmit()
+        $("#input-rural-wb").hide()
+        $("#input-clean-air-wb").hide()
+        $("#input-clean-air").hide()
+        $("#input-rural").hide()
+        _hideShow.entryHideShow()
        $("#data-submit-notification").show().delay(2000).fadeOut();
    })
 
@@ -621,14 +630,12 @@ function add(){
    //==== data edit
    //====
    $('#edit-data-button').click(function(){
-     //_hideShow.dataEditButton()
+     $('#edit-data').empty()
      editLine = $('#edit-data')
-     entryTypeController = 'data entry'
-
 
       function displayEdit(edit){
         var editTemplate = ""+
-            "<tr>"+
+            "<tr class='to-delete"+editList._id+"'>" +
               "<td><button class='click-to-edit' data-id ="+editList._id+">Edit</button>" +
               "<button class='click-to-delete' data-id ="+editList._id+">Delete</button>" +
               "</td>"+
@@ -680,19 +687,24 @@ function add(){
 
 // delete fireplace
  $('#edit-data').delegate('.click-to-delete', 'click', function(){
-     clickToDeleteId = $(this).attr('data-id')
-     var removeLi = $(this).closest('tr')
+     deleteFireplaceId = $(this).attr('data-id')
+     $(".to-delete"+deleteFireplaceId).fadeOut("slow")
 
      $.ajax({
-       url: "/delete/"+clickToDeleteId,
+       url: "/delete/"+deleteFireplaceId,
        success: function(result){
-           removeLi.fadeOut(300, function(){
-             $(this).remove()
-           })
           }
        })
    })
 
+$("#back-to-fireplace-data").click(function(){
+  $("#data-submit-notification").hide()
+  $("#input-rural-wb").hide()
+  $("#input-clean-air-wb").hide()
+  $("#input-clean-air").hide()
+  $("#input-rural").hide()
+  _hideShow.entryHideShow()
+})
 
    //====
    //==== quotation- entry
@@ -783,7 +795,7 @@ $("#go-to-quote").click(function(){
 
       function displayEditQuotation(editQuotation){
         var editQuotationTemplate = ""+
-          "<tr>"+
+          "<tr class='to-delete" +editQuotationList._id +"'>"+
               "<td><button class='click-to-edit-email' data-id ="+editQuotationList._id+">Email</button>" +
               "<button class='click-to-delete-quotation' data-id ="+editQuotationList._id+">Delete</button>" +
               "</td>"+
@@ -832,18 +844,14 @@ $("#go-to-quote").click(function(){
 
     $('#edit-quotation').delegate('.click-to-delete-quotation', 'click', function(){
         deleteQuotationId = $(this).attr('data-id')
-        var removeLi = $(this).closest('li')
+        $(".to-delete" + editQuotationList._id).fadeout("slow")
 
         $.ajax({
           url: "/deleteQuotation/"+deleteQuotationId,
           success: function(result){
-              removeLi.fadeOut(300, function(){
-                $(this).remove()
-              })
              }
           })
       })
-
 
 
 

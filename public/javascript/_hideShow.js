@@ -206,6 +206,23 @@ function hideShow(){
       $("#blank").hide()
     }
 
+    function reset(){
+      $(".border-air-wetback").removeClass("selected")
+      $(".border-fireplace").removeClass("selected")
+      $(".border-make").removeClass("selected")
+      $(".colour-price").removeClass("selected")
+      $("#colourPrice-extra").empty()
+      $(".border-colour").removeClass("selected")
+      $(".border-style-hearth").removeClass("selected")
+      $(".border-make-hearth-display").removeClass("selected")
+      $("#model-dropdown-hearth").empty()
+      $(".hearth-tile-border-colour").removeClass("selected")
+      $("#hearth-tile-extra").empty()
+    //  $("#model-dropdown-hearth-button").html("")
+    //  $('#model-dropdown-button').html("")
+      $("#dropdown-selector").hide()
+    }
+
     function backToQuote(){
       $("#quotation").show()
       $("#fireplace").show()
@@ -339,25 +356,33 @@ function hideShow(){
 
 
     module.exports = {
-      entryHideShow:entryHideShow,
-      entryGasShow:entryGasShow,
-      entryWoodShow:entryWoodShow,
-      entryElectricShow:entryElectricShow,
-      entryMultifuelShow:entryMultifuelShow,
-      entryBiofuelShow:entryBiofuelShow,
-      entryCookerShow:entryCookerShow,
-      backToQuote:backToQuote,
-      backToSalesButton:backToSalesButton,
-      editQuoteButton:editQuoteButton,
-      dataSalesmanButton:dataSalesmanButton,
-      clickToEdit:clickToEdit,
-      dataEditButton:dataEditButton,
-      airTypeShow:airTypeShow,
-      hearthTypeShow:hearthTypeShow,
-      wetbackTypeShow:wetbackTypeShow,
-      dataHearthButton:dataHearthButton,
-      dataFlueButton:dataFlueButton,
-      editFlueButton:editFlueButton,
-      dataFlueChange:dataFlueChange,
-      hearthModelShow:hearthModelShow
+        entryHideShow:entryHideShow,
+        entryGasShow:entryGasShow,
+        entryWoodShow:entryWoodShow,
+        entryElectricShow:entryElectricShow,
+        entryMultifuelShow:entryMultifuelShow,
+        entryBiofuelShow:entryBiofuelShow,
+        entryCookerShow:entryCookerShow,
+        hideShow:hideShow,
+        gasShow:gasShow,
+        woodShow:woodShow,
+        electricShow:electricShow,
+        multifuelShow:multifuelShow,
+        biofuelShow:biofuelShow,
+        cookerShow:cookerShow,
+        reset:reset,
+        backToQuote:backToQuote,
+        backToSalesButton:backToSalesButton,
+        editQuoteButton:editQuoteButton,
+        dataSalesmanButton:dataSalesmanButton,
+        clickToEdit:clickToEdit,
+        dataEditButton:dataEditButton,
+        airTypeShow:airTypeShow,
+        hearthTypeShow:hearthTypeShow,
+        wetbackTypeShow:wetbackTypeShow,
+        dataHearthButton:dataHearthButton,
+        dataFlueButton:dataFlueButton,
+        editFlueButton:editFlueButton,
+        dataFlueChange:dataFlueChange,
+        hearthModelShow:hearthModelShow
     }

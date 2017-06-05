@@ -24,7 +24,6 @@ function removeClassSubmit(){
   $(".border-air").removeClass("selected")
   $(".border-fireplace").removeClass("selected")
   $(".border-make").removeClass("selected")
-
 }
 
 function changeTypes(){
@@ -39,7 +38,6 @@ function changeTypes(){
   cornerHearth = $("#cornerHearth-dropdown").text("")
   colourPrice = $("#colourPrice-dropdown").text("")
 }
-
 
 function clearQuotationSubmit(){
   customerName = $("#customer-name").val('')
