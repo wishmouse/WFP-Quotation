@@ -348,7 +348,7 @@ app.get('/getHearthData',  function(req, res){
           conosole.log("there is an error retreiving data from database: ", err)
           res.send(err)
         } else if (result.length){
-          console.log("this is result", result)
+          console.log("this is result for hearth", result)
           res.send(JSON.stringify(result))
         }
         else{
@@ -391,7 +391,7 @@ app.get('/getFlueData/',  function(req, res){
           conosole.log("there is an error retreiving data from database: ", err)
           res.send(err)
         } else if (result.length){
-          console.log("this is result for flue", result)
+        //  console.log("this is result for flue", result)
           res.send(JSON.stringify(result))
         }
         else{

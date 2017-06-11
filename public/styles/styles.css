@@ -27,6 +27,15 @@
     text-align: center;
 }
 
+.description-note, {
+  width: 160px;
+  float: left;
+}
+
+.price-note{
+  width: 160px;
+  float: left;
+}
 
 .border-fireplace{
     border: 1px solid #B39476;
@@ -226,6 +235,20 @@
     margin: 10px 0px 0px 0px;
 
 }
+
+.click-to-edit-email{
+  display: inline-block;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: #00cccc;
+    font-size: 10pt;
+    font-family: helvetica;
+    color: white;
+    width: 72px;
+    padding: 6px 10px 6px 10px;
+    margin: 10px 0px 0px 0px;
+
+}
 div#data-submit:hover {
     background-color: 477f4f;
 }
@@ -301,22 +324,20 @@ padding-left: 20px;
   font-weight: 300;
   border-right: 1px solid #78b777;
   text-align: right;
-  padding-right: 10px;
   font-size: 20px;
   border-bottom: 1px solid #78b777;
-  padding-left: 20px;
-}
+  padding: 0px 17px 0px 17px;
+  }
 
 .table-price, .excl-price{
   font-family: helvetica;
   font-weight: 300;
   border-right: 1px solid #78b777;
-  text-align: right;
-  padding-right: 10px;
+  text-align: right !important;
   width: 92px;
   font-size: 20px;
   border-bottom: 1px solid #78b777;
-  padding-left: 20px;
+  padding: 0px 15px 0px 15px;
 }
 
 .table-vat{
@@ -385,5 +406,9 @@ padding-left: 20px;
   width: 100px;
   text-align: right;
   padding-right: 25px;
+}
+
+.enter-options{
+  margin-top: 21px;
 }
 https://color.adobe.com/sinNat-Brown-2-color-theme-9178330/

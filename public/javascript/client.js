@@ -38,7 +38,6 @@ var editList
 
  $(document).ready(function(){
     entryTypeController = 'quotation'
-     //$("#fireplace-data-entry").hide()
      $("#dropdown-selector").hide()
      $("#edit-quotation-data").hide()
      $("#colour-price").hide()
@@ -97,6 +96,7 @@ var editList
            hearthTileText = parseInt(select.text())
 
           function hearthTile(){
+            $('.delete-tile-table').remove()
             var editTemplate = ""+
                 "<tr class='delete-tile-table'>"+
                   "<td class='delete-tile-button w3-padding w3-xlarge fa fa-trash'></td>"+
@@ -252,10 +252,18 @@ function add(){
              colour = parseInt(select.text())
 
             function colourPrice(){
+              $('.delete-colour-table').remove()
               var editTemplate = ""+
                   "<tr class='delete-colour-table'>"+
                     "<td> <div class='delete-colour-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
-                    "<td class='table-description'>"+ "Additional colour:    "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
+                    "<td class='table-description'>" +
+                        "<div class='wrapper'>"+
+                            "<div class='description-note'> Additional colour:    </div>"+
+                            "<div class='price-note'>"+
+                              "<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+
+                            "</div>"+
+                          "</div>"+
+                      "</td>" +
                     "<td class='table-quantity'>"+'1'+"</td>" +
                     "<td class='table-price'><input type='text' name='colour-price-text' class='excl-price' id='colour-price-text' value="+colour+"></input></td>" +
                     "<td class='table-vat' id='colour-vat-text'>0</td>" +
@@ -287,6 +295,7 @@ function add(){
           })
 
       function hearthPrice(){
+      $('.delete-hearth-table').remove()
         var editTemplate = ""+
             "<tr class='delete-hearth-table'>"+
               "<td> <div class='delete-hearth-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
@@ -410,9 +419,13 @@ function add(){
              }
            }
          }
-
-
+/*
+function updateQuotation(){
+      quotationDisplay()
+    }
+    */
          function quotationDisplay(){
+            $('.delete-fireplace-table').remove()
 
            var editTemplate = ""+
                "<tr class='delete-fireplace-table'>"+
@@ -781,13 +794,10 @@ $("#go-to-quote").click(function(){
      _clearData.clearQuotationSubmit()
      _clearData.removeClassSubmit()
      $("#dropdown-selector").hide()
-     //$("#make").hide()
 
   })
 
   $('#edit-quotation-button').click(function(){
-
-      //_hideShow.editQuoteButton()
       $("#edit-quotation").empty()
       entryTypeController = 'quotation'
       editQuotationLine =$("#edit-quotation")
