@@ -176,8 +176,24 @@
         <div id="hearth-tile-nocharge" class="hearth-tile-border-colour">0.00</div>
       </div>
     </div>
-    <a href="#page-three" id="go-to-flue" data-transition="slide">Flue entry</a>
-    <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+
+
+  <div id='quotation-display-data'>  </div>
+  <table>
+    <tr>
+        <td class='total-description'>Excl VAT total</td>
+        <td class='total-value'> <div id='quotation-excl-total'></div>  </td>
+    </tr>
+    <tr>
+        <td class='total-description'>VAT</td>
+        <td class='total-value'> <div id='quotation-vat-total'></div> </td>
+    </tr>
+    <tr>
+        <td class='total-description'>Grand Total</td>
+        <td class='total-value'> <div id="quotation-grand-total"></div> </td>
+    </tr>
+  </table>
+
   </div>
 </div>
 
@@ -252,7 +268,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="page-four">
+<div data-role="page" id="page-four"><!--
     <div data-role="main" class="ui-content">
 
       <div id="customer-name-quote"></div>
@@ -264,7 +280,8 @@
       <div id="city-quote"></div>
       <div id="post-code-quoe"></div>
 
-      <div id='quotation-display-data'></div>
+      <div id='quotation-display-data'>
+      </div>
       <table>
         <tr>
             <td class='total-description'>Excl VAT total</td>
@@ -280,12 +297,14 @@
         </tr>
       </table>
       <br>
+    -->
       <textarea id="quotation-comments" class = "quotation-comments" placeholder="comments"  cols="100" rows="5"></textarea>
       <button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
 
       <a href="#page-three"  id="go-to-flue" data-direction="reverse" data-transition="slide">Go to flue</a>
       <a href="#page-one" data-transition="slide" data-direction="reverse">Back to home</a>
     </div>
+
 </div>
 
 <!-- // /// //// /// -->

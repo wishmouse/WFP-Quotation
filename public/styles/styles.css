@@ -27,15 +27,11 @@
     text-align: center;
 }
 
-.description-note, {
+.description-note {
   width: 160px;
   float: left;
 }
 
-.price-note{
-  width: 160px;
-  float: left;
-}
 
 .border-fireplace{
     border: 1px solid #B39476;
@@ -307,16 +303,28 @@ padding-left: 20px;
 .table-description{
   font-family: helvetica;
   font-weight: 300;
-  border-right: 1px solid #78b777;
-  width: 100px;
   text-align: left;
   padding-right: 10px;
-  width: 350px;
+  width: 162px;
   font-size: 20px;
   border-bottom: 1px solid #78b777;
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.table-description-comment{
+  border-right: 1px solid #78b777;font-family: helvetica;
+  font-weight: 300;
+  text-align: left;
+  padding-right: 10px;
+  width: 150px;
+  font-size: 20px;
+  border-bottom: 1px solid #78b777;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
 }
 
 .table-quantity{

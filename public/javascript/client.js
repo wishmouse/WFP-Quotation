@@ -32,7 +32,6 @@ var cornerHearth
 var colour
 var colourPrice
 
-
 //data edit
 var editList
 
@@ -100,7 +99,8 @@ var editList
             var editTemplate = ""+
                 "<tr class='delete-tile-table'>"+
                   "<td class='delete-tile-button w3-padding w3-xlarge fa fa-trash'></td>"+
-                  "<td class='table-description'>"+ "Additional Tile colour: "+"<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
+                  "<td class='table-description'>"+ "Tile colour: "+"</td>" +
+                  "<td class='table-description-comment'><input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                   "<td class='table-quantity'>"+'1'+"</td>" +
                   "<td class='table-price' unit-price='"+hearthTileText+"'><input type='text' name='hearth-colour-price-text' class='excl-price' id='hearth-colour-price-text' value="+hearthTileText+"></input></td>" +
                   "<td class='table-vat' id='hearth-colour-vat-text'>0</td>" +
@@ -229,8 +229,8 @@ function add(){
       })
     })
 
-
-      $("#model-dropdown-hearth").change(function() {
+    //  $("#model-dropdown-hearth").change(function() {
+      $("#model-dropdown-hearth").click(function() {
         var modelHearthValue = $("#model-dropdown-hearth" ).val()
           for (i = 0; i < getHearthData.length; i++){
               hearthModelReturn = getHearthData[i]
@@ -256,14 +256,8 @@ function add(){
               var editTemplate = ""+
                   "<tr class='delete-colour-table'>"+
                     "<td> <div class='delete-colour-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
-                    "<td class='table-description'>" +
-                        "<div class='wrapper'>"+
-                            "<div class='description-note'> Additional colour:    </div>"+
-                            "<div class='price-note'>"+
-                              "<input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+
-                            "</div>"+
-                          "</div>"+
-                      "</td>" +
+                    "<td class='table-description'>" + "Colour:"+"</td>" +
+                    "<td class='table-description-comment'><input id='colour-comment' class='colour-comment' placeholder='Colour?'/>"+"</td>" +
                     "<td class='table-quantity'>"+'1'+"</td>" +
                     "<td class='table-price'><input type='text' name='colour-price-text' class='excl-price' id='colour-price-text' value="+colour+"></input></td>" +
                     "<td class='table-vat' id='colour-vat-text'>0</td>" +
@@ -299,7 +293,8 @@ function add(){
         var editTemplate = ""+
             "<tr class='delete-hearth-table'>"+
               "<td> <div class='delete-hearth-button w3-padding w3-xlarge fa fa-trash'></div></td>"+
-              "<td class='table-description'>"+ hearthModelReturn.hearthMake +" " + hearthModelReturn.hearthModel +"<input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
+              "<td class='table-description'>"+ hearthModelReturn.hearthMake +" " + hearthModelReturn.hearthModel +"</td>"+
+              "<td class='table-description-comment'><input id='hearth-comment' class='colour-comment' placeholder='notes'/>"+"</td>" +
               "<td class='table-quantity'>"+'1'+"</td>" +
               "<td class='table-price'><input type='text' name='hearth-price-text'  class='excl-price' id='heart-price-text' value="+hearthModelReturn.hearthPrice+"></input></td>" +
               "<td class='table-vat' id='hearth-vat-text'>0</td>" +
@@ -419,18 +414,15 @@ function add(){
              }
            }
          }
-/*
-function updateQuotation(){
-      quotationDisplay()
-    }
-    */
+
          function quotationDisplay(){
-            $('.delete-fireplace-table').remove()
+         $('.delete-fireplace-table').remove()
 
            var editTemplate = ""+
                "<tr class='delete-fireplace-table'>"+
                  "<td class='delete-fireplace-button 3-padding w3-xlarge fa fa-trash'></td>"+
                  "<td class='table-description'>"+make+' '+dataReturn.model+ "</td>" +
+                 "<td class='table-description-comment'>"+"</td>" +
                  "<td class='table-quantity'>"+'1'+"</td>" +
                  "<td class='table-price'><input type='text' name='fireplace-price-text' class='excl-price' id='fireplace-price-text' value="+fireplaceCost+"></input></td>" +
                  "<td class='table-vat'<div id='fireplace-vat-text'>0</div></td>" +
@@ -441,8 +433,6 @@ function updateQuotation(){
          calculateTotalFireplace()
          add()
        })
-
-
 
 
 
