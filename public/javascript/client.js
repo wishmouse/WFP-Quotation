@@ -439,7 +439,7 @@ function add(){
        function quotationTemplate(){
          quoteLine = $('#quotation-display-data')
          var editTemplate = ""+
-           "<table>" +
+           //"<table>" +
              "<tr>"+
                "<td></td>"+
                "<th class='table-header-description'>Description</th>" +
@@ -448,7 +448,7 @@ function add(){
                "<th class='table-header-vat'>VAT</th>" +
                "<th class='table-header-total'>Total</th>" +
              "</tr>"
-           "</table>"
+           //"</table>"
          quoteLine.append(editTemplate)
 
        }
@@ -506,14 +506,14 @@ function add(){
              console.log(getFlueData)
              for (i = 0; i < getFlueData.length; i++) {
                var dataReturn= getFlueData[i]
-              /* if(flueMake == dataReturn.flueMake){
+              if(flueMake == dataReturn.flueMake){
                    $(dataReturn).each(function(){
                      var optionModel = $('<option />')
                      optionModel.attr('value', this.flueModel).text(this.flueModel)
                      $('#model-dropdown-flue').append(optionModel)
                    })
 
-               }*/
+               }
              }
            }
        })
@@ -865,15 +865,10 @@ $("#go-to-quote").click(function(){
            salesman = select.text()
          })
 
-     $('#entry-salesman-button').click(function(e){
-       e.preventDefault()
+     $('#enter-salesman-data-button').click(function(e){
+       $("#salesman-submit-notification").hide()
+
        })
-
-     $("#salesman-back-to-quotation").click(function(e){
-       e.preventDefault()
-       _hideShow.backToSalesButton
-
-      })
 
 
      $('#submit-salesman-button').click(function(e){
@@ -903,9 +898,8 @@ $("#go-to-quote").click(function(){
     })
 
 
- $('#edit-salesman-button').click(function(e){
+ $('#edit-salesman-data').click(function(e){
    e.preventDefault()
-   $("#edit-salesman-data").hide()
 
 
    editSalesmanLine =$("#edit-salesman")

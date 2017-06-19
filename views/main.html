@@ -12,6 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <!-- //// -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -78,7 +79,7 @@
   <div data-role="main" class="ui-content">
       <a href="#fireplace-data-entry" id="data-entry-button" class="data-entry-button">Enter Fireplace Data</a>
       <a href="#edit-quotation-slide" class="edit-quotation-button" id="edit-quotation-button">View Quote</a>
-      <a href="#edit-salesman-data" class="entry-salesman-button" id="entry-salesman-button">Enter Salesman</a>
+      <a href="#edit-salesman-data" class="entry-salesman-button" id="enter-salesman-data-button">Enter Salesman</a>
       <a href="#enter-hearth-data" class="entry-hearth-button" id="entry-hearth-button">Enter Hearth</a>
       <a href="#enter-flue-data" data-transition="slide" class="entry-flue-button" id="entry-flue-button">Enter Flue Data</a>
     <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
@@ -177,23 +178,8 @@
       </div>
     </div>
 
-
-  <div id='quotation-display-data'>  </div>
-  <table>
-    <tr>
-        <td class='total-description'>Excl VAT total</td>
-        <td class='total-value'> <div id='quotation-excl-total'></div>  </td>
-    </tr>
-    <tr>
-        <td class='total-description'>VAT</td>
-        <td class='total-value'> <div id='quotation-vat-total'></div> </td>
-    </tr>
-    <tr>
-        <td class='total-description'>Grand Total</td>
-        <td class='total-value'> <div id="quotation-grand-total"></div> </td>
-    </tr>
-  </table>
-
+    <a href="#page-three" id="go-to-quote" data-transition="slide">Go to flue</a>
+    <a href="#page-one" data-transition="slide" data-direction="reverse">Back home</a>
   </div>
 </div>
 
@@ -268,7 +254,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="page-four"><!--
+<div data-role="page" id="page-four">
     <div data-role="main" class="ui-content">
 
       <div id="customer-name-quote"></div>
@@ -297,7 +283,7 @@
         </tr>
       </table>
       <br>
-    -->
+
       <textarea id="quotation-comments" class = "quotation-comments" placeholder="comments"  cols="100" rows="5"></textarea>
       <button class="quotation-submit-button" id="quotation-submit-button">Submit Quote</button>
 
@@ -433,7 +419,6 @@
 </div>
 <div data-role="page" id="edit-data-button-slide">
     <div data-role="main" class="ui-content">
-      <table>
         <tr>
           <th class='table-header'>Edit / Delete</th>
           <th class='table-header'>Fuel</th>
@@ -450,7 +435,6 @@
           <th class='table-header'>Colour</th>
           <th  class='table-header'>Colour Price</th>
         </tr>
-      </table>
       <div id="edit-data"></div>
       <a href="#fireplace-data-entry" data-transition="slide" data-direction='reverse' id='back-to-fireplace-data' >Firplace Data Entry</a>
       <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
@@ -470,14 +454,12 @@
       Active:
         <input type="radio"  id="salesman-active" class="salesman-active"/>
         <br>
-      <div id="salesman-submit-notification" class="submit-notification">Data submitted</div>
-      <div>
+      <div id="salesman-submit-notification" class="submit-notification">Salesman Data submitted</div>
 
         <button id="submit-salesman-button" class ="submit-salesman-button">Salesman data submit </button>
 
         <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
-        <a href="#edit-salesman-slide" data-transition="slide" class="edit-salesman-button" id="edit-salesman-button">Edit Salesman </a>
-      </div>
+        <a href="#edit-salesman-slider" data-transition="slide" class="edit-salesman-button" id="edit-salesman-button">Edit Salesman </a>
   </div>
 </div>
 <div data-role="page" id="edit-salesman-slider">
