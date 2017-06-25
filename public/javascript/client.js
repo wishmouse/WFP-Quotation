@@ -891,7 +891,7 @@ $("#go-to-quote").click(function(){
               }
          })
 
-         $('#edit-salesman-data')[0].reset();
+         $('#edit-salesman-data-form')[0].reset();
 
          $("#salesman-submit-notification").show().delay(2000).fadeOut();
 
@@ -899,33 +899,20 @@ $("#go-to-quote").click(function(){
 
 
  $('#edit-salesman-data').click(function(e){
-   e.preventDefault()
-
 
    editSalesmanLine =$("#edit-salesman")
 
    function displaySalesmanData(editSalesman){
      var editSalesmanTemplate = ""+
-       "<table class='to-delete"+editSalesmanList._id+"'>" +
-         "<tr>"+
-           "<th class='table-header'></th>"+
-           "<th class='table-header'>Name</th>"+
-           "<th class='table-header'>Email</th>"+
-           "<th class='table-header'>Phone Number</th>"+
-           "<th class='table-header'>Active</th>"+
-         "</tr>"+
-         "<tr>"+
+       "<tr class='to-delete"+editSalesmanList._id+"'>"+
            "<td><button class='click-to-edit-salesman' data-id ="+editSalesmanList._id+">Edit</button>" +
-           "<button class='click-to-delete-salesman' data-id ="+editSalesmanList._id+">Delete</button>" +
+                "<button class='click-to-delete-salesman' data-id ="+editSalesmanList._id+">Delete</button>" +
            "</td>"+
            "<td class='table-body'>"+editSalesmanList.salesmanName+"</td>"+
-
            "<td class='table-body'>"+editSalesmanList.salesmanEmail+"</td>"+
            "<td class='table-body'>"+editSalesmanList.salesmanPhone+"</td>"+
            "<td class='table-body'>"+editSalesmanList.salesmanActive+"</td>"+
-
-           "</tr>"+
-         "</table>"
+         "</tr>"
        editSalesmanLine.append(editSalesmanTemplate, editSalesman)
    }
      $.ajax({

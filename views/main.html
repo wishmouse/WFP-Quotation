@@ -445,6 +445,7 @@
 <!-- enter salesman data------->
 <div data-role="page" id="edit-salesman-data">
   <div data-role="main" class="ui-content">
+    <form id='edit-salesman-data-form'>
       Name :
       <input type="text" id="salesman-name" class="salesman-name" placeholder="Name and surname"/><br>
       Email:
@@ -455,18 +456,26 @@
         <input type="radio"  id="salesman-active" class="salesman-active"/>
         <br>
       <div id="salesman-submit-notification" class="submit-notification">Salesman Data submitted</div>
-
+    </form>
         <button id="submit-salesman-button" class ="submit-salesman-button">Salesman data submit </button>
 
         <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
         <a href="#edit-salesman-slider" data-transition="slide" class="edit-salesman-button" id="edit-salesman-button">Edit Salesman </a>
   </div>
 </div>
-<div data-role="page" id="edit-salesman-slider">
-  <div data-role="main" class="ui-content">
-     <a href="#edit-salesman-data" class="entry-salesman-button" data-direction="reverse" id="entry-salesman-button">Enter Salesman</a>
-     <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
 
+<div data-role="page" id="edit-salesman-slider">
+  <div data-role="main" class="ui-content">     <a href="#edit-salesman-data" class="entry-salesman-button" data-direction="reverse" id="entry-salesman-button">Enter Salesman</a>
+     <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>
+     <table>
+       <tr>
+          <th class='table-header'></th>
+          <th class='table-header'>Name</th>
+          <th class='table-header'>Email</th>
+          <th class='table-header'>Phone Number</th>
+          <th class='table-header'>Active</th>
+        </tr>
+      </table>
      <div id="edit-salesman"></div>
 
   </div>
@@ -545,8 +554,9 @@
   <a href="#enter-flue-data"  id="flue-data-slide" data-transition="slide" >Enter Flue Data</a>
 
 <!--<div id="enter-flue-data"> -->
+
 <div data-role="page" id="enter-flue-data">
-  <div data-role="main">
+  <div data-role="main" class="ui-content">
     <div class="enter-flue-data">
     Fuel
     <select id="flue-fuel">
