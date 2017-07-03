@@ -582,7 +582,6 @@
       <option class='flue-border-source'>Custom</option>
       <option class='flue-border-source'>Kit</option>
     </select>
-  <br>
 
   Entering options
   <select id="flue-enter-options" style='margin-top: 25px'>
@@ -593,16 +592,15 @@
       <option class='enter-options'>Spider</option>
       <option class='enter-options'>Guides</option>
   </select>
-
-Inner flue diamater
-    <select id="flue-inner" style='margin-top: 25px'>
+  <div id="flue-inner-options">
+    Inner flue diamater
+    <select id="flue-inner">
       <option class='flue-inner'>100</option>
       <option class='flue-inner'>200</option>
       <option class='flue-inner'>300</option>
       <option class='flue-inner'>400</option>
     </select>
-  <div id="flue-inner-options">
-    <br>
+
     Flue Inner Price :<input type="number" id="flue-inner-price" placeholder="Price $$"/>
     <button id="flue-inner-submit" class="submit-flue-data">Submit Flue-inner</button>
   </div>
@@ -669,9 +667,6 @@ Inner flue diamater
   </div>
 
 
-    <div>
-      <div id="submit-notification-flue" class="submit-notification-flue">Flue Data submitted </div>
-    </div>
     <div>
       <a href="#edit-flue-view" data-transition="slide" id="edit-flue-button">Edit Flue Data</a>
       <a href="#page-one" data-transition="slide" data-direction="reverse">Home</a>

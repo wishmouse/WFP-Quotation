@@ -1045,9 +1045,9 @@ $('#edit-hearth-button').click(function(){
    //==============
    //==============flue data entry
    //==============
-   $("#entry-flue-button").click(function(e){
-     e.preventDefault
+   $("#entry-flue-button").click(function(){
     $("#submit-notification-flue").hide()
+    _hideShow.dataFlueChange()
    })
 
 

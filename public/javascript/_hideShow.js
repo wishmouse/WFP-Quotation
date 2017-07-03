@@ -237,7 +237,6 @@ function hideShow(){
       $("#flue-cowel-options").hide()
       $("#flue-guides-options").hide()
       $("#flue-spider-options").hide()
-
     }
 
 
