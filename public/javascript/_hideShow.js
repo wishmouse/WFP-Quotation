@@ -237,6 +237,19 @@ function hideShow(){
       $("#flue-cowel-options").hide()
       $("#flue-guides-options").hide()
       $("#flue-spider-options").hide()
+      $("#flue-make").hide()
+      $("#flue-model").hide()
+      $("#flue-model-woodsman").hide()
+      $("#flue-model-ethos").hide()
+      $("#flue-model-pyroclassic").hide()
+      $("#flue-model-sft").hide()
+      $("#flue-model-jayline").hide()
+      $("#tt").hide()
+      $("#uu").hide()
+      $("#vv").hide()
+      $("#xx").hide()
+      $("#yy").hide()
+      $("#zz").hide()
     }
 
 

@@ -1050,6 +1050,42 @@ $('#edit-hearth-button').click(function(){
     _hideShow.dataFlueChange()
    })
 
+   $("#flue-source").change(function(){
+     $("#flue-make").show()
+     $("#flue-model").show()
+
+   })
+
+   $("#flue-make").change(function(){
+      flueModel = $("#flue-make").val()
+      flueModelSelect()
+   })
+
+function flueModelSelect(){
+     if (flueModel == 'Woodsman'){
+        $("#flue-model-woodsman").show()
+        $("#xx").show()
+     } else if (flueModel == 'Ehtos'){
+         $("#flue-model-ethos").show()
+         $("#yy").show()
+      }
+       else if (flueModel == 'Pyroclassic'){
+        $("#flue-model-pyroclassic").show()
+        $("#zz").show()
+      }
+        else if(flueModel == 'SFP'){
+         $("#flue-model-sfp").show()
+         $("#uu").show()
+      }
+        else if(flueModel == 'Jayline'){
+         $("#flue-model-jay").show()
+         $("#tt").show()
+
+     } else if(flueModel == 'Metro'){
+        $("#flue-model-metro").show()
+        $("#vv").show()
+     }
+}
 
    $("#flue-enter-options").change(function() {
      _hideShow.dataFlueChange()
